@@ -15,9 +15,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Voltage Checker","description":"Check voltage, frequency, and plug types for any country. Determine if your electronics will work abroad or if you need an adapter or converter.","applicationCategory":"TravelApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if I plug a 110V device into a 220V outlet?","acceptedAnswer":{"@type":"Answer","text":"Your device will almost certainly be permanently damaged. The excess voltage overloads internal components causing overheating, short circuits, or fire. Never plug a 110V-only device into a 220V outlet without a voltage converter."}},{"@type":"Question","name":"What is the difference between a plug adapter and a voltage converter?","acceptedAnswer":{"@type":"Answer","text":"A plug adapter only changes the physical plug shape — it does NOT change the voltage. A voltage converter actually changes the electrical voltage. Most modern electronics (100-240V) only need a plug adapter."}},{"@type":"Question","name":"How do I know if my device is dual voltage?","acceptedAnswer":{"@type":"Answer","text":"Look at the power adapter label for 'INPUT:'. If it shows 100-240V it works worldwide and only needs a plug adapter. If it shows only 110V or 220V it is single-voltage."}},{"@type":"Question","name":"Do I need a voltage converter for my laptop?","acceptedAnswer":{"@type":"Answer","text":"Almost certainly not. The vast majority of laptop adapters since 2000 show 100-240V. Check your power brick — if it shows a range, you only need a plug adapter."}},{"@type":"Question","name":"What countries use 110V?","acceptedAnswer":{"@type":"Answer","text":"United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), and Japan (100V). Most of the rest of the world uses 220-240V."}}]}
-</script>
 <style>
 :root{
   --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
@@ -46,8 +43,8 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 
 /* NAV */
 .nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
+.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0}
 .logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
 .logo span{color:var(--amber)}
 .nav-links{display:flex;gap:24px;list-style:none}
@@ -57,6 +54,14 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
   background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
   padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
 .nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+
+/* LANG SWITCHER */
+.lang-switcher{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.lang-btn{font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 8px;border-radius:5px;
+  border:1px solid var(--border);background:transparent;color:var(--text-mid);cursor:pointer;
+  transition:all .18s;letter-spacing:.04em;line-height:1}
+.lang-btn:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-d)}
+.lang-btn.active{border-color:var(--amber);color:var(--amber);background:var(--amber-d)}
 
 /* HERO */
 .hero{padding:60px 20px 0;position:relative;overflow:hidden}
@@ -263,7 +268,7 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-@media(max-width:920px){.hero-in{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+@media(max-width:920px){.hero-in{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}.lang-switcher{gap:3px}.lang-btn{font-size:10px;padding:3px 6px}}
 @media(max-width:600px){.hero{padding:36px 16px 0}.sec{padding:48px 0}.footer-in{grid-template-columns:1fr}.ro-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -273,54 +278,63 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
   <div class="nav-in">
     <div class="logo"><div class="logo-box">⚡</div>Voltage<span>Checker</span>.net</div>
     <ul class="nav-links">
-      <li><a href="#tool">Checker</a></li>
-      <li><a href="#plugs">Plug Types</a></li>
-      <li><a href="#countries">Countries</a></li>
-      <li><a href="#devices">Devices</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#tool" class="nav-cta">Check Now</a></li>
+      <li><a href="#tool" data-i18n="nav_checker">Checker</a></li>
+      <li><a href="#plugs" data-i18n="nav_plugs">Plug Types</a></li>
+      <li><a href="#countries" data-i18n="nav_countries">Countries</a></li>
+      <li><a href="#devices" data-i18n="nav_devices">Devices</a></li>
+      <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+      <li><a href="#tool" class="nav-cta" data-i18n="nav_cta">Check Now</a></li>
     </ul>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="ja">日本語</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
   </div>
 </nav>
 
 <section class="hero" id="tool">
   <div class="hero-in">
     <div style="padding-bottom:64px">
-      <div class="hero-tag">Travel Power Guide</div>
-      <h1 class="hero-h1">Will my device work<br>in <mark id="hcountry">any country</mark>?</h1>
-      <p class="hero-sub">Check voltage, frequency, and plug types for 60+ countries. Enter your device's voltage and know instantly — adapter, converter, or nothing at all.</p>
+      <div class="hero-tag" data-i18n="hero_tag">Travel Power Guide</div>
+      <h1 class="hero-h1" data-i18n-html="hero_h1">Will my device work<br>in <mark id="hcountry">any country</mark>?</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Check voltage, frequency, and plug types for 60+ countries. Enter your device's voltage and know instantly — adapter, converter, or nothing at all.</p>
       <div class="chips">
-        <span class="chip">60+ countries</span>
-        <span class="chip">Adapter vs Converter</span>
-        <span class="chip">Device Compatibility</span>
-        <span class="chip">Free · No Sign-Up</span>
+        <span class="chip" data-i18n="chip1">60+ countries</span>
+        <span class="chip" data-i18n="chip2">Adapter vs Converter</span>
+        <span class="chip" data-i18n="chip3">Device Compatibility</span>
+        <span class="chip" data-i18n="chip4">Free · No Sign-Up</span>
       </div>
     </div>
 
     <div class="tool">
       <div class="tool-head">
         <div class="tool-dots"><div class="td"></div><div class="td"></div><div class="td"></div></div>
-        <span class="tool-title">POWER COMPATIBILITY CHECKER v2.0</span>
+        <span class="tool-title" data-i18n="tool_title">POWER COMPATIBILITY CHECKER v2.0</span>
       </div>
       <div class="tool-body">
         <div class="readout" id="readout">
-          <div class="ro-lbl">SELECT DESTINATION TO SEE POWER SPECS</div>
-          <div class="ro-main" id="ro-main">— AWAITING INPUT —</div>
+          <div class="ro-lbl" id="ro-lbl-initial" data-i18n="ro_lbl_initial">SELECT DESTINATION TO SEE POWER SPECS</div>
+          <div class="ro-main" id="ro-main" data-i18n="ro_main_initial">— AWAITING INPUT —</div>
           <div class="ro-sub" id="ro-sub"></div>
           <div class="ro-grid" id="ro-grid">
-            <div class="ro-cell"><div class="ro-cv" id="cv">—</div><div class="ro-ck">Voltage</div></div>
-            <div class="ro-cell"><div class="ro-cv" id="cf">—</div><div class="ro-ck">Frequency</div></div>
-            <div class="ro-cell"><div class="ro-cv" id="cs">—</div><div class="ro-ck">System</div></div>
+            <div class="ro-cell"><div class="ro-cv" id="cv">—</div><div class="ro-ck" id="ro-ck-v" data-i18n="ro_ck_voltage">Voltage</div></div>
+            <div class="ro-cell"><div class="ro-cv" id="cf">—</div><div class="ro-ck" id="ro-ck-f" data-i18n="ro_ck_freq">Frequency</div></div>
+            <div class="ro-cell"><div class="ro-cv" id="cs">—</div><div class="ro-ck" id="ro-ck-s" data-i18n="ro_ck_system">System</div></div>
           </div>
           <div id="ro-plugs-wrap" style="display:none">
-            <div class="ro-lbl" style="margin-top:11px">PLUG TYPES IN USE</div>
+            <div class="ro-lbl" id="ro-plugs-lbl" style="margin-top:11px" data-i18n="ro_plugs_lbl">PLUG TYPES IN USE</div>
             <div class="ro-plugs" id="ro-plugs"></div>
           </div>
         </div>
 
-        <div class="slbl"><span class="snum">1</span>DESTINATION COUNTRY</div>
+        <div class="slbl"><span class="snum">1</span><span data-i18n="step1">DESTINATION COUNTRY</span></div>
         <div class="field">
-          <div class="qlbl">POPULAR DESTINATIONS</div>
+          <div class="qlbl" data-i18n="qlbl">POPULAR DESTINATIONS</div>
           <div class="qgrid" id="qgrid">
             <button class="qbtn" data-c="US">🇺🇸 USA</button>
             <button class="qbtn" data-c="GB">🇬🇧 UK</button>
@@ -336,16 +350,16 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
             <button class="qbtn" data-c="BR">🇧🇷 Brazil</button>
           </div>
           <select class="fsel" id="csel" aria-label="Select destination country">
-            <option value="">— Or choose from all countries —</option>
+            <option value="" data-i18n="sel_placeholder">— Or choose from all countries —</option>
           </select>
         </div>
 
-        <div class="slbl" style="margin-top:4px"><span class="snum">2</span>YOUR DEVICE VOLTAGE (OPTIONAL)</div>
+        <div class="slbl" style="margin-top:4px"><span class="snum">2</span><span data-i18n="step2">YOUR DEVICE VOLTAGE (OPTIONAL)</span></div>
         <div class="field">
           <input class="finp" id="dvolt" type="text" placeholder="e.g.  100-240V  or  110V  or  220V" aria-label="Device input voltage">
-          <div class="fhint">// Look on your power adapter label for "INPUT:"</div>
+          <div class="fhint" data-i18n="dvolt_hint">// Look on your power adapter label for "INPUT:"</div>
         </div>
-        <button class="btn" id="checkBtn">⚡ CHECK COMPATIBILITY</button>
+        <button class="btn" id="checkBtn" data-i18n="check_btn">⚡ CHECK COMPATIBILITY</button>
         <div class="verdict" id="verdict"></div>
       </div>
     </div>
@@ -353,15 +367,15 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 </section>
 
 <div class="wrap">
-  <div class="ad ad-ldr"><!-- Google AdSense: ca-pub-XXXXXXXXXX / slot XXXXXXXXXX -->ADVERTISEMENT</div>
+  <div class="ad ad-ldr">ADVERTISEMENT</div>
 </div>
 
 <!-- PLUG GUIDE -->
 <section class="sec" id="plugs">
   <div class="wrap">
-    <div class="stag">Reference Guide</div>
-    <h2 class="sh2">Plug Types Around the World</h2>
-    <p class="ssub">There are 15 standardized plug types. A plug adapter only changes the physical shape — it does NOT change voltage.</p>
+    <div class="stag" data-i18n="plugs_stag">Reference Guide</div>
+    <h2 class="sh2" data-i18n="plugs_h2">Plug Types Around the World</h2>
+    <p class="ssub" data-i18n="plugs_sub">There are 15 standardized plug types. A plug adapter only changes the physical shape — it does NOT change voltage.</p>
     <div class="plug-grid" id="plug-grid"></div>
   </div>
 </section>
@@ -369,25 +383,25 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 <!-- COUNTRY TABLE -->
 <section class="sec div-top" id="countries">
   <div class="wrap">
-    <div class="stag">Complete Database</div>
-    <h2 class="sh2">Voltage by Country — Full Reference</h2>
-    <p class="ssub">Browse all countries. The "vs. US" column shows what a US traveler needs. Click any column to sort.</p>
+    <div class="stag" data-i18n="countries_stag">Complete Database</div>
+    <h2 class="sh2" data-i18n="countries_h2">Voltage by Country — Full Reference</h2>
+    <p class="ssub" data-i18n="countries_sub">Browse all countries. The "vs. US" column shows what a US traveler needs. Click any column to sort.</p>
     <div class="rpills" id="rpills">
-      <button class="rpill on" data-r="all">All</button>
-      <button class="rpill" data-r="americas">Americas</button>
-      <button class="rpill" data-r="europe">Europe</button>
-      <button class="rpill" data-r="asia">Asia &amp; Pacific</button>
-      <button class="rpill" data-r="africa">Africa &amp; Middle East</button>
+      <button class="rpill on" data-r="all" data-i18n="pill_all">All</button>
+      <button class="rpill" data-r="americas" data-i18n="pill_americas">Americas</button>
+      <button class="rpill" data-r="europe" data-i18n="pill_europe">Europe</button>
+      <button class="rpill" data-r="asia" data-i18n="pill_asia">Asia &amp; Pacific</button>
+      <button class="rpill" data-r="africa" data-i18n="pill_africa">Africa &amp; Middle East</button>
     </div>
     <input class="csearch" id="csearch" type="text" placeholder="Search country…" aria-label="Search countries">
     <div class="tw">
       <table class="ct" id="ct" aria-label="Country voltage reference">
         <thead><tr>
-          <th data-s="name">Country ↕</th>
-          <th data-s="voltage">Voltage ↕</th>
-          <th data-s="freq">Hz ↕</th>
-          <th>Plugs</th>
-          <th>vs. US</th>
+          <th data-s="name" data-i18n="th_country">Country ↕</th>
+          <th data-s="voltage" data-i18n="th_voltage">Voltage ↕</th>
+          <th data-s="freq" data-i18n="th_hz">Hz ↕</th>
+          <th data-i18n="th_plugs">Plugs</th>
+          <th data-i18n="th_vsus">vs. US</th>
         </tr></thead>
         <tbody id="ctbody"></tbody>
       </table>
@@ -402,20 +416,13 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 <!-- DEVICES -->
 <section class="sec div-top" id="devices">
   <div class="wrap">
-    <div class="stag">Device Reference</div>
-    <h2 class="sh2">Dual-Voltage vs Single-Voltage</h2>
-    <p class="ssub">Most modern electronics are dual-voltage and work anywhere. Heating appliances are almost always single-voltage and need a converter.</p>
+    <div class="stag" data-i18n="devices_stag">Device Reference</div>
+    <h2 class="sh2" data-i18n="devices_h2">Dual-Voltage vs Single-Voltage</h2>
+    <p class="ssub" data-i18n="devices_sub">Most modern electronics are dual-voltage and work anywhere. Heating appliances are almost always single-voltage and need a converter.</p>
     <div class="dv-grid" id="dv-grid"></div>
     <div style="margin-top:28px;padding:20px;background:var(--bg-card);border:1px solid rgba(0,214,143,.18);border-radius:var(--rl)">
-      <div class="stag" style="margin-bottom:7px">Pro Tip</div>
-      <p style="font-size:14px;color:var(--text-mid);line-height:1.75">
-        <strong style="color:var(--green)">Reading the label:</strong>
-        Look for "INPUT:" on your power adapter.
-        <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = works everywhere, just need a plug adapter.
-        <span style="font-family:var(--mono);color:var(--yellow)">110V only</span> = North America &amp; Japan only.
-        <span style="font-family:var(--mono);color:var(--red)">220–240V only</span> = Europe, Asia, Australia only.
-        Frequency (50Hz vs 60Hz) rarely matters for modern electronics.
-      </p>
+      <div class="stag" style="margin-bottom:7px" data-i18n="protip_stag">Pro Tip</div>
+      <p id="protip-body" style="font-size:14px;color:var(--text-mid);line-height:1.75"></p>
     </div>
   </div>
 </section>
@@ -423,9 +430,9 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 <!-- FAQ -->
 <section class="sec div-top" id="faq">
   <div class="wrap-md">
-    <div class="stag">Common Questions</div>
-    <h2 class="sh2">Frequently Asked Questions</h2>
-    <p class="ssub" style="margin-bottom:36px">Everything travelers ask about voltage, adapters, and converters.</p>
+    <div class="stag" data-i18n="faq_stag">Common Questions</div>
+    <h2 class="sh2" data-i18n="faq_h2">Frequently Asked Questions</h2>
+    <p class="ssub" style="margin-bottom:36px" data-i18n="faq_sub">Everything travelers ask about voltage, adapters, and converters.</p>
     <div class="faq-list" id="faqlist"></div>
   </div>
 </section>
@@ -433,7 +440,7 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 <div class="disc">
   <div class="disc-in">
     <span style="font-size:16px;flex-shrink:0">⚡</span>
-    <p class="disc-txt"><strong style="color:var(--text-mid)">Data Accuracy Notice:</strong> Voltage and plug data is based on IEC and ITU standards current as of 2025. Some countries have regional variations or transitional standards. Always verify with local accommodation or your equipment's manual before use. VoltageChecker.net is not responsible for device damage. When in doubt, use a certified voltage converter.</p>
+    <p class="disc-txt" id="disc-txt"></p>
   </div>
 </div>
 
@@ -441,35 +448,633 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
   <div class="footer-in">
     <div>
       <div class="f-logo">Voltage<span>Checker</span>.net</div>
-      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+      <p class="f-tag" data-i18n="footer_tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
     </div>
     <div>
-      <div class="f-ctitle">Tools</div>
+      <div class="f-ctitle" data-i18n="footer_tools">Tools</div>
       <ul class="f-links">
-        <li><a href="#tool">Compatibility Checker</a></li>
-        <li><a href="#plugs">Plug Type Guide</a></li>
-        <li><a href="#countries">Country Database</a></li>
-        <li><a href="#devices">Device Reference</a></li>
+        <li><a href="#tool" data-i18n="nav_checker">Compatibility Checker</a></li>
+        <li><a href="#plugs" data-i18n="nav_plugs">Plug Type Guide</a></li>
+        <li><a href="#countries" data-i18n="nav_countries">Country Database</a></li>
+        <li><a href="#devices" data-i18n="nav_devices">Device Reference</a></li>
       </ul>
     </div>
     <div>
-      <div class="f-ctitle">Info</div>
+      <div class="f-ctitle" data-i18n="footer_info">Info</div>
       <ul class="f-links">
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" data-i18n="footer_about">About</a></li>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a></li>
+        <li><a href="contact.html" data-i18n="footer_contact">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="f-bot">
-    <span class="f-copy">© 2025 VoltageChecker.net — Free for personal use</span>
-    <div class="f-leg"><a href="privacy.html">Privacy</a><a href="about.html">About</a></div>
+    <span class="f-copy" data-i18n="footer_copy">© 2025 VoltageChecker.net — Free for personal use</span>
+    <div class="f-leg"><a href="privacy.html" data-i18n="footer_privacy">Privacy</a><a href="about.html" data-i18n="footer_about">About</a></div>
   </div>
 </footer>
 
 <script>
-/* ── DATA ─────────────────────────────────────────── */
+/* ── TRANSLATIONS ─────────────────────────────────── */
+const TRANSLATIONS = {
+  en: {
+    nav_checker:'Checker', nav_plugs:'Plug Types', nav_countries:'Countries',
+    nav_devices:'Devices', nav_faq:'FAQ', nav_cta:'Check Now',
+    hero_tag:'Travel Power Guide',
+    hero_h1:'Will my device work<br>in <mark id="hcountry">any country</mark>?',
+    hero_sub:'Check voltage, frequency, and plug types for 60+ countries. Enter your device\'s voltage and know instantly — adapter, converter, or nothing at all.',
+    chip1:'60+ countries', chip2:'Adapter vs Converter', chip3:'Device Compatibility', chip4:'Free · No Sign-Up',
+    tool_title:'POWER COMPATIBILITY CHECKER v2.0',
+    ro_lbl_initial:'SELECT DESTINATION TO SEE POWER SPECS',
+    ro_main_initial:'— AWAITING INPUT —',
+    ro_ck_voltage:'Voltage', ro_ck_freq:'Frequency', ro_ck_system:'System',
+    ro_plugs_lbl:'PLUG TYPES IN USE',
+    step1:'DESTINATION COUNTRY', step2:'YOUR DEVICE VOLTAGE (OPTIONAL)',
+    qlbl:'POPULAR DESTINATIONS',
+    sel_placeholder:'— Or choose from all countries —',
+    dvolt_placeholder:'e.g.  100-240V  or  110V  or  220V',
+    dvolt_hint:'// Look on your power adapter label for "INPUT:"',
+    check_btn:'⚡ CHECK COMPATIBILITY',
+    plugs_stag:'Reference Guide', plugs_h2:'Plug Types Around the World',
+    plugs_sub:'There are 15 standardized plug types. A plug adapter only changes the physical shape — it does NOT change voltage.',
+    countries_stag:'Complete Database', countries_h2:'Voltage by Country — Full Reference',
+    countries_sub:'Browse all countries. The "vs. US" column shows what a US traveler needs. Click any column to sort.',
+    pill_all:'All', pill_americas:'Americas', pill_europe:'Europe', pill_asia:'Asia & Pacific', pill_africa:'Africa & Middle East',
+    search_placeholder:'Search country…',
+    th_country:'Country ↕', th_voltage:'Voltage ↕', th_hz:'Hz ↕', th_plugs:'Plugs', th_vsus:'vs. US',
+    ct_same:'✓ Same', ct_conv:'⚡ Converter', ct_adapt:'~ Adapter', ct_noresults:'NO RESULTS',
+    devices_stag:'Device Reference', devices_h2:'Dual-Voltage vs Single-Voltage',
+    devices_sub:'Most modern electronics are dual-voltage and work anywhere. Heating appliances are almost always single-voltage and need a converter.',
+    protip_stag:'Pro Tip',
+    protip_body:'<strong style="color:var(--green)">Reading the label:</strong> Look for "INPUT:" on your power adapter. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = works everywhere, just need a plug adapter. <span style="font-family:var(--mono);color:var(--yellow)">110V only</span> = North America & Japan only. <span style="font-family:var(--mono);color:var(--red)">220–240V only</span> = Europe, Asia, Australia only. Frequency (50Hz vs 60Hz) rarely matters for modern electronics.',
+    faq_stag:'Common Questions', faq_h2:'Frequently Asked Questions',
+    faq_sub:'Everything travelers ask about voltage, adapters, and converters.',
+    disc_txt:'<strong style="color:var(--text-mid)">Data Accuracy Notice:</strong> Voltage and plug data is based on IEC and ITU standards current as of 2025. Some countries have regional variations or transitional standards. Always verify with local accommodation or your equipment\'s manual before use. VoltageChecker.net is not responsible for device damage. When in doubt, use a certified voltage converter.',
+    footer_tag:'Free voltage & plug compatibility tool for international travelers. No sign-up. Just answers.',
+    footer_tools:'Tools', footer_info:'Info', footer_about:'About', footer_privacy:'Privacy Policy', footer_contact:'Contact',
+    footer_copy:'© 2025 VoltageChecker.net — Free for personal use',
+    verdict_dest_title:'DESTINATION LOADED',
+    verdict_ok_title:'✅ COMPATIBLE — Plug Adapter Only',
+    verdict_bad_title:'⛔ VOLTAGE MISMATCH — Converter Required',
+    verdict_warn_title:'⚠️ LOW VOLTAGE — Check Device',
+    verdict_plug_lbl:'PLUG ADAPTER NEEDED FOR',
+    verdict_ok_body:(dv,cv)=>`Your device (${dv}) supports the local ${cv}V supply. You only need a plug adapter — no converter required.`,
+    verdict_bad_body:(dvMax,cv,dvMin)=>`Your device is rated up to ${dvMax}V but the local supply is ${cv}V. Plugging in directly WILL DAMAGE your device. You need a step-down converter (${cv}V → ${dvMax}V) plus a plug adapter.`,
+    verdict_warn_body:(dvMin,cv)=>`Your device expects ${dvMin}V but the local supply is only ${cv}V. The device may not work properly. Check for a manual voltage selector or use a step-up converter.`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong> uses <strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong> with plugs: <strong style="color:var(--amber)">${plugs}</strong>.<br><br>Enter your device's input voltage above for a full compatibility verdict. Look for "INPUT:" on your power adapter.`,
+    dual_label:'✓ Dual Voltage', single_label:'⚠️ Single Voltage',
+    faqs:[
+      {q:'What happens if I plug a 110V device into a 220V outlet?',a:'Your device will almost certainly be permanently damaged or destroyed. The excess voltage immediately overloads internal components, causing overheating, short circuits, or in some cases fire. Never plug a 110V-only device into a 220V outlet without a step-down voltage converter. There is no warning — the damage is instant.'},
+      {q:'What is the difference between a plug adapter and a voltage converter?',a:'A plug adapter only changes the physical shape of the plug to fit a foreign outlet — it does NOT change the voltage. A voltage converter (or transformer) actually changes the electrical voltage from 220V to 110V or vice versa. Most modern electronics like laptops, phone chargers, and cameras are dual-voltage (100–240V) and only need a plug adapter. Cost difference: adapters cost $5–20, quality converters cost $30–150+.'},
+      {q:'How do I know if my device is dual voltage?',a:'Look at the small print on your power adapter or device near the electrical specs. Find the label showing "INPUT:". If it says "100–240V" or "110–240V" it is dual voltage and works anywhere in the world — you only need a plug adapter. If it says only "110V" or "120V" it needs a converter abroad. If it says "220–240V" only, it won\'t work in North America without a step-up converter.'},
+      {q:'Do I need a voltage converter for my laptop?',a:'Almost certainly not. Nearly all laptop power adapters made after 2000 are dual-voltage (100–240V, 50–60Hz). Check the label on your power brick — if it shows a voltage range, you only need a plug adapter costing a few dollars. The same applies to phone chargers, most camera chargers, and gaming console power supplies.'},
+      {q:'What countries use 110V?',a:'Countries using approximately 110–127V: United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), Venezuela (120V), Dominican Republic (110V), and Japan (100V — the only country at exactly 100V). Most of the rest of the world uses 220–240V.'},
+      {q:'Does 50Hz vs 60Hz frequency matter?',a:'For most modern electronics — no. Laptops, phone chargers, cameras, and most personal devices work fine at both 50Hz and 60Hz. However, some motor-based appliances like electric clocks, some fans, and older hair dryers are designed for a specific frequency and may run slightly differently. For travelers, frequency is rarely a concern.'},
+      {q:'What is the best universal travel adapter?',a:'Look for an adapter covering Types A, B, C, D, E, F, G, and I — this covers 95%+ of countries. Popular reliable brands include Ceptics, Bestek, and Epicka. For multiple devices, choose one with built-in USB-A and USB-C ports. Note: these are adapter-only and will NOT change voltage — your devices must be dual-voltage (100–240V) to use safely.'},
+    ],
+    devices:[
+      {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Almost all modern laptops are dual-voltage. Check power brick label.'},
+      {icon:'📱',name:'Phone / Tablet Charger',v:'100–240V',dual:true,note:'All modern USB chargers work worldwide. Only need plug adapter.'},
+      {icon:'📷',name:'Camera / Drone Charger',v:'100–240V',dual:true,note:'Most camera chargers since ~2010 are dual-voltage.'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'All current-gen consoles are dual-voltage.'},
+      {icon:'🔌',name:'Electric Toothbrush',v:'100–240V',dual:true,note:'Modern Oral-B and Philips Sonicare are dual-voltage.'},
+      {icon:'🔋',name:'Power Bank',v:'100–240V',dual:true,note:'Charged via USB — works worldwide with plug adapter.'},
+      {icon:'💈',name:'Hair Dryer / Blow Dryer',v:'110V only ⚠️',dual:false,note:'Most US hair dryers are 110V only. Buy a travel dual-voltage model.'},
+      {icon:'🌀',name:'Flat Iron / Curling Iron',v:'110V only ⚠️',dual:false,note:'Most US models are 110V unless explicitly labeled dual-voltage.'},
+      {icon:'☕',name:'Coffee Maker / Electric Kettle',v:'110V only ⚠️',dual:false,note:'Heating appliances are nearly always single-voltage. Buy local.'},
+      {icon:'🎙️',name:'CPAP / Medical Devices',v:'100–240V',dual:true,note:'Most modern CPAP machines are dual-voltage. Confirm with manufacturer.'},
+    ],
+    plugs:[
+      {type:'A',name:'Two Flat Parallel Pins',countries:'USA, Canada, Mexico, Japan',voltage:'120V / 100V'},
+      {type:'B',name:'Two Flat + One Round Pin',countries:'USA, Canada, Mexico',voltage:'120V'},
+      {type:'C',name:'Two Round Pins (Europlug)',countries:'Europe, South America, Asia, Africa',voltage:'230V'},
+      {type:'D',name:'Three Round Pins (triangle)',countries:'India, Pakistan, Nepal, Sri Lanka',voltage:'230V'},
+      {type:'E',name:'Two Round + Hole',countries:'France, Belgium, Poland, Czech Republic',voltage:'230V'},
+      {type:'F',name:'Two Round + Side Clips (Schuko)',countries:'Germany, Austria, Netherlands, Spain, most Europe',voltage:'230V'},
+      {type:'G',name:'Three Rectangular Pins',countries:'UK, Ireland, Singapore, Malaysia, Hong Kong, UAE, Kenya',voltage:'230–240V'},
+      {type:'H',name:'Three Pins (V-shape)',countries:'Israel only',voltage:'230V'},
+      {type:'I',name:'Two/Three Flat Angled Pins',countries:'Australia, New Zealand, China, Argentina',voltage:'230V / 220V'},
+      {type:'J',name:'Three Round Pins',countries:'Switzerland, Liechtenstein',voltage:'230V'},
+      {type:'K',name:'Two Round + U-pin',countries:'Denmark, Greenland',voltage:'230V'},
+      {type:'L',name:'Three Round In-Line Pins',countries:'Italy, Chile, parts of Africa',voltage:'230V'},
+      {type:'M',name:'Three Large Round Pins',countries:'South Africa, India (large appliances)',voltage:'230V'},
+      {type:'N',name:'Two Round + Ground (IEC)',countries:'Brazil (official since 2011)',voltage:'127V'},
+    ],
+  },
+
+  es: {
+    nav_checker:'Verificador', nav_plugs:'Tipos de Enchufe', nav_countries:'Países',
+    nav_devices:'Dispositivos', nav_faq:'Preguntas', nav_cta:'Verificar Ahora',
+    hero_tag:'Guía de Electricidad para Viajeros',
+    hero_h1:'¿Funcionará mi dispositivo<br>en <mark id="hcountry">cualquier país</mark>?',
+    hero_sub:'Consulta el voltaje, frecuencia y tipos de enchufe de más de 60 países. Ingresa el voltaje de tu dispositivo y descubre al instante si necesitas adaptador, convertidor o nada.',
+    chip1:'60+ países', chip2:'Adaptador vs Convertidor', chip3:'Compatibilidad de Dispositivos', chip4:'Gratis · Sin Registro',
+    tool_title:'VERIFICADOR DE COMPATIBILIDAD ELÉCTRICA v2.0',
+    ro_lbl_initial:'SELECCIONA UN DESTINO PARA VER ESPECIFICACIONES',
+    ro_main_initial:'— ESPERANDO ENTRADA —',
+    ro_ck_voltage:'Voltaje', ro_ck_freq:'Frecuencia', ro_ck_system:'Sistema',
+    ro_plugs_lbl:'TIPOS DE ENCHUFE EN USO',
+    step1:'PAÍS DE DESTINO', step2:'VOLTAJE DE TU DISPOSITIVO (OPCIONAL)',
+    qlbl:'DESTINOS POPULARES',
+    sel_placeholder:'— O elige entre todos los países —',
+    dvolt_placeholder:'ej.  100-240V  o  110V  o  220V',
+    dvolt_hint:'// Busca "INPUT:" o "ENTRADA:" en la etiqueta de tu adaptador',
+    check_btn:'⚡ VERIFICAR COMPATIBILIDAD',
+    plugs_stag:'Guía de Referencia', plugs_h2:'Tipos de Enchufe en el Mundo',
+    plugs_sub:'Existen 15 tipos estándar de enchufe. Un adaptador solo cambia la forma física — NO cambia el voltaje.',
+    countries_stag:'Base de Datos Completa', countries_h2:'Voltaje por País — Referencia Completa',
+    countries_sub:'Explora todos los países. La columna "vs. EE.UU." muestra lo que necesita un viajero estadounidense. Haz clic en cualquier columna para ordenar.',
+    pill_all:'Todos', pill_americas:'Américas', pill_europe:'Europa', pill_asia:'Asia y Pacífico', pill_africa:'África y Medio Oriente',
+    search_placeholder:'Buscar país…',
+    th_country:'País ↕', th_voltage:'Voltaje ↕', th_hz:'Hz ↕', th_plugs:'Enchufes', th_vsus:'vs. EE.UU.',
+    ct_same:'✓ Igual', ct_conv:'⚡ Convertidor', ct_adapt:'~ Adaptador', ct_noresults:'SIN RESULTADOS',
+    devices_stag:'Referencia de Dispositivos', devices_h2:'Doble Voltaje vs Voltaje Único',
+    devices_sub:'La mayoría de los dispositivos modernos son de doble voltaje y funcionan en cualquier lugar. Los electrodomésticos de calefacción casi siempre son de voltaje único y necesitan convertidor.',
+    protip_stag:'Consejo Pro',
+    protip_body:'<strong style="color:var(--green)">Cómo leer la etiqueta:</strong> Busca "INPUT:" o "ENTRADA:" en tu adaptador. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = funciona en todo el mundo, solo necesitas adaptador de enchufe. <span style="font-family:var(--mono);color:var(--yellow)">110V únicamente</span> = Solo Norteamérica y Japón. <span style="font-family:var(--mono);color:var(--red)">220–240V únicamente</span> = Solo Europa, Asia, Australia. La frecuencia (50Hz vs 60Hz) rara vez importa para la electrónica moderna.',
+    faq_stag:'Preguntas Frecuentes', faq_h2:'Preguntas Frecuentes',
+    faq_sub:'Todo lo que los viajeros preguntan sobre voltaje, adaptadores y convertidores.',
+    disc_txt:'<strong style="color:var(--text-mid)">Aviso de Precisión de Datos:</strong> Los datos de voltaje y enchufe se basan en los estándares IEC e ITU vigentes a 2025. Algunos países tienen variaciones regionales o estándares en transición. Verifica siempre con el alojamiento local o el manual de tu equipo antes de usar. VoltageChecker.net no se responsabiliza por daños a dispositivos. Ante la duda, usa un convertidor de voltaje certificado.',
+    footer_tag:'Herramienta gratuita de compatibilidad de voltaje y enchufe para viajeros internacionales. Sin registro. Solo respuestas.',
+    footer_tools:'Herramientas', footer_info:'Info', footer_about:'Acerca de', footer_privacy:'Política de Privacidad', footer_contact:'Contacto',
+    footer_copy:'© 2025 VoltageChecker.net — Gratis para uso personal',
+    verdict_dest_title:'DESTINO CARGADO',
+    verdict_ok_title:'✅ COMPATIBLE — Solo Adaptador de Enchufe',
+    verdict_bad_title:'⛔ VOLTAJE INCOMPATIBLE — Se Necesita Convertidor',
+    verdict_warn_title:'⚠️ VOLTAJE BAJO — Verifica el Dispositivo',
+    verdict_plug_lbl:'ADAPTADOR DE ENCHUFE NECESARIO PARA',
+    verdict_ok_body:(dv,cv)=>`Tu dispositivo (${dv}) soporta el suministro local de ${cv}V. Solo necesitas un adaptador de enchufe — no se requiere convertidor.`,
+    verdict_bad_body:(dvMax,cv)=>`Tu dispositivo soporta hasta ${dvMax}V pero el suministro local es de ${cv}V. Conectarlo directamente DAÑARÁ tu dispositivo. Necesitas un convertidor reductor (${cv}V → ${dvMax}V) más un adaptador de enchufe.`,
+    verdict_warn_body:(dvMin,cv)=>`Tu dispositivo espera ${dvMin}V pero el suministro local es solo ${cv}V. Es posible que el dispositivo no funcione correctamente. Verifica si tiene selector de voltaje manual o usa un convertidor elevador.`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong> usa <strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong> con enchufes: <strong style="color:var(--amber)">${plugs}</strong>.<br><br>Ingresa el voltaje de entrada de tu dispositivo arriba para un veredicto completo de compatibilidad. Busca "INPUT:" en tu adaptador de corriente.`,
+    dual_label:'✓ Doble Voltaje', single_label:'⚠️ Voltaje Único',
+    faqs:[
+      {q:'¿Qué pasa si enchufo un dispositivo de 110V en una toma de 220V?',a:'Tu dispositivo casi con seguridad sufrirá daños permanentes o quedará destruido. El exceso de voltaje sobrecarga inmediatamente los componentes internos, causando sobrecalentamiento, cortocircuitos o incluso fuego. Nunca conectes un dispositivo de solo 110V en una toma de 220V sin un convertidor reductor. No hay advertencia previa — el daño es instantáneo.'},
+      {q:'¿Cuál es la diferencia entre un adaptador de enchufe y un convertidor de voltaje?',a:'Un adaptador de enchufe solo cambia la forma física del conector para que encaje en el tomacorriente extranjero — NO cambia el voltaje. Un convertidor de voltaje (o transformador) cambia el voltaje eléctrico de 220V a 110V o viceversa. La mayoría de la electrónica moderna (laptops, cargadores, cámaras) es de doble voltaje (100–240V) y solo necesita adaptador. Diferencia de precio: los adaptadores cuestan $5–20, los convertidores de calidad $30–150+.'},
+      {q:'¿Cómo sé si mi dispositivo es de doble voltaje?',a:'Revisa la etiqueta pequeña en tu adaptador de corriente o en el dispositivo cerca de las especificaciones eléctricas. Busca la etiqueta que dice "INPUT:" o "ENTRADA:". Si dice "100–240V" o "110–240V" es de doble voltaje y funciona en todo el mundo — solo necesitas adaptador. Si dice solo "110V" o "120V" necesita convertidor en el extranjero.'},
+      {q:'¿Necesito convertidor de voltaje para mi laptop?',a:'Casi con certeza no. Casi todos los adaptadores de laptop fabricados después del 2000 son de doble voltaje (100–240V, 50–60Hz). Revisa la etiqueta en tu cargador — si muestra un rango de voltaje, solo necesitas un adaptador de enchufe de pocos dólares. Lo mismo aplica para cargadores de celular, la mayoría de cargadores de cámara y fuentes de consolas de videojuegos.'},
+      {q:'¿Qué países usan 110V?',a:'Países con aproximadamente 110–127V: Estados Unidos (120V), Canadá (120V), México (127V), la mayor parte de Centroamérica, Colombia (110V), Venezuela (120V), República Dominicana (110V) y Japón (100V — el único país exactamente a 100V). La mayor parte del resto del mundo usa 220–240V.'},
+      {q:'¿Importa la frecuencia 50Hz vs 60Hz?',a:'Para la mayoría de la electrónica moderna — no. Las laptops, cargadores de celular, cámaras y la mayoría de los dispositivos personales funcionan bien tanto a 50Hz como a 60Hz. Sin embargo, algunos electrodomésticos con motor como relojes eléctricos, algunos ventiladores y secadores de cabello viejos están diseñados para una frecuencia específica. Para los viajeros, la frecuencia rara vez es una preocupación.'},
+      {q:'¿Cuál es el mejor adaptador universal de viaje?',a:'Busca uno que cubra los Tipos A, B, C, D, E, F, G e I — esto cubre el 95%+ de los países. Marcas confiables populares incluyen Ceptics, Bestek y Epicka. Para múltiples dispositivos, elige uno con puertos USB-A y USB-C integrados. Nota: estos son solo adaptadores y NO cambiarán el voltaje — tus dispositivos deben ser de doble voltaje (100–240V) para usarlos de forma segura.'},
+    ],
+    devices:[
+      {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Casi todas las laptops modernas son de doble voltaje. Revisa la etiqueta del cargador.'},
+      {icon:'📱',name:'Cargador de Teléfono / Tablet',v:'100–240V',dual:true,note:'Todos los cargadores USB modernos funcionan en todo el mundo. Solo necesitas adaptador.'},
+      {icon:'📷',name:'Cargador de Cámara / Dron',v:'100–240V',dual:true,note:'La mayoría de los cargadores de cámara desde ~2010 son de doble voltaje.'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Todas las consolas de última generación son de doble voltaje.'},
+      {icon:'🔌',name:'Cepillo de Dientes Eléctrico',v:'100–240V',dual:true,note:'Los modelos modernos de Oral-B y Philips Sonicare son de doble voltaje.'},
+      {icon:'🔋',name:'Batería Portátil / Power Bank',v:'100–240V',dual:true,note:'Se carga por USB — funciona en todo el mundo con adaptador de enchufe.'},
+      {icon:'💈',name:'Secadora de Cabello',v:'Solo 110V ⚠️',dual:false,note:'La mayoría de las secadoras estadounidenses son solo 110V. Compra un modelo de viaje de doble voltaje.'},
+      {icon:'🌀',name:'Plancha / Rizador',v:'Solo 110V ⚠️',dual:false,note:'La mayoría de los modelos de EE.UU. son 110V a menos que estén etiquetados explícitamente como doble voltaje.'},
+      {icon:'☕',name:'Cafetera / Hervidor Eléctrico',v:'Solo 110V ⚠️',dual:false,note:'Los electrodomésticos de calefacción casi siempre son de voltaje único. Compra uno local.'},
+      {icon:'🎙️',name:'CPAP / Dispositivos Médicos',v:'100–240V',dual:true,note:'La mayoría de los CPAP modernos son de doble voltaje. Confirma con el fabricante.'},
+    ],
+    plugs:[
+      {type:'A',name:'Dos clavijas planas paralelas',countries:'EE.UU., Canadá, México, Japón',voltage:'120V / 100V'},
+      {type:'B',name:'Dos planas + una redonda (tierra)',countries:'EE.UU., Canadá, México',voltage:'120V'},
+      {type:'C',name:'Dos clavijas redondas (Europlug)',countries:'Europa, Sudamérica, Asia, África',voltage:'230V'},
+      {type:'D',name:'Tres clavijas redondas (triángulo)',countries:'India, Pakistán, Nepal, Sri Lanka',voltage:'230V'},
+      {type:'E',name:'Dos redondas + orificio',countries:'Francia, Bélgica, Polonia, República Checa',voltage:'230V'},
+      {type:'F',name:'Dos redondas + pinzas laterales (Schuko)',countries:'Alemania, Austria, Países Bajos, España, gran parte de Europa',voltage:'230V'},
+      {type:'G',name:'Tres clavijas rectangulares',countries:'Reino Unido, Irlanda, Singapur, Malasia, Hong Kong, EAU, Kenia',voltage:'230–240V'},
+      {type:'H',name:'Tres clavijas (forma de V)',countries:'Solo Israel',voltage:'230V'},
+      {type:'I',name:'Dos/tres clavijas planas anguladas',countries:'Australia, Nueva Zelanda, China, Argentina',voltage:'230V / 220V'},
+      {type:'J',name:'Tres clavijas redondas',countries:'Suiza, Liechtenstein',voltage:'230V'},
+      {type:'K',name:'Dos redondas + clavija en U',countries:'Dinamarca, Groenlandia',voltage:'230V'},
+      {type:'L',name:'Tres clavijas redondas en línea',countries:'Italia, Chile, partes de África',voltage:'230V'},
+      {type:'M',name:'Tres clavijas redondas grandes',countries:'Sudáfrica, India (electrodomésticos grandes)',voltage:'230V'},
+      {type:'N',name:'Dos redondas + tierra (IEC)',countries:'Brasil (oficial desde 2011)',voltage:'127V'},
+    ],
+  },
+
+  fr: {
+    nav_checker:'Vérificateur', nav_plugs:'Types de Prises', nav_countries:'Pays',
+    nav_devices:'Appareils', nav_faq:'FAQ', nav_cta:'Vérifier',
+    hero_tag:'Guide Électrique de Voyage',
+    hero_h1:'Mon appareil fonctionnera-t-il<br>dans <mark id="hcountry">ce pays</mark>?',
+    hero_sub:'Vérifiez le voltage, la fréquence et les types de prises pour plus de 60 pays. Saisissez le voltage de votre appareil et sachez instantanément — adaptateur, convertisseur ou rien du tout.',
+    chip1:'60+ pays', chip2:'Adaptateur vs Convertisseur', chip3:'Compatibilité', chip4:'Gratuit · Sans Inscription',
+    tool_title:'VÉRIFICATEUR DE COMPATIBILITÉ ÉLECTRIQUE v2.0',
+    ro_lbl_initial:'SÉLECTIONNEZ UNE DESTINATION POUR VOIR LES SPECS',
+    ro_main_initial:'— EN ATTENTE DE SAISIE —',
+    ro_ck_voltage:'Tension', ro_ck_freq:'Fréquence', ro_ck_system:'Système',
+    ro_plugs_lbl:'TYPES DE PRISES UTILISÉS',
+    step1:'PAYS DE DESTINATION', step2:'VOLTAGE DE VOTRE APPAREIL (OPTIONNEL)',
+    qlbl:'DESTINATIONS POPULAIRES',
+    sel_placeholder:'— Ou choisir parmi tous les pays —',
+    dvolt_placeholder:'ex.  100-240V  ou  110V  ou  220V',
+    dvolt_hint:'// Cherchez "INPUT:" sur l\'étiquette de votre adaptateur',
+    check_btn:'⚡ VÉRIFIER LA COMPATIBILITÉ',
+    plugs_stag:'Guide de Référence', plugs_h2:'Types de Prises dans le Monde',
+    plugs_sub:'Il existe 15 types de prises standardisés. Un adaptateur ne change que la forme physique — il ne change PAS la tension.',
+    countries_stag:'Base de Données Complète', countries_h2:'Voltage par Pays — Référence Complète',
+    countries_sub:'Parcourez tous les pays. La colonne "vs. USA" indique ce dont un voyageur américain a besoin. Cliquez sur une colonne pour trier.',
+    pill_all:'Tous', pill_americas:'Amériques', pill_europe:'Europe', pill_asia:'Asie et Pacifique', pill_africa:'Afrique et Moyen-Orient',
+    search_placeholder:'Rechercher un pays…',
+    th_country:'Pays ↕', th_voltage:'Tension ↕', th_hz:'Hz ↕', th_plugs:'Prises', th_vsus:'vs. USA',
+    ct_same:'✓ Identique', ct_conv:'⚡ Convertisseur', ct_adapt:'~ Adaptateur', ct_noresults:'AUCUN RÉSULTAT',
+    devices_stag:'Référence Appareils', devices_h2:'Double Tension vs Tension Unique',
+    devices_sub:'La plupart des appareils modernes fonctionnent en double tension partout dans le monde. Les appareils de chauffage sont presque toujours à tension unique et nécessitent un convertisseur.',
+    protip_stag:'Conseil Pro',
+    protip_body:'<strong style="color:var(--green)">Lire l\'étiquette :</strong> Cherchez "INPUT:" sur votre adaptateur. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = fonctionne partout, juste besoin d\'un adaptateur de prise. <span style="font-family:var(--mono);color:var(--yellow)">110V uniquement</span> = Amérique du Nord et Japon uniquement. <span style="font-family:var(--mono);color:var(--red)">220–240V uniquement</span> = Europe, Asie, Australie uniquement. La fréquence (50Hz vs 60Hz) importe rarement pour les appareils modernes.',
+    faq_stag:'Questions Fréquentes', faq_h2:'Foire Aux Questions',
+    faq_sub:'Tout ce que les voyageurs demandent sur le voltage, les adaptateurs et les convertisseurs.',
+    disc_txt:'<strong style="color:var(--text-mid)">Avis de Précision des Données :</strong> Les données de tension et de prise sont basées sur les normes IEC et ITU en vigueur en 2025. Certains pays ont des variations régionales ou des normes transitoires. Vérifiez toujours auprès de votre hébergement local ou du manuel de votre équipement avant utilisation. VoltageChecker.net n\'est pas responsable des dommages aux appareils. En cas de doute, utilisez un convertisseur de tension certifié.',
+    footer_tag:'Outil gratuit de compatibilité de tension et de prise pour les voyageurs internationaux. Sans inscription. Juste des réponses.',
+    footer_tools:'Outils', footer_info:'Infos', footer_about:'À Propos', footer_privacy:'Politique de Confidentialité', footer_contact:'Contact',
+    footer_copy:'© 2025 VoltageChecker.net — Gratuit pour usage personnel',
+    verdict_dest_title:'DESTINATION CHARGÉE',
+    verdict_ok_title:'✅ COMPATIBLE — Adaptateur de Prise Seulement',
+    verdict_bad_title:'⛔ INCOMPATIBILITÉ DE TENSION — Convertisseur Requis',
+    verdict_warn_title:'⚠️ TENSION FAIBLE — Vérifiez l\'Appareil',
+    verdict_plug_lbl:'ADAPTATEUR DE PRISE NÉCESSAIRE POUR',
+    verdict_ok_body:(dv,cv)=>`Votre appareil (${dv}) supporte l'alimentation locale de ${cv}V. Vous n'avez besoin que d'un adaptateur de prise — aucun convertisseur requis.`,
+    verdict_bad_body:(dvMax,cv)=>`Votre appareil est prévu jusqu'à ${dvMax}V mais l'alimentation locale est de ${cv}V. Le brancher directement ENDOMMAGERA votre appareil. Vous avez besoin d'un convertisseur abaisseur (${cv}V → ${dvMax}V) plus un adaptateur de prise.`,
+    verdict_warn_body:(dvMin,cv)=>`Votre appareil attend ${dvMin}V mais l'alimentation locale n'est que de ${cv}V. L'appareil peut ne pas fonctionner correctement. Vérifiez s'il dispose d'un sélecteur de tension manuel ou utilisez un convertisseur élévateur.`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong> utilise <strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong> avec prises : <strong style="color:var(--amber)">${plugs}</strong>.<br><br>Saisissez la tension d'entrée de votre appareil ci-dessus pour un verdict complet. Cherchez "INPUT:" sur votre adaptateur secteur.`,
+    dual_label:'✓ Double Tension', single_label:'⚠️ Tension Unique',
+    faqs:[
+      {q:'Que se passe-t-il si je branche un appareil 110V sur une prise 220V ?',a:'Votre appareil sera très probablement endommagé de façon permanente. L\'excès de tension surcharge immédiatement les composants internes, provoquant une surchauffe, des courts-circuits ou dans certains cas un incendie. Ne branchez jamais un appareil 110V uniquement sur une prise 220V sans convertisseur abaisseur. Il n\'y a aucun avertissement — les dégâts sont instantanés.'},
+      {q:'Quelle est la différence entre un adaptateur de prise et un convertisseur de tension ?',a:'Un adaptateur de prise ne fait que changer la forme physique de la fiche pour s\'adapter à la prise étrangère — il ne change PAS la tension. Un convertisseur de tension (ou transformateur) change réellement la tension de 220V à 110V ou vice versa. La plupart des appareils modernes (ordinateurs portables, chargeurs, appareils photo) sont en double tension (100–240V) et n\'ont besoin que d\'un adaptateur.'},
+      {q:'Comment savoir si mon appareil est en double tension ?',a:'Regardez les petits caractères sur votre adaptateur secteur près des spécifications électriques. Cherchez la mention "INPUT:". Si elle indique "100–240V" ou "110–240V", l\'appareil est en double tension et fonctionne partout dans le monde — vous n\'avez besoin que d\'un adaptateur de prise.'},
+      {q:'Ai-je besoin d\'un convertisseur de tension pour mon ordinateur portable ?',a:'Presque certainement non. Presque tous les adaptateurs secteur d\'ordinateurs portables fabriqués après 2000 sont en double tension (100–240V, 50–60Hz). Vérifiez l\'étiquette sur votre bloc d\'alimentation — s\'il indique une plage de tension, vous n\'avez besoin que d\'un adaptateur de prise à quelques euros.'},
+      {q:'Quels pays utilisent le 110V ?',a:'Pays utilisant environ 110–127V : États-Unis (120V), Canada (120V), Mexique (127V), la plupart de l\'Amérique centrale, Colombie (110V), Venezuela (120V), République dominicaine (110V) et Japon (100V). La plupart du reste du monde utilise 220–240V.'},
+      {q:'La fréquence 50Hz vs 60Hz est-elle importante ?',a:'Pour la plupart des appareils modernes — non. Les ordinateurs portables, chargeurs de téléphone, appareils photo fonctionnent bien à 50Hz comme à 60Hz. Cependant, certains appareils à moteur comme les horloges électriques, certains ventilateurs et les anciens sèche-cheveux peuvent fonctionner différemment. Pour les voyageurs, la fréquence est rarement un problème.'},
+      {q:'Quel est le meilleur adaptateur de voyage universel ?',a:'Cherchez un adaptateur couvrant les Types A, B, C, D, E, F, G et I — cela couvre 95%+ des pays. Des marques fiables incluent Ceptics, Bestek et Epicka. Pour plusieurs appareils, choisissez-en un avec ports USB-A et USB-C intégrés. Attention : ce sont des adaptateurs uniquement et ne changeront PAS la tension.'},
+    ],
+    devices:[
+      {icon:'💻',name:'Ordinateur Portable / MacBook',v:'100–240V',dual:true,note:'Presque tous les ordinateurs portables modernes sont en double tension. Vérifiez l\'étiquette du chargeur.'},
+      {icon:'📱',name:'Chargeur Téléphone / Tablette',v:'100–240V',dual:true,note:'Tous les chargeurs USB modernes fonctionnent dans le monde entier. Juste besoin d\'un adaptateur.'},
+      {icon:'📷',name:'Chargeur Appareil Photo / Drone',v:'100–240V',dual:true,note:'La plupart des chargeurs d\'appareil photo depuis ~2010 sont en double tension.'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Toutes les consoles actuelles sont en double tension.'},
+      {icon:'🔌',name:'Brosse à Dents Électrique',v:'100–240V',dual:true,note:'Les modèles modernes Oral-B et Philips Sonicare sont en double tension.'},
+      {icon:'🔋',name:'Batterie Externe / Power Bank',v:'100–240V',dual:true,note:'Chargée via USB — fonctionne dans le monde entier avec un adaptateur de prise.'},
+      {icon:'💈',name:'Sèche-Cheveux',v:'110V uniquement ⚠️',dual:false,note:'La plupart des sèche-cheveux américains sont 110V uniquement. Achetez un modèle voyage double tension.'},
+      {icon:'🌀',name:'Fer à Lisser / Bigoudi',v:'110V uniquement ⚠️',dual:false,note:'La plupart des modèles américains sont 110V sauf indication explicite de double tension.'},
+      {icon:'☕',name:'Cafetière / Bouilloire Électrique',v:'110V uniquement ⚠️',dual:false,note:'Les appareils chauffants sont presque toujours à tension unique. Achetez localement.'},
+      {icon:'🎙️',name:'CPAP / Appareils Médicaux',v:'100–240V',dual:true,note:'La plupart des CPAP modernes sont en double tension. Confirmez avec le fabricant.'},
+    ],
+    plugs:[
+      {type:'A',name:'Deux broches plates parallèles',countries:'USA, Canada, Mexique, Japon',voltage:'120V / 100V'},
+      {type:'B',name:'Deux plates + une ronde (terre)',countries:'USA, Canada, Mexique',voltage:'120V'},
+      {type:'C',name:'Deux broches rondes (Europlug)',countries:'Europe, Amérique du Sud, Asie, Afrique',voltage:'230V'},
+      {type:'D',name:'Trois broches rondes (triangle)',countries:'Inde, Pakistan, Népal, Sri Lanka',voltage:'230V'},
+      {type:'E',name:'Deux rondes + orifice',countries:'France, Belgique, Pologne, République tchèque',voltage:'230V'},
+      {type:'F',name:'Deux rondes + pinces latérales (Schuko)',countries:'Allemagne, Autriche, Pays-Bas, Espagne, grande partie de l\'Europe',voltage:'230V'},
+      {type:'G',name:'Trois broches rectangulaires',countries:'Royaume-Uni, Irlande, Singapour, Malaisie, Hong Kong, Émirats Arabes Unis, Kenya',voltage:'230–240V'},
+      {type:'H',name:'Trois broches (en V)',countries:'Israël uniquement',voltage:'230V'},
+      {type:'I',name:'Deux/trois broches plates inclinées',countries:'Australie, Nouvelle-Zélande, Chine, Argentine',voltage:'230V / 220V'},
+      {type:'J',name:'Trois broches rondes',countries:'Suisse, Liechtenstein',voltage:'230V'},
+      {type:'K',name:'Deux rondes + broche en U',countries:'Danemark, Groenland',voltage:'230V'},
+      {type:'L',name:'Trois broches rondes en ligne',countries:'Italie, Chili, parties de l\'Afrique',voltage:'230V'},
+      {type:'M',name:'Trois grandes broches rondes',countries:'Afrique du Sud, Inde (gros appareils)',voltage:'230V'},
+      {type:'N',name:'Deux rondes + terre (IEC)',countries:'Brésil (officiel depuis 2011)',voltage:'127V'},
+    ],
+  },
+
+  de: {
+    nav_checker:'Prüfer', nav_plugs:'Steckertypen', nav_countries:'Länder',
+    nav_devices:'Geräte', nav_faq:'FAQ', nav_cta:'Jetzt Prüfen',
+    hero_tag:'Stromführer für Reisende',
+    hero_h1:'Funktioniert mein Gerät<br>in <mark id="hcountry">diesem Land</mark>?',
+    hero_sub:'Prüfe Spannung, Frequenz und Steckertypen für über 60 Länder. Gib die Spannung deines Geräts ein und erfahre sofort — Adapter, Konverter oder gar nichts.',
+    chip1:'60+ Länder', chip2:'Adapter vs. Konverter', chip3:'Gerätekompatibilität', chip4:'Kostenlos · Ohne Anmeldung',
+    tool_title:'STROMKOMPATIBILITÄTSPRÜFER v2.0',
+    ro_lbl_initial:'REISEZIEL WÄHLEN, UM STROMSPEZIFIKATIONEN ZU SEHEN',
+    ro_main_initial:'— WARTE AUF EINGABE —',
+    ro_ck_voltage:'Spannung', ro_ck_freq:'Frequenz', ro_ck_system:'System',
+    ro_plugs_lbl:'VERWENDETE STECKERTYPEN',
+    step1:'ZIELLAND', step2:'GERÄTESPANNUNG (OPTIONAL)',
+    qlbl:'BELIEBTE REISEZIELE',
+    sel_placeholder:'— Oder aus allen Ländern wählen —',
+    dvolt_placeholder:'z.B.  100-240V  oder  110V  oder  220V',
+    dvolt_hint:'// Suche "INPUT:" auf dem Etikett deines Netzteils',
+    check_btn:'⚡ KOMPATIBILITÄT PRÜFEN',
+    plugs_stag:'Referenzführer', plugs_h2:'Steckertypen weltweit',
+    plugs_sub:'Es gibt 15 standardisierte Steckertypen. Ein Steckeradapter ändert nur die physische Form — er ändert NICHT die Spannung.',
+    countries_stag:'Vollständige Datenbank', countries_h2:'Spannung nach Land — Vollständige Referenz',
+    countries_sub:'Alle Länder durchsuchen. Die Spalte "vs. USA" zeigt, was ein US-Reisender benötigt. Auf eine Spalte klicken zum Sortieren.',
+    pill_all:'Alle', pill_americas:'Amerika', pill_europe:'Europa', pill_asia:'Asien & Pazifik', pill_africa:'Afrika & Naher Osten',
+    search_placeholder:'Land suchen…',
+    th_country:'Land ↕', th_voltage:'Spannung ↕', th_hz:'Hz ↕', th_plugs:'Stecker', th_vsus:'vs. USA',
+    ct_same:'✓ Gleich', ct_conv:'⚡ Konverter', ct_adapt:'~ Adapter', ct_noresults:'KEINE ERGEBNISSE',
+    devices_stag:'Gerätereferenz', devices_h2:'Dual-Voltage vs. Einzel-Voltage',
+    devices_sub:'Die meisten modernen Elektronikgeräte haben Doppelspannung und funktionieren überall. Heizgeräte haben fast immer Einzelspannung und benötigen einen Konverter.',
+    protip_stag:'Profi-Tipp',
+    protip_body:'<strong style="color:var(--green)">Das Etikett lesen:</strong> Suche nach "INPUT:" auf deinem Netzteil. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = funktioniert überall, nur Steckeradapter nötig. <span style="font-family:var(--mono);color:var(--yellow)">Nur 110V</span> = Nur Nordamerika & Japan. <span style="font-family:var(--mono);color:var(--red)">Nur 220–240V</span> = Nur Europa, Asien, Australien. Die Frequenz (50Hz vs. 60Hz) spielt für moderne Elektronik selten eine Rolle.',
+    faq_stag:'Häufige Fragen', faq_h2:'Häufig Gestellte Fragen',
+    faq_sub:'Alles, was Reisende über Spannung, Adapter und Konverter fragen.',
+    disc_txt:'<strong style="color:var(--text-mid)">Hinweis zur Datengenauigkeit:</strong> Spannungs- und Steckerdaten basieren auf IEC- und ITU-Standards von 2025. Einige Länder haben regionale Variationen oder Übergangsstandards. Überprüfe immer beim lokalen Gastgeber oder im Gerätehandbuch vor der Verwendung. VoltageChecker.net haftet nicht für Geräteschäden. Im Zweifelsfall einen zertifizierten Spannungskonverter verwenden.',
+    footer_tag:'Kostenloses Spannungs- und Stecker-Kompatibilitätswerkzeug für internationale Reisende. Keine Anmeldung. Nur Antworten.',
+    footer_tools:'Werkzeuge', footer_info:'Info', footer_about:'Über uns', footer_privacy:'Datenschutzrichtlinie', footer_contact:'Kontakt',
+    footer_copy:'© 2025 VoltageChecker.net — Kostenlos für den persönlichen Gebrauch',
+    verdict_dest_title:'REISEZIEL GELADEN',
+    verdict_ok_title:'✅ KOMPATIBEL — Nur Steckeradapter',
+    verdict_bad_title:'⛔ SPANNUNGSFEHLER — Konverter Erforderlich',
+    verdict_warn_title:'⚠️ NIEDRIGE SPANNUNG — Gerät Prüfen',
+    verdict_plug_lbl:'STECKERADAPTER BENÖTIGT FÜR',
+    verdict_ok_body:(dv,cv)=>`Dein Gerät (${dv}) unterstützt die lokale Versorgung von ${cv}V. Du benötigst nur einen Steckeradapter — kein Konverter erforderlich.`,
+    verdict_bad_body:(dvMax,cv)=>`Dein Gerät ist bis ${dvMax}V ausgelegt, aber die lokale Versorgung beträgt ${cv}V. Direktes Einstecken WIRD dein Gerät beschädigen. Du benötigst einen Abwärtskonverter (${cv}V → ${dvMax}V) plus einen Steckeradapter.`,
+    verdict_warn_body:(dvMin,cv)=>`Dein Gerät erwartet ${dvMin}V, aber die lokale Versorgung beträgt nur ${cv}V. Das Gerät funktioniert möglicherweise nicht richtig. Prüfe, ob es einen manuellen Spannungswahlschalter gibt, oder verwende einen Aufwärtskonverter.`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong> verwendet <strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong> mit Steckern: <strong style="color:var(--amber)">${plugs}</strong>.<br><br>Gib oben die Eingangsspannung deines Geräts ein für ein vollständiges Kompatibilitätsergebnis. Suche nach "INPUT:" auf deinem Netzteil.`,
+    dual_label:'✓ Doppelspannung', single_label:'⚠️ Einzelspannung',
+    faqs:[
+      {q:'Was passiert, wenn ich ein 110V-Gerät in eine 220V-Steckdose stecke?',a:'Dein Gerät wird mit ziemlicher Sicherheit dauerhaft beschädigt oder zerstört. Die überschüssige Spannung überlastet sofort die internen Komponenten, was zu Überhitzung, Kurzschlüssen oder in manchen Fällen zu Feuer führt. Stecke niemals ein reines 110V-Gerät ohne Abwärtskonverter in eine 220V-Steckdose. Es gibt keine Warnung — der Schaden ist sofort.'},
+      {q:'Was ist der Unterschied zwischen einem Steckeradapter und einem Spannungskonverter?',a:'Ein Steckeradapter ändert nur die physische Form des Steckers, damit er in eine ausländische Steckdose passt — er ändert NICHT die Spannung. Ein Spannungskonverter (oder Transformator) ändert tatsächlich die elektrische Spannung von 220V auf 110V oder umgekehrt. Die meisten modernen Elektronikgeräte wie Laptops und Ladekabel sind Doppelspannungsgeräte (100–240V) und benötigen nur einen Adapter.'},
+      {q:'Wie erkenne ich, ob mein Gerät Doppelspannung hat?',a:'Schau auf den Kleingedruckten auf deinem Netzteil oder Gerät nahe den elektrischen Spezifikationen. Suche das Etikett mit "INPUT:". Wenn es "100–240V" oder "110–240V" anzeigt, hat es Doppelspannung und funktioniert überall auf der Welt — du benötigst nur einen Steckeradapter.'},
+      {q:'Brauche ich einen Spannungskonverter für meinen Laptop?',a:'Mit ziemlicher Sicherheit nicht. Fast alle Laptop-Netzteile, die nach 2000 hergestellt wurden, haben Doppelspannung (100–240V, 50–60Hz). Schau auf das Etikett deines Netzteils — wenn es einen Spannungsbereich anzeigt, benötigst du nur einen günstigen Steckeradapter.'},
+      {q:'Welche Länder verwenden 110V?',a:'Länder mit etwa 110–127V: USA (120V), Kanada (120V), Mexiko (127V), der Großteil Mittelamerikas, Kolumbien (110V), Venezuela (120V), Dominikanische Republik (110V) und Japan (100V). Der Großteil der übrigen Welt verwendet 220–240V.'},
+      {q:'Ist die Frequenz 50Hz vs. 60Hz wichtig?',a:'Für die meisten modernen Elektronikgeräte — nein. Laptops, Handyladegeräte, Kameras und die meisten Geräte funktionieren bei 50Hz und 60Hz gut. Manche motorbasierten Geräte wie elektrische Uhren oder ältere Haartrockner können bei einer bestimmten Frequenz etwas anders laufen. Für Reisende ist die Frequenz selten ein Problem.'},
+      {q:'Was ist der beste universelle Reiseadapter?',a:'Suche nach einem Adapter, der die Typen A, B, C, D, E, F, G und I abdeckt — das erfasst 95%+ der Länder. Zuverlässige Marken sind Ceptics, Bestek und Epicka. Für mehrere Geräte wähle einen mit integrierten USB-A und USB-C Ports. Hinweis: Diese sind nur Adapter und ändern NICHT die Spannung — deine Geräte müssen Doppelspannung (100–240V) haben.'},
+    ],
+    devices:[
+      {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Fast alle modernen Laptops haben Doppelspannung. Etikett des Netzteils prüfen.'},
+      {icon:'📱',name:'Handy- / Tablet-Ladegerät',v:'100–240V',dual:true,note:'Alle modernen USB-Ladegeräte funktionieren weltweit. Nur Steckeradapter nötig.'},
+      {icon:'📷',name:'Kamera- / Drohnen-Ladegerät',v:'100–240V',dual:true,note:'Die meisten Kameraladegeräte seit ~2010 haben Doppelspannung.'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Alle aktuellen Konsolen haben Doppelspannung.'},
+      {icon:'🔌',name:'Elektrische Zahnbürste',v:'100–240V',dual:true,note:'Moderne Oral-B und Philips Sonicare haben Doppelspannung.'},
+      {icon:'🔋',name:'Powerbank',v:'100–240V',dual:true,note:'Wird über USB geladen — funktioniert weltweit mit Steckeradapter.'},
+      {icon:'💈',name:'Haartrockner',v:'Nur 110V ⚠️',dual:false,note:'Die meisten US-Haartrockner sind nur 110V. Kaufe ein Reise-Modell mit Doppelspannung.'},
+      {icon:'🌀',name:'Glättungseisen / Lockenstab',v:'Nur 110V ⚠️',dual:false,note:'Die meisten US-Modelle sind 110V, sofern nicht ausdrücklich als Doppelspannung gekennzeichnet.'},
+      {icon:'☕',name:'Kaffeemaschine / Wasserkocher',v:'Nur 110V ⚠️',dual:false,note:'Heizgeräte sind fast immer Einzelspannungsgeräte. Lieber lokal kaufen.'},
+      {icon:'🎙️',name:'CPAP / Medizinische Geräte',v:'100–240V',dual:true,note:'Die meisten modernen CPAP-Geräte haben Doppelspannung. Beim Hersteller nachfragen.'},
+    ],
+    plugs:[
+      {type:'A',name:'Zwei flache Parallelstifte',countries:'USA, Kanada, Mexiko, Japan',voltage:'120V / 100V'},
+      {type:'B',name:'Zwei flache + ein runder Stift (Erde)',countries:'USA, Kanada, Mexiko',voltage:'120V'},
+      {type:'C',name:'Zwei runde Stifte (Europlug)',countries:'Europa, Südamerika, Asien, Afrika',voltage:'230V'},
+      {type:'D',name:'Drei runde Stifte (Dreieck)',countries:'Indien, Pakistan, Nepal, Sri Lanka',voltage:'230V'},
+      {type:'E',name:'Zwei runde + Öffnung',countries:'Frankreich, Belgien, Polen, Tschechische Republik',voltage:'230V'},
+      {type:'F',name:'Zwei runde + seitliche Klemmen (Schuko)',countries:'Deutschland, Österreich, Niederlande, Spanien, Großteil Europas',voltage:'230V'},
+      {type:'G',name:'Drei rechteckige Stifte',countries:'Großbritannien, Irland, Singapur, Malaysia, Hongkong, VAE, Kenia',voltage:'230–240V'},
+      {type:'H',name:'Drei Stifte (V-Form)',countries:'Nur Israel',voltage:'230V'},
+      {type:'I',name:'Zwei/drei flache Winkelstifte',countries:'Australien, Neuseeland, China, Argentinien',voltage:'230V / 220V'},
+      {type:'J',name:'Drei runde Stifte',countries:'Schweiz, Liechtenstein',voltage:'230V'},
+      {type:'K',name:'Zwei runde + U-förmiger Stift',countries:'Dänemark, Grönland',voltage:'230V'},
+      {type:'L',name:'Drei runde Stifte in einer Reihe',countries:'Italien, Chile, Teile Afrikas',voltage:'230V'},
+      {type:'M',name:'Drei große runde Stifte',countries:'Südafrika, Indien (große Geräte)',voltage:'230V'},
+      {type:'N',name:'Zwei runde + Erde (IEC)',countries:'Brasilien (offiziell seit 2011)',voltage:'127V'},
+    ],
+  },
+
+  pt: {
+    nav_checker:'Verificador', nav_plugs:'Tipos de Tomada', nav_countries:'Países',
+    nav_devices:'Dispositivos', nav_faq:'Perguntas', nav_cta:'Verificar Agora',
+    hero_tag:'Guia de Eletricidade para Viajantes',
+    hero_h1:'Meu dispositivo vai funcionar<br>em <mark id="hcountry">qualquer país</mark>?',
+    hero_sub:'Verifique voltagem, frequência e tipos de tomada de mais de 60 países. Insira a voltagem do seu dispositivo e saiba imediatamente — adaptador, conversor ou nada.',
+    chip1:'60+ países', chip2:'Adaptador vs Conversor', chip3:'Compatibilidade', chip4:'Gratuito · Sem Cadastro',
+    tool_title:'VERIFICADOR DE COMPATIBILIDADE ELÉTRICA v2.0',
+    ro_lbl_initial:'SELECIONE O DESTINO PARA VER AS ESPECIFICAÇÕES',
+    ro_main_initial:'— AGUARDANDO ENTRADA —',
+    ro_ck_voltage:'Voltagem', ro_ck_freq:'Frequência', ro_ck_system:'Sistema',
+    ro_plugs_lbl:'TIPOS DE TOMADA EM USO',
+    step1:'PAÍS DE DESTINO', step2:'VOLTAGEM DO SEU DISPOSITIVO (OPCIONAL)',
+    qlbl:'DESTINOS POPULARES',
+    sel_placeholder:'— Ou escolha entre todos os países —',
+    dvolt_placeholder:'ex.  100-240V  ou  110V  ou  220V',
+    dvolt_hint:'// Procure "INPUT:" ou "ENTRADA:" no rótulo do seu adaptador',
+    check_btn:'⚡ VERIFICAR COMPATIBILIDADE',
+    plugs_stag:'Guia de Referência', plugs_h2:'Tipos de Tomada no Mundo',
+    plugs_sub:'Existem 15 tipos padronizados de tomada. Um adaptador apenas muda a forma física — NÃO muda a voltagem.',
+    countries_stag:'Base de Dados Completa', countries_h2:'Voltagem por País — Referência Completa',
+    countries_sub:'Navegue por todos os países. A coluna "vs. EUA" mostra o que um viajante americano precisa. Clique em qualquer coluna para ordenar.',
+    pill_all:'Todos', pill_americas:'Américas', pill_europe:'Europa', pill_asia:'Ásia e Pacífico', pill_africa:'África e Oriente Médio',
+    search_placeholder:'Pesquisar país…',
+    th_country:'País ↕', th_voltage:'Voltagem ↕', th_hz:'Hz ↕', th_plugs:'Tomadas', th_vsus:'vs. EUA',
+    ct_same:'✓ Igual', ct_conv:'⚡ Conversor', ct_adapt:'~ Adaptador', ct_noresults:'SEM RESULTADOS',
+    devices_stag:'Referência de Dispositivos', devices_h2:'Bivolt vs Voltagem Única',
+    devices_sub:'A maioria dos eletrônicos modernos é bivolt e funciona em qualquer lugar. Aparelhos de aquecimento são quase sempre de voltagem única e precisam de conversor.',
+    protip_stag:'Dica Pro',
+    protip_body:'<strong style="color:var(--green)">Lendo o rótulo:</strong> Procure "INPUT:" ou "ENTRADA:" no seu adaptador. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = funciona em todo o mundo, só precisa de adaptador de tomada. <span style="font-family:var(--mono);color:var(--yellow)">Somente 110V</span> = Apenas América do Norte e Japão. <span style="font-family:var(--mono);color:var(--red)">Somente 220–240V</span> = Apenas Europa, Ásia, Austrália. A frequência (50Hz vs 60Hz) raramente importa para eletrônicos modernos.',
+    faq_stag:'Perguntas Frequentes', faq_h2:'Perguntas Frequentes',
+    faq_sub:'Tudo o que viajantes perguntam sobre voltagem, adaptadores e conversores.',
+    disc_txt:'<strong style="color:var(--text-mid)">Aviso de Precisão dos Dados:</strong> Os dados de voltagem e tomada são baseados nos padrões IEC e ITU de 2025. Alguns países têm variações regionais ou padrões em transição. Sempre verifique com a hospedagem local ou o manual do equipamento antes de usar. VoltageChecker.net não se responsabiliza por danos a dispositivos. Em caso de dúvida, use um conversor de voltagem certificado.',
+    footer_tag:'Ferramenta gratuita de compatibilidade de voltagem e tomada para viajantes internacionais. Sem cadastro. Só respostas.',
+    footer_tools:'Ferramentas', footer_info:'Info', footer_about:'Sobre', footer_privacy:'Política de Privacidade', footer_contact:'Contato',
+    footer_copy:'© 2025 VoltageChecker.net — Gratuito para uso pessoal',
+    verdict_dest_title:'DESTINO CARREGADO',
+    verdict_ok_title:'✅ COMPATÍVEL — Só Adaptador de Tomada',
+    verdict_bad_title:'⛔ VOLTAGEM INCOMPATÍVEL — Conversor Necessário',
+    verdict_warn_title:'⚠️ VOLTAGEM BAIXA — Verifique o Dispositivo',
+    verdict_plug_lbl:'ADAPTADOR DE TOMADA NECESSÁRIO PARA',
+    verdict_ok_body:(dv,cv)=>`Seu dispositivo (${dv}) suporta a alimentação local de ${cv}V. Você só precisa de um adaptador de tomada — nenhum conversor necessário.`,
+    verdict_bad_body:(dvMax,cv)=>`Seu dispositivo suporta até ${dvMax}V mas a alimentação local é de ${cv}V. Conectar diretamente VAI DANIFICAR seu dispositivo. Você precisa de um conversor redutor (${cv}V → ${dvMax}V) mais um adaptador de tomada.`,
+    verdict_warn_body:(dvMin,cv)=>`Seu dispositivo espera ${dvMin}V mas a alimentação local é apenas ${cv}V. O dispositivo pode não funcionar corretamente. Verifique se há um seletor de voltagem manual ou use um conversor elevador.`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong> usa <strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong> com tomadas: <strong style="color:var(--amber)">${plugs}</strong>.<br><br>Insira a voltagem de entrada do seu dispositivo acima para um veredicto completo. Procure "INPUT:" no seu adaptador de energia.`,
+    dual_label:'✓ Bivolt', single_label:'⚠️ Voltagem Única',
+    faqs:[
+      {q:'O que acontece se eu conectar um dispositivo de 110V em uma tomada de 220V?',a:'Seu dispositivo quase certamente será danificado permanentemente ou destruído. O excesso de voltagem sobrecarrega imediatamente os componentes internos, causando superaquecimento, curtos-circuitos ou em alguns casos incêndio. Nunca conecte um dispositivo de apenas 110V em uma tomada de 220V sem um conversor redutor. Não há aviso — o dano é instantâneo.'},
+      {q:'Qual é a diferença entre um adaptador de tomada e um conversor de voltagem?',a:'Um adaptador de tomada apenas muda a forma física do plugue para caber em uma tomada estrangeira — ele NÃO muda a voltagem. Um conversor de voltagem (ou transformador) realmente muda a voltagem elétrica de 220V para 110V ou vice-versa. A maioria dos eletrônicos modernos como laptops, carregadores e câmeras é bivolt (100–240V) e precisa apenas de adaptador.'},
+      {q:'Como saber se meu dispositivo é bivolt?',a:'Veja as letras pequenas no adaptador de energia do seu dispositivo perto das especificações elétricas. Encontre o rótulo que mostra "INPUT:" ou "ENTRADA:". Se ele diz "100–240V" ou "110–240V" é bivolt e funciona em qualquer lugar do mundo — você só precisa de um adaptador de tomada.'},
+      {q:'Preciso de conversor de voltagem para meu notebook?',a:'Quase certamente não. Quase todos os adaptadores de notebook fabricados após 2000 são bivolts (100–240V, 50–60Hz). Verifique o rótulo no seu carregador — se mostrar uma faixa de voltagem, você só precisa de um adaptador de tomada de poucos reais.'},
+      {q:'Quais países usam 110V?',a:'Países com aproximadamente 110–127V: Estados Unidos (120V), Canadá (120V), México (127V), maioria da América Central, Colômbia (110V), Venezuela (120V), República Dominicana (110V) e Japão (100V). A maioria do restante do mundo usa 220–240V. O Brasil usa 127V em muitas regiões e 220V em outras.'},
+      {q:'A frequência 50Hz vs 60Hz importa?',a:'Para a maioria dos eletrônicos modernos — não. Notebooks, carregadores de celular, câmeras e a maioria dos dispositivos pessoais funcionam bem tanto a 50Hz quanto a 60Hz. No entanto, alguns eletrodomésticos com motor como relógios elétricos, alguns ventiladores e secadores de cabelo mais antigos podem funcionar de forma diferente. Para viajantes, a frequência raramente é uma preocupação.'},
+      {q:'Qual é o melhor adaptador de viagem universal?',a:'Procure um adaptador que cubra os Tipos A, B, C, D, E, F, G e I — isso cobre 95%+ dos países. Marcas confiáveis populares incluem Ceptics, Bestek e Epicka. Para múltiplos dispositivos, escolha um com portas USB-A e USB-C integradas. Nota: esses são apenas adaptadores e NÃO mudarão a voltagem.'},
+    ],
+    devices:[
+      {icon:'💻',name:'Notebook / MacBook',v:'100–240V',dual:true,note:'Quase todos os notebooks modernos são bivolts. Verifique o rótulo do carregador.'},
+      {icon:'📱',name:'Carregador de Celular / Tablet',v:'100–240V',dual:true,note:'Todos os carregadores USB modernos funcionam no mundo todo. Só precisa de adaptador.'},
+      {icon:'📷',name:'Carregador de Câmera / Drone',v:'100–240V',dual:true,note:'A maioria dos carregadores de câmera desde ~2010 é bivolt.'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Todos os consoles da geração atual são bivolts.'},
+      {icon:'🔌',name:'Escova de Dentes Elétrica',v:'100–240V',dual:true,note:'Os modelos modernos Oral-B e Philips Sonicare são bivolts.'},
+      {icon:'🔋',name:'Carregador Portátil / Power Bank',v:'100–240V',dual:true,note:'Carregado via USB — funciona em todo o mundo com adaptador de tomada.'},
+      {icon:'💈',name:'Secador de Cabelo',v:'Somente 110V ⚠️',dual:false,note:'A maioria dos secadores americanos é somente 110V. Compre um modelo de viagem bivolt.'},
+      {icon:'🌀',name:'Chapinha / Modelador de Cachos',v:'Somente 110V ⚠️',dual:false,note:'A maioria dos modelos americanos é 110V, a menos que expressamente indicado como bivolt.'},
+      {icon:'☕',name:'Cafeteira / Chaleira Elétrica',v:'Somente 110V ⚠️',dual:false,note:'Eletrodomésticos de aquecimento são quase sempre de voltagem única. Compre localmente.'},
+      {icon:'🎙️',name:'CPAP / Dispositivos Médicos',v:'100–240V',dual:true,note:'A maioria dos CPAPs modernos é bivolt. Confirme com o fabricante.'},
+    ],
+    plugs:[
+      {type:'A',name:'Dois pinos planos paralelos',countries:'EUA, Canadá, México, Japão',voltage:'120V / 100V'},
+      {type:'B',name:'Dois planos + um redondo (terra)',countries:'EUA, Canadá, México',voltage:'120V'},
+      {type:'C',name:'Dois pinos redondos (Europlug)',countries:'Europa, América do Sul, Ásia, África',voltage:'230V'},
+      {type:'D',name:'Três pinos redondos (triângulo)',countries:'Índia, Paquistão, Nepal, Sri Lanka',voltage:'230V'},
+      {type:'E',name:'Dois redondos + orifício',countries:'França, Bélgica, Polônia, República Tcheca',voltage:'230V'},
+      {type:'F',name:'Dois redondos + grampos laterais (Schuko)',countries:'Alemanha, Áustria, Holanda, Espanha, maior parte da Europa',voltage:'230V'},
+      {type:'G',name:'Três pinos retangulares',countries:'Reino Unido, Irlanda, Singapura, Malásia, Hong Kong, Emirados Árabes, Quênia',voltage:'230–240V'},
+      {type:'H',name:'Três pinos (formato V)',countries:'Somente Israel',voltage:'230V'},
+      {type:'I',name:'Dois/três pinos planos inclinados',countries:'Austrália, Nova Zelândia, China, Argentina',voltage:'230V / 220V'},
+      {type:'J',name:'Três pinos redondos',countries:'Suíça, Liechtenstein',voltage:'230V'},
+      {type:'K',name:'Dois redondos + pino em U',countries:'Dinamarca, Groenlândia',voltage:'230V'},
+      {type:'L',name:'Três pinos redondos em linha',countries:'Itália, Chile, partes da África',voltage:'230V'},
+      {type:'M',name:'Três pinos redondos grandes',countries:'África do Sul, Índia (eletrodomésticos grandes)',voltage:'230V'},
+      {type:'N',name:'Dois redondos + terra (IEC)',countries:'Brasil (oficial desde 2011)',voltage:'127V'},
+    ],
+  },
+
+  ja: {
+    nav_checker:'チェッカー', nav_plugs:'プラグ種類', nav_countries:'国別',
+    nav_devices:'デバイス', nav_faq:'よくある質問', nav_cta:'今すぐ確認',
+    hero_tag:'旅行用電源ガイド',
+    hero_h1:'私のデバイスは<br><mark id="hcountry">この国</mark>で使えますか？',
+    hero_sub:'60カ国以上の電圧・周波数・プラグ種類を確認。デバイスの電圧を入力するだけで、変換アダプター・変圧器が必要かどうかすぐにわかります。',
+    chip1:'60カ国以上', chip2:'アダプター vs 変圧器', chip3:'デバイス互換性', chip4:'無料・登録不要',
+    tool_title:'電源互換性チェッカー v2.0',
+    ro_lbl_initial:'目的地を選択して電源仕様を確認',
+    ro_main_initial:'— 入力待ち —',
+    ro_ck_voltage:'電圧', ro_ck_freq:'周波数', ro_ck_system:'方式',
+    ro_plugs_lbl:'使用プラグ種類',
+    step1:'目的国', step2:'デバイスの電圧（任意）',
+    qlbl:'人気の目的地',
+    sel_placeholder:'— すべての国から選択 —',
+    dvolt_placeholder:'例：100-240V または 110V または 220V',
+    dvolt_hint:'// 電源アダプターの「INPUT:」「入力:」を確認してください',
+    check_btn:'⚡ 互換性を確認',
+    plugs_stag:'参考ガイド', plugs_h2:'世界のプラグ種類',
+    plugs_sub:'プラグには15種類の標準規格があります。変換アダプターは形状のみを変えるもので、電圧は変換しません。',
+    countries_stag:'完全データベース', countries_h2:'国別電圧一覧',
+    countries_sub:'すべての国を閲覧できます。「vs. 米国」列は米国からの旅行者に必要なものを示します。列をクリックして並び替えができます。',
+    pill_all:'すべて', pill_americas:'南北アメリカ', pill_europe:'ヨーロッパ', pill_asia:'アジア・太平洋', pill_africa:'アフリカ・中東',
+    search_placeholder:'国を検索…',
+    th_country:'国 ↕', th_voltage:'電圧 ↕', th_hz:'Hz ↕', th_plugs:'プラグ', th_vsus:'vs. 米国',
+    ct_same:'✓ 同じ', ct_conv:'⚡ 変圧器必要', ct_adapt:'~ アダプター', ct_noresults:'結果なし',
+    devices_stag:'デバイス参考', devices_h2:'デュアル電圧 vs シングル電圧',
+    devices_sub:'ほとんどの現代の電子機器はデュアル電圧対応で世界中で使えます。暖房器具はほぼ常にシングル電圧で変圧器が必要です。',
+    protip_stag:'プロのヒント',
+    protip_body:'<strong style="color:var(--green)">ラベルの読み方：</strong>電源アダプターの「INPUT:」または「入力:」を探してください。<span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = 世界中で使用可能、変換プラグのみ必要。<span style="font-family:var(--mono);color:var(--yellow)">110Vのみ</span> = 北米と日本のみ。<span style="font-family:var(--mono);color:var(--red)">220–240Vのみ</span> = ヨーロッパ・アジア・オーストラリアのみ。周波数（50Hz vs 60Hz）は現代の電子機器ではほとんど問題になりません。',
+    faq_stag:'よくある質問', faq_h2:'よくある質問',
+    faq_sub:'旅行者が電圧・アダプター・変圧器について尋ねるすべてのこと。',
+    disc_txt:'<strong style="color:var(--text-mid)">データ精度に関するご注意：</strong>電圧とプラグのデータはIECとITUの2025年現在の規格に基づいています。一部の国では地域差や移行期の規格があります。使用前に必ず現地の宿泊施設や機器のマニュアルで確認してください。VoltageChecker.netはデバイスの損傷について責任を負いません。疑わしい場合は、認定された変圧器をご使用ください。',
+    footer_tag:'国際旅行者向け無料の電圧・プラグ互換性チェッカー。登録不要。すぐに答えがわかります。',
+    footer_tools:'ツール', footer_info:'情報', footer_about:'概要', footer_privacy:'プライバシーポリシー', footer_contact:'お問い合わせ',
+    footer_copy:'© 2025 VoltageChecker.net — 個人利用無料',
+    verdict_dest_title:'目的地を読み込みました',
+    verdict_ok_title:'✅ 互換性あり — 変換プラグのみ必要',
+    verdict_bad_title:'⛔ 電圧不一致 — 変圧器が必要',
+    verdict_warn_title:'⚠️ 電圧不足 — デバイスを確認してください',
+    verdict_plug_lbl:'必要な変換プラグ',
+    verdict_ok_body:(dv,cv)=>`お使いのデバイス（${dv}）は現地の${cv}V電源に対応しています。変換プラグのみ必要です。変圧器は不要です。`,
+    verdict_bad_body:(dvMax,cv)=>`お使いのデバイスは最大${dvMax}Vまで対応していますが、現地電源は${cv}Vです。直接接続するとデバイスが壊れます。降圧変圧器（${cv}V → ${dvMax}V）と変換プラグが必要です。`,
+    verdict_warn_body:(dvMin,cv)=>`お使いのデバイスは${dvMin}Vを想定していますが、現地電源は${cv}Vのみです。デバイスが正常に動作しない可能性があります。手動電圧切替スイッチがあるか確認するか、昇圧変圧器をご使用ください。`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong>の電源は<strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong>で、プラグ種類は<strong style="color:var(--amber)">${plugs}</strong>です。<br><br>完全な互換性判定のために、上のボックスにデバイスの入力電圧を入力してください。電源アダプターの「INPUT:」をご確認ください。`,
+    dual_label:'✓ デュアル電圧', single_label:'⚠️ シングル電圧',
+    faqs:[
+      {q:'110Vのデバイスを220Vのコンセントに差し込むとどうなりますか？',a:'デバイスがほぼ確実に永久的に損傷または破壊されます。過剰な電圧が内部コンポーネントをすぐに過負荷にし、過熱、短絡、場合によっては火災を引き起こします。降圧変圧器なしに110V専用デバイスを220Vコンセントに接続しないでください。警告はなく、損傷は瞬間的です。'},
+      {q:'変換プラグと変圧器の違いは何ですか？',a:'変換プラグは海外のコンセントに合わせてプラグの物理的な形状を変えるだけです。電圧は変換しません。変圧器（トランスフォーマー）は電気の電圧を220Vから110Vへ、またはその逆に実際に変換します。ほとんどの現代の電子機器（ノートPC、スマホ充電器、カメラ）はデュアル電圧（100〜240V）対応で、変換プラグのみ必要です。'},
+      {q:'デバイスがデュアル電圧対応かどうかはどうすればわかりますか？',a:'電源アダプターやデバイスの電気仕様の近くにある小さな文字を確認してください。「INPUT:」または「入力:」と書かれたラベルを探してください。「100〜240V」または「110〜240V」と書いてあれば、デュアル電圧対応で世界中で使えます（変換プラグのみ必要）。「110V」または「120V」のみの場合、海外では変圧器が必要です。'},
+      {q:'ノートPCに変圧器は必要ですか？',a:'ほぼ確実に不要です。2000年以降に製造されたほとんどのノートPC電源アダプターはデュアル電圧（100〜240V、50〜60Hz）対応です。電源アダプターのラベルを確認し、電圧範囲が表示されていれば変換プラグのみ必要です。スマホ充電器、カメラ充電器、ゲーム機の電源にも同様に当てはまります。'},
+      {q:'110Vを使用している国はどこですか？',a:'約110〜127Vを使用する国：アメリカ（120V）、カナダ（120V）、メキシコ（127V）、中央アメリカの大部分、コロンビア（110V）、ベネズエラ（120V）、ドミニカ共和国（110V）、そして日本（100V—唯一ちょうど100Vの国）。世界の他のほとんどの地域は220〜240Vを使用しています。'},
+      {q:'50Hzと60Hzの周波数の違いは重要ですか？',a:'ほとんどの現代の電子機器では重要ではありません。ノートPC、スマホ充電器、カメラなどは50Hzでも60Hzでも問題なく動作します。ただし、電気時計、一部のファン、古いヘアドライヤーなどモーター駆動の電化製品は特定の周波数向けに設計されており、若干異なる動作をする場合があります。旅行者にとって周波数はほとんどの場合問題になりません。'},
+      {q:'最も良いユニバーサル旅行アダプターはどれですか？',a:'タイプA、B、C、D、E、F、G、Iに対応するアダプターを探してください。これで95%以上の国をカバーできます。信頼できる人気ブランドにはCeptics、Bestek、Epickaなどがあります。複数のデバイスを使う場合は、USB-AポートとUSB-Cポートが内蔵されているものを選んでください。これらはアダプターのみで電圧は変換しません。'},
+    ],
+    devices:[
+      {icon:'💻',name:'ノートPC / MacBook',v:'100–240V',dual:true,note:'ほとんどの現代のノートPCはデュアル電圧対応。電源アダプターのラベルを確認。'},
+      {icon:'📱',name:'スマホ / タブレット充電器',v:'100–240V',dual:true,note:'すべての現代のUSB充電器は世界中で使用可能。変換プラグのみ必要。'},
+      {icon:'📷',name:'カメラ / ドローン充電器',v:'100–240V',dual:true,note:'2010年以降のほとんどのカメラ充電器はデュアル電圧対応。'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'現行世代のすべてのゲーム機はデュアル電圧対応。'},
+      {icon:'🔌',name:'電動歯ブラシ',v:'100–240V',dual:true,note:'最新のOral-BとPhilips Sonicareはデュアル電圧対応。'},
+      {icon:'🔋',name:'モバイルバッテリー',v:'100–240V',dual:true,note:'USB経由で充電 — 変換プラグで世界中で使用可能。'},
+      {icon:'💈',name:'ヘアドライヤー',v:'110Vのみ ⚠️',dual:false,note:'米国のほとんどのヘアドライヤーは110V専用。旅行用デュアル電圧モデルを購入してください。'},
+      {icon:'🌀',name:'ストレートアイロン / カールアイロン',v:'110Vのみ ⚠️',dual:false,note:'米国のほとんどのモデルは、デュアル電圧と明記されていない限り110V。'},
+      {icon:'☕',name:'コーヒーメーカー / 電気ケトル',v:'110Vのみ ⚠️',dual:false,note:'加熱器具はほぼ常にシングル電圧。現地で購入することをお勧めします。'},
+      {icon:'🎙️',name:'CPAP / 医療機器',v:'100–240V',dual:true,note:'ほとんどの現代のCPAPはデュアル電圧対応。メーカーに確認してください。'},
+    ],
+    plugs:[
+      {type:'A',name:'2本の平行フラットピン',countries:'米国、カナダ、メキシコ、日本',voltage:'120V / 100V'},
+      {type:'B',name:'フラット2本＋丸ピン1本',countries:'米国、カナダ、メキシコ',voltage:'120V'},
+      {type:'C',name:'2本の丸ピン（ユーロプラグ）',countries:'ヨーロッパ、南米、アジア、アフリカ',voltage:'230V'},
+      {type:'D',name:'3本の丸ピン（三角形）',countries:'インド、パキスタン、ネパール、スリランカ',voltage:'230V'},
+      {type:'E',name:'丸ピン2本＋穴',countries:'フランス、ベルギー、ポーランド、チェコ共和国',voltage:'230V'},
+      {type:'F',name:'丸ピン2本＋側面クリップ（シュコ）',countries:'ドイツ、オーストリア、オランダ、スペイン、ヨーロッパ大部分',voltage:'230V'},
+      {type:'G',name:'3本の長方形ピン',countries:'英国、アイルランド、シンガポール、マレーシア、香港、UAE、ケニア',voltage:'230–240V'},
+      {type:'H',name:'3本ピン（V字型）',countries:'イスラエルのみ',voltage:'230V'},
+      {type:'I',name:'2〜3本の斜めフラットピン',countries:'オーストラリア、ニュージーランド、中国、アルゼンチン',voltage:'230V / 220V'},
+      {type:'J',name:'3本の丸ピン',countries:'スイス、リヒテンシュタイン',voltage:'230V'},
+      {type:'K',name:'丸ピン2本＋U字ピン',countries:'デンマーク、グリーンランド',voltage:'230V'},
+      {type:'L',name:'3本の丸ピン（横一列）',countries:'イタリア、チリ、アフリカの一部',voltage:'230V'},
+      {type:'M',name:'3本の大きな丸ピン',countries:'南アフリカ、インド（大型家電）',voltage:'230V'},
+      {type:'N',name:'丸ピン2本＋アース（IEC）',countries:'ブラジル（2011年より公式）',voltage:'127V'},
+    ],
+  },
+
+  zh: {
+    nav_checker:'检测器', nav_plugs:'插头类型', nav_countries:'国家',
+    nav_devices:'设备', nav_faq:'常见问题', nav_cta:'立即检测',
+    hero_tag:'旅行用电指南',
+    hero_h1:'我的设备在<mark id="hcountry">这个国家</mark><br>能用吗？',
+    hero_sub:'查看60多个国家的电压、频率和插头类型。输入您的设备电压，立即了解是否需要转换插头、变压器或什么都不用。',
+    chip1:'60多个国家', chip2:'转换插头 vs 变压器', chip3:'设备兼容性', chip4:'免费 · 无需注册',
+    tool_title:'用电兼容性检测器 v2.0',
+    ro_lbl_initial:'选择目的地查看电源规格',
+    ro_main_initial:'— 等待输入 —',
+    ro_ck_voltage:'电压', ro_ck_freq:'频率', ro_ck_system:'制式',
+    ro_plugs_lbl:'当地使用的插头类型',
+    step1:'目的地国家', step2:'您的设备电压（可选）',
+    qlbl:'热门目的地',
+    sel_placeholder:'— 或从所有国家中选择 —',
+    dvolt_placeholder:'例：100-240V 或 110V 或 220V',
+    dvolt_hint:'// 在充电器标签上查找"INPUT:"或"输入："',
+    check_btn:'⚡ 检测兼容性',
+    plugs_stag:'参考指南', plugs_h2:'世界各地插头类型',
+    plugs_sub:'共有15种标准化插头类型。转换插头只改变物理形状，不改变电压。',
+    countries_stag:'完整数据库', countries_h2:'各国电压参考',
+    countries_sub:'浏览所有国家。"vs.美国"列显示美国旅行者需要什么。点击任意列可排序。',
+    pill_all:'全部', pill_americas:'美洲', pill_europe:'欧洲', pill_asia:'亚洲和太平洋', pill_africa:'非洲和中东',
+    search_placeholder:'搜索国家…',
+    th_country:'国家 ↕', th_voltage:'电压 ↕', th_hz:'Hz ↕', th_plugs:'插头', th_vsus:'vs.美国',
+    ct_same:'✓ 相同', ct_conv:'⚡ 需要变压器', ct_adapt:'~ 需要适配器', ct_noresults:'无结果',
+    devices_stag:'设备参考', devices_h2:'双电压 vs 单电压',
+    devices_sub:'大多数现代电子设备支持双电压，可在全球使用。加热电器几乎都是单电压，需要变压器。',
+    protip_stag:'专业提示',
+    protip_body:'<strong style="color:var(--green)">如何读取标签：</strong>在充电器上查找"INPUT:"或"输入："。<span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = 可在全球使用，只需转换插头。<span style="font-family:var(--mono);color:var(--yellow)">仅110V</span> = 仅限北美和日本。<span style="font-family:var(--mono);color:var(--red)">仅220–240V</span> = 仅限欧洲、亚洲、澳大利亚。现代电子设备的频率（50Hz vs 60Hz）通常无关紧要。',
+    faq_stag:'常见问题', faq_h2:'常见问题解答',
+    faq_sub:'旅行者关于电压、适配器和变压器的所有问题。',
+    disc_txt:'<strong style="color:var(--text-mid)">数据准确性说明：</strong>电压和插头数据基于IEC和ITU截至2025年的标准。部分国家存在地区差异或过渡标准。使用前请务必与当地住宿或设备手册核实。VoltageChecker.net对设备损坏不承担责任。如有疑问，请使用经认证的变压器。',
+    footer_tag:'为国际旅行者提供的免费电压和插头兼容性工具。无需注册，直接获得答案。',
+    footer_tools:'工具', footer_info:'信息', footer_about:'关于我们', footer_privacy:'隐私政策', footer_contact:'联系我们',
+    footer_copy:'© 2025 VoltageChecker.net — 个人使用免费',
+    verdict_dest_title:'已加载目的地',
+    verdict_ok_title:'✅ 兼容 — 仅需转换插头',
+    verdict_bad_title:'⛔ 电压不匹配 — 需要变压器',
+    verdict_warn_title:'⚠️ 电压过低 — 请检查设备',
+    verdict_plug_lbl:'需要转换插头的类型',
+    verdict_ok_body:(dv,cv)=>`您的设备（${dv}）支持当地${cv}V电压。只需转换插头，无需变压器。`,
+    verdict_bad_body:(dvMax,cv)=>`您的设备额定最高${dvMax}V，但当地供电为${cv}V。直接插入将损坏设备。需要降压变压器（${cv}V → ${dvMax}V）加转换插头。`,
+    verdict_warn_body:(dvMin,cv)=>`您的设备需要${dvMin}V，但当地供电仅${cv}V。设备可能无法正常工作。请检查是否有手动电压选择开关，或使用升压变压器。`,
+    verdict_info_body:(name,voltage,freq,plugs)=>`<strong style="color:var(--amber)">${name}</strong>使用<strong style="color:var(--amber)">${voltage}V / ${freq}Hz</strong>，插头类型：<strong style="color:var(--amber)">${plugs}</strong>。<br><br>请在上方输入设备的输入电压以获取完整的兼容性判断。在充电器上查找"INPUT:"。`,
+    dual_label:'✓ 双电压', single_label:'⚠️ 单电压',
+    faqs:[
+      {q:'将110V设备插入220V插座会发生什么？',a:'您的设备几乎肯定会永久损坏或损毁。过高的电压会立即使内部组件过载，导致过热、短路，甚至在某些情况下引发火灾。切勿在没有降压变压器的情况下将仅110V的设备插入220V插座。没有任何警告——损坏是瞬间发生的。'},
+      {q:'转换插头和变压器有什么区别？',a:'转换插头只改变插头的物理形状以适应外国插座——它不改变电压。变压器（或变压器）实际上将电压从220V改变为110V或反之亦然。大多数现代电子产品（如笔记本电脑、手机充电器、相机）支持双电压（100–240V），只需转换插头。价格差异：转换插头约30–100元，质量好的变压器约200–1000元+。'},
+      {q:'如何知道我的设备是否支持双电压？',a:'查看电源适配器或设备上靠近电气规格的小字。找到显示"INPUT:"或"输入："的标签。如果显示"100–240V"或"110–240V"，则支持双电压，可在全球任何地方使用——只需转换插头。如果仅显示"110V"或"120V"，则在国外需要变压器。'},
+      {q:'笔记本电脑需要变压器吗？',a:'几乎肯定不需要。2000年以后生产的几乎所有笔记本电脑电源适配器都支持双电压（100–240V，50–60Hz）。检查电源砖上的标签——如果显示电压范围，则只需一个价格低廉的转换插头。同样适用于手机充电器、大多数相机充电器和游戏机电源。'},
+      {q:'哪些国家使用110V？',a:'使用约110–127V的国家：美国（120V）、加拿大（120V）、墨西哥（127V）、大部分中美洲国家、哥伦比亚（110V）、委内瑞拉（120V）、多米尼加共和国（110V）和日本（100V）。中国大陆使用220V。世界上大多数其他地区使用220–240V。'},
+      {q:'50Hz和60Hz的频率差异重要吗？',a:'对于大多数现代电子设备——不重要。笔记本电脑、手机充电器、相机和大多数个人设备在50Hz和60Hz下都能正常工作。但是，某些电机驱动的电器，如电子时钟、部分风扇和老式吹风机是为特定频率设计的，可能会运行略有不同。对旅行者来说，频率很少成为问题。'},
+      {q:'最佳万能旅行转换插头是哪款？',a:'寻找涵盖A、B、C、D、E、F、G和I型的转换插头——可覆盖95%以上的国家。可靠的品牌包括公牛、BULL、绿联等。对于多个设备，选择内置USB-A和USB-C端口的款式。注意：这些只是转换插头，不会改变电压——您的设备必须支持双电压（100–240V）才能安全使用。'},
+    ],
+    devices:[
+      {icon:'💻',name:'笔记本电脑 / MacBook',v:'100–240V',dual:true,note:'几乎所有现代笔记本电脑都支持双电压。检查电源砖标签。'},
+      {icon:'📱',name:'手机 / 平板充电器',v:'100–240V',dual:true,note:'所有现代USB充电器都可全球使用。只需转换插头。'},
+      {icon:'📷',name:'相机 / 无人机充电器',v:'100–240V',dual:true,note:'2010年以后的大多数相机充电器支持双电压。'},
+      {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'所有当代游戏机均支持双电压。'},
+      {icon:'🔌',name:'电动牙刷',v:'100–240V',dual:true,note:'现代Oral-B和飞利浦Sonicare均支持双电压。'},
+      {icon:'🔋',name:'移动电源 / 充电宝',v:'100–240V',dual:true,note:'通过USB充电——使用转换插头可在全球使用。'},
+      {icon:'💈',name:'吹风机',v:'仅110V ⚠️',dual:false,note:'大多数美国吹风机仅为110V。购买旅行用双电压型号。'},
+      {icon:'🌀',name:'直发器 / 卷发棒',v:'仅110V ⚠️',dual:false,note:'大多数美国型号为110V，除非明确标注双电压。'},
+      {icon:'☕',name:'咖啡机 / 电热水壶',v:'仅110V ⚠️',dual:false,note:'加热电器几乎都是单电压。建议当地购买。'},
+      {icon:'🎙️',name:'CPAP / 医疗设备',v:'100–240V',dual:true,note:'大多数现代CPAP机支持双电压。请向制造商确认。'},
+    ],
+    plugs:[
+      {type:'A',name:'两个平行扁平插脚',countries:'美国、加拿大、墨西哥、日本',voltage:'120V / 100V'},
+      {type:'B',name:'两个扁平插脚＋一个圆形接地脚',countries:'美国、加拿大、墨西哥',voltage:'120V'},
+      {type:'C',name:'两个圆形插脚（欧式插头）',countries:'欧洲、南美洲、亚洲、非洲',voltage:'230V'},
+      {type:'D',name:'三个圆形插脚（三角形）',countries:'印度、巴基斯坦、尼泊尔、斯里兰卡',voltage:'230V'},
+      {type:'E',name:'两个圆形插脚＋接地孔',countries:'法国、比利时、波兰、捷克共和国',voltage:'230V'},
+      {type:'F',name:'两个圆形插脚＋侧面夹子（德式插头）',countries:'德国、奥地利、荷兰、西班牙及大部分欧洲',voltage:'230V'},
+      {type:'G',name:'三个矩形插脚',countries:'英国、爱尔兰、新加坡、马来西亚、香港、阿联酋、肯尼亚',voltage:'230–240V'},
+      {type:'H',name:'三个插脚（V形）',countries:'仅以色列',voltage:'230V'},
+      {type:'I',name:'两或三个斜扁平插脚',countries:'澳大利亚、新西兰、中国、阿根廷',voltage:'230V / 220V'},
+      {type:'J',name:'三个圆形插脚',countries:'瑞士、列支敦士登',voltage:'230V'},
+      {type:'K',name:'两个圆形插脚＋U形接地脚',countries:'丹麦、格陵兰',voltage:'230V'},
+      {type:'L',name:'三个圆形插脚（一排）',countries:'意大利、智利、非洲部分地区',voltage:'230V'},
+      {type:'M',name:'三个大圆形插脚',countries:'南非、印度（大型电器）',voltage:'230V'},
+      {type:'N',name:'两个圆形插脚＋接地（IEC）',countries:'巴西（2011年起官方标准）',voltage:'127V'},
+    ],
+  },
+};
+
+/* ── COUNTRIES DATA ─────────────────────────────── */
 const COUNTRIES=[
   {code:'US',flag:'🇺🇸',name:'United States',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'CA',flag:'🇨🇦',name:'Canada',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
@@ -544,161 +1149,89 @@ const COUNTRIES=[
   {code:'TZ',flag:'🇹🇿',name:'Tanzania',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
 ];
 
-// SVG definitions for each plug type — technically accurate face-on illustrations
 const PLUG_SVGS = {
-  // Type A: two flat parallel vertical slots
-  A:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <rect x="30" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/>
-    <rect x="50" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE A</text>
-  </svg>`,
-  // Type B: two flat parallel + round ground below center
-  B:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <rect x="28" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/>
-    <rect x="52" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/>
-    <circle cx="45" cy="72" r="6" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE B</text>
-  </svg>`,
-  // Type C: two round pins side by side
-  C:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="52" r="7" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="52" r="7" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE C</text>
-  </svg>`,
-  // Type D: three large round pins in triangle
-  D:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="45" cy="30" r="7.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="28" cy="62" r="7.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="62" cy="62" r="7.5" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE D</text>
-  </svg>`,
-  // Type E: two round + protruding hole (French)
-  E:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="46" r="7" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="46" r="7" fill="#F5A623" opacity=".9"/>
-    <circle cx="45" cy="72" r="5" fill="none" stroke="#F5A623" stroke-width="2" opacity=".7"/>
-    <circle cx="45" cy="72" r="2" fill="#F5A623" opacity=".4"/>
-    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE E</text>
-  </svg>`,
-  // Type F: two round + two side grounding clips
-  F:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="50" r="7" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="50" r="7" fill="#F5A623" opacity=".9"/>
-    <rect x="10" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/>
-    <rect x="72" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/>
-    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE F</text>
-  </svg>`,
-  // Type G: three rectangular pins — two horizontal top, one vertical bottom (British)
-  G:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <rect x="20" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-45 31 31)"/>
-    <rect x="48" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(45 59 31)"/>
-    <rect x="36" y="62" width="18" height="10" rx="2.5" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE G</text>
-  </svg>`,
-  // Type H: three pins in V shape (Israel)
-  H:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <ellipse cx="45" cy="30" rx="5" ry="7" fill="#F5A623" opacity=".9"/>
-    <ellipse cx="28" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(-25 28 60)"/>
-    <ellipse cx="62" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(25 62 60)"/>
-    <text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE H</text>
-  </svg>`,
-  // Type I: two flat angled pins + optional ground (Australia)
-  I:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <rect x="25" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-30 30 50)"/>
-    <rect x="55" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(30 60 50)"/>
-    <rect x="36" y="66" width="10" height="18" rx="2.5" fill="#F5A623" opacity=".6"/>
-    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE I</text>
-  </svg>`,
-  // Type J: three round pins — two side + one offset ground (Swiss)
-  J:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="46" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="46" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".6"/>
-    <text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE J</text>
-  </svg>`,
-  // Type K: two round + U-shaped earth (Danish)
-  K:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="44" r="7" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="44" r="7" fill="#F5A623" opacity=".9"/>
-    <path d="M35 70 Q45 80 55 70" stroke="#F5A623" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
-    <text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE K</text>
-  </svg>`,
-  // Type L: three round pins in a horizontal line (Italian)
-  L:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="22" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="45" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="68" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="86" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE L</text>
-  </svg>`,
-  // Type M: three large round pins in triangle (South African)
-  M:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="45" cy="28" r="9" fill="#F5A623" opacity=".9"/>
-    <circle cx="26" cy="64" r="9" fill="#F5A623" opacity=".9"/>
-    <circle cx="64" cy="64" r="9" fill="#F5A623" opacity=".9"/>
-    <text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE M</text>
-  </svg>`,
-  // Type N: two round + central ground (Brazilian IEC)
-  N:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
-    <circle cx="32" cy="44" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="58" cy="44" r="6.5" fill="#F5A623" opacity=".9"/>
-    <circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".7"/>
-    <text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE N</text>
-  </svg>`,
+  A:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><rect x="30" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/><rect x="50" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/><text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE A</text></svg>`,
+  B:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><rect x="28" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/><rect x="52" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/><circle cx="45" cy="72" r="6" fill="#F5A623" opacity=".9"/><text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE B</text></svg>`,
+  C:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="52" r="7" fill="#F5A623" opacity=".9"/><circle cx="58" cy="52" r="7" fill="#F5A623" opacity=".9"/><text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE C</text></svg>`,
+  D:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="45" cy="30" r="7.5" fill="#F5A623" opacity=".9"/><circle cx="28" cy="62" r="7.5" fill="#F5A623" opacity=".9"/><circle cx="62" cy="62" r="7.5" fill="#F5A623" opacity=".9"/><text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE D</text></svg>`,
+  E:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="46" r="7" fill="#F5A623" opacity=".9"/><circle cx="58" cy="46" r="7" fill="#F5A623" opacity=".9"/><circle cx="45" cy="72" r="5" fill="none" stroke="#F5A623" stroke-width="2" opacity=".7"/><circle cx="45" cy="72" r="2" fill="#F5A623" opacity=".4"/><text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE E</text></svg>`,
+  F:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="50" r="7" fill="#F5A623" opacity=".9"/><circle cx="58" cy="50" r="7" fill="#F5A623" opacity=".9"/><rect x="10" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/><rect x="72" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/><text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE F</text></svg>`,
+  G:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><rect x="20" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-45 31 31)"/><rect x="48" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(45 59 31)"/><rect x="36" y="62" width="18" height="10" rx="2.5" fill="#F5A623" opacity=".9"/><text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE G</text></svg>`,
+  H:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><ellipse cx="45" cy="30" rx="5" ry="7" fill="#F5A623" opacity=".9"/><ellipse cx="28" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(-25 28 60)"/><ellipse cx="62" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(25 62 60)"/><text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE H</text></svg>`,
+  I:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><rect x="25" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-30 30 50)"/><rect x="55" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(30 60 50)"/><rect x="36" y="66" width="10" height="18" rx="2.5" fill="#F5A623" opacity=".6"/><text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE I</text></svg>`,
+  J:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="46" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="58" cy="46" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".6"/><text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE J</text></svg>`,
+  K:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="44" r="7" fill="#F5A623" opacity=".9"/><circle cx="58" cy="44" r="7" fill="#F5A623" opacity=".9"/><path d="M35 70 Q45 80 55 70" stroke="#F5A623" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/><text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE K</text></svg>`,
+  L:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="22" cy="52" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="45" cy="52" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="68" cy="52" r="6.5" fill="#F5A623" opacity=".9"/><text x="45" y="86" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE L</text></svg>`,
+  M:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="45" cy="28" r="9" fill="#F5A623" opacity=".9"/><circle cx="26" cy="64" r="9" fill="#F5A623" opacity=".9"/><circle cx="64" cy="64" r="9" fill="#F5A623" opacity=".9"/><text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE M</text></svg>`,
+  N:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/><circle cx="32" cy="44" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="58" cy="44" r="6.5" fill="#F5A623" opacity=".9"/><circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".7"/><text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE N</text></svg>`,
 };
 
-const PLUGS=[
-  {type:'A',name:'Two Flat Parallel Pins',countries:'USA, Canada, Mexico, Japan',voltage:'120V / 100V'},
-  {type:'B',name:'Two Flat + One Round Pin',countries:'USA, Canada, Mexico',voltage:'120V'},
-  {type:'C',name:'Two Round Pins (Europlug)',countries:'Europe, South America, Asia, Africa',voltage:'230V'},
-  {type:'D',name:'Three Round Pins (triangle)',countries:'India, Pakistan, Nepal, Sri Lanka',voltage:'230V'},
-  {type:'E',name:'Two Round + Hole',countries:'France, Belgium, Poland, Czech Republic',voltage:'230V'},
-  {type:'F',name:'Two Round + Side Clips (Schuko)',countries:'Germany, Austria, Netherlands, Spain, most Europe',voltage:'230V'},
-  {type:'G',name:'Three Rectangular Pins',countries:'UK, Ireland, Singapore, Malaysia, Hong Kong, UAE, Kenya',voltage:'230–240V'},
-  {type:'H',name:'Three Pins (V-shape)',countries:'Israel only',voltage:'230V'},
-  {type:'I',name:'Two/Three Flat Angled Pins',countries:'Australia, New Zealand, China, Argentina',voltage:'230V / 220V'},
-  {type:'J',name:'Three Round Pins',countries:'Switzerland, Liechtenstein',voltage:'230V'},
-  {type:'K',name:'Two Round + U-pin',countries:'Denmark, Greenland',voltage:'230V'},
-  {type:'L',name:'Three Round In-Line Pins',countries:'Italy, Chile, parts of Africa',voltage:'230V'},
-  {type:'M',name:'Three Large Round Pins',countries:'South Africa, India (large appliances)',voltage:'230V'},
-  {type:'N',name:'Two Round + Ground (IEC)',countries:'Brazil (official since 2011)',voltage:'127V'},
-];
+/* ── I18N ENGINE ─────────────────────────────────── */
+let currentLang = 'en';
+function t(key){ return TRANSLATIONS[currentLang][key] || TRANSLATIONS['en'][key] || key; }
 
-const DEVICES=[
-  {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Almost all modern laptops are dual-voltage. Check power brick label.'},
-  {icon:'📱',name:'Phone / Tablet Charger',v:'100–240V',dual:true,note:'All modern USB chargers work worldwide. Only need plug adapter.'},
-  {icon:'📷',name:'Camera / Drone Charger',v:'100–240V',dual:true,note:'Most camera chargers since ~2010 are dual-voltage.'},
-  {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'All current-gen consoles are dual-voltage.'},
-  {icon:'🔌',name:'Electric Toothbrush',v:'100–240V',dual:true,note:'Modern Oral-B and Philips Sonicare are dual-voltage.'},
-  {icon:'🔋',name:'Power Bank',v:'100–240V',dual:true,note:'Charged via USB — works worldwide with plug adapter.'},
-  {icon:'💈',name:'Hair Dryer / Blow Dryer',v:'110V only ⚠️',dual:false,note:'Most US hair dryers are 110V only. Buy a travel dual-voltage model.'},
-  {icon:'🌀',name:'Flat Iron / Curling Iron',v:'110V only ⚠️',dual:false,note:'Most US models are 110V unless explicitly labeled dual-voltage.'},
-  {icon:'☕',name:'Coffee Maker / Electric Kettle',v:'110V only ⚠️',dual:false,note:'Heating appliances are nearly always single-voltage. Buy local.'},
-  {icon:'🎙️',name:'CPAP / Medical Devices',v:'100–240V',dual:true,note:'Most modern CPAP machines are dual-voltage. Confirm with manufacturer.'},
-];
+function applyTranslations(){
+  const lang = currentLang;
+  const T = TRANSLATIONS[lang];
+  document.documentElement.lang = lang;
 
-const FAQS=[
-  {q:'What happens if I plug a 110V device into a 220V outlet?',a:'Your device will almost certainly be permanently damaged or destroyed. The excess voltage immediately overloads internal components, causing overheating, short circuits, or in some cases fire. Never plug a 110V-only device into a 220V outlet without a step-down voltage converter. There is no warning — the damage is instant.'},
-  {q:'What is the difference between a plug adapter and a voltage converter?',a:'A plug adapter only changes the physical shape of the plug to fit a foreign outlet — it does NOT change the voltage. A voltage converter (or transformer) actually changes the electrical voltage from 220V to 110V or vice versa. Most modern electronics like laptops, phone chargers, and cameras are dual-voltage (100–240V) and only need a plug adapter. Cost difference: adapters cost $5–20, quality converters cost $30–150+.'},
-  {q:'How do I know if my device is dual voltage?',a:'Look at the small print on your power adapter or device near the electrical specs. Find the label showing "INPUT:". If it says "100–240V" or "110–240V" it is dual voltage and works anywhere in the world — you only need a plug adapter. If it says only "110V" or "120V" it needs a converter abroad. If it says "220–240V" only, it won\'t work in North America without a step-up converter.'},
-  {q:'Do I need a voltage converter for my laptop?',a:'Almost certainly not. Nearly all laptop power adapters made after 2000 are dual-voltage (100–240V, 50–60Hz). Check the label on your power brick — if it shows a voltage range, you only need a plug adapter costing a few dollars. The same applies to phone chargers, most camera chargers, and gaming console power supplies.'},
-  {q:'What countries use 110V?',a:'Countries using approximately 110–127V: United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), Venezuela (120V), Dominican Republic (110V), and Japan (100V — the only country at exactly 100V). Most of the rest of the world uses 220–240V.'},
-  {q:'Does 50Hz vs 60Hz frequency matter?',a:'For most modern electronics — no. Laptops, phone chargers, cameras, and most personal devices work fine at both 50Hz and 60Hz. However, some motor-based appliances like electric clocks, some fans, and older hair dryers are designed for a specific frequency and may run slightly differently. For travelers, frequency is rarely a concern.'},
-  {q:'What is the best universal travel adapter?',a:'Look for an adapter covering Types A, B, C, D, E, F, G, and I — this covers 95%+ of countries. Popular reliable brands include Ceptics, Bestek, and Epicka. For multiple devices, choose one with built-in USB-A and USB-C ports. Note: these are adapter-only and will NOT change voltage — your devices must be dual-voltage (100–240V) to use safely.'},
-];
+  // Simple text replacements
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(T[key] !== undefined) el.textContent = T[key];
+  });
+
+  // HTML replacements (for hero h1 with mark tag)
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-html');
+    if(T[key] !== undefined) el.innerHTML = T[key];
+  });
+
+  // Search placeholder
+  const csearch = document.getElementById('csearch');
+  if(csearch) csearch.placeholder = T.search_placeholder || 'Search country…';
+
+  // Device voltage input placeholder
+  const dvolt = document.getElementById('dvolt');
+  if(dvolt) dvolt.placeholder = T.dvolt_placeholder || 'e.g. 100-240V';
+
+  // Select option placeholder
+  const selOpt = document.querySelector('#csel option[value=""]');
+  if(selOpt) selOpt.textContent = T.sel_placeholder;
+
+  // Pro tip body
+  const protip = document.getElementById('protip-body');
+  if(protip) protip.innerHTML = T.protip_body;
+
+  // Disclaimer
+  const disc = document.getElementById('disc-txt');
+  if(disc) disc.innerHTML = T.disc_txt;
+
+  // Re-render dynamic content
+  renderPlugs();
+  renderDevices();
+  renderFaqs();
+  renderTable();
+  updateLangButtons();
+}
+
+function updateLangButtons(){
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+}
+
+function setLang(lang){
+  if(!TRANSLATIONS[lang]) return;
+  currentLang = lang;
+  applyTranslations();
+}
+
+// Language switcher events
+document.getElementById('langSwitcher').addEventListener('click', e=>{
+  const btn = e.target.closest('.lang-btn');
+  if(btn) setLang(btn.dataset.lang);
+});
 
 /* ── POPULATE SELECT ─────────────────────────────── */
 const sel=document.getElementById('csel');
@@ -717,26 +1250,24 @@ function parseV(s){
   return null;
 }
 function compat(cv,dv){
+  const T=TRANSLATIONS[currentLang];
   if(!dv)return null;
   const lo=cv*.9,hi=cv*1.1;
-  if(dv.min<=hi&&dv.max>=lo)return{s:'ok',t:'✅ COMPATIBLE — Plug Adapter Only',b:`Your device (${dv.min===dv.max?dv.min+'V':dv.min+'–'+dv.max+'V'}) supports the local ${cv}V supply. You only need a plug adapter — no converter required.`};
-  if(dv.max<lo)return{s:'bad',t:'⛔ VOLTAGE MISMATCH — Converter Required',b:`Your device is rated up to ${dv.max}V but the local supply is ${cv}V. Plugging in directly WILL DAMAGE your device. You need a step-down converter (${cv}V → ${dv.max}V) plus a plug adapter.`};
-  return{s:'warn',t:'⚠️ LOW VOLTAGE — Check Device',b:`Your device expects ${dv.min}V but the local supply is only ${cv}V. The device may not work properly. Check for a manual voltage selector or use a step-up converter.`};
+  const dvStr=dv.min===dv.max?dv.min+'V':dv.min+'–'+dv.max+'V';
+  if(dv.min<=hi&&dv.max>=lo)return{s:'ok',t:T.verdict_ok_title,b:T.verdict_ok_body(dvStr,cv)};
+  if(dv.max<lo)return{s:'bad',t:T.verdict_bad_title,b:T.verdict_bad_body(dv.max,cv,dv.min)};
+  return{s:'warn',t:T.verdict_warn_title,b:T.verdict_warn_body(dv.min,cv)};
 }
 
 /* ── STATE ───────────────────────────────────────── */
 let selCode='';
 function pick(code){
   selCode=code;sel.value=code;
-  document.querySelectorAll('.qbtn').forEach(b=>{
-    const on=b.dataset.c===code;
-    b.classList.toggle('sel',on);
-  });
+  document.querySelectorAll('.qbtn').forEach(b=>b.classList.toggle('sel',b.dataset.c===code));
   const c=COUNTRIES.find(x=>x.code===code);
   if(!c)return;
-  document.getElementById('hcountry').textContent=c.name;
-  const ro=document.getElementById('readout');
-  ro.className='readout got';
+  const hc=document.getElementById('hcountry');if(hc)hc.textContent=c.name;
+  const ro=document.getElementById('readout');ro.className='readout got';
   document.getElementById('ro-main').textContent=c.flag+' '+c.name.toUpperCase();
   document.getElementById('ro-sub').textContent=c.note||'';
   const grid=document.getElementById('ro-grid');grid.style.display='grid';
@@ -759,37 +1290,44 @@ sel.addEventListener('change',()=>{if(sel.value)pick(sel.value);});
 
 /* ── CHECK BUTTON ────────────────────────────────── */
 document.getElementById('checkBtn').addEventListener('click',()=>{
+  const T=TRANSLATIONS[currentLang];
   if(!selCode){sel.style.borderColor='var(--amber)';sel.focus();return;}
   const c=COUNTRIES.find(x=>x.code===selCode);
   const dv=parseV(document.getElementById('dvolt').value);
   const ve=document.getElementById('verdict');
   if(!dv){
     ve.className='verdict show v-info';
-    ve.innerHTML=`<div class="vline"><span class="vicon">ℹ️</span><div><div class="vtitle">DESTINATION LOADED</div><div class="vbody"><strong style="color:var(--amber)">${c.name}</strong> uses <strong style="color:var(--amber)">${c.voltage}V / ${c.freq}Hz</strong> with plugs: <strong style="color:var(--amber)">${c.plugs.map(p=>'Type '+p).join(', ')}</strong>.<br><br>Enter your device's input voltage above for a full compatibility verdict. Look for "INPUT:" on your power adapter.</div></div></div>`;
+    ve.innerHTML=`<div class="vline"><span class="vicon">ℹ️</span><div><div class="vtitle">${T.verdict_dest_title}</div><div class="vbody">${T.verdict_info_body(c.name,c.voltage,c.freq,c.plugs.map(p=>'Type '+p).join(', '))}</div></div></div>`;
     return;
   }
   const r=compat(c.voltage,dv);if(!r)return;
   ve.className=`verdict show v-${r.s}`;
   const icons={ok:'✅',warn:'⚠️',bad:'⛔'};
-  ve.innerHTML=`<div class="vline"><span class="vicon">${icons[r.s]}</span><div><div class="vtitle">${r.t}</div><div class="vbody">${r.b}</div></div></div><div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:.12em;margin-bottom:7px">PLUG ADAPTER NEEDED FOR</div><div style="display:flex;flex-wrap:wrap;gap:5px">${c.plugs.map(p=>`<span class="pbadge">Type ${p}</span>`).join('')}</div></div>`;
+  ve.innerHTML=`<div class="vline"><span class="vicon">${icons[r.s]}</span><div><div class="vtitle">${r.t}</div><div class="vbody">${r.b}</div></div></div><div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:.12em;margin-bottom:7px">${T.verdict_plug_lbl}</div><div style="display:flex;flex-wrap:wrap;gap:5px">${c.plugs.map(p=>`<span class="pbadge">Type ${p}</span>`).join('')}</div></div>`;
 });
 
 /* ── PLUG GRID ────────────────────────────────────── */
-const pg=document.getElementById('plug-grid');
-PLUGS.forEach(p=>{
-  const d=document.createElement('div');d.className='plug-card';d.id='p-'+p.type;
-  d.innerHTML=`<div class="pc-img" role="img" aria-label="Type ${p.type} plug illustration">${PLUG_SVGS[p.type]||''}</div><div class="pc-body"><div class="pc-type">Type ${p.type}</div><div class="pc-name">${p.name}</div><div class="pc-countries">${p.countries}</div><div class="pc-volt">${p.voltage}</div></div>`;
-  pg.appendChild(d);
-});
+function renderPlugs(){
+  const T=TRANSLATIONS[currentLang];
+  const pg=document.getElementById('plug-grid');
+  pg.innerHTML='';
+  T.plugs.forEach(p=>{
+    const d=document.createElement('div');d.className='plug-card';d.id='p-'+p.type;
+    d.innerHTML=`<div class="pc-img" role="img" aria-label="Type ${p.type} plug illustration">${PLUG_SVGS[p.type]||''}</div><div class="pc-body"><div class="pc-type">Type ${p.type}</div><div class="pc-name">${p.name}</div><div class="pc-countries">${p.countries}</div><div class="pc-volt">${p.voltage}</div></div>`;
+    pg.appendChild(d);
+  });
+}
 
 /* ── COUNTRY TABLE ───────────────────────────────── */
 let region='all',search='',sk='name',sasc=true;
 function vsUS(v){
-  if(Math.abs(v-120)<=15)return'<span class="c-ok">✓ Same</span>';
-  if(v>=200)return'<span class="c-cv">⚡ Converter</span>';
-  return'<span class="c-ad">~ Adapter</span>';
+  const T=TRANSLATIONS[currentLang];
+  if(Math.abs(v-120)<=15)return`<span class="c-ok">${T.ct_same}</span>`;
+  if(v>=200)return`<span class="c-cv">${T.ct_conv}</span>`;
+  return`<span class="c-ad">${T.ct_adapt}</span>`;
 }
 function renderTable(){
+  const T=TRANSLATIONS[currentLang];
   let data=COUNTRIES.filter(c=>{
     if(region!=='all'&&c.region!==region)return false;
     if(search&&!c.name.toLowerCase().includes(search.toLowerCase()))return false;
@@ -799,7 +1337,7 @@ function renderTable(){
     if(typeof va==='string')return sasc?va.localeCompare(vb):vb.localeCompare(va);
     return sasc?va-vb:vb-va;});
   const tb=document.getElementById('ctbody');tb.innerHTML='';
-  if(!data.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-dim);font-family:var(--mono)">NO RESULTS</td></tr>';return;}
+  if(!data.length){tb.innerHTML=`<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-dim);font-family:var(--mono)">${T.ct_noresults}</td></tr>`;return;}
   data.forEach(c=>{
     const tr=document.createElement('tr');
     tr.innerHTML=`<td class="ct-name"><span class="ct-flag">${c.flag}</span>${c.name}</td><td class="ct-v">${c.voltage}V</td><td class="ct-hz">${c.freq} Hz</td><td><div class="ct-plugs">${c.plugs.map(p=>`<span class="ct-plug">${p}</span>`).join('')}</div></td><td>${vsUS(c.voltage)}</td>`;
@@ -818,33 +1356,43 @@ document.querySelectorAll('.ct th[data-s]').forEach(th=>{
     if(sk===th.dataset.s)sasc=!sasc;else{sk=th.dataset.s;sasc=true;}renderTable();
   });
 });
-renderTable();
 
 /* ── DEVICES ─────────────────────────────────────── */
-const dg=document.getElementById('dv-grid');
-DEVICES.forEach(d=>{
-  const div=document.createElement('div');div.className='dv-card '+(d.dual?'dv-dual':'dv-single');
-  div.innerHTML=`<div class="dv-icon">${d.icon}</div><div class="dv-name">${d.name}</div><div class="dv-v">${d.v} ${d.dual?'✓ Dual Voltage':'⚠️ Single Voltage'}</div><div class="dv-note">${d.note}</div>`;
-  dg.appendChild(div);
-});
+function renderDevices(){
+  const T=TRANSLATIONS[currentLang];
+  const dg=document.getElementById('dv-grid');
+  dg.innerHTML='';
+  T.devices.forEach(d=>{
+    const div=document.createElement('div');div.className='dv-card '+(d.dual?'dv-dual':'dv-single');
+    div.innerHTML=`<div class="dv-icon">${d.icon}</div><div class="dv-name">${d.name}</div><div class="dv-v">${d.v} ${d.dual?T.dual_label:T.single_label}</div><div class="dv-note">${d.note}</div>`;
+    dg.appendChild(div);
+  });
+}
 
 /* ── FAQ ─────────────────────────────────────────── */
-const fl=document.getElementById('faqlist');
-FAQS.forEach(f=>{
-  const div=document.createElement('div');div.className='faq-item';
-  div.innerHTML=`<button class="faq-q" aria-expanded="false"><span class="faq-qt">${f.q}</span><span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">${f.a}</div></div>`;
-  div.querySelector('.faq-q').addEventListener('click',()=>{
-    const open=div.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
-    if(!open){div.classList.add('open');div.querySelector('.faq-q').setAttribute('aria-expanded','true');}
+function renderFaqs(){
+  const T=TRANSLATIONS[currentLang];
+  const fl=document.getElementById('faqlist');
+  fl.innerHTML='';
+  T.faqs.forEach(f=>{
+    const div=document.createElement('div');div.className='faq-item';
+    div.innerHTML=`<button class="faq-q" aria-expanded="false"><span class="faq-qt">${f.q}</span><span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">${f.a}</div></div>`;
+    div.querySelector('.faq-q').addEventListener('click',()=>{
+      const open=div.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+      if(!open){div.classList.add('open');div.querySelector('.faq-q').setAttribute('aria-expanded','true');}
+    });
+    fl.appendChild(div);
   });
-  fl.appendChild(div);
-});
+}
 
 /* ── SMOOTH SCROLL ───────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});
 });
+
+/* ── INIT ────────────────────────────────────────── */
+applyTranslations();
 </script>
 </body>
 </html>
