@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voltage Checker — Will My Electronics Work Abroad? Free Travel Power Tool</title>
+<meta name="description" content="Check the voltage, frequency, and plug type for any country in seconds. Enter your device voltage and instantly know if you need an adapter or converter.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://voltagechecker.net/">
+<meta property="og:title" content="Voltage Checker — Will My Device Work in [Country]?">
+<meta property="og:description" content="Free tool: check any country's voltage, frequency, and plug types. Know instantly if you need a plug adapter or voltage converter.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Voltage Checker","description":"Check voltage, frequency, and plug types for any country. Determine if your electronics will work abroad or if you need an adapter or converter.","applicationCategory":"TravelApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if I plug a 110V device into a 220V outlet?","acceptedAnswer":{"@type":"Answer","text":"Your device will almost certainly be permanently damaged. The excess voltage overloads internal components causing overheating, short circuits, or fire. Never plug a 110V-only device into a 220V outlet without a voltage converter."}},{"@type":"Question","name":"What is the difference between a plug adapter and a voltage converter?","acceptedAnswer":{"@type":"Answer","text":"A plug adapter only changes the physical plug shape — it does NOT change the voltage. A voltage converter actually changes the electrical voltage. Most modern electronics (100-240V) only need a plug adapter."}},{"@type":"Question","name":"How do I know if my device is dual voltage?","acceptedAnswer":{"@type":"Answer","text":"Look at the power adapter label for 'INPUT:'. If it shows 100-240V it works worldwide and only needs a plug adapter. If it shows only 110V or 220V it is single-voltage."}},{"@type":"Question","name":"Do I need a voltage converter for my laptop?","acceptedAnswer":{"@type":"Answer","text":"Almost certainly not. The vast majority of laptop adapters since 2000 show 100-240V. Check your power brick — if it shows a range, you only need a plug adapter."}},{"@type":"Question","name":"What countries use 110V?","acceptedAnswer":{"@type":"Answer","text":"United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), and Japan (100V). Most of the rest of the world uses 220-240V."}}]}
+</script>
+<style>
+:root{
+  --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
+  --border:rgba(255,255,255,.07);--border-lit:rgba(255,255,255,.13);
+  --amber:#F5A623;--amber-d:rgba(245,166,35,.16);--amber-g:rgba(245,166,35,.32);
+  --green:#00D68F;--green-d:rgba(0,214,143,.12);
+  --red:#FF4757;--red-d:rgba(255,71,87,.12);
+  --yellow:#FFD43B;--yellow-d:rgba(255,212,59,.12);
+  --blue:#4DABF7;--blue-d:rgba(77,171,247,.12);
+  --text:#E8ECF4;--text-mid:#8892A4;--text-dim:#3E4758;
+  --mono:'JetBrains Mono',monospace;
+  --display:'Syne',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+  --r:8px;--rl:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse 70% 40% at 50% -10%,rgba(77,171,247,.05),transparent),
+  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:100% 100%,44px 44px,44px 44px}
+a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.wrap-md{max-width:800px;margin:0 auto;padding:0 20px}
+.sec{padding:72px 0}
+
+/* NAV */
+.nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto}
+.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px}
+.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo span{color:var(--amber)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
+  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
+.nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+
+/* HERO */
+.hero{padding:60px 20px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:700px;height:500px;background:radial-gradient(ellipse,rgba(245,166,35,.07),transparent 65%);pointer-events:none}
+.hero-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 520px;gap:48px;align-items:start}
+.hero-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;
+  animation:fadeUp .5s ease both}
+.hero-tag::before{content:'';display:block;width:20px;height:1px;background:var(--amber)}
+.hero-h1{font-family:var(--display);font-size:clamp(34px,4.5vw,58px);font-weight:800;line-height:1.06;
+  letter-spacing:-.02em;margin-bottom:18px;animation:fadeUp .55s .06s ease both}
+.hero-h1 mark{background:none;color:var(--amber)}
+.hero-sub{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:480px;
+  margin-bottom:32px;animation:fadeUp .55s .12s ease both}
+.chips{display:flex;flex-wrap:wrap;gap:8px;animation:fadeUp .55s .18s ease both}
+.chip{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:4px;
+  border:1px solid var(--border-lit);color:var(--text-mid);background:var(--bg-card);letter-spacing:.04em}
+
+/* TOOL PANEL */
+.tool{background:var(--bg-panel);border:1px solid var(--border-lit);border-radius:var(--rl);overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,0,0,.5),0 24px 48px rgba(0,0,0,.5);animation:fadeUp .6s .08s ease both}
+.tool-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.tool-dots{display:flex;gap:6px}
+.td{width:10px;height:10px;border-radius:50%}
+.td:nth-child(1){background:#FF5F57}.td:nth-child(2){background:#FFBD2E}.td:nth-child(3){background:#28C840}
+.tool-title{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:2px}
+.tool-body{padding:22px}
+
+/* READOUT */
+.readout{background:#070A0E;border:1px solid rgba(0,214,143,.13);border-radius:var(--r);
+  padding:18px;margin-bottom:18px;min-height:110px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.readout::before{content:'';position:absolute;inset:0;border-radius:var(--r);
+  background:linear-gradient(135deg,rgba(0,214,143,.02),transparent 60%);pointer-events:none}
+.ro-lbl{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:7px}
+.ro-main{font-family:var(--mono);font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.15;
+  color:var(--text-dim);transition:color .4s,text-shadow .4s}
+.readout.ok .ro-main{color:var(--green);text-shadow:0 0 18px var(--green-d)}
+.readout.got .ro-main{color:var(--amber);text-shadow:0 0 18px var(--amber-g)}
+.ro-sub{font-family:var(--mono);font-size:11px;color:var(--text-mid);margin-top:5px;line-height:1.5}
+.ro-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;display:none}
+.ro-cell{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center}
+.ro-cv{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--amber);line-height:1.1;margin-bottom:3px}
+.ro-ck{font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase}
+.ro-plugs{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.pbadge{font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;
+  background:var(--amber-d);border:1px solid rgba(245,166,35,.3);color:var(--amber);
+  cursor:pointer;transition:background .2s}
+.pbadge:hover{background:var(--amber-g)}
+
+/* STEPS */
+.slbl{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.snum{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;
+  border-radius:4px;background:var(--amber-d);border:1px solid var(--amber);color:var(--amber);font-size:10px}
+
+/* FIELDS */
+.field{margin-bottom:14px}
+.fsel,.finp{width:100%;background:var(--bg-card);border:1px solid var(--border-lit);color:var(--text);
+  padding:11px 14px;border-radius:var(--r);font-family:var(--mono);font-size:14px;font-weight:500;
+  transition:border-color .2s,box-shadow .2s}
+.fsel{padding-right:36px;appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238892A4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+.fsel:focus,.finp:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-d)}
+.finp::placeholder{color:var(--text-dim)}
+.fhint{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:4px}
+
+/* QUICK */
+.qlbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:7px}
+.qgrid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.qbtn{font-family:var(--mono);font-size:12px;font-weight:500;padding:5px 10px;border-radius:5px;
+  background:var(--bg-card);border:1px solid var(--border);color:var(--text-mid);cursor:pointer;
+  transition:all .18s;letter-spacing:.02em}
+.qbtn:hover,.qbtn.sel{border-color:var(--amber);color:var(--amber);background:var(--amber-d)}
+
+/* CHECK BTN */
+.btn{width:100%;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--amber);color:#0B0D11;border:none;border-radius:var(--r);
+  padding:13px 24px;cursor:pointer;transition:all .2s;margin-top:4px}
+.btn:hover{background:#FFB930;box-shadow:0 0 24px var(--amber-g);transform:translateY(-1px)}
+
+/* VERDICT */
+.verdict{display:none;margin-top:14px;padding:16px;border-radius:var(--r);
+  border:1px solid var(--border);background:var(--bg-card)}
+.verdict.show{display:block}
+.vline{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.vicon{font-size:22px;line-height:1;flex-shrink:0;margin-top:1px}
+.vtitle{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.2;margin-bottom:4px}
+.vbody{font-size:13px;color:var(--text-mid);line-height:1.6}
+.v-ok .vtitle{color:var(--green)}.v-warn .vtitle{color:var(--yellow)}.v-bad .vtitle{color:var(--red)}.v-info .vtitle{color:var(--blue)}
+
+/* AD */
+.ad{background:var(--bg-panel);border:1px dashed rgba(255,255,255,.06);border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim)}
+.ad-ldr{height:90px;margin:24px 0}
+.ad-ban{height:60px;margin:24px 0}
+
+/* SECTION HEADERS */
+.stag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
+.stag::before{content:'//';color:var(--text-dim);font-weight:400}
+.sh2{font-family:var(--display);font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.ssub{font-size:15px;color:var(--text-mid);max-width:560px;margin-bottom:44px;line-height:1.7}
+
+/* PLUG GRID */
+.plug-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.plug-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:0;
+  overflow:hidden;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column}
+.plug-card:hover{border-color:rgba(245,166,35,.35);box-shadow:0 0 22px rgba(245,166,35,.07)}
+.pc-img{background:#0D1017;border-bottom:1px solid var(--border);display:flex;
+  align-items:center;justify-content:center;padding:22px;height:140px}
+.pc-img svg{filter:drop-shadow(0 0 10px rgba(245,166,35,.25));transition:filter .2s}
+.plug-card:hover .pc-img svg{filter:drop-shadow(0 0 18px rgba(245,166,35,.5))}
+.pc-body{padding:16px;flex:1}
+.pc-type{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--amber);line-height:1;margin-bottom:7px}
+.pc-name{font-weight:500;font-size:13px;color:var(--text);margin-bottom:5px}
+.pc-countries{font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.55}
+.pc-volt{font-family:var(--mono);font-size:12px;font-weight:700;background:var(--amber-d);
+  border:1px solid rgba(245,166,35,.2);border-radius:4px;padding:3px 8px;display:inline-block;margin-top:9px;color:var(--amber)}
+
+/* COUNTRY TABLE */
+.div-top{border-top:1px solid var(--border)}
+.rpills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.rpill{font-family:var(--mono);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;
+  border:1px solid var(--border-lit);background:var(--bg-card);color:var(--text-mid);cursor:pointer;
+  transition:all .18s;letter-spacing:.04em;text-transform:uppercase}
+.rpill:hover,.rpill.on{border-color:var(--amber);color:var(--amber);background:var(--amber-d)}
+.csearch{width:100%;background:var(--bg-card);border:1px solid var(--border-lit);border-radius:var(--r);
+  padding:11px 16px 11px 40px;font-family:var(--mono);font-size:14px;color:var(--text);margin-bottom:18px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Ccircle cx='7' cy='7' r='4.5' stroke='%234A5568' stroke-width='1.5'/%3E%3Cpath d='M11 11l2.5 2.5' stroke='%234A5568' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:13px center;transition:border-color .2s,box-shadow .2s}
+.csearch:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-d)}
+.csearch::placeholder{color:var(--text-dim)}
+.tw{overflow-x:auto}
+.ct{width:100%;border-collapse:collapse;font-size:13px}
+.ct th{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--text-dim);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
+  cursor:pointer;user-select:none;white-space:nowrap}
+.ct th:hover{color:var(--amber)}
+.ct td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle;transition:background .15s}
+.ct tr:hover td{background:var(--bg-card)}
+.ct tr:last-child td{border-bottom:none}
+.ct-name{font-weight:500;color:var(--text)}
+.ct-flag{margin-right:7px;font-size:16px}
+.ct-v{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--amber)}
+.ct-hz{font-family:var(--mono);font-size:13px;color:var(--text-mid)}
+.ct-plugs{display:flex;gap:4px;flex-wrap:wrap}
+.ct-plug{font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 7px;border-radius:3px;
+  background:var(--bg-lift);border:1px solid var(--border-lit);color:var(--text-mid)}
+.c-ok{font-family:var(--mono);font-size:12px;color:var(--green)}
+.c-cv{font-family:var(--mono);font-size:12px;color:var(--red)}
+.c-ad{font-family:var(--mono);font-size:12px;color:var(--yellow)}
+
+/* DEVICES */
+.dv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:11px}
+.dv-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:18px}
+.dv-icon{font-size:26px;margin-bottom:9px}
+.dv-name{font-weight:500;font-size:14px;color:var(--text);margin-bottom:3px}
+.dv-v{font-family:var(--mono);font-size:12px;font-weight:700;margin-bottom:6px}
+.dv-note{font-size:12px;color:var(--text-mid);line-height:1.55}
+.dv-dual{border-color:rgba(0,214,143,.14)}.dv-dual .dv-v{color:var(--green)}
+.dv-single{border-color:rgba(255,71,87,.14)}.dv-single .dv-v{color:var(--yellow)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;font-family:var(--body);text-align:left;padding:18px 0;
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq-qt{font-size:15px;font-weight:500;color:var(--text);transition:color .2s}
+.faq-q:hover .faq-qt{color:var(--amber)}
+.faq-ic{width:24px;height:24px;border-radius:50%;border:1px solid var(--border-lit);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:16px;
+  color:var(--text-mid);flex-shrink:0;transition:transform .25s,background .2s,border-color .2s}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--amber);border-color:var(--amber);color:var(--bg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:400px}
+.faq-ai{font-size:14px;color:var(--text-mid);line-height:1.8;padding-bottom:18px}
+
+/* DISCLAIMER */
+.disc{background:var(--bg-panel);border-top:2px solid var(--amber);padding:18px 20px}
+.disc-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:flex-start}
+.disc-txt{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.7}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:44px 20px 28px;background:var(--bg-panel)}
+.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:32px}
+.f-logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);margin-bottom:9px}
+.f-logo span{color:var(--amber)}
+.f-tag{font-size:13px;color:var(--text-dim);line-height:1.7}
+.f-ctitle{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:13px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.f-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
+.f-links a:hover{color:var(--amber);text-decoration:none}
+.f-bot{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:18px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-copy{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.f-leg{display:flex;gap:14px}
+.f-leg a{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.f-leg a:hover{color:var(--amber)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:920px){.hero-in{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+@media(max-width:600px){.hero{padding:36px 16px 0}.sec{padding:48px 0}.footer-in{grid-template-columns:1fr}.ro-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo"><div class="logo-box">⚡</div>Voltage<span>Checker</span>.net</div>
+    <ul class="nav-links">
+      <li><a href="#tool">Checker</a></li>
+      <li><a href="#plugs">Plug Types</a></li>
+      <li><a href="#countries">Countries</a></li>
+      <li><a href="#devices">Devices</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#tool" class="nav-cta">Check Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="tool">
+  <div class="hero-in">
+    <div style="padding-bottom:64px">
+      <div class="hero-tag">Travel Power Guide</div>
+      <h1 class="hero-h1">Will my device work<br>in <mark id="hcountry">any country</mark>?</h1>
+      <p class="hero-sub">Check voltage, frequency, and plug types for 60+ countries. Enter your device's voltage and know instantly — adapter, converter, or nothing at all.</p>
+      <div class="chips">
+        <span class="chip">60+ countries</span>
+        <span class="chip">Adapter vs Converter</span>
+        <span class="chip">Device Compatibility</span>
+        <span class="chip">Free · No Sign-Up</span>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="tool-head">
+        <div class="tool-dots"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+        <span class="tool-title">POWER COMPATIBILITY CHECKER v2.0</span>
+      </div>
+      <div class="tool-body">
+        <div class="readout" id="readout">
+          <div class="ro-lbl">SELECT DESTINATION TO SEE POWER SPECS</div>
+          <div class="ro-main" id="ro-main">— AWAITING INPUT —</div>
+          <div class="ro-sub" id="ro-sub"></div>
+          <div class="ro-grid" id="ro-grid">
+            <div class="ro-cell"><div class="ro-cv" id="cv">—</div><div class="ro-ck">Voltage</div></div>
+            <div class="ro-cell"><div class="ro-cv" id="cf">—</div><div class="ro-ck">Frequency</div></div>
+            <div class="ro-cell"><div class="ro-cv" id="cs">—</div><div class="ro-ck">System</div></div>
+          </div>
+          <div id="ro-plugs-wrap" style="display:none">
+            <div class="ro-lbl" style="margin-top:11px">PLUG TYPES IN USE</div>
+            <div class="ro-plugs" id="ro-plugs"></div>
+          </div>
+        </div>
+
+        <div class="slbl"><span class="snum">1</span>DESTINATION COUNTRY</div>
+        <div class="field">
+          <div class="qlbl">POPULAR DESTINATIONS</div>
+          <div class="qgrid" id="qgrid">
+            <button class="qbtn" data-c="US">🇺🇸 USA</button>
+            <button class="qbtn" data-c="GB">🇬🇧 UK</button>
+            <button class="qbtn" data-c="FR">🇫🇷 France</button>
+            <button class="qbtn" data-c="DE">🇩🇪 Germany</button>
+            <button class="qbtn" data-c="JP">🇯🇵 Japan</button>
+            <button class="qbtn" data-c="AU">🇦🇺 Australia</button>
+            <button class="qbtn" data-c="IT">🇮🇹 Italy</button>
+            <button class="qbtn" data-c="TH">🇹🇭 Thailand</button>
+            <button class="qbtn" data-c="MX">🇲🇽 Mexico</button>
+            <button class="qbtn" data-c="AE">🇦🇪 UAE</button>
+            <button class="qbtn" data-c="IN">🇮🇳 India</button>
+            <button class="qbtn" data-c="BR">🇧🇷 Brazil</button>
+          </div>
+          <select class="fsel" id="csel" aria-label="Select destination country">
+            <option value="">— Or choose from all countries —</option>
+          </select>
+        </div>
+
+        <div class="slbl" style="margin-top:4px"><span class="snum">2</span>YOUR DEVICE VOLTAGE (OPTIONAL)</div>
+        <div class="field">
+          <input class="finp" id="dvolt" type="text" placeholder="e.g.  100-240V  or  110V  or  220V" aria-label="Device input voltage">
+          <div class="fhint">// Look on your power adapter label for "INPUT:"</div>
+        </div>
+        <button class="btn" id="checkBtn">⚡ CHECK COMPATIBILITY</button>
+        <div class="verdict" id="verdict"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="ad ad-ldr"><!-- Google AdSense: ca-pub-XXXXXXXXXX / slot XXXXXXXXXX -->ADVERTISEMENT</div>
+</div>
+
+<!-- PLUG GUIDE -->
+<section class="sec" id="plugs">
+  <div class="wrap">
+    <div class="stag">Reference Guide</div>
+    <h2 class="sh2">Plug Types Around the World</h2>
+    <p class="ssub">There are 15 standardized plug types. A plug adapter only changes the physical shape — it does NOT change voltage.</p>
+    <div class="plug-grid" id="plug-grid"></div>
+  </div>
+</section>
+
+<!-- COUNTRY TABLE -->
+<section class="sec div-top" id="countries">
+  <div class="wrap">
+    <div class="stag">Complete Database</div>
+    <h2 class="sh2">Voltage by Country — Full Reference</h2>
+    <p class="ssub">Browse all countries. The "vs. US" column shows what a US traveler needs. Click any column to sort.</p>
+    <div class="rpills" id="rpills">
+      <button class="rpill on" data-r="all">All</button>
+      <button class="rpill" data-r="americas">Americas</button>
+      <button class="rpill" data-r="europe">Europe</button>
+      <button class="rpill" data-r="asia">Asia &amp; Pacific</button>
+      <button class="rpill" data-r="africa">Africa &amp; Middle East</button>
+    </div>
+    <input class="csearch" id="csearch" type="text" placeholder="Search country…" aria-label="Search countries">
+    <div class="tw">
+      <table class="ct" id="ct" aria-label="Country voltage reference">
+        <thead><tr>
+          <th data-s="name">Country ↕</th>
+          <th data-s="voltage">Voltage ↕</th>
+          <th data-s="freq">Hz ↕</th>
+          <th>Plugs</th>
+          <th>vs. US</th>
+        </tr></thead>
+        <tbody id="ctbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="ad ad-ban">ADVERTISEMENT</div>
+</div>
+
+<!-- DEVICES -->
+<section class="sec div-top" id="devices">
+  <div class="wrap">
+    <div class="stag">Device Reference</div>
+    <h2 class="sh2">Dual-Voltage vs Single-Voltage</h2>
+    <p class="ssub">Most modern electronics are dual-voltage and work anywhere. Heating appliances are almost always single-voltage and need a converter.</p>
+    <div class="dv-grid" id="dv-grid"></div>
+    <div style="margin-top:28px;padding:20px;background:var(--bg-card);border:1px solid rgba(0,214,143,.18);border-radius:var(--rl)">
+      <div class="stag" style="margin-bottom:7px">Pro Tip</div>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.75">
+        <strong style="color:var(--green)">Reading the label:</strong>
+        Look for "INPUT:" on your power adapter.
+        <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = works everywhere, just need a plug adapter.
+        <span style="font-family:var(--mono);color:var(--yellow)">110V only</span> = North America &amp; Japan only.
+        <span style="font-family:var(--mono);color:var(--red)">220–240V only</span> = Europe, Asia, Australia only.
+        Frequency (50Hz vs 60Hz) rarely matters for modern electronics.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec div-top" id="faq">
+  <div class="wrap-md">
+    <div class="stag">Common Questions</div>
+    <h2 class="sh2">Frequently Asked Questions</h2>
+    <p class="ssub" style="margin-bottom:36px">Everything travelers ask about voltage, adapters, and converters.</p>
+    <div class="faq-list" id="faqlist"></div>
+  </div>
+</section>
+
+<div class="disc">
+  <div class="disc-in">
+    <span style="font-size:16px;flex-shrink:0">⚡</span>
+    <p class="disc-txt"><strong style="color:var(--text-mid)">Data Accuracy Notice:</strong> Voltage and plug data is based on IEC and ITU standards current as of 2025. Some countries have regional variations or transitional standards. Always verify with local accommodation or your equipment's manual before use. VoltageChecker.net is not responsible for device damage. When in doubt, use a certified voltage converter.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div class="f-logo">Voltage<span>Checker</span>.net</div>
+      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+    </div>
+    <div>
+      <div class="f-ctitle">Tools</div>
+      <ul class="f-links">
+        <li><a href="#tool">Compatibility Checker</a></li>
+        <li><a href="#plugs">Plug Type Guide</a></li>
+        <li><a href="#countries">Country Database</a></li>
+        <li><a href="#devices">Device Reference</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-ctitle">Info</div>
+      <ul class="f-links">
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bot">
+    <span class="f-copy">© 2025 VoltageChecker.net — Free for personal use</span>
+    <div class="f-leg"><a href="privacy.html">Privacy</a><a href="about.html">About</a></div>
+  </div>
+</footer>
+
+<script>
+/* ── DATA ─────────────────────────────────────────── */
+const COUNTRIES=[
+  {code:'US',flag:'🇺🇸',name:'United States',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'CA',flag:'🇨🇦',name:'Canada',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'MX',flag:'🇲🇽',name:'Mexico',voltage:127,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'BR',flag:'🇧🇷',name:'Brazil',voltage:127,freq:60,plugs:['N','C'],region:'americas',note:'Some areas 220V'},
+  {code:'AR',flag:'🇦🇷',name:'Argentina',voltage:220,freq:50,plugs:['C','I'],region:'americas'},
+  {code:'CL',flag:'🇨🇱',name:'Chile',voltage:220,freq:50,plugs:['C','L'],region:'americas'},
+  {code:'CO',flag:'🇨🇴',name:'Colombia',voltage:110,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'PE',flag:'🇵🇪',name:'Peru',voltage:220,freq:60,plugs:['A','B','C'],region:'americas'},
+  {code:'VE',flag:'🇻🇪',name:'Venezuela',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'EC',flag:'🇪🇨',name:'Ecuador',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'GT',flag:'🇬🇹',name:'Guatemala',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'CR',flag:'🇨🇷',name:'Costa Rica',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'PA',flag:'🇵🇦',name:'Panama',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'CU',flag:'🇨🇺',name:'Cuba',voltage:110,freq:60,plugs:['A','B','C'],region:'americas',note:'Some 220V'},
+  {code:'DO',flag:'🇩🇴',name:'Dominican Republic',voltage:110,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'GB',flag:'🇬🇧',name:'United Kingdom',voltage:230,freq:50,plugs:['G'],region:'europe'},
+  {code:'IE',flag:'🇮🇪',name:'Ireland',voltage:230,freq:50,plugs:['G'],region:'europe'},
+  {code:'FR',flag:'🇫🇷',name:'France',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'DE',flag:'🇩🇪',name:'Germany',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'IT',flag:'🇮🇹',name:'Italy',voltage:230,freq:50,plugs:['C','F','L'],region:'europe'},
+  {code:'ES',flag:'🇪🇸',name:'Spain',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'PT',flag:'🇵🇹',name:'Portugal',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'NL',flag:'🇳🇱',name:'Netherlands',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'BE',flag:'🇧🇪',name:'Belgium',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'CH',flag:'🇨🇭',name:'Switzerland',voltage:230,freq:50,plugs:['C','J'],region:'europe'},
+  {code:'AT',flag:'🇦🇹',name:'Austria',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'SE',flag:'🇸🇪',name:'Sweden',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'NO',flag:'🇳🇴',name:'Norway',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'DK',flag:'🇩🇰',name:'Denmark',voltage:230,freq:50,plugs:['C','E','K'],region:'europe'},
+  {code:'FI',flag:'🇫🇮',name:'Finland',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'PL',flag:'🇵🇱',name:'Poland',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'CZ',flag:'🇨🇿',name:'Czech Republic',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'HU',flag:'🇭🇺',name:'Hungary',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'GR',flag:'🇬🇷',name:'Greece',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'RO',flag:'🇷🇴',name:'Romania',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'UA',flag:'🇺🇦',name:'Ukraine',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'RU',flag:'🇷🇺',name:'Russia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'TR',flag:'🇹🇷',name:'Turkey',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'HR',flag:'🇭🇷',name:'Croatia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'SK',flag:'🇸🇰',name:'Slovakia',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'JP',flag:'🇯🇵',name:'Japan',voltage:100,freq:50,plugs:['A','B'],region:'asia',note:'50Hz east / 60Hz west'},
+  {code:'CN',flag:'🇨🇳',name:'China',voltage:220,freq:50,plugs:['A','C','I'],region:'asia'},
+  {code:'IN',flag:'🇮🇳',name:'India',voltage:230,freq:50,plugs:['C','D','M'],region:'asia'},
+  {code:'TH',flag:'🇹🇭',name:'Thailand',voltage:220,freq:50,plugs:['A','B','C'],region:'asia'},
+  {code:'SG',flag:'🇸🇬',name:'Singapore',voltage:230,freq:50,plugs:['G'],region:'asia'},
+  {code:'MY',flag:'🇲🇾',name:'Malaysia',voltage:240,freq:50,plugs:['G'],region:'asia'},
+  {code:'HK',flag:'🇭🇰',name:'Hong Kong',voltage:220,freq:50,plugs:['G'],region:'asia'},
+  {code:'KR',flag:'🇰🇷',name:'South Korea',voltage:220,freq:60,plugs:['C','F'],region:'asia'},
+  {code:'TW',flag:'🇹🇼',name:'Taiwan',voltage:110,freq:60,plugs:['A','B'],region:'asia'},
+  {code:'PH',flag:'🇵🇭',name:'Philippines',voltage:220,freq:60,plugs:['A','B','C'],region:'asia'},
+  {code:'ID',flag:'🇮🇩',name:'Indonesia',voltage:230,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'VN',flag:'🇻🇳',name:'Vietnam',voltage:220,freq:50,plugs:['A','C'],region:'asia'},
+  {code:'IL',flag:'🇮🇱',name:'Israel',voltage:230,freq:50,plugs:['C','H'],region:'asia'},
+  {code:'NP',flag:'🇳🇵',name:'Nepal',voltage:230,freq:50,plugs:['C','D','M'],region:'asia'},
+  {code:'KH',flag:'🇰🇭',name:'Cambodia',voltage:230,freq:50,plugs:['A','C','G'],region:'asia'},
+  {code:'MM',flag:'🇲🇲',name:'Myanmar',voltage:230,freq:50,plugs:['A','C','D','G'],region:'asia'},
+  {code:'AU',flag:'🇦🇺',name:'Australia',voltage:230,freq:50,plugs:['I'],region:'asia'},
+  {code:'NZ',flag:'🇳🇿',name:'New Zealand',voltage:230,freq:50,plugs:['I'],region:'asia'},
+  {code:'FJ',flag:'🇫🇯',name:'Fiji',voltage:240,freq:50,plugs:['I'],region:'asia'},
+  {code:'AE',flag:'🇦🇪',name:'UAE',voltage:230,freq:50,plugs:['G'],region:'africa'},
+  {code:'SA',flag:'🇸🇦',name:'Saudi Arabia',voltage:127,freq:60,plugs:['A','B','G'],region:'africa',note:'Some areas 220V'},
+  {code:'QA',flag:'🇶🇦',name:'Qatar',voltage:240,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'EG',flag:'🇪🇬',name:'Egypt',voltage:220,freq:50,plugs:['C','F'],region:'africa'},
+  {code:'MA',flag:'🇲🇦',name:'Morocco',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'TN',flag:'🇹🇳',name:'Tunisia',voltage:230,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'ZA',flag:'🇿🇦',name:'South Africa',voltage:230,freq:50,plugs:['C','M','N'],region:'africa'},
+  {code:'NG',flag:'🇳🇬',name:'Nigeria',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'KE',flag:'🇰🇪',name:'Kenya',voltage:240,freq:50,plugs:['G'],region:'africa'},
+  {code:'GH',flag:'🇬🇭',name:'Ghana',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'ET',flag:'🇪🇹',name:'Ethiopia',voltage:220,freq:50,plugs:['C','E','F','L'],region:'africa'},
+  {code:'TZ',flag:'🇹🇿',name:'Tanzania',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+];
+
+// SVG definitions for each plug type — technically accurate face-on illustrations
+const PLUG_SVGS = {
+  // Type A: two flat parallel vertical slots
+  A:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <rect x="30" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/>
+    <rect x="50" y="28" width="10" height="32" rx="3" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE A</text>
+  </svg>`,
+  // Type B: two flat parallel + round ground below center
+  B:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <rect x="28" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/>
+    <rect x="52" y="24" width="10" height="30" rx="3" fill="#F5A623" opacity=".9"/>
+    <circle cx="45" cy="72" r="6" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE B</text>
+  </svg>`,
+  // Type C: two round pins side by side
+  C:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="52" r="7" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="52" r="7" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE C</text>
+  </svg>`,
+  // Type D: three large round pins in triangle
+  D:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="45" cy="30" r="7.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="28" cy="62" r="7.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="62" cy="62" r="7.5" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE D</text>
+  </svg>`,
+  // Type E: two round + protruding hole (French)
+  E:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="46" r="7" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="46" r="7" fill="#F5A623" opacity=".9"/>
+    <circle cx="45" cy="72" r="5" fill="none" stroke="#F5A623" stroke-width="2" opacity=".7"/>
+    <circle cx="45" cy="72" r="2" fill="#F5A623" opacity=".4"/>
+    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE E</text>
+  </svg>`,
+  // Type F: two round + two side grounding clips
+  F:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="50" r="7" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="50" r="7" fill="#F5A623" opacity=".9"/>
+    <rect x="10" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/>
+    <rect x="72" y="45" width="8" height="10" rx="2" fill="#F5A623" opacity=".5"/>
+    <text x="45" y="88" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE F</text>
+  </svg>`,
+  // Type G: three rectangular pins — two horizontal top, one vertical bottom (British)
+  G:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <rect x="20" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-45 31 31)"/>
+    <rect x="48" y="26" width="22" height="10" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(45 59 31)"/>
+    <rect x="36" y="62" width="18" height="10" rx="2.5" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE G</text>
+  </svg>`,
+  // Type H: three pins in V shape (Israel)
+  H:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <ellipse cx="45" cy="30" rx="5" ry="7" fill="#F5A623" opacity=".9"/>
+    <ellipse cx="28" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(-25 28 60)"/>
+    <ellipse cx="62" cy="60" rx="5" ry="7" fill="#F5A623" opacity=".9" transform="rotate(25 62 60)"/>
+    <text x="45" y="92" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE H</text>
+  </svg>`,
+  // Type I: two flat angled pins + optional ground (Australia)
+  I:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <rect x="25" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(-30 30 50)"/>
+    <rect x="55" y="38" width="10" height="24" rx="2.5" fill="#F5A623" opacity=".9" transform="rotate(30 60 50)"/>
+    <rect x="36" y="66" width="10" height="18" rx="2.5" fill="#F5A623" opacity=".6"/>
+    <text x="45" y="96" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE I</text>
+  </svg>`,
+  // Type J: three round pins — two side + one offset ground (Swiss)
+  J:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="46" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="46" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".6"/>
+    <text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE J</text>
+  </svg>`,
+  // Type K: two round + U-shaped earth (Danish)
+  K:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="44" r="7" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="44" r="7" fill="#F5A623" opacity=".9"/>
+    <path d="M35 70 Q45 80 55 70" stroke="#F5A623" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+    <text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE K</text>
+  </svg>`,
+  // Type L: three round pins in a horizontal line (Italian)
+  L:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="22" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="45" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="68" cy="52" r="6.5" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="86" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE L</text>
+  </svg>`,
+  // Type M: three large round pins in triangle (South African)
+  M:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="45" cy="28" r="9" fill="#F5A623" opacity=".9"/>
+    <circle cx="26" cy="64" r="9" fill="#F5A623" opacity=".9"/>
+    <circle cx="64" cy="64" r="9" fill="#F5A623" opacity=".9"/>
+    <text x="45" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE M</text>
+  </svg>`,
+  // Type N: two round + central ground (Brazilian IEC)
+  N:`<svg width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="74" height="94" rx="12" fill="#1A2030" stroke="#F5A623" stroke-width="1.5"/>
+    <circle cx="32" cy="44" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="58" cy="44" r="6.5" fill="#F5A623" opacity=".9"/>
+    <circle cx="45" cy="68" r="6.5" fill="#F5A623" opacity=".7"/>
+    <text x="45" y="93" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" font-weight="700" fill="#F5A623" opacity=".5">TYPE N</text>
+  </svg>`,
+};
+
+const PLUGS=[
+  {type:'A',name:'Two Flat Parallel Pins',countries:'USA, Canada, Mexico, Japan',voltage:'120V / 100V'},
+  {type:'B',name:'Two Flat + One Round Pin',countries:'USA, Canada, Mexico',voltage:'120V'},
+  {type:'C',name:'Two Round Pins (Europlug)',countries:'Europe, South America, Asia, Africa',voltage:'230V'},
+  {type:'D',name:'Three Round Pins (triangle)',countries:'India, Pakistan, Nepal, Sri Lanka',voltage:'230V'},
+  {type:'E',name:'Two Round + Hole',countries:'France, Belgium, Poland, Czech Republic',voltage:'230V'},
+  {type:'F',name:'Two Round + Side Clips (Schuko)',countries:'Germany, Austria, Netherlands, Spain, most Europe',voltage:'230V'},
+  {type:'G',name:'Three Rectangular Pins',countries:'UK, Ireland, Singapore, Malaysia, Hong Kong, UAE, Kenya',voltage:'230–240V'},
+  {type:'H',name:'Three Pins (V-shape)',countries:'Israel only',voltage:'230V'},
+  {type:'I',name:'Two/Three Flat Angled Pins',countries:'Australia, New Zealand, China, Argentina',voltage:'230V / 220V'},
+  {type:'J',name:'Three Round Pins',countries:'Switzerland, Liechtenstein',voltage:'230V'},
+  {type:'K',name:'Two Round + U-pin',countries:'Denmark, Greenland',voltage:'230V'},
+  {type:'L',name:'Three Round In-Line Pins',countries:'Italy, Chile, parts of Africa',voltage:'230V'},
+  {type:'M',name:'Three Large Round Pins',countries:'South Africa, India (large appliances)',voltage:'230V'},
+  {type:'N',name:'Two Round + Ground (IEC)',countries:'Brazil (official since 2011)',voltage:'127V'},
+];
+
+const DEVICES=[
+  {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Almost all modern laptops are dual-voltage. Check power brick label.'},
+  {icon:'📱',name:'Phone / Tablet Charger',v:'100–240V',dual:true,note:'All modern USB chargers work worldwide. Only need plug adapter.'},
+  {icon:'📷',name:'Camera / Drone Charger',v:'100–240V',dual:true,note:'Most camera chargers since ~2010 are dual-voltage.'},
+  {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'All current-gen consoles are dual-voltage.'},
+  {icon:'🔌',name:'Electric Toothbrush',v:'100–240V',dual:true,note:'Modern Oral-B and Philips Sonicare are dual-voltage.'},
+  {icon:'🔋',name:'Power Bank',v:'100–240V',dual:true,note:'Charged via USB — works worldwide with plug adapter.'},
+  {icon:'💈',name:'Hair Dryer / Blow Dryer',v:'110V only ⚠️',dual:false,note:'Most US hair dryers are 110V only. Buy a travel dual-voltage model.'},
+  {icon:'🌀',name:'Flat Iron / Curling Iron',v:'110V only ⚠️',dual:false,note:'Most US models are 110V unless explicitly labeled dual-voltage.'},
+  {icon:'☕',name:'Coffee Maker / Electric Kettle',v:'110V only ⚠️',dual:false,note:'Heating appliances are nearly always single-voltage. Buy local.'},
+  {icon:'🎙️',name:'CPAP / Medical Devices',v:'100–240V',dual:true,note:'Most modern CPAP machines are dual-voltage. Confirm with manufacturer.'},
+];
+
+const FAQS=[
+  {q:'What happens if I plug a 110V device into a 220V outlet?',a:'Your device will almost certainly be permanently damaged or destroyed. The excess voltage immediately overloads internal components, causing overheating, short circuits, or in some cases fire. Never plug a 110V-only device into a 220V outlet without a step-down voltage converter. There is no warning — the damage is instant.'},
+  {q:'What is the difference between a plug adapter and a voltage converter?',a:'A plug adapter only changes the physical shape of the plug to fit a foreign outlet — it does NOT change the voltage. A voltage converter (or transformer) actually changes the electrical voltage from 220V to 110V or vice versa. Most modern electronics like laptops, phone chargers, and cameras are dual-voltage (100–240V) and only need a plug adapter. Cost difference: adapters cost $5–20, quality converters cost $30–150+.'},
+  {q:'How do I know if my device is dual voltage?',a:'Look at the small print on your power adapter or device near the electrical specs. Find the label showing "INPUT:". If it says "100–240V" or "110–240V" it is dual voltage and works anywhere in the world — you only need a plug adapter. If it says only "110V" or "120V" it needs a converter abroad. If it says "220–240V" only, it won\'t work in North America without a step-up converter.'},
+  {q:'Do I need a voltage converter for my laptop?',a:'Almost certainly not. Nearly all laptop power adapters made after 2000 are dual-voltage (100–240V, 50–60Hz). Check the label on your power brick — if it shows a voltage range, you only need a plug adapter costing a few dollars. The same applies to phone chargers, most camera chargers, and gaming console power supplies.'},
+  {q:'What countries use 110V?',a:'Countries using approximately 110–127V: United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), Venezuela (120V), Dominican Republic (110V), and Japan (100V — the only country at exactly 100V). Most of the rest of the world uses 220–240V.'},
+  {q:'Does 50Hz vs 60Hz frequency matter?',a:'For most modern electronics — no. Laptops, phone chargers, cameras, and most personal devices work fine at both 50Hz and 60Hz. However, some motor-based appliances like electric clocks, some fans, and older hair dryers are designed for a specific frequency and may run slightly differently. For travelers, frequency is rarely a concern.'},
+  {q:'What is the best universal travel adapter?',a:'Look for an adapter covering Types A, B, C, D, E, F, G, and I — this covers 95%+ of countries. Popular reliable brands include Ceptics, Bestek, and Epicka. For multiple devices, choose one with built-in USB-A and USB-C ports. Note: these are adapter-only and will NOT change voltage — your devices must be dual-voltage (100–240V) to use safely.'},
+];
+
+/* ── POPULATE SELECT ─────────────────────────────── */
+const sel=document.getElementById('csel');
+[...COUNTRIES].sort((a,b)=>a.name.localeCompare(b.name)).forEach(c=>{
+  const o=document.createElement('option');o.value=c.code;o.textContent=c.flag+' '+c.name;sel.appendChild(o);
+});
+
+/* ── VOLTAGE PARSER ──────────────────────────────── */
+function parseV(s){
+  if(!s||!s.trim())return null;
+  s=s.trim().replace(/\s/g,'');
+  const r=s.match(/(\d+)[–\-~to]+(\d+)V?/i);
+  if(r)return{min:+r[1],max:+r[2]};
+  const m=s.match(/(\d+)V?/i);
+  if(m){const v=+m[1];return{min:v,max:v};}
+  return null;
+}
+function compat(cv,dv){
+  if(!dv)return null;
+  const lo=cv*.9,hi=cv*1.1;
+  if(dv.min<=hi&&dv.max>=lo)return{s:'ok',t:'✅ COMPATIBLE — Plug Adapter Only',b:`Your device (${dv.min===dv.max?dv.min+'V':dv.min+'–'+dv.max+'V'}) supports the local ${cv}V supply. You only need a plug adapter — no converter required.`};
+  if(dv.max<lo)return{s:'bad',t:'⛔ VOLTAGE MISMATCH — Converter Required',b:`Your device is rated up to ${dv.max}V but the local supply is ${cv}V. Plugging in directly WILL DAMAGE your device. You need a step-down converter (${cv}V → ${dv.max}V) plus a plug adapter.`};
+  return{s:'warn',t:'⚠️ LOW VOLTAGE — Check Device',b:`Your device expects ${dv.min}V but the local supply is only ${cv}V. The device may not work properly. Check for a manual voltage selector or use a step-up converter.`};
+}
+
+/* ── STATE ───────────────────────────────────────── */
+let selCode='';
+function pick(code){
+  selCode=code;sel.value=code;
+  document.querySelectorAll('.qbtn').forEach(b=>{
+    const on=b.dataset.c===code;
+    b.classList.toggle('sel',on);
+  });
+  const c=COUNTRIES.find(x=>x.code===code);
+  if(!c)return;
+  document.getElementById('hcountry').textContent=c.name;
+  const ro=document.getElementById('readout');
+  ro.className='readout got';
+  document.getElementById('ro-main').textContent=c.flag+' '+c.name.toUpperCase();
+  document.getElementById('ro-sub').textContent=c.note||'';
+  const grid=document.getElementById('ro-grid');grid.style.display='grid';
+  document.getElementById('cv').textContent=c.voltage+'V';
+  document.getElementById('cf').textContent=c.freq+'Hz';
+  document.getElementById('cs').textContent=c.voltage>=200?'220–240V':c.voltage>=110?'110–127V':'100V';
+  const pw=document.getElementById('ro-plugs-wrap');pw.style.display='block';
+  const pe=document.getElementById('ro-plugs');pe.innerHTML='';
+  c.plugs.forEach(p=>{
+    const sp=document.createElement('span');sp.className='pbadge';sp.textContent='Type '+p;
+    sp.addEventListener('click',()=>{const el=document.getElementById('p-'+p);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});});
+    pe.appendChild(sp);
+  });
+  document.getElementById('verdict').className='verdict';
+  document.getElementById('verdict').innerHTML='';
+}
+
+document.getElementById('qgrid').addEventListener('click',e=>{const b=e.target.closest('.qbtn');if(b)pick(b.dataset.c);});
+sel.addEventListener('change',()=>{if(sel.value)pick(sel.value);});
+
+/* ── CHECK BUTTON ────────────────────────────────── */
+document.getElementById('checkBtn').addEventListener('click',()=>{
+  if(!selCode){sel.style.borderColor='var(--amber)';sel.focus();return;}
+  const c=COUNTRIES.find(x=>x.code===selCode);
+  const dv=parseV(document.getElementById('dvolt').value);
+  const ve=document.getElementById('verdict');
+  if(!dv){
+    ve.className='verdict show v-info';
+    ve.innerHTML=`<div class="vline"><span class="vicon">ℹ️</span><div><div class="vtitle">DESTINATION LOADED</div><div class="vbody"><strong style="color:var(--amber)">${c.name}</strong> uses <strong style="color:var(--amber)">${c.voltage}V / ${c.freq}Hz</strong> with plugs: <strong style="color:var(--amber)">${c.plugs.map(p=>'Type '+p).join(', ')}</strong>.<br><br>Enter your device's input voltage above for a full compatibility verdict. Look for "INPUT:" on your power adapter.</div></div></div>`;
+    return;
+  }
+  const r=compat(c.voltage,dv);if(!r)return;
+  ve.className=`verdict show v-${r.s}`;
+  const icons={ok:'✅',warn:'⚠️',bad:'⛔'};
+  ve.innerHTML=`<div class="vline"><span class="vicon">${icons[r.s]}</span><div><div class="vtitle">${r.t}</div><div class="vbody">${r.b}</div></div></div><div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)"><div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);letter-spacing:.12em;margin-bottom:7px">PLUG ADAPTER NEEDED FOR</div><div style="display:flex;flex-wrap:wrap;gap:5px">${c.plugs.map(p=>`<span class="pbadge">Type ${p}</span>`).join('')}</div></div>`;
+});
+
+/* ── PLUG GRID ────────────────────────────────────── */
+const pg=document.getElementById('plug-grid');
+PLUGS.forEach(p=>{
+  const d=document.createElement('div');d.className='plug-card';d.id='p-'+p.type;
+  d.innerHTML=`<div class="pc-img" role="img" aria-label="Type ${p.type} plug illustration">${PLUG_SVGS[p.type]||''}</div><div class="pc-body"><div class="pc-type">Type ${p.type}</div><div class="pc-name">${p.name}</div><div class="pc-countries">${p.countries}</div><div class="pc-volt">${p.voltage}</div></div>`;
+  pg.appendChild(d);
+});
+
+/* ── COUNTRY TABLE ───────────────────────────────── */
+let region='all',search='',sk='name',sasc=true;
+function vsUS(v){
+  if(Math.abs(v-120)<=15)return'<span class="c-ok">✓ Same</span>';
+  if(v>=200)return'<span class="c-cv">⚡ Converter</span>';
+  return'<span class="c-ad">~ Adapter</span>';
+}
+function renderTable(){
+  let data=COUNTRIES.filter(c=>{
+    if(region!=='all'&&c.region!==region)return false;
+    if(search&&!c.name.toLowerCase().includes(search.toLowerCase()))return false;
+    return true;
+  });
+  data.sort((a,b)=>{let va=a[sk],vb=b[sk];
+    if(typeof va==='string')return sasc?va.localeCompare(vb):vb.localeCompare(va);
+    return sasc?va-vb:vb-va;});
+  const tb=document.getElementById('ctbody');tb.innerHTML='';
+  if(!data.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-dim);font-family:var(--mono)">NO RESULTS</td></tr>';return;}
+  data.forEach(c=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="ct-name"><span class="ct-flag">${c.flag}</span>${c.name}</td><td class="ct-v">${c.voltage}V</td><td class="ct-hz">${c.freq} Hz</td><td><div class="ct-plugs">${c.plugs.map(p=>`<span class="ct-plug">${p}</span>`).join('')}</div></td><td>${vsUS(c.voltage)}</td>`;
+    tb.appendChild(tr);
+  });
+}
+document.getElementById('rpills').addEventListener('click',e=>{
+  const p=e.target.closest('.rpill');if(!p)return;
+  region=p.dataset.r;
+  document.querySelectorAll('.rpill').forEach(x=>x.classList.remove('on'));
+  p.classList.add('on');renderTable();
+});
+document.getElementById('csearch').addEventListener('input',e=>{search=e.target.value;renderTable();});
+document.querySelectorAll('.ct th[data-s]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    if(sk===th.dataset.s)sasc=!sasc;else{sk=th.dataset.s;sasc=true;}renderTable();
+  });
+});
+renderTable();
+
+/* ── DEVICES ─────────────────────────────────────── */
+const dg=document.getElementById('dv-grid');
+DEVICES.forEach(d=>{
+  const div=document.createElement('div');div.className='dv-card '+(d.dual?'dv-dual':'dv-single');
+  div.innerHTML=`<div class="dv-icon">${d.icon}</div><div class="dv-name">${d.name}</div><div class="dv-v">${d.v} ${d.dual?'✓ Dual Voltage':'⚠️ Single Voltage'}</div><div class="dv-note">${d.note}</div>`;
+  dg.appendChild(div);
+});
+
+/* ── FAQ ─────────────────────────────────────────── */
+const fl=document.getElementById('faqlist');
+FAQS.forEach(f=>{
+  const div=document.createElement('div');div.className='faq-item';
+  div.innerHTML=`<button class="faq-q" aria-expanded="false"><span class="faq-qt">${f.q}</span><span class="faq-ic">+</span></button><div class="faq-a"><div class="faq-ai">${f.a}</div></div>`;
+  div.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=div.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!open){div.classList.add('open');div.querySelector('.faq-q').setAttribute('aria-expanded','true');}
+  });
+  fl.appendChild(div);
+});
+
+/* ── SMOOTH SCROLL ───────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});
+});
+</script>
+</body>
+</html>
