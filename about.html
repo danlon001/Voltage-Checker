@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Voltage Checker</title>
+<meta name="description" content="About Voltage Checker — a free tool built by an independent traveler to help you know if your electronics will work abroad.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://voltagechecker.net/about.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8498912552902957" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
+  --border:rgba(255,255,255,.07);--border-lit:rgba(255,255,255,.13);
+  --amber:#F5A623;--amber-d:rgba(245,166,35,.16);--amber-g:rgba(245,166,35,.32);
+  --green:#00D68F;--green-d:rgba(0,214,143,.12);
+  --red:#FF4757;--blue:#4DABF7;--blue-d:rgba(77,171,247,.12);
+  --text:#E8ECF4;--text-mid:#8892A4;--text-dim:#3E4758;
+  --mono:'JetBrains Mono',monospace;
+  --display:'Syne',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+  --r:8px;--rl:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse 70% 40% at 50% -10%,rgba(77,171,247,.05),transparent),
+  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:100% 100%,44px 44px,44px 44px}
+a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.wrap-md{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+.nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
+.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
+.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo span{color:var(--amber)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
+  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
+.nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+
+/* PAGE HERO */
+.page-hero{padding:64px 20px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:700px;height:400px;background:radial-gradient(ellipse,rgba(245,166,35,.06),transparent 65%);pointer-events:none}
+.ph-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
+.ph-tag::before{content:'';display:block;width:20px;height:1px;background:var(--amber)}
+.ph-h1{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.06;
+  letter-spacing:-.02em;margin-bottom:14px}
+.ph-sub{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:520px}
+
+/* CONTENT */
+.content{padding:60px 0 80px}
+.stag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
+.stag::before{content:'//';color:var(--text-dim);font-weight:400}
+.sh2{font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+.prose{font-size:15px;color:var(--text-mid);line-height:1.85}
+.prose p{margin-bottom:18px}
+.prose p:last-child{margin-bottom:0}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:32px 0}
+.acard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:24px}
+.acard-icon{font-size:28px;margin-bottom:12px}
+.acard-title{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);margin-bottom:7px;letter-spacing:.03em}
+.acard-body{font-size:13px;color:var(--text-mid);line-height:1.65}
+
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0}
+.stat-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:24px;text-align:center}
+.stat-n{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--amber);line-height:1}
+.stat-l{font-size:12px;color:var(--text-dim);margin-top:6px;letter-spacing:.04em}
+
+/* DIVIDER */
+.sec-div{border-top:1px solid var(--border);margin:52px 0}
+
+/* DISCLAIMER */
+.disc{background:var(--bg-panel);border-top:2px solid var(--amber);padding:18px 20px}
+.disc-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:flex-start}
+.disc-txt{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.7}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:44px 20px 28px;background:var(--bg-panel)}
+.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:32px}
+.f-logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);margin-bottom:9px}
+.f-logo span{color:var(--amber)}
+.f-tag{font-size:13px;color:var(--text-dim);line-height:1.7}
+.f-ctitle{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:13px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.f-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
+.f-links a:hover{color:var(--amber);text-decoration:none}
+.f-bot{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:18px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.f-copy{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.f-leg{display:flex;gap:14px}
+.f-leg a{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.f-leg a:hover{color:var(--amber)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade{animation:fadeUp .5s ease both}
+
+@media(max-width:920px){.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}.stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.page-hero{padding:44px 16px 40px}.content{padding:40px 0 60px}.stat-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/"><div class="logo-box">⚡</div>Voltage<span>Checker</span></a>
+    <ul class="nav-links">
+      <li><a href="/#tool">Checker</a></li>
+      <li><a href="/#plugs">Plug Types</a></li>
+      <li><a href="/#countries">Countries</a></li>
+      <li><a href="/#devices">Devices</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/#tool" class="nav-cta">Check Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="wrap-md">
+    <div class="ph-tag fade">About</div>
+    <h1 class="ph-h1 fade">Built by a traveler,<br>for travelers.</h1>
+    <p class="ph-sub fade">Voltage Checker started as a personal frustration — arriving abroad with the wrong adapter. Now it's a free resource used by travelers worldwide.</p>
+  </div>
+</div>
+
+<section class="content">
+  <div class="wrap-md">
+
+    <div class="stag">The Story</div>
+    <h2 class="sh2">Why this exists</h2>
+    <div class="prose">
+      <p>I've always traveled with too many gadgets and not enough knowledge about power. After frying a hair dryer in a hotel in Europe and scrambling to find the right adapter at the airport at midnight, I realized there was no fast, simple tool that just answered the question: <em>will my device work here?</em></p>
+      <p>Most resources were buried in travel forums or overly complicated. So I built Voltage Checker — a no-nonsense, free reference that tells you exactly what you need before you pack your bag.</p>
+      <p>There's no account, no subscription, no paywall. Just answers.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-n">195+</div>
+        <div class="stat-l">Countries covered</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">15</div>
+        <div class="stat-l">Plug types documented</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Free, always</div>
+      </div>
+    </div>
+
+    <div class="sec-div"></div>
+
+    <div class="stag">What's Inside</div>
+    <h2 class="sh2">Everything you need to travel safely</h2>
+
+    <div class="card-grid">
+      <div class="acard">
+        <div class="acard-icon">⚡</div>
+        <div class="acard-title">Compatibility Checker</div>
+        <div class="acard-body">Enter your destination and device voltage — get an instant verdict: safe, adapter needed, or converter required.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">🔌</div>
+        <div class="acard-title">Plug Type Guide</div>
+        <div class="acard-body">Visual reference for all 15 international plug types (A through O), with countries and voltage specs for each.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">🌍</div>
+        <div class="acard-title">Country Database</div>
+        <div class="acard-body">Sortable, searchable table of voltage, frequency, and plug types for 195+ countries worldwide.</div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon">💻</div>
+        <div class="acard-title">Device Reference</div>
+        <div class="acard-body">Quick guide to which common devices are dual-voltage (safe anywhere) and which need a converter.</div>
+      </div>
+    </div>
+
+    <div class="sec-div"></div>
+
+    <div class="stag">Principles</div>
+    <h2 class="sh2">How I try to keep this useful</h2>
+    <div class="prose">
+      <p><strong style="color:var(--text)">Accuracy over speed.</strong> Every country entry is verified against official and technical sources. If something looks off, I'd rather update it than leave travelers with bad info.</p>
+      <p><strong style="color:var(--text)">No dark patterns.</strong> No pop-ups, no newsletter signups, no tracking walls. The site is kept alive by unobtrusive ads, which I appreciate you understanding.</p>
+      <p><strong style="color:var(--text)">Always free.</strong> Travel information should be accessible to everyone, regardless of budget. That's not changing.</p>
+    </div>
+
+    <div class="sec-div"></div>
+
+    <div style="background:var(--bg-card);border:1px solid rgba(77,171,247,.15);border-radius:var(--rl);padding:28px">
+      <div class="stag" style="margin-bottom:8px">Get in Touch</div>
+      <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Found an error? Have a suggestion? I read every message. Reach out via the <a href="contact.html">contact page</a> and I'll get back to you.</p>
+      <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--amber-d);border:1px solid var(--amber);color:var(--amber);padding:9px 18px;border-radius:var(--r);transition:background .2s" onmouseover="this.style.background='rgba(245,166,35,.32)'" onmouseout="this.style.background='rgba(245,166,35,.16)'">Contact →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="disc">
+  <div class="disc-in">
+    <span style="font-size:16px;flex-shrink:0">⚡</span>
+    <p class="disc-txt">Disclaimer: Voltage data is provided for general reference. Always verify with official local sources before traveling. Voltage Checker is not liable for any damage caused by incorrect adapter or converter use.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div>
+      <div class="f-logo">Voltage<span>Checker</span></div>
+      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+    </div>
+    <div>
+      <div class="f-ctitle">Tools</div>
+      <ul class="f-links">
+        <li><a href="/#tool">Compatibility Checker</a></li>
+        <li><a href="/#plugs">Plug Type Guide</a></li>
+        <li><a href="/#countries">Country Database</a></li>
+        <li><a href="/#devices">Device Reference</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-ctitle">Info</div>
+      <ul class="f-links">
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bot">
+    <span class="f-copy">© Voltage Checker — Free for personal use</span>
+    <div class="f-leg">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -85,16 +85,17 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 
 /* NAV */
 .nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0}
-.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:8px}
+.logo{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0}
+.logo-box{width:26px;height:26px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:13px}
 .logo span{color:var(--amber)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
+.nav-links{display:flex;gap:0;list-style:none;align-items:center;flex-wrap:nowrap;overflow:hidden}
+.nav-links li{flex-shrink:1;min-width:0}
+.nav-links a{font-size:12px;color:var(--text-mid);transition:color .2s;white-space:nowrap;padding:0 10px;display:block}
 .nav-links a:hover{color:var(--text);text-decoration:none}
-.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+.nav-cta{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
-  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
+  padding:6px 12px;border-radius:var(--r);transition:background .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
 
 /* LANG SWITCHER */
@@ -310,6 +311,7 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
+@media(max-width:1060px){.nav-links a{font-size:11px;padding:0 7px}}
 @media(max-width:920px){.hero-in{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}.lang-switcher{gap:3px}.lang-btn{font-size:10px;padding:3px 6px}}
 @media(max-width:600px){.hero{padding:36px 16px 0}.sec{padding:48px 0}.footer-in{grid-template-columns:1fr}.ro-grid{grid-template-columns:1fr 1fr}}
 </style>
@@ -325,6 +327,8 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
       <li><a href="#countries" data-i18n="nav_countries">Countries</a></li>
       <li><a href="#devices" data-i18n="nav_devices">Devices</a></li>
       <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+      <li><a href="about.html" data-i18n="nav_about">About</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
       <li><a href="#tool" class="nav-cta" data-i18n="nav_cta">Check Now</a></li>
     </ul>
     <div class="lang-switcher" id="langSwitcher">
@@ -505,12 +509,19 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
       <div class="f-ctitle" data-i18n="footer_info">Info</div>
       <ul class="f-links">
         <li><a href="#faq">FAQ</a></li>
-       <!-- <li><a href="contact.html" data-i18n="footer_contact">Contact</a></li> -->
+        <li><a href="about.html" data-i18n="footer_about">About</a></li>
+        <li><a href="contact.html" data-i18n="footer_contact">Contact</a></li>
+        <li><a href="privacy-policy.html" data-i18n="footer_privacy">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="f-bot">
     <span class="f-copy" data-i18n="footer_copy">© Voltage Checker — Free for personal use</span>
+    <div class="f-leg">
+      <a href="privacy-policy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="about.html" data-i18n="footer_about">About</a>
+      <a href="contact.html" data-i18n="footer_contact">Contact</a>
+    </div>
   </div>
 </footer>
 
@@ -520,10 +531,11 @@ const TRANSLATIONS = {
   en: {
     nav_checker:'Checker', nav_plugs:'Plug Types', nav_countries:'Countries',
     nav_devices:'Devices', nav_faq:'FAQ', nav_cta:'Check Now',
+    nav_about:'About', nav_contact:'Contact', nav_privacy:'Privacy Policy',
     hero_tag:'Travel Power Guide',
     hero_h1:'Will my device work<br>in <mark id="hcountry">any country</mark>?',
-    hero_sub:'Check voltage, frequency, and plug types for 60+ countries. Enter your device\'s voltage and know instantly — adapter, converter, or nothing at all.',
-    chip1:'60+ countries', chip2:'Adapter vs Converter', chip3:'Device Compatibility', chip4:'Free · No Sign-Up',
+    hero_sub:'Check voltage, frequency, and plug types for 195+ countries. Enter your device\'s voltage and know instantly — adapter, converter, or nothing at all.',
+    chip1:'195+ countries', chip2:'Adapter vs Converter', chip3:'Device Compatibility', chip4:'Free · No Sign-Up',
     tool_title:'POWER COMPATIBILITY CHECKER v2.0',
     ro_lbl_initial:'SELECT DESTINATION TO SEE POWER SPECS',
     ro_main_initial:'— AWAITING INPUT —',
@@ -567,7 +579,7 @@ const TRANSLATIONS = {
       {q:'What happens if I plug a 110V device into a 220V outlet?',a:'Your device will almost certainly be permanently damaged or destroyed. The excess voltage immediately overloads internal components, causing overheating, short circuits, or in some cases fire. Never plug a 110V-only device into a 220V outlet without a step-down voltage converter. There is no warning — the damage is instant.'},
       {q:'What is the difference between a plug adapter and a voltage converter?',a:'A plug adapter only changes the physical shape of the plug to fit a foreign outlet — it does NOT change the voltage. A voltage converter (or transformer) actually changes the electrical voltage from 220V to 110V or vice versa. Most modern electronics like laptops, phone chargers, and cameras are dual-voltage (100–240V) and only need a plug adapter. Cost difference: adapters cost $5–20, quality converters cost $30–150+.'},
       {q:'How do I know if my device is dual voltage?',a:'Look at the small print on your power adapter or device near the electrical specs. Find the label showing "INPUT:". If it says "100–240V" or "110–240V" it is dual voltage and works anywhere in the world — you only need a plug adapter. If it says only "110V" or "120V" it needs a converter abroad. If it says "220–240V" only, it won\'t work in North America without a step-up converter.'},
-      {q:'Do I need a voltage converter for my laptop?',a:'Almost certainly not. Nearly all laptop power adapters made after 2000 are dual-voltage (100–240V, 50–60Hz). Check the label on your power brick — if it shows a voltage range, you only need a plug adapter costing a few dollars. The same applies to phone chargers, most camera chargers, and gaming console power supplies.'},
+      {q:'Do I need a voltage converter for my laptop?',a:'Almost certainly not. Nearly all laptop power adapters are dual-voltage (100–240V, 50–60Hz). Check the label on your power brick — if it shows a voltage range, you only need a plug adapter. The same applies to phone chargers, most camera chargers, and gaming console power supplies.'},
       {q:'What countries use 110V?',a:'Countries using approximately 110–127V: United States (120V), Canada (120V), Mexico (127V), most of Central America, Colombia (110V), Venezuela (120V), Dominican Republic (110V), and Japan (100V — the only country at exactly 100V). Most of the rest of the world uses 220–240V.'},
       {q:'Does 50Hz vs 60Hz frequency matter?',a:'For most modern electronics — no. Laptops, phone chargers, cameras, and most personal devices work fine at both 50Hz and 60Hz. However, some motor-based appliances like electric clocks, some fans, and older hair dryers are designed for a specific frequency and may run slightly differently. For travelers, frequency is rarely a concern.'},
       {q:'What is the best universal travel adapter?',a:'Look for an adapter covering Types A, B, C, D, E, F, G, and I — this covers 95%+ of countries. For multiple devices, choose one with built-in USB-A and USB-C ports. Note: these are adapter-only and will NOT change voltage — your devices must be dual-voltage (100–240V) to use safely.'},
@@ -575,7 +587,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Almost all modern laptops are dual-voltage. Check power brick label.'},
       {icon:'📱',name:'Phone / Tablet Charger',v:'100–240V',dual:true,note:'All modern USB chargers work worldwide. Only need plug adapter.'},
-      {icon:'📷',name:'Camera / Drone Charger',v:'100–240V',dual:true,note:'Most camera chargers since ~2010 are dual-voltage.'},
+      {icon:'📷',name:'Camera / Drone Charger',v:'100–240V',dual:true,note:'Most camera chargers are dual-voltage.'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'All current-gen consoles are dual-voltage.'},
       {icon:'🔌',name:'Electric Toothbrush',v:'100–240V',dual:true,note:'Modern Oral-B and Philips Sonicare are dual-voltage.'},
       {icon:'🔋',name:'Power Bank',v:'100–240V',dual:true,note:'Charged via USB — works worldwide with plug adapter.'},
@@ -598,17 +610,18 @@ const TRANSLATIONS = {
       {type:'K',name:'Two Round + U-pin',countries:'Denmark, Greenland',voltage:'230V'},
       {type:'L',name:'Three Round In-Line Pins',countries:'Italy, Chile, parts of Africa',voltage:'230V'},
       {type:'M',name:'Three Large Round Pins',countries:'South Africa, India (large appliances)',voltage:'230V'},
-      {type:'N',name:'Two Round + Ground (IEC)',countries:'Brazil (official since 2011)',voltage:'127V'},
+      {type:'N',name:'Two Round + Ground (IEC)',countries:'Brazil (NBR 14136 standard)',voltage:'127V'},
     ],
   },
 
   es: {
     nav_checker:'Verificador', nav_plugs:'Tipos de Enchufe', nav_countries:'Países',
-    nav_devices:'Dispositivos', nav_faq:'Preguntas', nav_cta:'Verificar',
+    nav_devices:'Dispositivos', nav_faq:'Preguntas', nav_cta:'Verificar Ahora',
+    nav_about:'Acerca de', nav_contact:'Contacto', nav_privacy:'Privacidad',
     hero_tag:'Guía de Electricidad para Viajeros',
     hero_h1:'¿Funcionará mi dispositivo<br>en <mark id="hcountry">cualquier país</mark>?',
-    hero_sub:'Consulta el voltaje, frecuencia y tipos de enchufe de más de 60 países. Ingresa el voltaje de tu dispositivo y descubre al instante si necesitas adaptador, convertidor o nada.',
-    chip1:'60+ países', chip2:'Adaptador vs Convertidor', chip3:'Compatibilidad de Dispositivos', chip4:'Gratis · Sin Registro',
+    hero_sub:'Consulta el voltaje, frecuencia y tipos de enchufe de más de 195 países. Ingresa el voltaje de tu dispositivo y descubre al instante si necesitas adaptador, convertidor o nada.',
+    chip1:'195+ países', chip2:'Adaptador vs Convertidor', chip3:'Compatibilidad de Dispositivos', chip4:'Gratis · Sin Registro',
     tool_title:'VERIFICADOR DE COMPATIBILIDAD ELÉCTRICA v2.0',
     ro_lbl_initial:'SELECCIONA UN DESTINO PARA VER ESPECIFICACIONES',
     ro_main_initial:'— ESPERANDO ENTRADA —',
@@ -634,7 +647,7 @@ const TRANSLATIONS = {
     protip_body:'<strong style="color:var(--green)">Cómo leer la etiqueta:</strong> Busca "INPUT:" o "ENTRADA:" en tu adaptador. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = funciona en todo el mundo, solo necesitas adaptador de enchufe. <span style="font-family:var(--mono);color:var(--yellow)">110V únicamente</span> = Solo Norteamérica y Japón. <span style="font-family:var(--mono);color:var(--red)">220–240V únicamente</span> = Solo Europa, Asia, Australia. La frecuencia (50Hz vs 60Hz) rara vez importa para la electrónica moderna.',
     faq_stag:'Preguntas Frecuentes', faq_h2:'Preguntas Frecuentes',
     faq_sub:'Todo lo que los viajeros preguntan sobre voltaje, adaptadores y convertidores.',
-    disc_txt:'<strong style="color:var(--text-mid)">Aviso de Precisión de Datos:</strong> Los datos de voltaje y enchufe se basan en los estándares IEC e ITU. Algunos países tienen variaciones regionales o estándares en transición. Verifica siempre con el alojamiento local o el manual de tu equipo antes de usar. VoltageChecker.net no se responsabiliza por daños a dispositivos. Ante la duda, usa un convertidor de voltaje certificado.',
+    disc_txt:'<strong style="color:var(--text-mid)">Aviso de Precisión de Datos:</strong> Los datos de voltaje y enchufe se basan en los estándares IEC e ITU vigentes. Algunos países tienen variaciones regionales o estándares en transición. Verifica siempre con el alojamiento local o el manual de tu equipo antes de usar. VoltageChecker.net no se responsabiliza por daños a dispositivos. Ante la duda, usa un convertidor de voltaje certificado.',
     footer_tag:'Herramienta gratuita de compatibilidad de voltaje y enchufe para viajeros internacionales. Sin registro. Solo respuestas.',
     footer_tools:'Herramientas', footer_info:'Info', footer_about:'Acerca de', footer_privacy:'Política de Privacidad', footer_contact:'Contacto',
     footer_copy:'© Voltage Checker — Gratis para uso personal',
@@ -660,7 +673,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Casi todas las laptops modernas son de doble voltaje. Revisa la etiqueta del cargador.'},
       {icon:'📱',name:'Cargador de Teléfono / Tablet',v:'100–240V',dual:true,note:'Todos los cargadores USB modernos funcionan en todo el mundo. Solo necesitas adaptador.'},
-      {icon:'📷',name:'Cargador de Cámara / Dron',v:'100–240V',dual:true,note:'La mayoría de los cargadores de cámara desde ~2010 son de doble voltaje.'},
+      {icon:'📷',name:'Cargador de Cámara / Dron',v:'100–240V',dual:true,note:'La mayoría de los cargadores de cámara modernos son de doble voltaje.'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Todas las consolas de última generación son de doble voltaje.'},
       {icon:'🔌',name:'Cepillo de Dientes Eléctrico',v:'100–240V',dual:true,note:'Los modelos modernos de Oral-B y Philips Sonicare son de doble voltaje.'},
       {icon:'🔋',name:'Batería Portátil / Power Bank',v:'100–240V',dual:true,note:'Se carga por USB — funciona en todo el mundo con adaptador de enchufe.'},
@@ -683,17 +696,18 @@ const TRANSLATIONS = {
       {type:'K',name:'Dos redondas + clavija en U',countries:'Dinamarca, Groenlandia',voltage:'230V'},
       {type:'L',name:'Tres clavijas redondas en línea',countries:'Italia, Chile, partes de África',voltage:'230V'},
       {type:'M',name:'Tres clavijas redondas grandes',countries:'Sudáfrica, India (electrodomésticos grandes)',voltage:'230V'},
-      {type:'N',name:'Dos redondas + tierra (IEC)',countries:'Brasil (oficial desde 2011)',voltage:'127V'},
+      {type:'N',name:'Dos redondas + tierra (IEC)',countries:'Brasil (norma NBR 14136)',voltage:'127V'},
     ],
   },
 
   fr: {
     nav_checker:'Vérificateur', nav_plugs:'Types de Prises', nav_countries:'Pays',
     nav_devices:'Appareils', nav_faq:'FAQ', nav_cta:'Vérifier',
+    nav_about:'À Propos', nav_contact:'Contact', nav_privacy:'Confidentialité',
     hero_tag:'Guide Électrique de Voyage',
     hero_h1:'Mon appareil fonctionnera-t-il<br>dans <mark id="hcountry">ce pays</mark>?',
-    hero_sub:'Vérifiez le voltage, la fréquence et les types de prises pour plus de 60 pays. Saisissez le voltage de votre appareil et sachez instantanément — adaptateur, convertisseur ou rien du tout.',
-    chip1:'60+ pays', chip2:'Adaptateur vs Convertisseur', chip3:'Compatibilité', chip4:'Gratuit · Sans Inscription',
+    hero_sub:'Vérifiez le voltage, la fréquence et les types de prises pour plus de 195 pays. Saisissez le voltage de votre appareil et sachez instantanément — adaptateur, convertisseur ou rien du tout.',
+    chip1:'195+ pays', chip2:'Adaptateur vs Convertisseur', chip3:'Compatibilité', chip4:'Gratuit · Sans Inscription',
     tool_title:'VÉRIFICATEUR DE COMPATIBILITÉ ÉLECTRIQUE v2.0',
     ro_lbl_initial:'SÉLECTIONNEZ UNE DESTINATION POUR VOIR LES SPECS',
     ro_main_initial:'— EN ATTENTE DE SAISIE —',
@@ -719,7 +733,7 @@ const TRANSLATIONS = {
     protip_body:'<strong style="color:var(--green)">Lire l\'étiquette :</strong> Cherchez "INPUT:" sur votre adaptateur. <span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = fonctionne partout, juste besoin d\'un adaptateur de prise. <span style="font-family:var(--mono);color:var(--yellow)">110V uniquement</span> = Amérique du Nord et Japon uniquement. <span style="font-family:var(--mono);color:var(--red)">220–240V uniquement</span> = Europe, Asie, Australie uniquement. La fréquence (50Hz vs 60Hz) importe rarement pour les appareils modernes.',
     faq_stag:'Questions Fréquentes', faq_h2:'Foire Aux Questions',
     faq_sub:'Tout ce que les voyageurs demandent sur le voltage, les adaptateurs et les convertisseurs.',
-    disc_txt:'<strong style="color:var(--text-mid)">Avis de Précision des Données :</strong> Les données de tension et de prise sont basées sur les normes IEC et ITU. Certains pays ont des variations régionales ou des normes transitoires. Vérifiez toujours auprès de votre hébergement local ou du manuel de votre équipement avant utilisation. VoltageChecker.net n\'est pas responsable des dommages aux appareils. En cas de doute, utilisez un convertisseur de tension certifié.',
+    disc_txt:'<strong style="color:var(--text-mid)">Avis de Précision des Données :</strong> Les données de tension et de prise sont basées sur les normes IEC et ITU en vigueur. Certains pays ont des variations régionales ou des normes transitoires. Vérifiez toujours auprès de votre hébergement local ou du manuel de votre équipement avant utilisation. VoltageChecker.net n\'est pas responsable des dommages aux appareils. En cas de doute, utilisez un convertisseur de tension certifié.',
     footer_tag:'Outil gratuit de compatibilité de tension et de prise pour les voyageurs internationaux. Sans inscription. Juste des réponses.',
     footer_tools:'Outils', footer_info:'Infos', footer_about:'À Propos', footer_privacy:'Politique de Confidentialité', footer_contact:'Contact',
     footer_copy:'© Voltage Checker — Gratuit pour usage personnel',
@@ -737,7 +751,7 @@ const TRANSLATIONS = {
       {q:'Que se passe-t-il si je branche un appareil 110V sur une prise 220V ?',a:'Votre appareil sera très probablement endommagé de façon permanente. L\'excès de tension surcharge immédiatement les composants internes, provoquant une surchauffe, des courts-circuits ou dans certains cas un incendie. Ne branchez jamais un appareil 110V uniquement sur une prise 220V sans convertisseur abaisseur. Il n\'y a aucun avertissement — les dégâts sont instantanés.'},
       {q:'Quelle est la différence entre un adaptateur de prise et un convertisseur de tension ?',a:'Un adaptateur de prise ne fait que changer la forme physique de la fiche pour s\'adapter à la prise étrangère — il ne change PAS la tension. Un convertisseur de tension (ou transformateur) change réellement la tension de 220V à 110V ou vice versa. La plupart des appareils modernes (ordinateurs portables, chargeurs, appareils photo) sont en double tension (100–240V) et n\'ont besoin que d\'un adaptateur.'},
       {q:'Comment savoir si mon appareil est en double tension ?',a:'Regardez les petits caractères sur votre adaptateur secteur près des spécifications électriques. Cherchez la mention "INPUT:". Si elle indique "100–240V" ou "110–240V", l\'appareil est en double tension et fonctionne partout dans le monde — vous n\'avez besoin que d\'un adaptateur de prise.'},
-      {q:'Ai-je besoin d\'un convertisseur de tension pour mon ordinateur portable ?',a:'Presque certainement non. Presque tous les adaptateurs secteur d\'ordinateurs portables fabriqués après 2000 sont en double tension (100–240V, 50–60Hz). Vérifiez l\'étiquette sur votre bloc d\'alimentation — s\'il indique une plage de tension, vous n\'avez besoin que d\'un adaptateur de prise à quelques euros.'},
+      {q:'Ai-je besoin d\'un convertisseur de tension pour mon ordinateur portable ?',a:'Presque certainement non. Presque tous les adaptateurs secteur d\'ordinateurs portables sont en double tension (100–240V, 50–60Hz). Vérifiez l\'étiquette sur votre bloc d\'alimentation — s\'il indique une plage de tension, vous n\'avez besoin que d\'un adaptateur de prise.'},
       {q:'Quels pays utilisent le 110V ?',a:'Pays utilisant environ 110–127V : États-Unis (120V), Canada (120V), Mexique (127V), la plupart de l\'Amérique centrale, Colombie (110V), Venezuela (120V), République dominicaine (110V) et Japon (100V). La plupart du reste du monde utilise 220–240V.'},
       {q:'La fréquence 50Hz vs 60Hz est-elle importante ?',a:'Pour la plupart des appareils modernes — non. Les ordinateurs portables, chargeurs de téléphone, appareils photo fonctionnent bien à 50Hz comme à 60Hz. Cependant, certains appareils à moteur comme les horloges électriques, certains ventilateurs et les anciens sèche-cheveux peuvent fonctionner différemment. Pour les voyageurs, la fréquence est rarement un problème.'},
       {q:'Quel est le meilleur adaptateur de voyage universel ?',a:'Cherchez un adaptateur couvrant les Types A, B, C, D, E, F, G et I — cela couvre 95%+ des pays. Pour plusieurs appareils, choisissez-en un avec ports USB-A et USB-C intégrés. Attention : ce sont des adaptateurs uniquement et ne changeront PAS la tension.'},
@@ -745,7 +759,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'Ordinateur Portable / MacBook',v:'100–240V',dual:true,note:'Presque tous les ordinateurs portables modernes sont en double tension. Vérifiez l\'étiquette du chargeur.'},
       {icon:'📱',name:'Chargeur Téléphone / Tablette',v:'100–240V',dual:true,note:'Tous les chargeurs USB modernes fonctionnent dans le monde entier. Juste besoin d\'un adaptateur.'},
-      {icon:'📷',name:'Chargeur Appareil Photo / Drone',v:'100–240V',dual:true,note:'La plupart des chargeurs d\'appareil photo depuis ~2010 sont en double tension.'},
+      {icon:'📷',name:'Chargeur Appareil Photo / Drone',v:'100–240V',dual:true,note:'La plupart des chargeurs d\'appareil photo modernes sont en double tension.'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Toutes les consoles actuelles sont en double tension.'},
       {icon:'🔌',name:'Brosse à Dents Électrique',v:'100–240V',dual:true,note:'Les modèles modernes Oral-B et Philips Sonicare sont en double tension.'},
       {icon:'🔋',name:'Batterie Externe / Power Bank',v:'100–240V',dual:true,note:'Chargée via USB — fonctionne dans le monde entier avec un adaptateur de prise.'},
@@ -768,17 +782,18 @@ const TRANSLATIONS = {
       {type:'K',name:'Deux rondes + broche en U',countries:'Danemark, Groenland',voltage:'230V'},
       {type:'L',name:'Trois broches rondes en ligne',countries:'Italie, Chili, parties de l\'Afrique',voltage:'230V'},
       {type:'M',name:'Trois grandes broches rondes',countries:'Afrique du Sud, Inde (gros appareils)',voltage:'230V'},
-      {type:'N',name:'Deux rondes + terre (IEC)',countries:'Brésil (officiel depuis 2011)',voltage:'127V'},
+      {type:'N',name:'Deux rondes + terre (IEC)',countries:'Brésil (norme NBR 14136)',voltage:'127V'},
     ],
   },
 
   de: {
     nav_checker:'Prüfer', nav_plugs:'Steckertypen', nav_countries:'Länder',
     nav_devices:'Geräte', nav_faq:'FAQ', nav_cta:'Jetzt Prüfen',
+    nav_about:'Über uns', nav_contact:'Kontakt', nav_privacy:'Datenschutz',
     hero_tag:'Stromführer für Reisende',
     hero_h1:'Funktioniert mein Gerät<br>in <mark id="hcountry">diesem Land</mark>?',
-    hero_sub:'Prüfe Spannung, Frequenz und Steckertypen für über 60 Länder. Gib die Spannung deines Geräts ein und erfahre sofort — Adapter, Konverter oder gar nichts.',
-    chip1:'60+ Länder', chip2:'Adapter vs. Konverter', chip3:'Gerätekompatibilität', chip4:'Kostenlos · Ohne Anmeldung',
+    hero_sub:'Prüfe Spannung, Frequenz und Steckertypen für über 195 Länder. Gib die Spannung deines Geräts ein und erfahre sofort — Adapter, Konverter oder gar nichts.',
+    chip1:'195+ Länder', chip2:'Adapter vs. Konverter', chip3:'Gerätekompatibilität', chip4:'Kostenlos · Ohne Anmeldung',
     tool_title:'STROMKOMPATIBILITÄTSPRÜFER v2.0',
     ro_lbl_initial:'REISEZIEL WÄHLEN, UM STROMSPEZIFIKATIONEN ZU SEHEN',
     ro_main_initial:'— WARTE AUF EINGABE —',
@@ -822,7 +837,7 @@ const TRANSLATIONS = {
       {q:'Was passiert, wenn ich ein 110V-Gerät in eine 220V-Steckdose stecke?',a:'Dein Gerät wird mit ziemlicher Sicherheit dauerhaft beschädigt oder zerstört. Die überschüssige Spannung überlastet sofort die internen Komponenten, was zu Überhitzung, Kurzschlüssen oder in manchen Fällen zu Feuer führt. Stecke niemals ein reines 110V-Gerät ohne Abwärtskonverter in eine 220V-Steckdose. Es gibt keine Warnung — der Schaden ist sofort.'},
       {q:'Was ist der Unterschied zwischen einem Steckeradapter und einem Spannungskonverter?',a:'Ein Steckeradapter ändert nur die physische Form des Steckers, damit er in eine ausländische Steckdose passt — er ändert NICHT die Spannung. Ein Spannungskonverter (oder Transformator) ändert tatsächlich die elektrische Spannung von 220V auf 110V oder umgekehrt. Die meisten modernen Elektronikgeräte wie Laptops und Ladekabel sind Doppelspannungsgeräte (100–240V) und benötigen nur einen Adapter.'},
       {q:'Wie erkenne ich, ob mein Gerät Doppelspannung hat?',a:'Schau auf den Kleingedruckten auf deinem Netzteil oder Gerät nahe den elektrischen Spezifikationen. Suche das Etikett mit "INPUT:". Wenn es "100–240V" oder "110–240V" anzeigt, hat es Doppelspannung und funktioniert überall auf der Welt — du benötigst nur einen Steckeradapter.'},
-      {q:'Brauche ich einen Spannungskonverter für meinen Laptop?',a:'Mit ziemlicher Sicherheit nicht. Fast alle Laptop-Netzteile, die nach 2000 hergestellt wurden, haben Doppelspannung (100–240V, 50–60Hz). Schau auf das Etikett deines Netzteils — wenn es einen Spannungsbereich anzeigt, benötigst du nur einen günstigen Steckeradapter.'},
+      {q:'Brauche ich einen Spannungskonverter für meinen Laptop?',a:'Mit ziemlicher Sicherheit nicht. Fast alle modernen Laptop-Netzteile haben Doppelspannung (100–240V, 50–60Hz). Schau auf das Etikett deines Netzteils — wenn es einen Spannungsbereich anzeigt, benötigst du nur einen Steckeradapter.'},
       {q:'Welche Länder verwenden 110V?',a:'Länder mit etwa 110–127V: USA (120V), Kanada (120V), Mexiko (127V), der Großteil Mittelamerikas, Kolumbien (110V), Venezuela (120V), Dominikanische Republik (110V) und Japan (100V). Der Großteil der übrigen Welt verwendet 220–240V.'},
       {q:'Ist die Frequenz 50Hz vs. 60Hz wichtig?',a:'Für die meisten modernen Elektronikgeräte — nein. Laptops, Handyladegeräte, Kameras und die meisten Geräte funktionieren bei 50Hz und 60Hz gut. Manche motorbasierten Geräte wie elektrische Uhren oder ältere Haartrockner können bei einer bestimmten Frequenz etwas anders laufen. Für Reisende ist die Frequenz selten ein Problem.'},
       {q:'Was ist der beste universelle Reiseadapter?',a:'Suche nach einem Adapter, der die Typen A, B, C, D, E, F, G und I abdeckt — das erfasst 95%+ der Länder. Für mehrere Geräte wähle einen mit integrierten USB-A und USB-C Ports. Hinweis: Diese sind nur Adapter und ändern NICHT die Spannung — deine Geräte müssen Doppelspannung (100–240V) haben.'},
@@ -830,7 +845,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'Laptop / MacBook',v:'100–240V',dual:true,note:'Fast alle modernen Laptops haben Doppelspannung. Etikett des Netzteils prüfen.'},
       {icon:'📱',name:'Handy- / Tablet-Ladegerät',v:'100–240V',dual:true,note:'Alle modernen USB-Ladegeräte funktionieren weltweit. Nur Steckeradapter nötig.'},
-      {icon:'📷',name:'Kamera- / Drohnen-Ladegerät',v:'100–240V',dual:true,note:'Die meisten Kameraladegeräte seit ~2010 haben Doppelspannung.'},
+      {icon:'📷',name:'Kamera- / Drohnen-Ladegerät',v:'100–240V',dual:true,note:'Die meisten modernen Kameraladegeräte haben Doppelspannung.'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Alle aktuellen Konsolen haben Doppelspannung.'},
       {icon:'🔌',name:'Elektrische Zahnbürste',v:'100–240V',dual:true,note:'Moderne Oral-B und Philips Sonicare haben Doppelspannung.'},
       {icon:'🔋',name:'Powerbank',v:'100–240V',dual:true,note:'Wird über USB geladen — funktioniert weltweit mit Steckeradapter.'},
@@ -853,17 +868,18 @@ const TRANSLATIONS = {
       {type:'K',name:'Zwei runde + U-förmiger Stift',countries:'Dänemark, Grönland',voltage:'230V'},
       {type:'L',name:'Drei runde Stifte in einer Reihe',countries:'Italien, Chile, Teile Afrikas',voltage:'230V'},
       {type:'M',name:'Drei große runde Stifte',countries:'Südafrika, Indien (große Geräte)',voltage:'230V'},
-      {type:'N',name:'Zwei runde + Erde (IEC)',countries:'Brasilien (offiziell seit 2011)',voltage:'127V'},
+      {type:'N',name:'Zwei runde + Erde (IEC)',countries:'Brasilien (Norm NBR 14136)',voltage:'127V'},
     ],
   },
 
   pt: {
     nav_checker:'Verificador', nav_plugs:'Tipos de Tomada', nav_countries:'Países',
-    nav_devices:'Dispositivos', nav_faq:'Perguntas', nav_cta:'Verificar',
+    nav_devices:'Dispositivos', nav_faq:'Perguntas', nav_cta:'Verificar Agora',
+    nav_about:'Sobre', nav_contact:'Contato', nav_privacy:'Privacidade',
     hero_tag:'Guia de Eletricidade para Viajantes',
     hero_h1:'Meu dispositivo vai funcionar<br>em <mark id="hcountry">qualquer país</mark>?',
-    hero_sub:'Verifique voltagem, frequência e tipos de tomada de mais de 60 países. Insira a voltagem do seu dispositivo e saiba imediatamente — adaptador, conversor ou nada.',
-    chip1:'60+ países', chip2:'Adaptador vs Conversor', chip3:'Compatibilidade', chip4:'Gratuito · Sem Cadastro',
+    hero_sub:'Verifique voltagem, frequência e tipos de tomada de mais de 195 países. Insira a voltagem do seu dispositivo e saiba imediatamente — adaptador, conversor ou nada.',
+    chip1:'195+ países', chip2:'Adaptador vs Conversor', chip3:'Compatibilidade', chip4:'Gratuito · Sem Cadastro',
     tool_title:'VERIFICADOR DE COMPATIBILIDADE ELÉTRICA v2.0',
     ro_lbl_initial:'SELECIONE O DESTINO PARA VER AS ESPECIFICAÇÕES',
     ro_main_initial:'— AGUARDANDO ENTRADA —',
@@ -907,7 +923,7 @@ const TRANSLATIONS = {
       {q:'O que acontece se eu conectar um dispositivo de 110V em uma tomada de 220V?',a:'Seu dispositivo quase certamente será danificado permanentemente ou destruído. O excesso de voltagem sobrecarrega imediatamente os componentes internos, causando superaquecimento, curtos-circuitos ou em alguns casos incêndio. Nunca conecte um dispositivo de apenas 110V em uma tomada de 220V sem um conversor redutor. Não há aviso — o dano é instantâneo.'},
       {q:'Qual é a diferença entre um adaptador de tomada e um conversor de voltagem?',a:'Um adaptador de tomada apenas muda a forma física do plugue para caber em uma tomada estrangeira — ele NÃO muda a voltagem. Um conversor de voltagem (ou transformador) realmente muda a voltagem elétrica de 220V para 110V ou vice-versa. A maioria dos eletrônicos modernos como laptops, carregadores e câmeras é bivolt (100–240V) e precisa apenas de adaptador.'},
       {q:'Como saber se meu dispositivo é bivolt?',a:'Veja as letras pequenas no adaptador de energia do seu dispositivo perto das especificações elétricas. Encontre o rótulo que mostra "INPUT:" ou "ENTRADA:". Se ele diz "100–240V" ou "110–240V" é bivolt e funciona em qualquer lugar do mundo — você só precisa de um adaptador de tomada.'},
-      {q:'Preciso de conversor de voltagem para meu notebook?',a:'Quase certamente não. Quase todos os adaptadores de notebook fabricados após 2000 são bivolts (100–240V, 50–60Hz). Verifique o rótulo no seu carregador — se mostrar uma faixa de voltagem, você só precisa de um adaptador de tomada de poucos reais.'},
+      {q:'Preciso de conversor de voltagem para meu notebook?',a:'Quase certamente não. Quase todos os adaptadores de notebook modernos são bivolts (100–240V, 50–60Hz). Verifique o rótulo no seu carregador — se mostrar uma faixa de voltagem, você só precisa de um adaptador de tomada.'},
       {q:'Quais países usam 110V?',a:'Países com aproximadamente 110–127V: Estados Unidos (120V), Canadá (120V), México (127V), maioria da América Central, Colômbia (110V), Venezuela (120V), República Dominicana (110V) e Japão (100V). A maioria do restante do mundo usa 220–240V. O Brasil usa 127V em muitas regiões e 220V em outras.'},
       {q:'A frequência 50Hz vs 60Hz importa?',a:'Para a maioria dos eletrônicos modernos — não. Notebooks, carregadores de celular, câmeras e a maioria dos dispositivos pessoais funcionam bem tanto a 50Hz quanto a 60Hz. No entanto, alguns eletrodomésticos com motor como relógios elétricos, alguns ventiladores e secadores de cabelo mais antigos podem funcionar de forma diferente. Para viajantes, a frequência raramente é uma preocupação.'},
       {q:'Qual é o melhor adaptador de viagem universal?',a:'Procure um adaptador que cubra os Tipos A, B, C, D, E, F, G e I — isso cobre 95%+ dos países. Para múltiplos dispositivos, escolha um com portas USB-A e USB-C integradas. Nota: esses são apenas adaptadores e NÃO mudarão a voltagem.'},
@@ -915,7 +931,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'Notebook / MacBook',v:'100–240V',dual:true,note:'Quase todos os notebooks modernos são bivolts. Verifique o rótulo do carregador.'},
       {icon:'📱',name:'Carregador de Celular / Tablet',v:'100–240V',dual:true,note:'Todos os carregadores USB modernos funcionam no mundo todo. Só precisa de adaptador.'},
-      {icon:'📷',name:'Carregador de Câmera / Drone',v:'100–240V',dual:true,note:'A maioria dos carregadores de câmera desde ~2010 é bivolt.'},
+      {icon:'📷',name:'Carregador de Câmera / Drone',v:'100–240V',dual:true,note:'A maioria dos carregadores de câmera modernos é bivolt.'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'Todos os consoles da geração atual são bivolts.'},
       {icon:'🔌',name:'Escova de Dentes Elétrica',v:'100–240V',dual:true,note:'Os modelos modernos Oral-B e Philips Sonicare são bivolts.'},
       {icon:'🔋',name:'Carregador Portátil / Power Bank',v:'100–240V',dual:true,note:'Carregado via USB — funciona em todo o mundo com adaptador de tomada.'},
@@ -938,17 +954,18 @@ const TRANSLATIONS = {
       {type:'K',name:'Dois redondos + pino em U',countries:'Dinamarca, Groenlândia',voltage:'230V'},
       {type:'L',name:'Três pinos redondos em linha',countries:'Itália, Chile, partes da África',voltage:'230V'},
       {type:'M',name:'Três pinos redondos grandes',countries:'África do Sul, Índia (eletrodomésticos grandes)',voltage:'230V'},
-      {type:'N',name:'Dois redondos + terra (IEC)',countries:'Brasil (oficial desde 2011)',voltage:'127V'},
+      {type:'N',name:'Dois redondos + terra (IEC)',countries:'Brasil (norma NBR 14136)',voltage:'127V'},
     ],
   },
 
   ja: {
     nav_checker:'チェッカー', nav_plugs:'プラグ種類', nav_countries:'国別',
     nav_devices:'デバイス', nav_faq:'よくある質問', nav_cta:'今すぐ確認',
+    nav_about:'概要', nav_contact:'お問い合わせ', nav_privacy:'プライバシー',
     hero_tag:'旅行用電源ガイド',
     hero_h1:'私のデバイスは<br><mark id="hcountry">この国</mark>で使えますか？',
-    hero_sub:'60カ国以上の電圧・周波数・プラグ種類を確認。デバイスの電圧を入力するだけで、変換アダプター・変圧器が必要かどうかすぐにわかります。',
-    chip1:'60カ国以上', chip2:'アダプター vs 変圧器', chip3:'デバイス互換性', chip4:'無料・登録不要',
+    hero_sub:'195カ国以上の電圧・周波数・プラグ種類を確認。デバイスの電圧を入力するだけで、変換アダプター・変圧器が必要かどうかすぐにわかります。',
+    chip1:'195カ国以上', chip2:'アダプター vs 変圧器', chip3:'デバイス互換性', chip4:'無料・登録不要',
     tool_title:'電源互換性チェッカー v2.0',
     ro_lbl_initial:'目的地を選択して電源仕様を確認',
     ro_main_initial:'— 入力待ち —',
@@ -974,7 +991,7 @@ const TRANSLATIONS = {
     protip_body:'<strong style="color:var(--green)">ラベルの読み方：</strong>電源アダプターの「INPUT:」または「入力:」を探してください。<span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = 世界中で使用可能、変換プラグのみ必要。<span style="font-family:var(--mono);color:var(--yellow)">110Vのみ</span> = 北米と日本のみ。<span style="font-family:var(--mono);color:var(--red)">220–240Vのみ</span> = ヨーロッパ・アジア・オーストラリアのみ。周波数（50Hz vs 60Hz）は現代の電子機器ではほとんど問題になりません。',
     faq_stag:'よくある質問', faq_h2:'よくある質問',
     faq_sub:'旅行者が電圧・アダプター・変圧器について尋ねるすべてのこと。',
-    disc_txt:'<strong style="color:var(--text-mid)">データ精度に関するご注意：</strong>電圧とプラグのデータはIECとITUの2026年現在の規格に基づいています。一部の国では地域差や移行期の規格があります。使用前に必ず現地の宿泊施設や機器のマニュアルで確認してください。VoltageChecker.netはデバイスの損傷について責任を負いません。疑わしい場合は、認定された変圧器をご使用ください。',
+    disc_txt:'<strong style="color:var(--text-mid)">データ精度に関するご注意：</strong>電圧とプラグのデータはIECとITUの規格に基づいています。一部の国では地域差や移行期の規格があります。使用前に必ず現地の宿泊施設や機器のマニュアルで確認してください。VoltageChecker.netはデバイスの損傷について責任を負いません。疑わしい場合は、認定された変圧器をご使用ください。',
     footer_tag:'国際旅行者向け無料の電圧・プラグ互換性チェッカー。登録不要。すぐに答えがわかります。',
     footer_tools:'ツール', footer_info:'情報', footer_about:'概要', footer_privacy:'プライバシーポリシー', footer_contact:'お問い合わせ',
     footer_copy:'© Voltage Checker — 個人利用無料',
@@ -992,7 +1009,7 @@ const TRANSLATIONS = {
       {q:'110Vのデバイスを220Vのコンセントに差し込むとどうなりますか？',a:'デバイスがほぼ確実に永久的に損傷または破壊されます。過剰な電圧が内部コンポーネントをすぐに過負荷にし、過熱、短絡、場合によっては火災を引き起こします。降圧変圧器なしに110V専用デバイスを220Vコンセントに接続しないでください。警告はなく、損傷は瞬間的です。'},
       {q:'変換プラグと変圧器の違いは何ですか？',a:'変換プラグは海外のコンセントに合わせてプラグの物理的な形状を変えるだけです。電圧は変換しません。変圧器（トランスフォーマー）は電気の電圧を220Vから110Vへ、またはその逆に実際に変換します。ほとんどの現代の電子機器（ノートPC、スマホ充電器、カメラ）はデュアル電圧（100〜240V）対応で、変換プラグのみ必要です。'},
       {q:'デバイスがデュアル電圧対応かどうかはどうすればわかりますか？',a:'電源アダプターやデバイスの電気仕様の近くにある小さな文字を確認してください。「INPUT:」または「入力:」と書かれたラベルを探してください。「100〜240V」または「110〜240V」と書いてあれば、デュアル電圧対応で世界中で使えます（変換プラグのみ必要）。「110V」または「120V」のみの場合、海外では変圧器が必要です。'},
-      {q:'ノートPCに変圧器は必要ですか？',a:'ほぼ確実に不要です。2000年以降に製造されたほとんどのノートPC電源アダプターはデュアル電圧（100〜240V、50〜60Hz）対応です。電源アダプターのラベルを確認し、電圧範囲が表示されていれば変換プラグのみ必要です。スマホ充電器、カメラ充電器、ゲーム機の電源にも同様に当てはまります。'},
+      {q:'ノートPCに変圧器は必要ですか？',a:'ほぼ確実に不要です。ほとんどの現代のノートPC電源アダプターはデュアル電圧（100〜240V、50〜60Hz）対応です。電源アダプターのラベルを確認し、電圧範囲が表示されていれば変換プラグのみ必要です。スマホ充電器、カメラ充電器、ゲーム機の電源にも同様に当てはまります。'},
       {q:'110Vを使用している国はどこですか？',a:'約110〜127Vを使用する国：アメリカ（120V）、カナダ（120V）、メキシコ（127V）、中央アメリカの大部分、コロンビア（110V）、ベネズエラ（120V）、ドミニカ共和国（110V）、そして日本（100V—唯一ちょうど100Vの国）。世界の他のほとんどの地域は220〜240Vを使用しています。'},
       {q:'50Hzと60Hzの周波数の違いは重要ですか？',a:'ほとんどの現代の電子機器では重要ではありません。ノートPC、スマホ充電器、カメラなどは50Hzでも60Hzでも問題なく動作します。ただし、電気時計、一部のファン、古いヘアドライヤーなどモーター駆動の電化製品は特定の周波数向けに設計されており、若干異なる動作をする場合があります。旅行者にとって周波数はほとんどの場合問題になりません。'},
       {q:'最も良いユニバーサル旅行アダプターはどれですか？',a:'タイプA、B、C、D、E、F、G、Iに対応するアダプターを探してください。これで95%以上の国をカバーできます。複数のデバイスを使う場合は、USB-AポートとUSB-Cポートが内蔵されているものを選んでください。これらはアダプターのみで電圧は変換しません。'},
@@ -1000,7 +1017,7 @@ const TRANSLATIONS = {
     devices:[
       {icon:'💻',name:'ノートPC / MacBook',v:'100–240V',dual:true,note:'ほとんどの現代のノートPCはデュアル電圧対応。電源アダプターのラベルを確認。'},
       {icon:'📱',name:'スマホ / タブレット充電器',v:'100–240V',dual:true,note:'すべての現代のUSB充電器は世界中で使用可能。変換プラグのみ必要。'},
-      {icon:'📷',name:'カメラ / ドローン充電器',v:'100–240V',dual:true,note:'2010年以降のほとんどのカメラ充電器はデュアル電圧対応。'},
+      {icon:'📷',name:'カメラ / ドローン充電器',v:'100–240V',dual:true,note:'ほとんどの現代のカメラ充電器はデュアル電圧対応。'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'現行世代のすべてのゲーム機はデュアル電圧対応。'},
       {icon:'🔌',name:'電動歯ブラシ',v:'100–240V',dual:true,note:'最新のOral-BとPhilips Sonicareはデュアル電圧対応。'},
       {icon:'🔋',name:'モバイルバッテリー',v:'100–240V',dual:true,note:'USB経由で充電 — 変換プラグで世界中で使用可能。'},
@@ -1023,17 +1040,18 @@ const TRANSLATIONS = {
       {type:'K',name:'丸ピン2本＋U字ピン',countries:'デンマーク、グリーンランド',voltage:'230V'},
       {type:'L',name:'3本の丸ピン（横一列）',countries:'イタリア、チリ、アフリカの一部',voltage:'230V'},
       {type:'M',name:'3本の大きな丸ピン',countries:'南アフリカ、インド（大型家電）',voltage:'230V'},
-      {type:'N',name:'丸ピン2本＋アース（IEC）',countries:'ブラジル（2011年より公式）',voltage:'127V'},
+      {type:'N',name:'丸ピン2本＋アース（IEC）',countries:'ブラジル（NBR 14136規格）',voltage:'127V'},
     ],
   },
 
   zh: {
     nav_checker:'检测器', nav_plugs:'插头类型', nav_countries:'国家',
     nav_devices:'设备', nav_faq:'常见问题', nav_cta:'立即检测',
+    nav_about:'关于我们', nav_contact:'联系我们', nav_privacy:'隐私政策',
     hero_tag:'旅行用电指南',
     hero_h1:'我的设备在<mark id="hcountry">这个国家</mark><br>能用吗？',
-    hero_sub:'查看60多个国家的电压、频率和插头类型。输入您的设备电压，立即了解是否需要转换插头、变压器或什么都不用。',
-    chip1:'60多个国家', chip2:'转换插头 vs 变压器', chip3:'设备兼容性', chip4:'免费 · 无需注册',
+    hero_sub:'查看195多个国家的电压、频率和插头类型。输入您的设备电压，立即了解是否需要转换插头、变压器或什么都不用。',
+    chip1:'195多个国家', chip2:'转换插头 vs 变压器', chip3:'设备兼容性', chip4:'免费 · 无需注册',
     tool_title:'用电兼容性检测器 v2.0',
     ro_lbl_initial:'选择目的地查看电源规格',
     ro_main_initial:'— 等待输入 —',
@@ -1059,10 +1077,10 @@ const TRANSLATIONS = {
     protip_body:'<strong style="color:var(--green)">如何读取标签：</strong>在充电器上查找"INPUT:"或"输入："。<span style="font-family:var(--mono);color:var(--amber)">100–240V</span> = 可在全球使用，只需转换插头。<span style="font-family:var(--mono);color:var(--yellow)">仅110V</span> = 仅限北美和日本。<span style="font-family:var(--mono);color:var(--red)">仅220–240V</span> = 仅限欧洲、亚洲、澳大利亚。现代电子设备的频率（50Hz vs 60Hz）通常无关紧要。',
     faq_stag:'常见问题', faq_h2:'常见问题解答',
     faq_sub:'旅行者关于电压、适配器和变压器的所有问题。',
-    disc_txt:'<strong style="color:var(--text-mid)">数据准确性说明：</strong>电压和插头数据基于IEC和ITU截至2026年的标准。部分国家存在地区差异或过渡标准。使用前请务必与当地住宿或设备手册核实。VoltageChecker.net对设备损坏不承担责任。如有疑问，请使用经认证的变压器。',
+    disc_txt:'<strong style="color:var(--text-mid)">数据准确性说明：</strong>电压和插头数据基于IEC和ITU标准。部分国家存在地区差异或过渡标准。使用前请务必与当地住宿或设备手册核实。VoltageChecker.net对设备损坏不承担责任。如有疑问，请使用经认证的变压器。',
     footer_tag:'为国际旅行者提供的免费电压和插头兼容性工具。无需注册，直接获得答案。',
     footer_tools:'工具', footer_info:'信息', footer_about:'关于我们', footer_privacy:'隐私政策', footer_contact:'联系我们',
-    footer_copy:'© VoltageChecker.net — 个人使用免费',
+    footer_copy:'© Voltage Checker — 个人使用免费',
     verdict_dest_title:'已加载目的地',
     verdict_ok_title:'✅ 兼容 — 仅需转换插头',
     verdict_bad_title:'⛔ 电压不匹配 — 需要变压器',
@@ -1080,12 +1098,12 @@ const TRANSLATIONS = {
       {q:'笔记本电脑需要变压器吗？',a:'几乎肯定不需要。2000年以后生产的几乎所有笔记本电脑电源适配器都支持双电压（100–240V，50–60Hz）。检查电源砖上的标签——如果显示电压范围，则只需一个价格低廉的转换插头。同样适用于手机充电器、大多数相机充电器和游戏机电源。'},
       {q:'哪些国家使用110V？',a:'使用约110–127V的国家：美国（120V）、加拿大（120V）、墨西哥（127V）、大部分中美洲国家、哥伦比亚（110V）、委内瑞拉（120V）、多米尼加共和国（110V）和日本（100V）。中国大陆使用220V。世界上大多数其他地区使用220–240V。'},
       {q:'50Hz和60Hz的频率差异重要吗？',a:'对于大多数现代电子设备——不重要。笔记本电脑、手机充电器、相机和大多数个人设备在50Hz和60Hz下都能正常工作。但是，某些电机驱动的电器，如电子时钟、部分风扇和老式吹风机是为特定频率设计的，可能会运行略有不同。对旅行者来说，频率很少成为问题。'},
-      {q:'最佳万能旅行转换插头是哪款？',a:'寻找涵盖A、B、C、D、E、F、G和I型的转换插头——可覆盖95%以上的国家。可靠的品牌包括公牛、BULL、绿联等。对于多个设备，选择内置USB-A和USB-C端口的款式。注意：这些只是转换插头，不会改变电压——您的设备必须支持双电压（100–240V）才能安全使用。'},
+      {q:'最佳万能旅行转换插头是哪款？',a:'寻找涵盖A、B、C、D、E、F、G和I型的转换插头——可覆盖95%以上的国家。对于多个设备，选择内置USB-A和USB-C端口的款式。注意：这些只是转换插头，不会改变电压——您的设备必须支持双电压（100–240V）才能安全使用。'},
     ],
     devices:[
       {icon:'💻',name:'笔记本电脑 / MacBook',v:'100–240V',dual:true,note:'几乎所有现代笔记本电脑都支持双电压。检查电源砖标签。'},
       {icon:'📱',name:'手机 / 平板充电器',v:'100–240V',dual:true,note:'所有现代USB充电器都可全球使用。只需转换插头。'},
-      {icon:'📷',name:'相机 / 无人机充电器',v:'100–240V',dual:true,note:'2010年以后的大多数相机充电器支持双电压。'},
+      {icon:'📷',name:'相机 / 无人机充电器',v:'100–240V',dual:true,note:'大多数相机充电器均支持双电压。'},
       {icon:'🎮',name:'PS5 / Xbox / Switch',v:'100–240V',dual:true,note:'所有当代游戏机均支持双电压。'},
       {icon:'🔌',name:'电动牙刷',v:'100–240V',dual:true,note:'现代Oral-B和飞利浦Sonicare均支持双电压。'},
       {icon:'🔋',name:'移动电源 / 充电宝',v:'100–240V',dual:true,note:'通过USB充电——使用转换插头可在全球使用。'},
@@ -1108,13 +1126,285 @@ const TRANSLATIONS = {
       {type:'K',name:'两个圆形插脚＋U形接地脚',countries:'丹麦、格陵兰',voltage:'230V'},
       {type:'L',name:'三个圆形插脚（一排）',countries:'意大利、智利、非洲部分地区',voltage:'230V'},
       {type:'M',name:'三个大圆形插脚',countries:'南非、印度（大型电器）',voltage:'230V'},
-      {type:'N',name:'两个圆形插脚＋接地（IEC）',countries:'巴西（2011年起官方标准）',voltage:'127V'},
+      {type:'N',name:'两个圆形插脚＋接地（IEC）',countries:'巴西（NBR 14136标准）',voltage:'127V'},
     ],
   },
 };
 
+
+/* ── COUNTRY NAMES BY LANGUAGE ──────────────────── */
+const COUNTRY_NAMES = {
+  es:{
+    US:'Estados Unidos',CA:'Canadá',MX:'México',BR:'Brasil',AR:'Argentina',CL:'Chile',
+    CO:'Colombia',PE:'Perú',VE:'Venezuela',EC:'Ecuador',BO:'Bolivia',PY:'Paraguay',
+    UY:'Uruguay',GT:'Guatemala',HN:'Honduras',SV:'El Salvador',NI:'Nicaragua',
+    CR:'Costa Rica',PA:'Panamá',CU:'Cuba',DO:'Rep. Dominicana',HT:'Haití',
+    JM:'Jamaica',TT:'Trinidad y Tobago',BS:'Bahamas',BB:'Barbados',BZ:'Belice',
+    GY:'Guyana',SR:'Surinam',AG:'Antigua y Barbuda',DM:'Dominica',GD:'Granada',
+    KN:'San Cristóbal y Nieves',LC:'Santa Lucía',VC:'San Vicente y Granadinas',
+    GB:'Reino Unido',IE:'Irlanda',FR:'Francia',DE:'Alemania',IT:'Italia',
+    ES:'España',PT:'Portugal',NL:'Países Bajos',BE:'Bélgica',CH:'Suiza',
+    AT:'Austria',SE:'Suecia',NO:'Noruega',DK:'Dinamarca',FI:'Finlandia',
+    PL:'Polonia',CZ:'Rep. Checa',HU:'Hungría',GR:'Grecia',RO:'Rumanía',
+    UA:'Ucrania',RU:'Rusia',TR:'Turquía',HR:'Croacia',SK:'Eslovaquia',
+    BG:'Bulgaria',RS:'Serbia',BA:'Bosnia y Herzegovina',ME:'Montenegro',
+    MK:'Macedonia del Norte',SI:'Eslovenia',AL:'Albania',LT:'Lituania',
+    LV:'Letonia',EE:'Estonia',BY:'Bielorrusia',MD:'Moldavia',LU:'Luxemburgo',
+    MT:'Malta',CY:'Chipre',IS:'Islandia',LI:'Liechtenstein',AD:'Andorra',
+    MC:'Mónaco',SM:'San Marino',XK:'Kosovo',JP:'Japón',CN:'China',IN:'India',
+    PK:'Pakistán',BD:'Bangladés',LK:'Sri Lanka',NP:'Nepal',BT:'Bután',
+    MV:'Maldivas',AF:'Afganistán',TH:'Tailandia',SG:'Singapur',MY:'Malasia',
+    HK:'Hong Kong',KR:'Corea del Sur',TW:'Taiwán',PH:'Filipinas',ID:'Indonesia',
+    VN:'Vietnam',KH:'Camboya',MM:'Myanmar',LA:'Laos',BN:'Brunéi',
+    TL:'Timor-Leste',MN:'Mongolia',KZ:'Kazajistán',UZ:'Uzbekistán',
+    TM:'Turkmenistán',TJ:'Tayikistán',KG:'Kirguistán',AZ:'Azerbaiyán',
+    AM:'Armenia',GE:'Georgia',IL:'Israel',JO:'Jordania',LB:'Líbano',
+    IQ:'Irak',IR:'Irán',SY:'Siria',YE:'Yemen',AU:'Australia',
+    NZ:'Nueva Zelanda',PG:'Papúa Nueva Guinea',FJ:'Fiyi',SB:'Islas Salomón',
+    VU:'Vanuatu',WS:'Samoa',TO:'Tonga',PW:'Palaos',FM:'Micronesia',
+    MH:'Islas Marshall',KI:'Kiribati',NR:'Nauru',TV:'Tuvalu',
+    AE:'Emiratos Árabes Unidos',SA:'Arabia Saudita',QA:'Catar',KW:'Kuwait',
+    BH:'Baréin',OM:'Omán',EG:'Egipto',MA:'Marruecos',DZ:'Argelia',
+    TN:'Túnez',LY:'Libia',SD:'Sudán',SS:'Sudán del Sur',ET:'Etiopía',
+    ER:'Eritrea',DJ:'Yibuti',SO:'Somalia',KE:'Kenia',UG:'Uganda',
+    TZ:'Tanzania',RW:'Ruanda',BI:'Burundi',NG:'Nigeria',GH:'Ghana',
+    SN:'Senegal',CI:'Costa de Marfil',CM:'Camerún',ML:'Malí',BF:'Burkina Faso',
+    NE:'Níger',TD:'Chad',CF:'Rep. Centroafricana',CD:'Rep. Dem. del Congo',
+    CG:'Rep. del Congo',GA:'Gabón',GQ:'Guinea Ecuatorial',
+    ST:'Santo Tomé y Príncipe',GN:'Guinea',GW:'Guinea-Bisáu',
+    SL:'Sierra Leona',LR:'Liberia',TG:'Togo',BJ:'Benín',MR:'Mauritania',
+    GM:'Gambia',CV:'Cabo Verde',ZA:'Sudáfrica',AO:'Angola',ZM:'Zambia',
+    MW:'Malaui',MZ:'Mozambique',ZW:'Zimbabue',BW:'Botsuana',NA:'Namibia',
+    LS:'Lesoto',SZ:'Esuatini',MG:'Madagascar',MU:'Mauricio',SC:'Seychelles',
+    KM:'Comoras'
+  },
+  fr:{
+    US:'États-Unis',CA:'Canada',MX:'Mexique',BR:'Brésil',AR:'Argentine',CL:'Chili',
+    CO:'Colombie',PE:'Pérou',VE:'Venezuela',EC:'Équateur',BO:'Bolivie',PY:'Paraguay',
+    UY:'Uruguay',GT:'Guatemala',HN:'Honduras',SV:'El Salvador',NI:'Nicaragua',
+    CR:'Costa Rica',PA:'Panama',CU:'Cuba',DO:'Rép. Dominicaine',HT:'Haïti',
+    JM:'Jamaïque',TT:'Trinité-et-Tobago',BS:'Bahamas',BB:'Barbade',BZ:'Belize',
+    GY:'Guyana',SR:'Suriname',AG:'Antigua-et-Barbuda',DM:'Dominique',GD:'Grenade',
+    KN:'Saint-Kitts-et-Nevis',LC:'Sainte-Lucie',VC:'Saint-Vincent-et-les-Grenadines',
+    GB:'Royaume-Uni',IE:'Irlande',FR:'France',DE:'Allemagne',IT:'Italie',
+    ES:'Espagne',PT:'Portugal',NL:'Pays-Bas',BE:'Belgique',CH:'Suisse',
+    AT:'Autriche',SE:'Suède',NO:'Norvège',DK:'Danemark',FI:'Finlande',
+    PL:'Pologne',CZ:'Rép. Tchèque',HU:'Hongrie',GR:'Grèce',RO:'Roumanie',
+    UA:'Ukraine',RU:'Russie',TR:'Turquie',HR:'Croatie',SK:'Slovaquie',
+    BG:'Bulgarie',RS:'Serbie',BA:'Bosnie-Herzégovine',ME:'Monténégro',
+    MK:'Macédoine du Nord',SI:'Slovénie',AL:'Albanie',LT:'Lituanie',
+    LV:'Lettonie',EE:'Estonie',BY:'Biélorussie',MD:'Moldavie',LU:'Luxembourg',
+    MT:'Malte',CY:'Chypre',IS:'Islande',LI:'Liechtenstein',AD:'Andorre',
+    MC:'Monaco',SM:'Saint-Marin',XK:'Kosovo',JP:'Japon',CN:'Chine',IN:'Inde',
+    PK:'Pakistan',BD:'Bangladesh',LK:'Sri Lanka',NP:'Népal',BT:'Bhoutan',
+    MV:'Maldives',AF:'Afghanistan',TH:'Thaïlande',SG:'Singapour',MY:'Malaisie',
+    HK:'Hong Kong',KR:'Corée du Sud',TW:'Taïwan',PH:'Philippines',ID:'Indonésie',
+    VN:'Viêt Nam',KH:'Cambodge',MM:'Myanmar',LA:'Laos',BN:'Brunéi',
+    TL:'Timor-Leste',MN:'Mongolie',KZ:'Kazakhstan',UZ:'Ouzbékistan',
+    TM:'Turkménistan',TJ:'Tadjikistan',KG:'Kirghizistan',AZ:'Azerbaïdjan',
+    AM:'Arménie',GE:'Géorgie',IL:'Israël',JO:'Jordanie',LB:'Liban',
+    IQ:'Irak',IR:'Iran',SY:'Syrie',YE:'Yémen',AU:'Australie',
+    NZ:'Nouvelle-Zélande',PG:'Papouasie-Nouvelle-Guinée',FJ:'Fidji',
+    SB:'Îles Salomon',VU:'Vanuatu',WS:'Samoa',TO:'Tonga',PW:'Palaos',
+    FM:'Micronésie',MH:'Îles Marshall',KI:'Kiribati',NR:'Nauru',TV:'Tuvalu',
+    AE:'Émirats Arabes Unis',SA:'Arabie Saoudite',QA:'Qatar',KW:'Koweït',
+    BH:'Bahreïn',OM:'Oman',EG:'Égypte',MA:'Maroc',DZ:'Algérie',TN:'Tunisie',
+    LY:'Libye',SD:'Soudan',SS:'Soudan du Sud',ET:'Éthiopie',ER:'Érythrée',
+    DJ:'Djibouti',SO:'Somalie',KE:'Kenya',UG:'Ouganda',TZ:'Tanzanie',
+    RW:'Rwanda',BI:'Burundi',NG:'Nigeria',GH:'Ghana',SN:'Sénégal',
+    CI:'Côte d\'Ivoire',CM:'Cameroun',ML:'Mali',BF:'Burkina Faso',NE:'Niger',
+    TD:'Tchad',CF:'Rép. Centrafricaine',CD:'Rép. Dém. du Congo',
+    CG:'Rép. du Congo',GA:'Gabon',GQ:'Guinée Équatoriale',
+    ST:'São Tomé-et-Príncipe',GN:'Guinée',GW:'Guinée-Bissau',
+    SL:'Sierra Leone',LR:'Liberia',TG:'Togo',BJ:'Bénin',MR:'Mauritanie',
+    GM:'Gambie',CV:'Cap-Vert',ZA:'Afrique du Sud',AO:'Angola',ZM:'Zambie',
+    MW:'Malawi',MZ:'Mozambique',ZW:'Zimbabwe',BW:'Botswana',NA:'Namibie',
+    LS:'Lesotho',SZ:'Eswatini',MG:'Madagascar',MU:'Maurice',SC:'Seychelles',
+    KM:'Comores'
+  },
+  de:{
+    US:'USA',CA:'Kanada',MX:'Mexiko',BR:'Brasilien',AR:'Argentinien',CL:'Chile',
+    CO:'Kolumbien',PE:'Peru',VE:'Venezuela',EC:'Ecuador',BO:'Bolivien',PY:'Paraguay',
+    UY:'Uruguay',GT:'Guatemala',HN:'Honduras',SV:'El Salvador',NI:'Nicaragua',
+    CR:'Costa Rica',PA:'Panama',CU:'Kuba',DO:'Dominikanische Republik',HT:'Haiti',
+    JM:'Jamaika',TT:'Trinidad und Tobago',BS:'Bahamas',BB:'Barbados',BZ:'Belize',
+    GY:'Guyana',SR:'Suriname',AG:'Antigua und Barbuda',DM:'Dominica',GD:'Grenada',
+    KN:'St. Kitts und Nevis',LC:'St. Lucia',VC:'St. Vincent und die Grenadinen',
+    GB:'Vereinigtes Königreich',IE:'Irland',FR:'Frankreich',DE:'Deutschland',
+    IT:'Italien',ES:'Spanien',PT:'Portugal',NL:'Niederlande',BE:'Belgien',
+    CH:'Schweiz',AT:'Österreich',SE:'Schweden',NO:'Norwegen',DK:'Dänemark',
+    FI:'Finnland',PL:'Polen',CZ:'Tschechien',HU:'Ungarn',GR:'Griechenland',
+    RO:'Rumänien',UA:'Ukraine',RU:'Russland',TR:'Türkei',HR:'Kroatien',
+    SK:'Slowakei',BG:'Bulgarien',RS:'Serbien',BA:'Bosnien und Herzegowina',
+    ME:'Montenegro',MK:'Nordmazedonien',SI:'Slowenien',AL:'Albanien',
+    LT:'Litauen',LV:'Lettland',EE:'Estland',BY:'Weißrussland',MD:'Moldau',
+    LU:'Luxemburg',MT:'Malta',CY:'Zypern',IS:'Island',LI:'Liechtenstein',
+    AD:'Andorra',MC:'Monaco',SM:'San Marino',XK:'Kosovo',JP:'Japan',CN:'China',
+    IN:'Indien',PK:'Pakistan',BD:'Bangladesch',LK:'Sri Lanka',NP:'Nepal',
+    BT:'Bhutan',MV:'Malediven',AF:'Afghanistan',TH:'Thailand',SG:'Singapur',
+    MY:'Malaysia',HK:'Hongkong',KR:'Südkorea',TW:'Taiwan',PH:'Philippinen',
+    ID:'Indonesien',VN:'Vietnam',KH:'Kambodscha',MM:'Myanmar',LA:'Laos',
+    BN:'Brunei',TL:'Osttimor',MN:'Mongolei',KZ:'Kasachstan',UZ:'Usbekistan',
+    TM:'Turkmenistan',TJ:'Tadschikistan',KG:'Kirgisistan',AZ:'Aserbaidschan',
+    AM:'Armenien',GE:'Georgien',IL:'Israel',JO:'Jordanien',LB:'Libanon',
+    IQ:'Irak',IR:'Iran',SY:'Syrien',YE:'Jemen',AU:'Australien',
+    NZ:'Neuseeland',PG:'Papua-Neuguinea',FJ:'Fidschi',SB:'Salomonen',
+    VU:'Vanuatu',WS:'Samoa',TO:'Tonga',PW:'Palau',FM:'Mikronesien',
+    MH:'Marshallinseln',KI:'Kiribati',NR:'Nauru',TV:'Tuvalu',
+    AE:'Vereinigte Arabische Emirate',SA:'Saudi-Arabien',QA:'Katar',KW:'Kuwait',
+    BH:'Bahrain',OM:'Oman',EG:'Ägypten',MA:'Marokko',DZ:'Algerien',TN:'Tunesien',
+    LY:'Libyen',SD:'Sudan',SS:'Südsudan',ET:'Äthiopien',ER:'Eritrea',
+    DJ:'Dschibuti',SO:'Somalia',KE:'Kenia',UG:'Uganda',TZ:'Tansania',
+    RW:'Ruanda',BI:'Burundi',NG:'Nigeria',GH:'Ghana',SN:'Senegal',
+    CI:'Elfenbeinküste',CM:'Kamerun',ML:'Mali',BF:'Burkina Faso',NE:'Niger',
+    TD:'Tschad',CF:'Zentralafrikanische Republik',CD:'Dem. Republik Kongo',
+    CG:'Republik Kongo',GA:'Gabun',GQ:'Äquatorialguinea',
+    ST:'São Tomé und Príncipe',GN:'Guinea',GW:'Guinea-Bissau',
+    SL:'Sierra Leone',LR:'Liberia',TG:'Togo',BJ:'Benin',MR:'Mauretanien',
+    GM:'Gambia',CV:'Kap Verde',ZA:'Südafrika',AO:'Angola',ZM:'Sambia',
+    MW:'Malawi',MZ:'Mosambik',ZW:'Simbabwe',BW:'Botswana',NA:'Namibia',
+    LS:'Lesotho',SZ:'Eswatini',MG:'Madagaskar',MU:'Mauritius',SC:'Seychellen',
+    KM:'Komoren'
+  },
+  pt:{
+    US:'Estados Unidos',CA:'Canadá',MX:'México',BR:'Brasil',AR:'Argentina',CL:'Chile',
+    CO:'Colômbia',PE:'Peru',VE:'Venezuela',EC:'Equador',BO:'Bolívia',PY:'Paraguai',
+    UY:'Uruguai',GT:'Guatemala',HN:'Honduras',SV:'El Salvador',NI:'Nicarágua',
+    CR:'Costa Rica',PA:'Panamá',CU:'Cuba',DO:'Rep. Dominicana',HT:'Haiti',
+    JM:'Jamaica',TT:'Trinidad e Tobago',BS:'Bahamas',BB:'Barbados',BZ:'Belize',
+    GY:'Guiana',SR:'Suriname',AG:'Antígua e Barbuda',DM:'Dominica',GD:'Granada',
+    KN:'São Cristóvão e Nevis',LC:'Santa Lúcia',VC:'São Vicente e Granadinas',
+    GB:'Reino Unido',IE:'Irlanda',FR:'França',DE:'Alemanha',IT:'Itália',
+    ES:'Espanha',PT:'Portugal',NL:'Países Baixos',BE:'Bélgica',CH:'Suíça',
+    AT:'Áustria',SE:'Suécia',NO:'Noruega',DK:'Dinamarca',FI:'Finlândia',
+    PL:'Polônia',CZ:'Rep. Tcheca',HU:'Hungria',GR:'Grécia',RO:'Romênia',
+    UA:'Ucrânia',RU:'Rússia',TR:'Turquia',HR:'Croácia',SK:'Eslováquia',
+    BG:'Bulgária',RS:'Sérvia',BA:'Bósnia e Herzegovina',ME:'Montenegro',
+    MK:'Macedônia do Norte',SI:'Eslovênia',AL:'Albânia',LT:'Lituânia',
+    LV:'Letônia',EE:'Estônia',BY:'Bielo-Rússia',MD:'Moldávia',LU:'Luxemburgo',
+    MT:'Malta',CY:'Chipre',IS:'Islândia',LI:'Liechtenstein',AD:'Andorra',
+    MC:'Mônaco',SM:'San Marino',XK:'Kosovo',JP:'Japão',CN:'China',IN:'Índia',
+    PK:'Paquistão',BD:'Bangladesh',LK:'Sri Lanka',NP:'Nepal',BT:'Butão',
+    MV:'Maldivas',AF:'Afeganistão',TH:'Tailândia',SG:'Singapura',MY:'Malásia',
+    HK:'Hong Kong',KR:'Coreia do Sul',TW:'Taiwan',PH:'Filipinas',ID:'Indonésia',
+    VN:'Vietnã',KH:'Camboja',MM:'Myanmar',LA:'Laos',BN:'Brunei',
+    TL:'Timor-Leste',MN:'Mongólia',KZ:'Cazaquistão',UZ:'Uzbequistão',
+    TM:'Turcomenistão',TJ:'Tajiquistão',KG:'Quirguistão',AZ:'Azerbaijão',
+    AM:'Armênia',GE:'Geórgia',IL:'Israel',JO:'Jordânia',LB:'Líbano',
+    IQ:'Iraque',IR:'Irã',SY:'Síria',YE:'Iêmen',AU:'Austrália',
+    NZ:'Nova Zelândia',PG:'Papua-Nova Guiné',FJ:'Fiji',SB:'Ilhas Salomão',
+    VU:'Vanuatu',WS:'Samoa',TO:'Tonga',PW:'Palau',FM:'Micronésia',
+    MH:'Ilhas Marshall',KI:'Kiribati',NR:'Nauru',TV:'Tuvalu',
+    AE:'Emirados Árabes Unidos',SA:'Arábia Saudita',QA:'Catar',KW:'Kuwait',
+    BH:'Bahrein',OM:'Omã',EG:'Egito',MA:'Marrocos',DZ:'Argélia',TN:'Tunísia',
+    LY:'Líbia',SD:'Sudão',SS:'Sudão do Sul',ET:'Etiópia',ER:'Eritreia',
+    DJ:'Djibuti',SO:'Somália',KE:'Quênia',UG:'Uganda',TZ:'Tanzânia',
+    RW:'Ruanda',BI:'Burundi',NG:'Nigéria',GH:'Gana',SN:'Senegal',
+    CI:'Costa do Marfim',CM:'Camarões',ML:'Mali',BF:'Burquina Faso',NE:'Níger',
+    TD:'Chade',CF:'Rep. Centro-Africana',CD:'Rep. Dem. do Congo',
+    CG:'Rep. do Congo',GA:'Gabão',GQ:'Guiné Equatorial',
+    ST:'São Tomé e Príncipe',GN:'Guiné',GW:'Guiné-Bissau',
+    SL:'Serra Leoa',LR:'Libéria',TG:'Togo',BJ:'Benin',MR:'Mauritânia',
+    GM:'Gâmbia',CV:'Cabo Verde',ZA:'África do Sul',AO:'Angola',ZM:'Zâmbia',
+    MW:'Malaui',MZ:'Moçambique',ZW:'Zimbábue',BW:'Botswana',NA:'Namíbia',
+    LS:'Lesoto',SZ:'Essuatíni',MG:'Madagáscar',MU:'Maurício',SC:'Seicheles',
+    KM:'Comores'
+  },
+  ja:{
+    US:'アメリカ',CA:'カナダ',MX:'メキシコ',BR:'ブラジル',AR:'アルゼンチン',CL:'チリ',
+    CO:'コロンビア',PE:'ペルー',VE:'ベネズエラ',EC:'エクアドル',BO:'ボリビア',
+    PY:'パラグアイ',UY:'ウルグアイ',GT:'グアテマラ',HN:'ホンジュラス',
+    SV:'エルサルバドル',NI:'ニカラグア',CR:'コスタリカ',PA:'パナマ',CU:'キューバ',
+    DO:'ドミニカ共和国',HT:'ハイチ',JM:'ジャマイカ',TT:'トリニダード・トバゴ',
+    BS:'バハマ',BB:'バルバドス',BZ:'ベリーズ',GY:'ガイアナ',SR:'スリナム',
+    AG:'アンティグア・バーブーダ',DM:'ドミニカ国',GD:'グレナダ',
+    KN:'セントクリストファー・ネイビス',LC:'セントルシア',
+    VC:'セントビンセント・グレナディーン',GB:'イギリス',IE:'アイルランド',
+    FR:'フランス',DE:'ドイツ',IT:'イタリア',ES:'スペイン',PT:'ポルトガル',
+    NL:'オランダ',BE:'ベルギー',CH:'スイス',AT:'オーストリア',SE:'スウェーデン',
+    NO:'ノルウェー',DK:'デンマーク',FI:'フィンランド',PL:'ポーランド',
+    CZ:'チェコ',HU:'ハンガリー',GR:'ギリシャ',RO:'ルーマニア',UA:'ウクライナ',
+    RU:'ロシア',TR:'トルコ',HR:'クロアチア',SK:'スロバキア',BG:'ブルガリア',
+    RS:'セルビア',BA:'ボスニア・ヘルツェゴビナ',ME:'モンテネグロ',
+    MK:'北マケドニア',SI:'スロベニア',AL:'アルバニア',LT:'リトアニア',
+    LV:'ラトビア',EE:'エストニア',BY:'ベラルーシ',MD:'モルドバ',LU:'ルクセンブルク',
+    MT:'マルタ',CY:'キプロス',IS:'アイスランド',LI:'リヒテンシュタイン',
+    AD:'アンドラ',MC:'モナコ',SM:'サンマリノ',XK:'コソボ',JP:'日本',CN:'中国',
+    IN:'インド',PK:'パキスタン',BD:'バングラデシュ',LK:'スリランカ',NP:'ネパール',
+    BT:'ブータン',MV:'モルディブ',AF:'アフガニスタン',TH:'タイ',SG:'シンガポール',
+    MY:'マレーシア',HK:'香港',KR:'韓国',TW:'台湾',PH:'フィリピン',ID:'インドネシア',
+    VN:'ベトナム',KH:'カンボジア',MM:'ミャンマー',LA:'ラオス',BN:'ブルネイ',
+    TL:'東ティモール',MN:'モンゴル',KZ:'カザフスタン',UZ:'ウズベキスタン',
+    TM:'トルクメニスタン',TJ:'タジキスタン',KG:'キルギス',AZ:'アゼルバイジャン',
+    AM:'アルメニア',GE:'ジョージア',IL:'イスラエル',JO:'ヨルダン',LB:'レバノン',
+    IQ:'イラク',IR:'イラン',SY:'シリア',YE:'イエメン',AU:'オーストラリア',
+    NZ:'ニュージーランド',PG:'パプアニューギニア',FJ:'フィジー',SB:'ソロモン諸島',
+    VU:'バヌアツ',WS:'サモア',TO:'トンガ',PW:'パラオ',FM:'ミクロネシア',
+    MH:'マーシャル諸島',KI:'キリバス',NR:'ナウル',TV:'ツバル',
+    AE:'アラブ首長国連邦',SA:'サウジアラビア',QA:'カタール',KW:'クウェート',
+    BH:'バーレーン',OM:'オマーン',EG:'エジプト',MA:'モロッコ',DZ:'アルジェリア',
+    TN:'チュニジア',LY:'リビア',SD:'スーダン',SS:'南スーダン',ET:'エチオピア',
+    ER:'エリトリア',DJ:'ジブチ',SO:'ソマリア',KE:'ケニア',UG:'ウガンダ',
+    TZ:'タンザニア',RW:'ルワンダ',BI:'ブルンジ',NG:'ナイジェリア',GH:'ガーナ',
+    SN:'セネガル',CI:'コートジボワール',CM:'カメルーン',ML:'マリ',
+    BF:'ブルキナファソ',NE:'ニジェール',TD:'チャド',CF:'中央アフリカ共和国',
+    CD:'コンゴ民主共和国',CG:'コンゴ共和国',GA:'ガボン',GQ:'赤道ギニア',
+    ST:'サントメ・プリンシペ',GN:'ギニア',GW:'ギニアビサウ',SL:'シエラレオネ',
+    LR:'リベリア',TG:'トーゴ',BJ:'ベナン',MR:'モーリタニア',GM:'ガンビア',
+    CV:'カーボベルデ',ZA:'南アフリカ',AO:'アンゴラ',ZM:'ザンビア',MW:'マラウイ',
+    MZ:'モザンビーク',ZW:'ジンバブエ',BW:'ボツワナ',NA:'ナミビア',LS:'レソト',
+    SZ:'エスワティニ',MG:'マダガスカル',MU:'モーリシャス',SC:'セーシェル',
+    KM:'コモロ'
+  },
+  zh:{
+    US:'美国',CA:'加拿大',MX:'墨西哥',BR:'巴西',AR:'阿根廷',CL:'智利',
+    CO:'哥伦比亚',PE:'秘鲁',VE:'委内瑞拉',EC:'厄瓜多尔',BO:'玻利维亚',
+    PY:'巴拉圭',UY:'乌拉圭',GT:'危地马拉',HN:'洪都拉斯',SV:'萨尔瓦多',
+    NI:'尼加拉瓜',CR:'哥斯达黎加',PA:'巴拿马',CU:'古巴',DO:'多米尼加共和国',
+    HT:'海地',JM:'牙买加',TT:'特立尼达和多巴哥',BS:'巴哈马',BB:'巴巴多斯',
+    BZ:'伯利兹',GY:'圭亚那',SR:'苏里南',AG:'安提瓜和巴布达',DM:'多米尼克',
+    GD:'格林纳达',KN:'圣基茨和尼维斯',LC:'圣卢西亚',VC:'圣文森特和格林纳丁斯',
+    GB:'英国',IE:'爱尔兰',FR:'法国',DE:'德国',IT:'意大利',ES:'西班牙',
+    PT:'葡萄牙',NL:'荷兰',BE:'比利时',CH:'瑞士',AT:'奥地利',SE:'瑞典',
+    NO:'挪威',DK:'丹麦',FI:'芬兰',PL:'波兰',CZ:'捷克',HU:'匈牙利',
+    GR:'希腊',RO:'罗马尼亚',UA:'乌克兰',RU:'俄罗斯',TR:'土耳其',HR:'克罗地亚',
+    SK:'斯洛伐克',BG:'保加利亚',RS:'塞尔维亚',BA:'波斯尼亚和黑塞哥维那',
+    ME:'黑山',MK:'北马其顿',SI:'斯洛文尼亚',AL:'阿尔巴尼亚',LT:'立陶宛',
+    LV:'拉脱维亚',EE:'爱沙尼亚',BY:'白俄罗斯',MD:'摩尔多瓦',LU:'卢森堡',
+    MT:'马耳他',CY:'塞浦路斯',IS:'冰岛',LI:'列支敦士登',AD:'安道尔',
+    MC:'摩纳哥',SM:'圣马力诺',XK:'科索沃',JP:'日本',CN:'中国',IN:'印度',
+    PK:'巴基斯坦',BD:'孟加拉国',LK:'斯里兰卡',NP:'尼泊尔',BT:'不丹',
+    MV:'马尔代夫',AF:'阿富汗',TH:'泰国',SG:'新加坡',MY:'马来西亚',
+    HK:'香港',KR:'韩国',TW:'台湾',PH:'菲律宾',ID:'印度尼西亚',VN:'越南',
+    KH:'柬埔寨',MM:'缅甸',LA:'老挝',BN:'文莱',TL:'东帝汶',MN:'蒙古',
+    KZ:'哈萨克斯坦',UZ:'乌兹别克斯坦',TM:'土库曼斯坦',TJ:'塔吉克斯坦',
+    KG:'吉尔吉斯斯坦',AZ:'阿塞拜疆',AM:'亚美尼亚',GE:'格鲁吉亚',IL:'以色列',
+    JO:'约旦',LB:'黎巴嫩',IQ:'伊拉克',IR:'伊朗',SY:'叙利亚',YE:'也门',
+    AU:'澳大利亚',NZ:'新西兰',PG:'巴布亚新几内亚',FJ:'斐济',SB:'所罗门群岛',
+    VU:'瓦努阿图',WS:'萨摩亚',TO:'汤加',PW:'帕劳',FM:'密克罗尼西亚',
+    MH:'马绍尔群岛',KI:'基里巴斯',NR:'瑙鲁',TV:'图瓦卢',
+    AE:'阿联酋',SA:'沙特阿拉伯',QA:'卡塔尔',KW:'科威特',BH:'巴林',OM:'阿曼',
+    EG:'埃及',MA:'摩洛哥',DZ:'阿尔及利亚',TN:'突尼斯',LY:'利比亚',SD:'苏丹',
+    SS:'南苏丹',ET:'埃塞俄比亚',ER:'厄立特里亚',DJ:'吉布提',SO:'索马里',
+    KE:'肯尼亚',UG:'乌干达',TZ:'坦桑尼亚',RW:'卢旺达',BI:'布隆迪',NG:'尼日利亚',
+    GH:'加纳',SN:'塞内加尔',CI:'科特迪瓦',CM:'喀麦隆',ML:'马里',BF:'布基纳法索',
+    NE:'尼日尔',TD:'乍得',CF:'中非共和国',CD:'刚果民主共和国',CG:'刚果共和国',
+    GA:'加蓬',GQ:'赤道几内亚',ST:'圣多美和普林西比',GN:'几内亚',GW:'几内亚比绍',
+    SL:'塞拉利昂',LR:'利比里亚',TG:'多哥',BJ:'贝宁',MR:'毛里塔尼亚',GM:'冈比亚',
+    CV:'佛得角',ZA:'南非',AO:'安哥拉',ZM:'赞比亚',MW:'马拉维',MZ:'莫桑比克',
+    ZW:'津巴布韦',BW:'博茨瓦纳',NA:'纳米比亚',LS:'莱索托',SZ:'斯威士兰',
+    MG:'马达加斯加',MU:'毛里求斯',SC:'塞舌尔',KM:'科摩罗'
+  }
+};
+
+function getCountryName(code, lang){
+  if(lang==='en')return null;
+  return (COUNTRY_NAMES[lang]&&COUNTRY_NAMES[lang][code])||null;
+}
+
 /* ── COUNTRIES DATA ─────────────────────────────── */
 const COUNTRIES=[
+  /* ── AMERICAS ── */
   {code:'US',flag:'🇺🇸',name:'United States',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'CA',flag:'🇨🇦',name:'Canada',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'MX',flag:'🇲🇽',name:'Mexico',voltage:127,freq:60,plugs:['A','B'],region:'americas'},
@@ -1125,11 +1415,32 @@ const COUNTRIES=[
   {code:'PE',flag:'🇵🇪',name:'Peru',voltage:220,freq:60,plugs:['A','B','C'],region:'americas'},
   {code:'VE',flag:'🇻🇪',name:'Venezuela',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'EC',flag:'🇪🇨',name:'Ecuador',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'BO',flag:'🇧🇴',name:'Bolivia',voltage:230,freq:50,plugs:['A','C'],region:'americas'},
+  {code:'PY',flag:'🇵🇾',name:'Paraguay',voltage:220,freq:50,plugs:['C'],region:'americas'},
+  {code:'UY',flag:'🇺🇾',name:'Uruguay',voltage:220,freq:50,plugs:['C','F','L'],region:'americas'},
   {code:'GT',flag:'🇬🇹',name:'Guatemala',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'HN',flag:'🇭🇳',name:'Honduras',voltage:110,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'SV',flag:'🇸🇻',name:'El Salvador',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'NI',flag:'🇳🇮',name:'Nicaragua',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'CR',flag:'🇨🇷',name:'Costa Rica',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'PA',flag:'🇵🇦',name:'Panama',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
   {code:'CU',flag:'🇨🇺',name:'Cuba',voltage:110,freq:60,plugs:['A','B','C'],region:'americas',note:'Some 220V'},
   {code:'DO',flag:'🇩🇴',name:'Dominican Republic',voltage:110,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'HT',flag:'🇭🇹',name:'Haiti',voltage:110,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'JM',flag:'🇯🇲',name:'Jamaica',voltage:110,freq:50,plugs:['A','B'],region:'americas'},
+  {code:'TT',flag:'🇹🇹',name:'Trinidad and Tobago',voltage:115,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'BS',flag:'🇧🇸',name:'Bahamas',voltage:120,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'BB',flag:'🇧🇧',name:'Barbados',voltage:115,freq:50,plugs:['A','B'],region:'americas'},
+  {code:'BZ',flag:'🇧🇿',name:'Belize',voltage:110,freq:60,plugs:['B','G'],region:'americas'},
+  {code:'GY',flag:'🇬🇾',name:'Guyana',voltage:240,freq:60,plugs:['A','B','D'],region:'americas'},
+  {code:'SR',flag:'🇸🇷',name:'Suriname',voltage:127,freq:60,plugs:['C','F'],region:'americas'},
+  {code:'AG',flag:'🇦🇬',name:'Antigua and Barbuda',voltage:230,freq:60,plugs:['A','B'],region:'americas'},
+  {code:'DM',flag:'🇩🇲',name:'Dominica',voltage:230,freq:50,plugs:['D','G'],region:'americas'},
+  {code:'GD',flag:'🇬🇩',name:'Grenada',voltage:230,freq:50,plugs:['G'],region:'americas'},
+  {code:'KN',flag:'🇰🇳',name:'Saint Kitts and Nevis',voltage:230,freq:60,plugs:['A','B','D'],region:'americas'},
+  {code:'LC',flag:'🇱🇨',name:'Saint Lucia',voltage:240,freq:50,plugs:['G'],region:'americas'},
+  {code:'VC',flag:'🇻🇨',name:'Saint Vincent and the Grenadines',voltage:230,freq:50,plugs:['A','C','E','G'],region:'americas'},
+  /* ── EUROPE ── */
   {code:'GB',flag:'🇬🇧',name:'United Kingdom',voltage:230,freq:50,plugs:['G'],region:'europe'},
   {code:'IE',flag:'🇮🇪',name:'Ireland',voltage:230,freq:50,plugs:['G'],region:'europe'},
   {code:'FR',flag:'🇫🇷',name:'France',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
@@ -1155,9 +1466,38 @@ const COUNTRIES=[
   {code:'TR',flag:'🇹🇷',name:'Turkey',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
   {code:'HR',flag:'🇭🇷',name:'Croatia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
   {code:'SK',flag:'🇸🇰',name:'Slovakia',voltage:230,freq:50,plugs:['C','E'],region:'europe'},
+  {code:'BG',flag:'🇧🇬',name:'Bulgaria',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'RS',flag:'🇷🇸',name:'Serbia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'BA',flag:'🇧🇦',name:'Bosnia and Herzegovina',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'ME',flag:'🇲🇪',name:'Montenegro',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'MK',flag:'🇲🇰',name:'North Macedonia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'SI',flag:'🇸🇮',name:'Slovenia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'AL',flag:'🇦🇱',name:'Albania',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'LT',flag:'🇱🇹',name:'Lithuania',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'LV',flag:'🇱🇻',name:'Latvia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'EE',flag:'🇪🇪',name:'Estonia',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'BY',flag:'🇧🇾',name:'Belarus',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'MD',flag:'🇲🇩',name:'Moldova',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'LU',flag:'🇱🇺',name:'Luxembourg',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'MT',flag:'🇲🇹',name:'Malta',voltage:230,freq:50,plugs:['G'],region:'europe'},
+  {code:'CY',flag:'🇨🇾',name:'Cyprus',voltage:230,freq:50,plugs:['G'],region:'europe'},
+  {code:'IS',flag:'🇮🇸',name:'Iceland',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'LI',flag:'🇱🇮',name:'Liechtenstein',voltage:230,freq:50,plugs:['C','J'],region:'europe'},
+  {code:'AD',flag:'🇦🇩',name:'Andorra',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  {code:'MC',flag:'🇲🇨',name:'Monaco',voltage:230,freq:50,plugs:['C','E','F'],region:'europe'},
+  {code:'SM',flag:'🇸🇲',name:'San Marino',voltage:230,freq:50,plugs:['C','F','L'],region:'europe'},
+  {code:'XK',flag:'🇽🇰',name:'Kosovo',voltage:230,freq:50,plugs:['C','F'],region:'europe'},
+  /* ── ASIA & PACIFIC ── */
   {code:'JP',flag:'🇯🇵',name:'Japan',voltage:100,freq:50,plugs:['A','B'],region:'asia',note:'50Hz east / 60Hz west'},
   {code:'CN',flag:'🇨🇳',name:'China',voltage:220,freq:50,plugs:['A','C','I'],region:'asia'},
   {code:'IN',flag:'🇮🇳',name:'India',voltage:230,freq:50,plugs:['C','D','M'],region:'asia'},
+  {code:'PK',flag:'🇵🇰',name:'Pakistan',voltage:230,freq:50,plugs:['C','D'],region:'asia'},
+  {code:'BD',flag:'🇧🇩',name:'Bangladesh',voltage:220,freq:50,plugs:['C','D','G'],region:'asia'},
+  {code:'LK',flag:'🇱🇰',name:'Sri Lanka',voltage:230,freq:50,plugs:['D','G','M'],region:'asia'},
+  {code:'NP',flag:'🇳🇵',name:'Nepal',voltage:230,freq:50,plugs:['C','D','M'],region:'asia'},
+  {code:'BT',flag:'🇧🇹',name:'Bhutan',voltage:230,freq:50,plugs:['C','D','F'],region:'asia'},
+  {code:'MV',flag:'🇲🇻',name:'Maldives',voltage:230,freq:50,plugs:['C','D','G','J','K','L'],region:'asia'},
+  {code:'AF',flag:'🇦🇫',name:'Afghanistan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
   {code:'TH',flag:'🇹🇭',name:'Thailand',voltage:220,freq:50,plugs:['A','B','C'],region:'asia'},
   {code:'SG',flag:'🇸🇬',name:'Singapore',voltage:230,freq:50,plugs:['G'],region:'asia'},
   {code:'MY',flag:'🇲🇾',name:'Malaysia',voltage:240,freq:50,plugs:['G'],region:'asia'},
@@ -1167,25 +1507,102 @@ const COUNTRIES=[
   {code:'PH',flag:'🇵🇭',name:'Philippines',voltage:220,freq:60,plugs:['A','B','C'],region:'asia'},
   {code:'ID',flag:'🇮🇩',name:'Indonesia',voltage:230,freq:50,plugs:['C','F'],region:'asia'},
   {code:'VN',flag:'🇻🇳',name:'Vietnam',voltage:220,freq:50,plugs:['A','C'],region:'asia'},
-  {code:'IL',flag:'🇮🇱',name:'Israel',voltage:230,freq:50,plugs:['C','H'],region:'asia'},
-  {code:'NP',flag:'🇳🇵',name:'Nepal',voltage:230,freq:50,plugs:['C','D','M'],region:'asia'},
   {code:'KH',flag:'🇰🇭',name:'Cambodia',voltage:230,freq:50,plugs:['A','C','G'],region:'asia'},
   {code:'MM',flag:'🇲🇲',name:'Myanmar',voltage:230,freq:50,plugs:['A','C','D','G'],region:'asia'},
+  {code:'LA',flag:'🇱🇦',name:'Laos',voltage:230,freq:50,plugs:['A','B','C'],region:'asia'},
+  {code:'BN',flag:'🇧🇳',name:'Brunei',voltage:240,freq:50,plugs:['G'],region:'asia'},
+  {code:'TL',flag:'🇹🇱',name:'Timor-Leste',voltage:220,freq:50,plugs:['C','E','F','I'],region:'asia'},
+  {code:'MN',flag:'🇲🇳',name:'Mongolia',voltage:220,freq:50,plugs:['C','E'],region:'asia'},
+  {code:'KZ',flag:'🇰🇿',name:'Kazakhstan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'UZ',flag:'🇺🇿',name:'Uzbekistan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'TM',flag:'🇹🇲',name:'Turkmenistan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'TJ',flag:'🇹🇯',name:'Tajikistan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'KG',flag:'🇰🇬',name:'Kyrgyzstan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'AZ',flag:'🇦🇿',name:'Azerbaijan',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'AM',flag:'🇦🇲',name:'Armenia',voltage:230,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'GE',flag:'🇬🇪',name:'Georgia',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'IL',flag:'🇮🇱',name:'Israel',voltage:230,freq:50,plugs:['C','H'],region:'asia'},
+  {code:'JO',flag:'🇯🇴',name:'Jordan',voltage:230,freq:50,plugs:['C','D','F','G'],region:'asia'},
+  {code:'LB',flag:'🇱🇧',name:'Lebanon',voltage:220,freq:50,plugs:['C','D','G'],region:'asia'},
+  {code:'IQ',flag:'🇮🇶',name:'Iraq',voltage:230,freq:50,plugs:['C','D','G'],region:'asia'},
+  {code:'IR',flag:'🇮🇷',name:'Iran',voltage:220,freq:50,plugs:['C','F'],region:'asia'},
+  {code:'SY',flag:'🇸🇾',name:'Syria',voltage:220,freq:50,plugs:['C','E','L'],region:'asia'},
+  {code:'YE',flag:'🇾🇪',name:'Yemen',voltage:230,freq:50,plugs:['A','D','G'],region:'asia'},
   {code:'AU',flag:'🇦🇺',name:'Australia',voltage:230,freq:50,plugs:['I'],region:'asia'},
   {code:'NZ',flag:'🇳🇿',name:'New Zealand',voltage:230,freq:50,plugs:['I'],region:'asia'},
+  {code:'PG',flag:'🇵🇬',name:'Papua New Guinea',voltage:240,freq:50,plugs:['I'],region:'asia'},
   {code:'FJ',flag:'🇫🇯',name:'Fiji',voltage:240,freq:50,plugs:['I'],region:'asia'},
+  {code:'SB',flag:'🇸🇧',name:'Solomon Islands',voltage:220,freq:50,plugs:['I','G'],region:'asia'},
+  {code:'VU',flag:'🇻🇺',name:'Vanuatu',voltage:220,freq:50,plugs:['I'],region:'asia'},
+  {code:'WS',flag:'🇼🇸',name:'Samoa',voltage:230,freq:50,plugs:['I'],region:'asia'},
+  {code:'TO',flag:'🇹🇴',name:'Tonga',voltage:240,freq:50,plugs:['I'],region:'asia'},
+  {code:'PW',flag:'🇵🇼',name:'Palau',voltage:120,freq:60,plugs:['A','B'],region:'asia'},
+  {code:'FM',flag:'🇫🇲',name:'Micronesia',voltage:120,freq:60,plugs:['A','B'],region:'asia'},
+  {code:'MH',flag:'🇲🇭',name:'Marshall Islands',voltage:120,freq:60,plugs:['A','B'],region:'asia'},
+  {code:'KI',flag:'🇰🇮',name:'Kiribati',voltage:240,freq:50,plugs:['I'],region:'asia'},
+  {code:'NR',flag:'🇳🇷',name:'Nauru',voltage:240,freq:50,plugs:['I'],region:'asia'},
+  {code:'TV',flag:'🇹🇻',name:'Tuvalu',voltage:220,freq:50,plugs:['I'],region:'asia'},
+  /* ── AFRICA & MIDDLE EAST ── */
   {code:'AE',flag:'🇦🇪',name:'UAE',voltage:230,freq:50,plugs:['G'],region:'africa'},
   {code:'SA',flag:'🇸🇦',name:'Saudi Arabia',voltage:127,freq:60,plugs:['A','B','G'],region:'africa',note:'Some areas 220V'},
   {code:'QA',flag:'🇶🇦',name:'Qatar',voltage:240,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'KW',flag:'🇰🇼',name:'Kuwait',voltage:240,freq:50,plugs:['C','G'],region:'africa'},
+  {code:'BH',flag:'🇧🇭',name:'Bahrain',voltage:230,freq:50,plugs:['G'],region:'africa'},
+  {code:'OM',flag:'🇴🇲',name:'Oman',voltage:240,freq:50,plugs:['C','G'],region:'africa'},
   {code:'EG',flag:'🇪🇬',name:'Egypt',voltage:220,freq:50,plugs:['C','F'],region:'africa'},
   {code:'MA',flag:'🇲🇦',name:'Morocco',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'DZ',flag:'🇩🇿',name:'Algeria',voltage:230,freq:50,plugs:['C','F'],region:'africa'},
   {code:'TN',flag:'🇹🇳',name:'Tunisia',voltage:230,freq:50,plugs:['C','E'],region:'africa'},
-  {code:'ZA',flag:'🇿🇦',name:'South Africa',voltage:230,freq:50,plugs:['C','M','N'],region:'africa'},
-  {code:'NG',flag:'🇳🇬',name:'Nigeria',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
-  {code:'KE',flag:'🇰🇪',name:'Kenya',voltage:240,freq:50,plugs:['G'],region:'africa'},
-  {code:'GH',flag:'🇬🇭',name:'Ghana',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'LY',flag:'🇱🇾',name:'Libya',voltage:230,freq:50,plugs:['C','D','F','L'],region:'africa'},
+  {code:'SD',flag:'🇸🇩',name:'Sudan',voltage:230,freq:50,plugs:['C','D'],region:'africa'},
+  {code:'SS',flag:'🇸🇸',name:'South Sudan',voltage:230,freq:50,plugs:['C','D'],region:'africa'},
   {code:'ET',flag:'🇪🇹',name:'Ethiopia',voltage:220,freq:50,plugs:['C','E','F','L'],region:'africa'},
+  {code:'ER',flag:'🇪🇷',name:'Eritrea',voltage:230,freq:50,plugs:['C'],region:'africa'},
+  {code:'DJ',flag:'🇩🇯',name:'Djibouti',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'SO',flag:'🇸🇴',name:'Somalia',voltage:220,freq:50,plugs:['C'],region:'africa'},
+  {code:'KE',flag:'🇰🇪',name:'Kenya',voltage:240,freq:50,plugs:['G'],region:'africa'},
+  {code:'UG',flag:'🇺🇬',name:'Uganda',voltage:240,freq:50,plugs:['G'],region:'africa'},
   {code:'TZ',flag:'🇹🇿',name:'Tanzania',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'RW',flag:'🇷🇼',name:'Rwanda',voltage:230,freq:50,plugs:['C','J'],region:'africa'},
+  {code:'BI',flag:'🇧🇮',name:'Burundi',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'NG',flag:'🇳🇬',name:'Nigeria',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'GH',flag:'🇬🇭',name:'Ghana',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'SN',flag:'🇸🇳',name:'Senegal',voltage:230,freq:50,plugs:['C','D','E'],region:'africa'},
+  {code:'CI',flag:'🇨🇮',name:'Ivory Coast',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'CM',flag:'🇨🇲',name:'Cameroon',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'ML',flag:'🇲🇱',name:'Mali',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'BF',flag:'🇧🇫',name:'Burkina Faso',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'NE',flag:'🇳🇪',name:'Niger',voltage:220,freq:50,plugs:['A','B','C','E','F'],region:'africa'},
+  {code:'TD',flag:'🇹🇩',name:'Chad',voltage:220,freq:50,plugs:['C','D','E','F'],region:'africa'},
+  {code:'CF',flag:'🇨🇫',name:'Central African Republic',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'CD',flag:'🇨🇩',name:'Dem. Rep. Congo',voltage:220,freq:50,plugs:['C','D'],region:'africa'},
+  {code:'CG',flag:'🇨🇬',name:'Republic of Congo',voltage:230,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'GA',flag:'🇬🇦',name:'Gabon',voltage:230,freq:50,plugs:['C'],region:'africa'},
+  {code:'GQ',flag:'🇬🇶',name:'Equatorial Guinea',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'ST',flag:'🇸🇹',name:'São Tomé and Príncipe',voltage:220,freq:50,plugs:['C','F'],region:'africa'},
+  {code:'GN',flag:'🇬🇳',name:'Guinea',voltage:220,freq:50,plugs:['C','K'],region:'africa'},
+  {code:'GW',flag:'🇬🇼',name:'Guinea-Bissau',voltage:220,freq:50,plugs:['C'],region:'africa'},
+  {code:'SL',flag:'🇸🇱',name:'Sierra Leone',voltage:230,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'LR',flag:'🇱🇷',name:'Liberia',voltage:120,freq:60,plugs:['A','B'],region:'africa'},
+  {code:'TG',flag:'🇹🇬',name:'Togo',voltage:220,freq:50,plugs:['C'],region:'africa'},
+  {code:'BJ',flag:'🇧🇯',name:'Benin',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
+  {code:'MR',flag:'🇲🇷',name:'Mauritania',voltage:220,freq:50,plugs:['C'],region:'africa'},
+  {code:'GM',flag:'🇬🇲',name:'Gambia',voltage:230,freq:50,plugs:['G'],region:'africa'},
+  {code:'CV',flag:'🇨🇻',name:'Cape Verde',voltage:230,freq:50,plugs:['C','F'],region:'africa'},
+  {code:'ZA',flag:'🇿🇦',name:'South Africa',voltage:230,freq:50,plugs:['C','M','N'],region:'africa'},
+  {code:'AO',flag:'🇦🇴',name:'Angola',voltage:220,freq:50,plugs:['C'],region:'africa'},
+  {code:'ZM',flag:'🇿🇲',name:'Zambia',voltage:230,freq:50,plugs:['C','G'],region:'africa'},
+  {code:'MW',flag:'🇲🇼',name:'Malawi',voltage:230,freq:50,plugs:['G'],region:'africa'},
+  {code:'MZ',flag:'🇲🇿',name:'Mozambique',voltage:220,freq:50,plugs:['C','F','M'],region:'africa'},
+  {code:'ZW',flag:'🇿🇼',name:'Zimbabwe',voltage:220,freq:50,plugs:['D','G'],region:'africa'},
+  {code:'BW',flag:'🇧🇼',name:'Botswana',voltage:230,freq:50,plugs:['D','G','M'],region:'africa'},
+  {code:'NA',flag:'🇳🇦',name:'Namibia',voltage:220,freq:50,plugs:['D','M'],region:'africa'},
+  {code:'LS',flag:'🇱🇸',name:'Lesotho',voltage:220,freq:50,plugs:['M'],region:'africa'},
+  {code:'SZ',flag:'🇸🇿',name:'Eswatini',voltage:230,freq:50,plugs:['M'],region:'africa'},
+  {code:'MG',flag:'🇲🇬',name:'Madagascar',voltage:127,freq:50,plugs:['C','D','E','J','K'],region:'africa'},
+  {code:'MU',flag:'🇲🇺',name:'Mauritius',voltage:230,freq:50,plugs:['G'],region:'africa'},
+  {code:'SC',flag:'🇸🇨',name:'Seychelles',voltage:240,freq:50,plugs:['G'],region:'africa'},
+  {code:'KM',flag:'🇰🇲',name:'Comoros',voltage:220,freq:50,plugs:['C','E'],region:'africa'},
 ];
 
 const PLUG_SVGS = {
@@ -1251,6 +1668,8 @@ function applyTranslations(){
   renderDevices();
   renderFaqs();
   renderTable();
+  populateSelect();
+  if(selCode)pick(selCode);
   updateLangButtons();
 }
 
@@ -1274,9 +1693,24 @@ document.getElementById('langSwitcher').addEventListener('click', e=>{
 
 /* ── POPULATE SELECT ─────────────────────────────── */
 const sel=document.getElementById('csel');
-[...COUNTRIES].sort((a,b)=>a.name.localeCompare(b.name)).forEach(c=>{
-  const o=document.createElement('option');o.value=c.code;o.textContent=c.flag+' '+c.name;sel.appendChild(o);
-});
+function populateSelect(){
+  // save current selection
+  const prev=sel.value;
+  // remove all but first (placeholder)
+  while(sel.options.length>1)sel.remove(1);
+  [...COUNTRIES].sort((a,b)=>{
+    const na=getCountryName(a.code,currentLang)||a.name;
+    const nb=getCountryName(b.code,currentLang)||b.name;
+    return na.localeCompare(nb,currentLang);
+  }).forEach(c=>{
+    const o=document.createElement('option');
+    o.value=c.code;
+    o.textContent=c.flag+' '+(getCountryName(c.code,currentLang)||c.name);
+    sel.appendChild(o);
+  });
+  if(prev)sel.value=prev;
+}
+populateSelect();
 
 /* ── VOLTAGE PARSER ──────────────────────────────── */
 function parseV(s){
@@ -1305,9 +1739,10 @@ function pick(code){
   document.querySelectorAll('.qbtn').forEach(b=>b.classList.toggle('sel',b.dataset.c===code));
   const c=COUNTRIES.find(x=>x.code===code);
   if(!c)return;
-  const hc=document.getElementById('hcountry');if(hc)hc.textContent=c.name;
+  const displayName=getCountryName(c.code,currentLang)||c.name;
+  const hc=document.getElementById('hcountry');if(hc)hc.textContent=displayName;
   const ro=document.getElementById('readout');ro.className='readout got';
-  document.getElementById('ro-main').textContent=c.flag+' '+c.name.toUpperCase();
+  document.getElementById('ro-main').textContent=c.flag+' '+displayName.toUpperCase();
   document.getElementById('ro-sub').textContent=c.note||'';
   const grid=document.getElementById('ro-grid');grid.style.display='grid';
   document.getElementById('cv').textContent=c.voltage+'V';
@@ -1369,7 +1804,12 @@ function renderTable(){
   const T=TRANSLATIONS[currentLang];
   let data=COUNTRIES.filter(c=>{
     if(region!=='all'&&c.region!==region)return false;
-    if(search&&!c.name.toLowerCase().includes(search.toLowerCase()))return false;
+    if(search){
+      const localName=(getCountryName(c.code,currentLang)||'').toLowerCase();
+      const engName=c.name.toLowerCase();
+      const q=search.toLowerCase();
+      if(!engName.includes(q)&&!localName.includes(q))return false;
+    }
     return true;
   });
   data.sort((a,b)=>{let va=a[sk],vb=b[sk];
@@ -1378,8 +1818,9 @@ function renderTable(){
   const tb=document.getElementById('ctbody');tb.innerHTML='';
   if(!data.length){tb.innerHTML=`<tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-dim);font-family:var(--mono)">${T.ct_noresults}</td></tr>`;return;}
   data.forEach(c=>{
+    const displayName=getCountryName(c.code,currentLang)||c.name;
     const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="ct-name"><span class="ct-flag">${c.flag}</span>${c.name}</td><td class="ct-v">${c.voltage}V</td><td class="ct-hz">${c.freq} Hz</td><td><div class="ct-plugs">${c.plugs.map(p=>`<span class="ct-plug">${p}</span>`).join('')}</div></td><td>${vsUS(c.voltage)}</td>`;
+    tr.innerHTML=`<td class="ct-name"><span class="ct-flag">${c.flag}</span>${displayName}</td><td class="ct-v">${c.voltage}V</td><td class="ct-hz">${c.freq} Hz</td><td><div class="ct-plugs">${c.plugs.map(p=>`<span class="ct-plug">${p}</span>`).join('')}</div></td><td>${vsUS(c.voltage)}</td>`;
     tb.appendChild(tr);
   });
 }
