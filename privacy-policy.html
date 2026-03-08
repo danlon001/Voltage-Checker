@@ -3,362 +3,669 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Voltage Checker</title>
-<meta name="description" content="Privacy Policy for Voltage Checker. Learn how we use cookies, Google AdSense, and analytics on this site.">
+<title>Privacy Policy — VoltageChecker.website</title>
+<meta name="description" content="Read the VoltageChecker.website Privacy Policy. We explain what data we collect, how cookies and Google AdSense work, your rights under GDPR and CCPA, and how to contact us.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://voltagechecker.website/privacy-policy.html">
+<link rel="canonical" href="https://voltagechecker.website/privacy-policy">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Privacy Policy — VoltageChecker.website">
+<meta property="og:description" content="Understand how VoltageChecker.website handles your data, cookies, and advertising. Transparent, clear, and up to date for 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://voltagechecker.website/privacy-policy">
+<meta property="og:image" content="https://voltagechecker.website/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — VoltageChecker.website">
+<meta name="twitter:description" content="Understand how VoltageChecker.website handles your data, cookies, and advertising.">
+
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8498912552902957" crossorigin="anonymous"></script>
+
+<!-- Schema: WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy — VoltageChecker.website",
+  "url": "https://voltagechecker.website/privacy-policy",
+  "description": "Privacy Policy for VoltageChecker.website, explaining data collection, cookies, advertising, and user rights.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "VoltageChecker",
+    "url": "https://voltagechecker.website"
+  }
+}
+</script>
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
-  --border:rgba(255,255,255,.07);--border-lit:rgba(255,255,255,.13);
-  --amber:#F5A623;--amber-d:rgba(245,166,35,.16);--amber-g:rgba(245,166,35,.32);
-  --green:#00D68F;--blue:#4DABF7;--blue-d:rgba(77,171,247,.12);
-  --text:#E8ECF4;--text-mid:#8892A4;--text-dim:#3E4758;
-  --mono:'JetBrains Mono',monospace;
-  --display:'Syne',system-ui,sans-serif;
-  --body:'DM Sans',system-ui,sans-serif;
-  --r:8px;--rl:16px;
+/* ===================== DESIGN TOKENS ===================== */
+:root {
+  --bg: #070a0d;
+  --surface: #0e1218;
+  --surface2: #151a22;
+  --surface3: #1c2330;
+  --border: #1e2633;
+  --border2: #273040;
+  --accent: #f5c842;
+  --accent2: #ff7b35;
+  --accent3: #3de8a0;
+  --text: #c8d4e0;
+  --text2: #7a8fa3;
+  --text3: #445566;
+  --green: #3de8a0;
+  --red: #f05567;
+  --blue: #4a9eff;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --radius: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --content-width: 760px;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(ellipse 70% 40% at 50% -10%,rgba(77,171,247,.05),transparent),
-  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-  background-size:100% 100%,44px 44px,44px 44px}
-a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-.wrap-md{max-width:760px;margin:0 auto;padding:0 20px}
 
-/* NAV */
-.nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
-.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
-.logo span{color:var(--amber)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.nav-links a:hover{color:var(--text);text-decoration:none}
-.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
-  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
-.nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+::selection { background: rgba(245,200,66,0.25); color: #fff; }
 
-/* PAGE HERO */
-.page-hero{padding:64px 20px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:700px;height:400px;background:radial-gradient(ellipse,rgba(245,166,35,.06),transparent 65%);pointer-events:none}
-.ph-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
-.ph-tag::before{content:'';display:block;width:20px;height:1px;background:var(--amber)}
-.ph-h1{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.06;
-  letter-spacing:-.02em;margin-bottom:14px}
-.ph-sub{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:520px}
-.ph-meta{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:14px;letter-spacing:.06em}
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-/* CONTENT */
-.content{padding:60px 0 80px}
+/* ===================== NAV ===================== */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(7,10,13,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; padding: 0 24px;
+  gap: 16px;
+}
+.logo {
+  font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  color: var(--accent); letter-spacing: -0.3px;
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.nav-links {
+  display: flex; gap: 20px; list-style: none;
+  font-size: 13px; font-weight: 500;
+}
+.nav-links a { color: var(--text2); transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); text-decoration: none; }
+@media(max-width: 900px) { .nav-links { display: none; } }
+.nav-cta {
+  background: var(--accent); color: #000;
+  padding: 8px 20px; border-radius: 5px;
+  font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.3px;
+  transition: all 0.2s; flex-shrink: 0; white-space: nowrap;
+}
+.nav-cta:hover { background: #ffd84a; text-decoration: none; transform: translateY(-1px); }
+
+/* ===================== AD UNITS ===================== */
+.ad-unit {
+  padding: 16px 24px;
+}
+.ad-inner {
+  max-width: 728px; margin: 0 auto;
+  background: var(--surface); border: 1px dashed var(--border2);
+  border-radius: var(--radius); padding: 12px 16px;
+  text-align: center; min-height: 90px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+}
+.ad-inner.rect { min-height: 250px; max-width: 336px; }
+.ad-label {
+  font-size: 9px; color: var(--text3); letter-spacing: 2px;
+  font-family: var(--font-mono); text-transform: uppercase;
+}
+
+/* ===================== PAGE HERO ===================== */
+.page-hero {
+  padding: 72px 24px 52px;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 60% 35% at 50% -5%, rgba(245,200,66,0.06) 0%, transparent 60%);
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.page-hero-inner {
+  max-width: var(--content-width); margin: 0 auto;
+  position: relative;
+}
+.page-eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.page-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 800; line-height: 1.05;
+  color: #fff; letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.page-hero-meta {
+  font-size: 13px; color: var(--text3); font-family: var(--font-mono);
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.page-hero-meta .dot-sep { opacity: 0.4; }
+
+/* ===================== CONTENT ===================== */
+.content-wrap {
+  max-width: var(--content-width); margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* Quick Summary Card */
+.summary-card {
+  background: rgba(245,200,66,0.05);
+  border: 1px solid rgba(245,200,66,0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 24px; margin-bottom: 48px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.summary-card .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.summary-card p { margin: 0; color: var(--text); font-size: 14px; line-height: 1.75; }
+.summary-card strong { color: #fff; }
 
 /* TOC */
-.toc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:24px;margin-bottom:48px}
-.toc-title{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px}
-.toc-links{display:flex;flex-direction:column;gap:7px;list-style:none}
-.toc-links a{font-size:13px;color:var(--text-mid);display:flex;align-items:center;gap:8px;transition:color .2s}
-.toc-links a::before{content:'//';font-family:var(--mono);font-size:10px;color:var(--text-dim)}
-.toc-links a:hover{color:var(--amber);text-decoration:none}
+.toc-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 28px; margin-bottom: 48px;
+}
+.toc-block .toc-label {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 2.5px;
+  color: var(--text3); text-transform: uppercase; margin-bottom: 16px;
+}
+.toc-block ol {
+  margin: 0; padding-left: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px;
+}
+@media(max-width: 540px) { .toc-block ol { grid-template-columns: 1fr; } }
+.toc-block li { font-size: 13px; padding: 4px 0; }
+.toc-block a { color: var(--text2); transition: color 0.15s; }
+.toc-block a:hover { color: var(--accent); text-decoration: none; }
 
-/* SECTIONS */
-.pp-section{margin-bottom:44px;scroll-margin-top:80px}
-.stag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
-.stag::before{content:'//';color:var(--text-dim);font-weight:400}
-.pp-h2{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;margin-bottom:14px}
-.prose{font-size:15px;color:var(--text-mid);line-height:1.85}
-.prose p{margin-bottom:14px}
-.prose p:last-child{margin-bottom:0}
-.prose ul{margin:12px 0 14px 18px;display:flex;flex-direction:column;gap:6px}
-.prose li{font-size:15px;color:var(--text-mid);line-height:1.7}
-.prose strong{color:var(--text)}
+/* Section headings */
+.content-wrap h2 {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: #fff; margin: 52px 0 16px;
+  padding-top: 52px; border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
+  display: flex; align-items: center; gap: 10px;
+}
+.content-wrap h2:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+.section-num {
+  background: rgba(245,200,66,0.1); border: 1px solid rgba(245,200,66,0.2);
+  color: var(--accent); font-family: var(--font-mono);
+  font-size: 10px; padding: 3px 8px; border-radius: 4px;
+  letter-spacing: 0.5px; flex-shrink: 0;
+}
+.content-wrap h3 {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  color: var(--text); margin: 28px 0 10px;
+}
+.content-wrap p {
+  color: var(--text2); margin-bottom: 18px; font-size: 15px; line-height: 1.8;
+}
+.content-wrap ul, .content-wrap ol {
+  color: var(--text2); font-size: 15px; margin: 0 0 20px 0;
+  padding-left: 0; list-style: none;
+}
+.content-wrap li {
+  position: relative; padding: 8px 0 8px 22px; border-bottom: 1px solid rgba(30,38,51,0.5);
+  line-height: 1.7;
+}
+.content-wrap li:last-child { border-bottom: none; }
+.content-wrap li::before {
+  content: '▸'; position: absolute; left: 0; top: 9px;
+  color: var(--accent); font-size: 10px; opacity: 0.7;
+}
+.content-wrap strong { color: var(--text); }
+.content-wrap a { color: var(--accent); }
 
-/* HIGHLIGHT BOX */
-.hbox{background:var(--bg-card);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;
-  padding:16px 20px;margin:18px 0;font-size:14px;color:var(--text-mid);line-height:1.75}
-.hbox.blue{border-left-color:var(--blue)}
-.hbox.green{border-left-color:var(--green)}
+/* Info boxes */
+.info-box {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 18px 22px; margin: 20px 0 24px;
+}
+.info-box p { margin: 0; font-size: 14px; color: var(--text2); }
+.info-box.green { border-left: 3px solid var(--green); background: rgba(61,232,160,0.04); }
+.info-box.blue { border-left: 3px solid var(--blue); background: rgba(74,158,255,0.04); }
 
-/* DIVIDER */
-.sec-div{border-top:1px solid var(--border);margin:44px 0}
+/* Rights grid */
+.rights-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 28px;
+}
+@media(max-width: 500px) { .rights-grid { grid-template-columns: 1fr; } }
+.rights-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 20px;
+}
+.rights-card .rights-icon { font-size: 18px; margin-bottom: 8px; }
+.rights-card .rights-title {
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  color: #fff; margin-bottom: 5px;
+}
+.rights-card .rights-desc { font-size: 13px; color: var(--text3); line-height: 1.6; }
 
-/* FOOTER */
-.disc{background:var(--bg-panel);border-top:2px solid var(--amber);padding:18px 20px}
-.disc-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:flex-start}
-.disc-txt{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.7}
-.footer{border-top:1px solid var(--border);padding:44px 20px 28px;background:var(--bg-panel)}
-.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:32px}
-.f-logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);margin-bottom:9px}
-.f-logo span{color:var(--amber)}
-.f-tag{font-size:13px;color:var(--text-dim);line-height:1.7}
-.f-ctitle{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:13px}
-.f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.f-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.f-links a:hover{color:var(--amber);text-decoration:none}
-.f-bot{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:18px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.f-copy{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg{display:flex;gap:14px}
-.f-leg a{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg a:hover{color:var(--amber)}
+/* Third-party table */
+.tp-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0 24px;
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+}
+.tp-table th {
+  background: var(--surface2); color: var(--text3);
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 10px 16px; text-align: left;
+  border-bottom: 1px solid var(--border2);
+}
+.tp-table td {
+  padding: 13px 16px; font-size: 13px; color: var(--text2);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.tp-table tbody tr:last-child td { border-bottom: none; }
+.tp-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+.tp-table td strong { color: var(--text); }
+.tp-table td a { font-size: 12px; }
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.fade{animation:fadeUp .5s ease both}
+/* Contact CTA */
+.contact-cta {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 32px; margin-top: 48px;
+  display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;
+}
+.contact-cta .cta-icon { font-size: 28px; flex-shrink: 0; }
+.contact-cta-body {}
+.contact-cta h3 {
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  color: #fff; margin: 0 0 8px;
+}
+.contact-cta p { margin: 0 0 16px; font-size: 14px; color: var(--text2); line-height: 1.7; }
+.btn-accent {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #000;
+  padding: 10px 24px; border-radius: 5px;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  transition: all 0.2s;
+}
+.btn-accent:hover { background: #ffd84a; text-decoration: none; transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--text);
+  padding: 10px 24px; border-radius: 5px;
+  border: 1px solid var(--border2);
+  font-family: var(--font-display); font-weight: 600; font-size: 14px;
+  transition: all 0.2s; margin-left: 10px;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+@media(max-width: 440px) { .btn-outline { margin-left: 0; margin-top: 8px; } }
 
-@media(max-width:920px){.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}}
-@media(max-width:600px){.page-hero{padding:44px 16px 40px}.content{padding:40px 0 60px}}
+/* ===================== FOOTER ===================== */
+footer {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 56px 24px 32px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px;
+}
+@media(max-width: 800px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 500px) { .footer-inner { grid-template-columns: 1fr; } }
+.footer-logo {
+  font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 14px;
+}
+.footer-brand p { font-size: 13px; color: var(--text3); line-height: 1.75; max-width: 280px; }
+.footer-col h4 {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+  color: var(--text3); text-transform: uppercase; margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a { font-size: 14px; color: var(--text2); transition: color 0.2s; }
+.footer-col a:hover { color: var(--accent); text-decoration: none; }
+.footer-bottom {
+  max-width: 1200px; margin: 40px auto 0;
+  padding-top: 28px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--text3); flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom a { color: var(--text3); }
+.footer-bottom a:hover { color: var(--accent); }
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width: 640px) {
+  .page-hero { padding: 48px 20px 36px; }
+  .content-wrap { padding: 40px 20px 60px; }
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-in">
-    <a class="logo" href="/"><div class="logo-box">⚡</div>Voltage<span>Checker</span></a>
-    <ul class="nav-links">
-      <li><a href="/#tool">Checker</a></li>
-      <li><a href="/#plugs">Plug Types</a></li>
-      <li><a href="/#countries">Countries</a></li>
-      <li><a href="/#devices">Devices</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#tool" class="nav-cta">Check Now</a></li>
+<!-- ===== NAVIGATION ===== -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="VoltageChecker home">⚡ VoltageChecker</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#tool">Checker</a></li>
+      <li><a href="index.html#countries">Countries</a></li>
+      <li><a href="index.html#plugs">Plug Types</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
+    <a href="index.html#tool" class="nav-cta">CHECK NOW ⚡</a>
   </div>
 </nav>
 
+<!-- ===== AD: HEADER LEADERBOARD ===== -->
+<div class="ad-unit" role="complementary" aria-label="Advertisement">
+  <div class="ad-inner">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block;width:728px;max-width:100%;height:90px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="LEADERBOARD_SLOT"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+<!-- ===== PAGE HERO ===== -->
 <div class="page-hero">
-  <div class="wrap-md">
-    <div class="ph-tag fade">Legal</div>
-    <h1 class="ph-h1 fade">Privacy Policy</h1>
-    <p class="ph-sub fade">We keep it simple: no accounts, no personal data collected by us. Here's what you should know about third-party services on this site.</p>
-    <div class="ph-meta fade">Last updated: February 1, 2026 &nbsp;·&nbsp; Applies to voltagechecker.website</div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">// Legal &amp; Compliance</div>
+    <h1>Privacy Policy</h1>
+    <div class="page-hero-meta">
+      <span>VoltageChecker.website</span>
+      <span class="dot-sep">·</span>
+      <span>Last updated: January 1, 2026</span>
+      <span class="dot-sep">·</span>
+      <span>Effective immediately</span>
+    </div>
   </div>
 </div>
 
-<section class="content">
-  <div class="wrap-md">
+<!-- ===== MAIN CONTENT ===== -->
+<div class="content-wrap" role="main">
 
-    <!-- TABLE OF CONTENTS -->
-    <nav class="toc" aria-label="Table of contents">
-      <div class="toc-title">Contents</div>
-      <ul class="toc-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#data-we-collect">Data We Collect</a></li>
-        <li><a href="#cookies">Cookies</a></li>
-        <li><a href="#adsense">Google AdSense &amp; Advertising</a></li>
-        <li><a href="#analytics">Google Analytics</a></li>
-        <li><a href="#third-parties">Third-Party Links</a></li>
-        <li><a href="#your-rights">Your Rights</a></li>
-        <li><a href="#children">Children's Privacy</a></li>
-        <li><a href="#changes">Changes to This Policy</a></li>
-        <li><a href="#contact-pp">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- 1. OVERVIEW -->
-    <div class="pp-section" id="overview">
-      <div class="stag">01</div>
-      <h2 class="pp-h2">Overview</h2>
-      <div class="prose">
-        <p>Voltage Checker ("we," "us," or "the site") is a free reference tool for travelers. We do not require you to create an account, log in, or provide any personal information to use the site.</p>
-        <p>This Privacy Policy explains what information is collected when you visit <strong>voltagechecker.website</strong>, how it is used, and your rights regarding that information.</p>
-        <div class="hbox green">By using this site, you agree to the practices described in this policy. If you disagree with any part of it, please discontinue use of the site.</div>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 2. DATA WE COLLECT -->
-    <div class="pp-section" id="data-we-collect">
-      <div class="stag">02</div>
-      <h2 class="pp-h2">Data We Collect</h2>
-      <div class="prose">
-        <p><strong>We do not directly collect, store, or process any personal data.</strong> There are no registration forms, user accounts, or databases on this site.</p>
-        <p>However, third-party services integrated into the site (detailed below) may collect certain information automatically, including:</p>
-        <ul>
-          <li>Your IP address and approximate location</li>
-          <li>Browser type, version, and operating system</li>
-          <li>Pages visited and time spent on the site</li>
-          <li>Referring URL (how you arrived at the site)</li>
-          <li>Device type (desktop, mobile, tablet)</li>
-        </ul>
-        <p>This data is collected and processed by Google through AdSense and Analytics, not by Voltage Checker directly.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 3. COOKIES -->
-    <div class="pp-section" id="cookies">
-      <div class="stag">03</div>
-      <h2 class="pp-h2">Cookies</h2>
-      <div class="prose">
-        <p>Cookies are small text files stored on your device by your browser. This site itself does not set any first-party cookies. However, third-party services embedded on this site do use cookies to function.</p>
-        <p><strong>Types of cookies used by third parties on this site:</strong></p>
-        <ul>
-          <li><strong>Advertising cookies</strong> — set by Google AdSense to serve personalized or contextual ads</li>
-          <li><strong>Analytics cookies</strong> — set by Google Analytics to measure traffic and user behavior</li>
-          <li><strong>Performance cookies</strong> — used to understand how visitors interact with the site</li>
-        </ul>
-        <div class="hbox">You can manage or disable cookies at any time through your browser settings. Note that disabling cookies may affect how ads are displayed, but will not impact the core functionality of the voltage checker tool.</div>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 4. ADSENSE -->
-    <div class="pp-section" id="adsense">
-      <div class="stag">04</div>
-      <h2 class="pp-h2">Google AdSense &amp; Advertising</h2>
-      <div class="prose">
-        <p>This site uses <strong>Google AdSense</strong> to display advertisements. AdSense helps keep Voltage Checker free and available to everyone.</p>
-        <p>Google AdSense may use cookies and web beacons to serve ads based on your prior visits to this site and other sites across the web. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
-        <div class="hbox blue">You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies via the <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener">Network Advertising Initiative opt-out page</a>.</div>
-        <p>Google's privacy practices are governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 5. ANALYTICS -->
-    <div class="pp-section" id="analytics">
-      <div class="stag">05</div>
-      <h2 class="pp-h2">Google Analytics</h2>
-      <div class="prose">
-        <p>This site uses <strong>Google Analytics</strong> to understand how visitors use the site — which pages are visited, how long users stay, and how they navigate. This data is aggregated and anonymous; it is not tied to any individual user's identity.</p>
-        <p>Google Analytics collects information such as:</p>
-        <ul>
-          <li>Pages viewed and session duration</li>
-          <li>Country/region of the visitor (approximate, based on IP)</li>
-          <li>Device and browser type</li>
-          <li>Traffic source (e.g., search engine, direct, referral)</li>
-        </ul>
-        <p>This information is used solely to improve the site — to understand which features are most useful and ensure the tool works well across devices.</p>
-        <p>You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 6. THIRD PARTIES -->
-    <div class="pp-section" id="third-parties">
-      <div class="stag">06</div>
-      <h2 class="pp-h2">Third-Party Links</h2>
-      <div class="prose">
-        <p>This site may contain links to external websites (for example, links to adapter or converter products, travel resources, or cookie management tools). Voltage Checker is not responsible for the privacy practices of external sites.</p>
-        <p>We encourage you to review the privacy policy of any site you visit via a link from this page.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 7. YOUR RIGHTS -->
-    <div class="pp-section" id="your-rights">
-      <div class="stag">07</div>
-      <h2 class="pp-h2">Your Rights</h2>
-      <div class="prose">
-        <p>Depending on your location, you may have rights regarding personal data under laws such as the GDPR (European Union) or CCPA (California). Since Voltage Checker does not directly collect personal data, most of these rights apply to the data held by Google (Analytics and AdSense) rather than by us.</p>
-        <p>For data Google holds, you can:</p>
-        <ul>
-          <li>Review and manage your data at <a href="https://myaccount.google.com" target="_blank" rel="noopener">myaccount.google.com</a></li>
-          <li>Opt out of personalized ads at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">google.com/settings/ads</a></li>
-          <li>Request data deletion through Google's tools</li>
-        </ul>
-        <p>For any other privacy concerns related to this site, contact us at <a href="mailto:hello@voltagechecker.website">hello@voltagechecker.website</a>.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 8. CHILDREN -->
-    <div class="pp-section" id="children">
-      <div class="stag">08</div>
-      <h2 class="pp-h2">Children's Privacy</h2>
-      <div class="prose">
-        <p>Voltage Checker is a general-purpose travel reference tool not directed at children under the age of 13. We do not knowingly collect any personal information from children. If you believe a child has submitted personal information through this site, please contact us and we will take steps to address it.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 9. CHANGES -->
-    <div class="pp-section" id="changes">
-      <div class="stag">09</div>
-      <h2 class="pp-h2">Changes to This Policy</h2>
-      <div class="prose">
-        <p>This Privacy Policy may be updated from time to time to reflect changes in the site, applicable law, or third-party services. The "Last updated" date at the top of this page will always reflect the most recent revision.</p>
-        <p>Continued use of the site following any changes constitutes your acceptance of the updated policy.</p>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- 10. CONTACT -->
-    <div class="pp-section" id="contact-pp">
-      <div class="stag">10</div>
-      <h2 class="pp-h2">Contact</h2>
-      <div class="prose">
-        <p>If you have any questions about this Privacy Policy or how your data is handled, reach out at:</p>
-        <div class="hbox" style="font-family:var(--mono);font-size:13px">
-          📧 <a href="mailto:hello@voltagechecker.website">hello@voltagechecker.website</a><br>
-          🌐 <a href="https://voltagechecker.website">voltagechecker.website</a>
-        </div>
-      </div>
-    </div>
-
+  <!-- Quick summary -->
+  <div class="summary-card">
+    <span class="icon">⚡</span>
+    <p><strong>Short version:</strong> VoltageChecker.website requires no registration and collects no personal information to use the tool. We use <strong>Google AdSense</strong> which sets cookies to serve relevant ads. You can opt out of personalised advertising at any time. We never sell your data.</p>
   </div>
-</section>
 
-<div class="disc">
-  <div class="disc-in">
-    <span style="font-size:16px;flex-shrink:0">⚡</span>
-    <p class="disc-txt">Disclaimer: Voltage data is provided for general reference. Always verify with official local sources before traveling. Voltage Checker is not liable for any damage caused by incorrect adapter or converter use.</p>
+  <!-- Table of contents -->
+  <div class="toc-block" role="navigation" aria-label="Table of contents">
+    <div class="toc-label">Table of Contents</div>
+    <ol>
+      <li><a href="#info-collected">Information We Collect</a></li>
+      <li><a href="#how-we-use">How We Use Information</a></li>
+      <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+      <li><a href="#advertising">Advertising — Google AdSense</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#your-rights">Your Rights &amp; Choices</a></li>
+      <li><a href="#data-retention">Data Retention</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact-privacy">Contact Us</a></li>
+    </ol>
   </div>
-</div>
 
-<footer class="footer">
-  <div class="footer-in">
-    <div>
-      <div class="f-logo">Voltage<span>Checker</span></div>
-      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+  <!-- ===================== SECTION 1 ===================== -->
+  <h2 id="info-collected"><span class="section-num">01</span> Information We Collect</h2>
+  <p>VoltageChecker.website is designed to be used without creating an account or providing any personal information. However, certain data is collected automatically when you visit the site.</p>
+
+  <h3>Automatically Collected Data</h3>
+  <ul>
+    <li><strong>Server log data</strong> — Your anonymised IP address, browser type, operating system, referring URL, pages visited, and date/time of access. This is standard practice for any website and is used solely for security and diagnostics.</li>
+    <li><strong>Anonymous usage data</strong> — Aggregated, non-identifying statistics such as which countries are searched most frequently. This data cannot be used to identify individual users and helps us improve the service.</li>
+    <li><strong>Cookies</strong> — Small text files placed on your device as described in detail in Section 3 below.</li>
+  </ul>
+
+  <h3>Information You Voluntarily Provide</h3>
+  <p>If you contact us via our <a href="contact.html">contact form</a> or by email, you provide your name, email address, and message content. This information is used only to respond to your enquiry and is never shared with third parties for marketing purposes.</p>
+
+  <div class="info-box green">
+    <p>✓ <strong>No account required.</strong> You can use every feature of VoltageChecker.website — including the full 195-country database — without creating an account or providing any personal information.</p>
+  </div>
+
+  <!-- ===================== SECTION 2 ===================== -->
+  <h2 id="how-we-use"><span class="section-num">02</span> How We Use Information</h2>
+  <p>We use the information we collect for the following limited purposes:</p>
+  <ul>
+    <li>To operate, maintain, and improve VoltageChecker.website and its tools</li>
+    <li>To monitor site performance, traffic patterns, and security threats</li>
+    <li>To respond to messages sent through our contact form or by email</li>
+    <li>To display advertisements through Google AdSense (see Section 4)</li>
+    <li>To comply with applicable legal obligations</li>
+  </ul>
+  <p>We <strong>do not</strong> sell, rent, trade, or otherwise transfer your personal information to any third parties. We do not use your information for unsolicited marketing communications of any kind.</p>
+
+  <!-- ===================== SECTION 3 ===================== -->
+  <h2 id="cookies"><span class="section-num">03</span> Cookies &amp; Tracking Technologies</h2>
+  <p>Cookies are small text files stored on your device when you visit a website. VoltageChecker.website uses the following categories of cookies:</p>
+
+  <h3>Essential Cookies</h3>
+  <p>These cookies are strictly necessary for the website to function. They do not store any personally identifiable information and cannot be disabled without affecting core site functionality.</p>
+
+  <h3>Analytics Cookies</h3>
+  <p>We may use anonymised analytics to understand how visitors use our site. All analytics data is aggregated and cannot be used to identify individual users. This helps us understand which features are most valuable and improve the overall experience.</p>
+
+  <h3>Advertising Cookies</h3>
+  <p>Google AdSense places advertising cookies on your device to deliver ads that are relevant to your interests, based on your browsing behaviour. See Section 4 for full details on how this works and how to opt out.</p>
+
+  <div class="info-box blue">
+    <p>💡 <strong>Cookie control:</strong> You can manage or delete cookies through your browser settings at any time. Disabling advertising cookies will not affect the functionality of the voltage checker — you will simply see non-personalised ads.</p>
+  </div>
+
+  <!-- ===================== AD: MID-CONTENT RECTANGLE ===================== -->
+  <div style="text-align:center;margin:32px 0;" role="complementary" aria-label="Advertisement">
+    <span style="display:block;font-size:9px;color:var(--text3);font-family:var(--font-mono);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:336px;max-width:100%;height:280px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="RECTANGLE_SLOT"
+         data-ad-format="rectangle"></ins>
+  </div>
+
+  <!-- ===================== SECTION 4 ===================== -->
+  <h2 id="advertising"><span class="section-num">04</span> Advertising — Google AdSense</h2>
+  <p>VoltageChecker.website uses <strong>Google AdSense</strong>, an advertising service provided by Google LLC. Advertising revenue is what allows us to keep this tool completely free for everyone, with no subscription, no registration, and no paywalls.</p>
+  <p>Google AdSense uses cookies and web beacons to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet.</p>
+
+  <h3>What Google May Collect</h3>
+  <ul>
+    <li>Your IP address (used to infer general location)</li>
+    <li>Browser type, version, and device identifiers</li>
+    <li>Cookie data associated with your Google account (if you are logged in)</li>
+    <li>Browsing behaviour across websites that participate in the Google Display Network</li>
+  </ul>
+
+  <h3>Your Advertising Choices</h3>
+  <p>You have several options to control personalised advertising:</p>
+  <ul>
+    <li>Visit <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ads Settings</a> to manage your preferences</li>
+    <li>Opt out via <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a> (Digital Advertising Alliance)</li>
+    <li>Install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a></li>
+    <li>Adjust your cookie preferences through your browser settings</li>
+  </ul>
+  <p>If you opt out of personalised advertising, you will still see advertisements on our site — they simply will not be tailored to your interests. For more information, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses data from sites that use Google services</a>.</p>
+
+  <!-- ===================== SECTION 5 ===================== -->
+  <h2 id="third-parties"><span class="section-num">05</span> Third-Party Services</h2>
+  <p>Our website uses the following third-party services. Each operates under its own independent privacy policy, which we encourage you to review.</p>
+
+  <table class="tp-table" role="table" aria-label="Third-party services">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Purpose</th>
+        <th>Privacy Policy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Google AdSense</strong></td>
+        <td>Advertising &amp; monetisation</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy ↗</a></td>
+      </tr>
+      <tr>
+        <td><strong>Google Analytics</strong></td>
+        <td>Site analytics (anonymised)</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy ↗</a></td>
+      </tr>
+      <tr>
+        <td><strong>Google Fonts</strong></td>
+        <td>Typography (loaded from Google servers)</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy ↗</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>We are not responsible for the data practices of any third-party services. We select services with strong privacy track records and limit the number of third parties to only what is necessary to operate the site.</p>
+
+  <!-- ===================== SECTION 6 ===================== -->
+  <h2 id="your-rights"><span class="section-num">06</span> Your Rights &amp; Choices</h2>
+  <p>Depending on your location, you may have the following rights regarding your personal data. We are committed to honouring these rights promptly and transparently.</p>
+
+  <div class="rights-grid">
+    <div class="rights-card">
+      <div class="rights-icon">📋</div>
+      <div class="rights-title">Access</div>
+      <div class="rights-desc">Request a copy of any personal information we hold about you.</div>
     </div>
-    <div>
-      <div class="f-ctitle">Tools</div>
-      <ul class="f-links">
-        <li><a href="/#tool">Compatibility Checker</a></li>
-        <li><a href="/#plugs">Plug Type Guide</a></li>
-        <li><a href="/#countries">Country Database</a></li>
-        <li><a href="/#devices">Device Reference</a></li>
+    <div class="rights-card">
+      <div class="rights-icon">✏️</div>
+      <div class="rights-title">Correction</div>
+      <div class="rights-desc">Request that inaccurate or incomplete data be corrected.</div>
+    </div>
+    <div class="rights-card">
+      <div class="rights-icon">🗑️</div>
+      <div class="rights-title">Deletion</div>
+      <div class="rights-desc">Request deletion of your personal data ("right to be forgotten").</div>
+    </div>
+    <div class="rights-card">
+      <div class="rights-icon">🚫</div>
+      <div class="rights-title">Opt-Out</div>
+      <div class="rights-desc">Opt out of personalised advertising at any time (see Section 4).</div>
+    </div>
+    <div class="rights-card">
+      <div class="rights-icon">⬇️</div>
+      <div class="rights-title">Portability</div>
+      <div class="rights-desc">Request your data in a structured, machine-readable format.</div>
+    </div>
+    <div class="rights-card">
+      <div class="rights-icon">🍪</div>
+      <div class="rights-title">Cookie Control</div>
+      <div class="rights-desc">Manage or delete cookies directly through your browser settings.</div>
+    </div>
+  </div>
+
+  <p><strong>EU/EEA residents</strong> — These rights are protected under the General Data Protection Regulation (GDPR). <strong>California residents</strong> — Similar protections apply under the California Consumer Privacy Act (CCPA). To exercise any of these rights, please contact us at <a href="/cdn-cgi/l/email-protection#beddd1d0cadfddcafec8d1d2cadfd9dbddd6dbddd5dbcc90c9dbdccdd7cadb"><span class="__cf_email__" data-cfemail="8ae9e5e4feebe9fecafce5e6feebedefe9e2efe9e1eff8a4fdefe8f9e3feef">[email&#160;protected]</span></a>.</p>
+
+  <!-- ===================== SECTION 7 ===================== -->
+  <h2 id="data-retention"><span class="section-num">07</span> Data Retention</h2>
+  <p>We retain data for the minimum period necessary for its purpose:</p>
+  <ul>
+    <li><strong>Server log data</strong> — Retained for up to 30 days for security and diagnostic purposes, then automatically deleted.</li>
+    <li><strong>Contact form submissions</strong> — Retained for up to 12 months to allow for follow-up, then securely deleted unless a legal obligation requires longer retention.</li>
+    <li><strong>All other visitor data</strong> — We do not retain any other personal data about site visitors.</li>
+  </ul>
+
+  <!-- ===================== SECTION 8 ===================== -->
+  <h2 id="children"><span class="section-num">08</span> Children's Privacy</h2>
+  <p>VoltageChecker.website is not directed at children under the age of 13. We do not knowingly collect personal information from anyone under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us at <a href="/cdn-cgi/l/email-protection#8fece0e1fbeeecfbcff9e0e3fbeee8eaece7eaece4eafda1f8eaedfce6fbea"><span class="__cf_email__" data-cfemail="57343839233634231721383b23363032343f32343c322579203235243e2332">[email&#160;protected]</span></a> and we will delete it promptly.</p>
+
+  <!-- ===================== SECTION 9 ===================== -->
+  <h2 id="changes"><span class="section-num">09</span> Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time to reflect changes in our practices, the technology we use, applicable legal requirements, or other operational reasons. When we make changes, we will update the <strong>"Last updated"</strong> date at the top of this page.</p>
+  <p>For significant changes, we will make reasonable efforts to provide additional notice. Your continued use of VoltageChecker.website following any update to this policy constitutes your acceptance of the revised terms.</p>
+
+  <!-- ===================== SECTION 10 ===================== -->
+  <h2 id="contact-privacy"><span class="section-num">10</span> Contact Us</h2>
+  <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, we are happy to help. We are committed to working with you to resolve any privacy concerns in a fair and transparent manner.</p>
+
+  <!-- Contact CTA block -->
+  <div class="contact-cta">
+    <div class="cta-icon">✉️</div>
+    <div class="contact-cta-body">
+      <h3>Get in Touch</h3>
+      <p>For all privacy-related enquiries — including access requests, deletion requests, or general questions about how we handle your data — please reach out directly.</p>
+      <a href="contact.html" class="btn-accent">Contact Form →</a>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">⚡ VoltageChecker</div>
+      <p>Free voltage and plug compatibility tool for international travellers. Check power standards for 195+ countries — no registration, no fees, just reliable answers.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul role="list">
+        <li><a href="index.html#tool">Compatibility Checker</a></li>
+        <li><a href="index.html#countries">Country Database</a></li>
+        <li><a href="index.html#plugs">Plug Type Guide</a></li>
+        <li><a href="index.html#devices">Device Reference</a></li>
       </ul>
     </div>
-    <div>
-      <div class="f-ctitle">Info</div>
-      <ul class="f-links">
-        <li><a href="/#faq">FAQ</a></li>
+    <div class="footer-col">
+      <h4>Guides</h4>
+      <ul role="list">
+        <li><a href="adapters-vs-converters.html">Adapters vs Converters</a></li>
+        <li><a href="europe-power-guide.html">Europe Power Guide</a></li>
+        <li><a href="asia-power-guide.html">Asia Power Guide</a></li>
+        <li><a href="africa-power-guide.html">Africa Power Guide</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul role="list">
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="privacy-policy.html" aria-current="page">Privacy Policy</a></li>
+        <li><a href="sitemap.xml">Sitemap</a></li>
       </ul>
     </div>
   </div>
-  <div class="f-bot">
-    <span class="f-copy">© Voltage Checker — Free for personal use</span>
-    <div class="f-leg">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+  <div class="footer-bottom">
+    <span>© 2026 VoltageChecker.website — Free for personal use</span>
+    <span>
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="about.html">About</a> ·
+      <a href="contact.html">

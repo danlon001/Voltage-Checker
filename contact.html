@@ -3,244 +3,810 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Voltage Checker</title>
-<meta name="description" content="Contact Voltage Checker. Report an error, suggest a country, or just say hello.">
+<title>Contact VoltageChecker — Report Errors, Ask Questions & Give Feedback</title>
+<meta name="description" content="Contact the VoltageChecker team to report incorrect voltage or plug data, request a missing country, suggest a feature, or ask a power compatibility question. We respond within 1–3 business days.">
+<meta name="author" content="VoltageChecker.website">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://voltagechecker.website/contact.html">
+<link rel="canonical" href="https://voltagechecker.website/contact">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Contact VoltageChecker — Report Errors & Ask Questions">
+<meta property="og:description" content="Reach the VoltageChecker team to report data errors, request countries, suggest features, or ask about international power compatibility.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://voltagechecker.website/contact">
+<meta property="og:image" content="https://voltagechecker.website/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact VoltageChecker — Report Errors & Ask Questions">
+<meta name="twitter:description" content="Reach the VoltageChecker team to report data errors, request countries, or ask about power compatibility.">
+
+<!-- Schema: ContactPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact VoltageChecker",
+  "url": "https://voltagechecker.website/contact",
+  "description": "Contact page for VoltageChecker.website — report data errors, request countries, or ask about international power compatibility.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "VoltageChecker",
+    "url": "https://voltagechecker.website"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@voltagechecker.website",
+    "contactType": "customer support",
+    "availableLanguage": "English",
+    "hoursAvailable": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+    }
+  }
+}
+</script>
+
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8498912552902957" crossorigin="anonymous"></script>
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
-  --border:rgba(255,255,255,.07);--border-lit:rgba(255,255,255,.13);
-  --amber:#F5A623;--amber-d:rgba(245,166,35,.16);--amber-g:rgba(245,166,35,.32);
-  --green:#00D68F;--green-d:rgba(0,214,143,.12);
-  --text:#E8ECF4;--text-mid:#8892A4;--text-dim:#3E4758;
-  --mono:'JetBrains Mono',monospace;
-  --display:'Syne',system-ui,sans-serif;
-  --body:'DM Sans',system-ui,sans-serif;
-  --r:8px;--rl:16px;
+/* ===================== ROOT / TOKENS ===================== */
+:root {
+  --bg: #070a0d;
+  --surface: #0e1218;
+  --surface2: #151a22;
+  --surface3: #1c2330;
+  --border: #1e2633;
+  --border2: #273040;
+  --accent: #f5c842;
+  --accent2: #ff7b35;
+  --accent3: #3de8a0;
+  --text: #c8d4e0;
+  --text2: #7a8fa3;
+  --text3: #445566;
+  --green: #3de8a0;
+  --red: #f05567;
+  --blue: #4a9eff;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --radius: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(ellipse 70% 40% at 50% -10%,rgba(77,171,247,.05),transparent),
-  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-  background-size:100% 100%,44px 44px,44px 44px}
-a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-.wrap-md{max-width:760px;margin:0 auto;padding:0 20px}
 
-/* NAV */
-.nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
-.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
-.logo span{color:var(--amber)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.nav-links a:hover{color:var(--text);text-decoration:none}
-.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
-  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
-.nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.65;min-height:100vh;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;height:auto;display:block;}
+::selection{background:rgba(245,200,66,0.25);color:#fff;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
-/* PAGE HERO */
-.page-hero{padding:64px 20px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:700px;height:400px;background:radial-gradient(ellipse,rgba(245,166,35,.06),transparent 65%);pointer-events:none}
-.ph-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
-.ph-tag::before{content:'';display:block;width:20px;height:1px;background:var(--amber)}
-.ph-h1{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.06;
-  letter-spacing:-.02em;margin-bottom:14px}
-.ph-sub{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:520px}
+/* ===================== NAV ===================== */
+nav {
+  position:sticky;top:0;z-index:200;
+  background:rgba(7,10,13,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner {
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;padding:0 24px;gap:16px;
+}
+.logo {
+  font-family:var(--font-display);font-size:20px;font-weight:800;
+  color:var(--accent);letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+}
+.nav-links{
+  display:flex;gap:20px;list-style:none;
+  font-size:13px;font-weight:500;
+}
+.nav-links a{color:var(--text2);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent);text-decoration:none;}
+@media(max-width:900px){.nav-links{display:none;}}
+.nav-cta{
+  background:var(--accent);color:#000;
+  padding:8px 20px;border-radius:5px;
+  font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:0.3px;
+  transition:all 0.2s;flex-shrink:0;white-space:nowrap;
+}
+.nav-cta:hover{background:#ffd84a;text-decoration:none;transform:translateY(-1px);}
 
-/* CONTENT */
-.content{padding:60px 0 80px}
-.stag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
-.stag::before{content:'//';color:var(--text-dim);font-weight:400}
+/* ===================== AD UNITS ===================== */
+.ad-unit{max-width:1200px;margin:0 auto;padding:0 24px;}
+.ad-inner{
+  background:var(--surface);border:1px dashed var(--border2);
+  border-radius:var(--radius);padding:12px 16px;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+}
+.ad-label{font-size:9px;color:var(--text3);letter-spacing:2px;font-family:var(--font-mono);text-transform:uppercase;}
+.ad-unit.leaderboard .ad-inner{min-height:90px;}
+.ad-unit.rectangle .ad-inner{min-height:250px;}
+.ad-unit.inline .ad-inner{min-height:120px;}
 
-/* CONTACT LAYOUT */
-.contact-grid{display:grid;grid-template-columns:1fr 340px;gap:44px;align-items:start}
+/* ===================== PAGE HERO ===================== */
+.page-hero{
+  padding:80px 24px 60px;
+  border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(245,200,66,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 85% 60%, rgba(61,232,160,0.03) 0%, transparent 60%);
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.01'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.page-hero-inner{max-width:760px;margin:0 auto;position:relative;}
+.page-eyebrow{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:3px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.page-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+.page-hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(34px,6vw,60px);
+  font-weight:800;line-height:1.04;
+  color:#fff;margin-bottom:18px;letter-spacing:-1px;
+}
+.page-hero h1 em{color:var(--accent);font-style:normal;}
+.page-hero-sub{font-size:17px;color:var(--text2);font-weight:300;line-height:1.7;max-width:580px;}
 
-/* EMAIL CARD */
-.email-card{background:var(--bg-card);border:1px solid var(--border-lit);border-radius:var(--rl);padding:32px}
-.ec-icon{font-size:32px;margin-bottom:16px}
-.ec-title{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
-.ec-body{font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:24px}
-.email-link{display:flex;align-items:center;gap:10px;background:#070A0E;border:1px solid rgba(245,166,35,.3);
-  border-radius:var(--r);padding:14px 18px;font-family:var(--mono);font-size:14px;font-weight:700;
-  color:var(--amber);transition:border-color .2s,box-shadow .2s}
-.email-link:hover{border-color:var(--amber);box-shadow:0 0 14px var(--amber-d);text-decoration:none}
-.email-link svg{flex-shrink:0;opacity:.7}
+/* ===================== TRUST BAR ===================== */
+.trust-bar{
+  background:var(--surface2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:14px 24px;
+}
+.trust-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;gap:32px;align-items:center;justify-content:center;flex-wrap:wrap;
+}
+.trust-item{
+  font-size:12px;color:var(--text3);font-family:var(--font-mono);
+  display:flex;align-items:center;gap:6px;letter-spacing:0.5px;
+}
+.trust-item .tick{color:var(--green);}
 
-/* SIDEBAR CARDS */
-.sidebar{display:flex;flex-direction:column;gap:14px}
-.side-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:22px}
-.sc-title{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--text-dim);margin-bottom:12px}
-.sc-body{font-size:13px;color:var(--text-mid);line-height:1.7}
+/* ===================== CONTENT LAYOUT ===================== */
+.content-wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+.content-grid{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:48px;
+  padding:64px 0 80px;
+  align-items:start;
+}
+@media(max-width:900px){.content-grid{grid-template-columns:1fr;gap:40px;}}
 
-/* TOPICS */
-.topic-list{display:flex;flex-direction:column;gap:8px;margin-top:20px}
-.topic{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);
-  background:var(--bg-lift);border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;
-  transition:border-color .2s}
-.topic:hover{border-color:rgba(245,166,35,.3)}
-.topic-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0}
+/* ===================== SECTION HEADERS ===================== */
+.section-eyebrow{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:3px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+.section-title{
+  font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:800;
+  color:#fff;letter-spacing:-0.5px;margin-bottom:10px;
+}
+.section-sub{color:var(--text2);font-size:14px;line-height:1.75;margin-bottom:28px;}
 
-/* FOOTER */
-.disc{background:var(--bg-panel);border-top:2px solid var(--amber);padding:18px 20px}
-.disc-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:flex-start}
-.disc-txt{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.7}
-.footer{border-top:1px solid var(--border);padding:44px 20px 28px;background:var(--bg-panel)}
-.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:32px}
-.f-logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);margin-bottom:9px}
-.f-logo span{color:var(--amber)}
-.f-tag{font-size:13px;color:var(--text-dim);line-height:1.7}
-.f-ctitle{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:13px}
-.f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.f-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.f-links a:hover{color:var(--amber);text-decoration:none}
-.f-bot{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:18px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.f-copy{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg{display:flex;gap:14px}
-.f-leg a{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg a:hover{color:var(--amber)}
+/* ===================== CONTACT CARDS GRID ===================== */
+.contact-cards{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;margin-bottom:44px;
+}
+@media(max-width:560px){.contact-cards{grid-template-columns:1fr;}}
+.contact-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:22px;
+  transition:border-color 0.2s, transform 0.2s;
+  cursor:default;
+}
+.contact-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.card-icon{font-size:26px;margin-bottom:12px;display:block;line-height:1;}
+.card-title{font-family:var(--font-display);font-weight:700;color:#fff;font-size:15px;margin-bottom:6px;}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.7;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.fade{animation:fadeUp .5s ease both}
+/* ===================== MAILTO CONTACT BOX ===================== */
+.mailto-block{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+}
+.mailto-topbar{
+  background:var(--surface2);border-bottom:1px solid var(--border);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:1px;
+}
+.mailto-dots{display:flex;gap:6px;}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot-r{background:#f05567;}.dot-y{background:#f5c842;}.dot-g{background:#3de8a0;}
+.mailto-topbar-label{margin-left:auto;}
+.mailto-body{padding:28px;}
 
-@media(max-width:860px){.contact-grid{grid-template-columns:1fr}.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}}
-@media(max-width:600px){.page-hero{padding:44px 16px 40px}.content{padding:40px 0 60px}}
+.mailto-address-wrap{
+  display:flex;align-items:center;gap:12px;
+  background:var(--bg);border:1px solid var(--border2);
+  border-radius:8px;padding:14px 18px;margin-bottom:24px;
+  flex-wrap:wrap;gap:10px;
+}
+.mailto-address{
+  font-family:var(--font-mono);font-size:16px;font-weight:500;
+  color:var(--accent);flex:1;min-width:0;word-break:break-all;
+}
+.copy-btn{
+  background:transparent;border:1px solid var(--border2);border-radius:5px;
+  color:var(--text2);font-family:var(--font-mono);font-size:11px;letter-spacing:1px;
+  padding:7px 14px;cursor:pointer;transition:all 0.2s;white-space:nowrap;
+  text-transform:uppercase;
+}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-btn.copied{border-color:var(--green);color:var(--green);}
+
+.mailto-instructions{margin-bottom:20px;}
+.mailto-instructions p{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:12px;}
+.mailto-instructions strong{color:var(--text);}
+
+.subject-templates{margin:20px 0;}
+.subject-label{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  color:var(--text3);text-transform:uppercase;margin-bottom:12px;
+}
+.subject-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:20px;padding:6px 14px;font-size:12px;
+  color:var(--text2);cursor:pointer;transition:all 0.2s;
+  font-family:var(--font-mono);
+}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(245,200,66,0.06);}
+
+.mailto-cta-btn{
+  display:inline-flex;align-items:center;gap:10px;width:100%;
+  background:var(--accent);color:#000;border-radius:6px;
+  font-family:var(--font-display);font-weight:800;font-size:17px;
+  letter-spacing:0.3px;padding:16px 24px;margin-top:8px;
+  transition:all 0.2s;justify-content:center;text-decoration:none;
+  border:none;cursor:pointer;
+}
+.mailto-cta-btn:hover{background:#ffd84a;transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,200,66,0.3);text-decoration:none;}
+
+.response-notice{
+  display:flex;align-items:flex-start;gap:10px;
+  background:rgba(61,232,160,0.06);border:1px solid rgba(61,232,160,0.2);
+  border-radius:8px;padding:14px 18px;margin-top:20px;
+  font-size:13px;color:var(--text2);line-height:1.65;
+}
+.response-notice .notice-icon{flex-shrink:0;margin-top:1px;color:var(--green);}
+
+.antispam-note{
+  margin-top:16px;font-size:11px;font-family:var(--font-mono);
+  color:var(--text3);line-height:1.7;letter-spacing:0.3px;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar{}
+
+.quick-answers{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;margin-bottom:24px;
+}
+.qa-header{
+  background:var(--surface2);border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  color:var(--text3);text-transform:uppercase;
+}
+.qa-item{
+  padding:16px 20px;border-bottom:1px solid var(--border);
+  transition:background 0.15s;
+}
+.qa-item:last-child{border-bottom:none;}
+.qa-item:hover{background:rgba(255,255,255,0.02);}
+.qa-q{font-weight:600;color:#fff;font-size:13px;margin-bottom:6px;line-height:1.45;}
+.qa-a{font-size:12px;color:var(--text2);line-height:1.7;}
+.qa-a code{
+  font-family:var(--font-mono);color:var(--accent);
+  background:rgba(245,200,66,0.1);padding:1px 5px;border-radius:3px;font-size:11px;
+}
+
+.sidebar-links{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;margin-bottom:24px;
+}
+.sidebar-links-header{
+  background:var(--surface2);border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  color:var(--text3);text-transform:uppercase;
+}
+.sidebar-link-item{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;border-bottom:1px solid var(--border);
+  color:var(--text2);font-size:14px;transition:all 0.2s;
+}
+.sidebar-link-item:last-child{border-bottom:none;}
+.sidebar-link-item:hover{color:var(--accent);text-decoration:none;background:rgba(255,255,255,0.02);}
+.sidebar-link-icon{font-size:18px;flex-shrink:0;}
+.sidebar-link-text{}
+.sidebar-link-title{font-weight:600;color:inherit;display:block;font-size:13px;}
+.sidebar-link-hint{font-size:11px;color:var(--text3);font-family:var(--font-mono);display:block;margin-top:1px;}
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:56px 24px 32px;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;
+}
+@media(max-width:800px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.footer-inner{grid-template-columns:1fr;}}
+.footer-logo{
+  font-family:var(--font-display);font-size:20px;font-weight:800;
+  color:var(--accent);display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.footer-brand p{font-size:13px;color:var(--text3);line-height:1.75;max-width:280px;}
+.footer-col h4{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  color:var(--text3);text-transform:uppercase;margin-bottom:18px;
+}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:12px;}
+.footer-col a{font-size:14px;color:var(--text2);transition:color 0.2s;}
+.footer-col a:hover{color:var(--accent);text-decoration:none;}
+.footer-bottom{
+  max-width:1200px;margin:40px auto 0;
+  padding-top:28px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--text3);flex-wrap:wrap;gap:12px;
+}
+.footer-bottom a{color:var(--text3);}
+.footer-bottom a:hover{color:var(--accent);}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fade-in{animation:fadeSlideUp 0.4s ease both;}
+
+/* ===================== MOBILE NAV HAMBURGER ===================== */
+.mobile-menu-btn{
+  display:none;background:none;border:1px solid var(--border2);border-radius:5px;
+  color:var(--text2);padding:7px 10px;cursor:pointer;font-size:16px;
+  transition:all 0.2s;
+}
+.mobile-menu-btn:hover{border-color:var(--accent);color:var(--accent);}
+@media(max-width:900px){.mobile-menu-btn{display:block;}}
+.mobile-nav{
+  display:none;background:var(--surface);border-bottom:1px solid var(--border);
+  padding:16px 24px;
+}
+.mobile-nav.open{display:block;}
+.mobile-nav ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.mobile-nav a{
+  display:block;padding:10px 12px;border-radius:6px;
+  font-size:15px;color:var(--text2);font-weight:500;transition:all 0.2s;
+}
+.mobile-nav a:hover{color:var(--accent);background:rgba(245,200,66,0.06);text-decoration:none;}
+.mobile-nav a[aria-current="page"]{color:var(--accent);}
+
+/* ===================== RESPONSIVE TWEAKS ===================== */
+@media(max-width:480px){
+  .page-hero{padding:52px 16px 40px;}
+  .content-wrap{padding:0 16px;}
+  .mailto-body{padding:20px 16px;}
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-in">
-    <a class="logo" href="/"><div class="logo-box">⚡</div>Voltage<span>Checker</span></a>
-    <ul class="nav-links">
-      <li><a href="/#tool">Checker</a></li>
-      <li><a href="/#plugs">Plug Types</a></li>
-      <li><a href="/#countries">Countries</a></li>
-      <li><a href="/#devices">Devices</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#tool" class="nav-cta">Check Now</a></li>
+<!-- ===== NAVIGATION ===== -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="VoltageChecker home">⚡ VoltageChecker</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#tool">Checker</a></li>
+      <li><a href="index.html#countries">Countries</a></li>
+      <li><a href="index.html#plugs">Plug Types</a></li>
+      <li><a href="index.html#devices">Devices</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
     </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Open navigation menu" aria-expanded="false" id="mobileMenuBtn">☰</button>
+    <a href="index.html#tool" class="nav-cta" style="margin-left:8px;">CHECK NOW ⚡</a>
   </div>
 </nav>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <ul role="list">
+    <li><a href="index.html#tool">⚡ Checker</a></li>
+    <li><a href="index.html#countries">🌍 Countries</a></li>
+    <li><a href="index.html#plugs">🔌 Plug Types</a></li>
+    <li><a href="index.html#devices">📱 Devices</a></li>
+    <li><a href="index.html#faq">❓ FAQ</a></li>
+    <li><a href="about.html">ℹ️ About</a></li>
+    <li><a href="contact.html" aria-current="page">✉️ Contact</a></li>
+  </ul>
+</nav>
 
-<div class="page-hero">
-  <div class="wrap-md">
-    <div class="ph-tag fade">Contact</div>
-    <h1 class="ph-h1 fade">Say hello.</h1>
-    <p class="ph-sub fade">Found a data error? Want to suggest a country or feature? I'm one person and I read every message.</p>
+<!-- ===== PAGE HERO ===== -->
+<header class="page-hero" role="banner">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">// GET IN TOUCH</div>
+    <h1>Contact <em>VoltageChecker</em></h1>
+    <p class="page-hero-sub">Found a data error, missing country, or have a question about international power standards? We read every message and respond within 1–3 business days.</p>
+  </div>
+</header>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar" role="complementary">
+  <div class="trust-inner">
+    <span class="trust-item"><span class="tick">✓</span> Data updated for 2026</span>
+    <span class="trust-item"><span class="tick">✓</span> Real humans read every message</span>
+    <span class="trust-item"><span class="tick">✓</span> 1–3 business day response</span>
+    <span class="trust-item"><span class="tick">✓</span> No automated replies</span>
   </div>
 </div>
 
-<section class="content">
-  <div class="wrap-md">
+<!-- ===== AD: HEADER LEADERBOARD ===== -->
+<div class="ad-unit leaderboard" style="padding:16px 24px;" role="complementary" aria-label="Advertisement">
+  <div class="ad-inner" style="max-width:728px;margin:0 auto;">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block;width:728px;max-width:100%;height:90px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="HEADER_SLOT_ID"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+  </div>
+</div>
 
-    <div class="contact-grid">
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+  <div class="content-wrap">
+    <div class="content-grid">
 
-      <!-- EMAIL -->
-      <div>
-        <div class="stag" style="margin-bottom:22px">Direct Email</div>
-        <div class="email-card">
-          <div class="ec-icon">✉️</div>
-          <div class="ec-title">Drop me a line</div>
-          <div class="ec-body">Email is the best way to reach me. I aim to reply within 1–3 business days. Please include as much detail as possible — especially if you're reporting a data error (country name, what's wrong, and a source if you have one).</div>
-          <a class="email-link" href="mailto:hello@voltagechecker.website">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#F5A623" stroke-width="1.4"/><path d="M1 5l7 5 7-5" stroke="#F5A623" stroke-width="1.4" stroke-linecap="round"/></svg>
-            hello@voltagechecker.website
+      <!-- ===== LEFT COLUMN: CONTACT FORM ===== -->
+      <div class="main-col">
+
+        <!-- Contact reason cards -->
+        <div class="section-eyebrow">// WHY CONTACT US</div>
+        <h2 class="section-title">What can we help with?</h2>
+        <p class="section-sub">Choose your reason below — it helps us route your message to the right person and respond faster.</p>
+
+        <div class="contact-cards" role="list" aria-label="Contact topics">
+          <article class="contact-card" role="listitem">
+            <span class="card-icon" aria-hidden="true">🐞</span>
+            <div class="card-title">Report a Data Error</div>
+            <p class="card-desc">Found incorrect voltage, frequency, or plug type data for a country? Let us know the country name and the correct values so we can fix it quickly.</p>
+          </article>
+          <article class="contact-card" role="listitem">
+            <span class="card-icon" aria-hidden="true">🌍</span>
+            <div class="card-title">Request a Missing Country</div>
+            <p class="card-desc">Is your destination missing from our database? Send us the country name and region and we'll add it to the next update.</p>
+          </article>
+          <article class="contact-card" role="listitem">
+            <span class="card-icon" aria-hidden="true">💡</span>
+            <div class="card-title">Feature Suggestion</div>
+            <p class="card-desc">Have an idea that would make VoltageChecker more useful for travelers? We welcome all suggestions — many features started with user messages.</p>
+          </article>
+          <article class="contact-card" role="listitem">
+            <span class="card-icon" aria-hidden="true">⚡</span>
+            <div class="card-title">Power Compatibility Question</div>
+            <p class="card-desc">Not sure if your specific device will work in a particular country? Describe your device and destination and we'll give you a clear answer.</p>
+          </article>
+        </div>
+
+        <!-- AD: Inline content block -->
+        <div class="ad-unit inline" style="margin-bottom:36px;" role="complementary" aria-label="Advertisement">
+          <div class="ad-inner">
+            <span class="ad-label">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block;width:100%;max-width:728px;height:120px;"
+                 data-ad-client="ca-pub-8498912552902957"
+                 data-ad-slot="INLINE_SLOT_ID"
+                 data-ad-format="horizontal"
+                 data-full-width-responsive="true"></ins>
+          </div>
+        </div>
+
+        <!-- Mailto contact block -->
+        <div class="section-eyebrow">// SEND A MESSAGE</div>
+        <h2 class="section-title">Email us directly</h2>
+        <p class="section-sub">Click the button below to open a pre-addressed email in your email client, or copy the address and compose manually. We don't use contact forms — you always know exactly where your message goes.</p>
+
+        <div class="mailto-block" id="mailto-block">
+          <div class="mailto-topbar" aria-hidden="true">
+            <div class="mailto-dots">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+            </div>
+            <span class="mailto-topbar-label">NEW MESSAGE</span>
+          </div>
+          <div class="mailto-body">
+
+            <div class="mailto-instructions">
+              <p><strong>Our email address:</strong></p>
+            </div>
+            <div class="mailto-address-wrap" role="group" aria-label="Contact email address">
+              <span class="mailto-address" id="email-address" aria-label="contact@voltagechecker.website"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f5969a9b81949681b5839a9981949290969d90969e9087db829097869c8190">[email&#160;protected]</a></span>
+              <button class="copy-btn" onclick="copyEmail()" id="copy-btn" aria-label="Copy email address to clipboard">COPY</button>
+            </div>
+
+            <div class="mailto-instructions">
+              <p>To ensure we can help you as quickly as possible, please include the following in your message:</p>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+                <li style="display:flex;gap:10px;font-size:14px;color:var(--text2);"><span style="color:var(--accent);flex-shrink:0;font-family:var(--font-mono);">01.</span><span><strong style="color:var(--text);">Your subject</strong> — choose from the suggestions below or write your own</span></li>
+                <li style="display:flex;gap:10px;font-size:14px;color:var(--text2);"><span style="color:var(--accent);flex-shrink:0;font-family:var(--font-mono);">02.</span><span><strong style="color:var(--text);">Country or device details</strong> — be specific (e.g. "Germany, Type F socket, my device shows 120V only")</span></li>
+                <li style="display:flex;gap:10px;font-size:14px;color:var(--text2);"><span style="color:var(--accent);flex-shrink:0;font-family:var(--font-mono);">03.</span><span><strong style="color:var(--text);">A reply address</strong> — we'll respond to whatever email you write from</span></li>
+              </ul>
+            </div>
+
+            <div class="subject-templates">
+              <div class="subject-label">// QUICK SUBJECT LINES — CLICK TO USE</div>
+              <div class="subject-chips" role="group" aria-label="Pre-written subject line suggestions">
+                <button class="chip" onclick="openMailto('Data error report for [country]')" aria-label="Use subject: Data error report">🐞 Data error report</button>
+                <button class="chip" onclick="openMailto('Country request: [country name]')" aria-label="Use subject: Country request">🌍 Country request</button>
+                <button class="chip" onclick="openMailto('Feature suggestion')" aria-label="Use subject: Feature suggestion">💡 Feature suggestion</button>
+                <button class="chip" onclick="openMailto('Power compatibility question')" aria-label="Use subject: Power question">⚡ Power question</button>
+                <button class="chip" onclick="openMailto('Business inquiry')" aria-label="Use subject: Business inquiry">📊 Business inquiry</button>
+                <button class="chip" onclick="openMailto('Other')" aria-label="Use subject: Other">✉️ Other</button>
+              </div>
+            </div>
+
+            <a class="mailto-cta-btn" href="/cdn-cgi/l/email-protection#2e4d41405a4f4d5a6e5841425a4f494b4d464b4d454b5c00594b4c5d475a4b115d5b4c444b4d5a137841425a4f494b6d464b4d454b5c0b1c1e6b405f5b475c57" id="mailto-btn" aria-label="Open email client to contact VoltageChecker">
+              ✉️ Open Email Client →
+            </a>
+
+            <div class="response-notice" role="note">
+              <span class="notice-icon" aria-hidden="true">✓</span>
+              <div>
+                <strong style="color:var(--green);font-size:13px;">Typical response time: 1–3 business days.</strong><br>
+                We respond to every genuine message. If you don't hear back within 5 business days, please check your spam folder and resend if needed.
+              </div>
+            </div>
+
+            <p class="antispam-note" role="note">
+              🔒 Anti-spam notice: We use standard email filtering on all incoming messages. Unsolicited promotional emails, mass outreach, and automated submissions will be discarded without reply. Please write a genuine, specific message to receive a response.
+            </p>
+
+          </div>
+        </div>
+
+      </div><!-- /.main-col -->
+
+      <!-- ===== RIGHT COLUMN: SIDEBAR ===== -->
+      <aside class="sidebar" aria-label="Quick answers and useful links">
+
+        <!-- Quick answers -->
+        <div class="section-eyebrow" style="margin-bottom:14px;">// COMMON QUESTIONS</div>
+        <div class="quick-answers" role="region" aria-label="Common questions answered">
+          <div class="qa-header">BEFORE YOU WRITE — QUICK ANSWERS</div>
+          <div class="qa-item">
+            <p class="qa-q">Will my laptop work abroad?</p>
+            <p class="qa-a">Almost certainly yes. Look for <code>100–240V</code> on the power brick. If it shows that, you only need a plug adapter — no converter.</p>
+          </div>
+          <div class="qa-item">
+            <p class="qa-q">Do I need a converter for Europe?</p>
+            <p class="qa-a">Only if your device is 120V-only (e.g. some US hair dryers). Dual-voltage devices just need a plug adapter.</p>
+          </div>
+          <div class="qa-item">
+            <p class="qa-q">What adapter do I need for the UK?</p>
+            <p class="qa-a">A <strong style="color:var(--text);">Type G</strong> adapter. The UK uses a unique three-rectangular-pin plug not found elsewhere in Europe.</p>
+          </div>
+          <div class="qa-item">
+            <p class="qa-q">What plug does Australia use?</p>
+            <p class="qa-a">Australia uses <strong style="color:var(--text);">Type I</strong> — two or three flat pins arranged in a V-shape, at 230V / 50Hz.</p>
+          </div>
+          <div class="qa-item">
+            <p class="qa-q">Is VoltageChecker free?</p>
+            <p class="qa-a">Yes, completely free. No sign-up, no account, no subscription required — ever.</p>
+          </div>
+          <div class="qa-item">
+            <p class="qa-q">How current is the data?</p>
+            <p class="qa-a">Our database is verified for 2026. If you spot anything out of date, please let us know.</p>
+          </div>
+        </div>
+
+        <!-- Useful links -->
+        <div class="sidebar-links" role="region" aria-label="Useful links on VoltageChecker">
+          <div class="sidebar-links-header">USEFUL LINKS</div>
+          <a class="sidebar-link-item" href="index.html#tool" aria-label="Go to the Voltage Checker tool">
+            <span class="sidebar-link-icon" aria-hidden="true">⚡</span>
+            <span class="sidebar-link-text">
+              <span class="sidebar-link-title">Voltage Checker Tool</span>
+              <span class="sidebar-link-hint">Check any country's power standards</span>
+            </span>
+          </a>
+          <a class="sidebar-link-item" href="index.html#countries" aria-label="Browse all countries">
+            <span class="sidebar-link-icon" aria-hidden="true">🌍</span>
+            <span class="sidebar-link-text">
+              <span class="sidebar-link-title">All 195+ Countries</span>
+              <span class="sidebar-link-hint">Sortable voltage &amp; plug table</span>
+            </span>
+          </a>
+          <a class="sidebar-link-item" href="index.html#plugs" aria-label="See all plug types">
+            <span class="sidebar-link-icon" aria-hidden="true">🔌</span>
+            <span class="sidebar-link-text">
+              <span class="sidebar-link-title">Plug Types A–N</span>
+              <span class="sidebar-link-hint">Visual guide to all socket standards</span>
+            </span>
+          </a>
+          <a class="sidebar-link-item" href="index.html#faq" aria-label="Read our FAQ">
+            <span class="sidebar-link-icon" aria-hidden="true">❓</span>
+            <span class="sidebar-link-text">
+              <span class="sidebar-link-title">Full FAQ</span>
+              <span class="sidebar-link-hint">15+ detailed questions answered</span>
+            </span>
+          </a>
+          <a class="sidebar-link-item" href="about.html" aria-label="Learn about VoltageChecker">
+            <span class="sidebar-link-icon" aria-hidden="true">ℹ️</span>
+            <span class="sidebar-link-text">
+              <span class="sidebar-link-title">About VoltageChecker</span>
+              <span class="sidebar-link-hint">Our mission &amp; data sources</span>
+            </span>
           </a>
         </div>
 
-        <div style="margin-top:28px">
-          <div class="stag" style="margin-bottom:14px">What to include</div>
-          <div class="topic-list">
-            <div class="topic"><div class="topic-dot"></div>What you're contacting about</div>
-            <div class="topic"><div class="topic-dot"></div>Country or device in question (if relevant)</div>
-            <div class="topic"><div class="topic-dot"></div>Source or reference (for data corrections)</div>
-            <div class="topic"><div class="topic-dot"></div>What you expected vs. what you saw</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-        <div class="side-card">
-          <div class="sc-title">Common reasons to write</div>
-          <div class="sc-body">
-            🔧 <strong style="color:var(--text)">Data error</strong> — a country has wrong voltage, frequency, or plug type listed.<br><br>
-            🌍 <strong style="color:var(--text)">Missing country</strong> — your destination isn't in the database.<br><br>
-            💡 <strong style="color:var(--text)">Feature idea</strong> — something that would make the tool more useful for travelers.<br><br>
-            📢 <strong style="color:var(--text)">Partnership</strong> — travel blog, affiliate, or content collaboration.
+        <!-- Sidebar ad -->
+        <div class="ad-unit rectangle" role="complementary" aria-label="Advertisement" style="padding:0;">
+          <div class="ad-inner" style="min-height:250px;">
+            <span class="ad-label">Advertisement</span>
+            <ins class="adsbygoogle"
+                 style="display:block;width:300px;max-width:100%;height:250px;"
+                 data-ad-client="ca-pub-8498912552902957"
+                 data-ad-slot="SIDEBAR_SLOT_ID"
+                 data-ad-format="rectangle"
+                 data-full-width-responsive="true"></ins>
           </div>
         </div>
 
-        <div class="side-card">
-          <div class="sc-title">Response time</div>
-          <div class="sc-body">This is a solo project. I read every message but replies typically take <strong style="color:var(--text)">1–3 business days</strong>. Data corrections are prioritized.</div>
-        </div>
+      </aside><!-- /.sidebar -->
+    </div><!-- /.content-grid -->
+  </div><!-- /.content-wrap -->
+</main>
 
-        <div class="side-card" style="border-color:rgba(0,214,143,.15)">
-          <div class="sc-title">Before you write</div>
-          <div class="sc-body">Check the <a href="/#faq">FAQ section</a> — many common questions about adapters, converters, and dual-voltage devices are already answered there.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="disc">
-  <div class="disc-in">
-    <span style="font-size:16px;flex-shrink:0">⚡</span>
-    <p class="disc-txt">Disclaimer: Voltage data is provided for general reference. Always verify with official local sources before traveling. Voltage Checker is not liable for any damage caused by incorrect adapter or converter use.</p>
+<!-- ===== AD: FOOTER BLOCK ===== -->
+<div class="ad-unit inline" style="padding:0 24px 40px;" role="complementary" aria-label="Advertisement">
+  <div class="ad-inner" style="max-width:728px;margin:0 auto;min-height:90px;">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block;width:728px;max-width:100%;height:90px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="FOOTER_SLOT_ID"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-in">
-    <div>
-      <div class="f-logo">Voltage<span>Checker</span></div>
-      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">⚡ VoltageChecker</div>
+      <p>Free international voltage, frequency, and plug compatibility tool for travelers. Check power standards for 195+ countries — no sign-up required.</p>
     </div>
-    <div>
-      <div class="f-ctitle">Tools</div>
-      <ul class="f-links">
-        <li><a href="/#tool">Compatibility Checker</a></li>
-        <li><a href="/#plugs">Plug Type Guide</a></li>
-        <li><a href="/#countries">Country Database</a></li>
-        <li><a href="/#devices">Device Reference</a></li>
+    <div class="footer-col">
+      <h4>Tool</h4>
+      <ul>
+        <li><a href="index.html#tool">Voltage Checker</a></li>
+        <li><a href="index.html#countries">Country Table</a></li>
+        <li><a href="index.html#plugs">Plug Types</a></li>
+        <li><a href="index.html#devices">Device Guide</a></li>
       </ul>
     </div>
-    <div>
-      <div class="f-ctitle">Info</div>
-      <ul class="f-links">
-        <li><a href="/#faq">FAQ</a></li>
+    <div class="footer-col">
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#guides">Travel Guides</a></li>
         <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
-  <div class="f-bot">
-    <span class="f-copy">© Voltage Checker — Free for personal use</span>
-    <div class="f-leg">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="about.html">About</a>
+  <div class="footer-bottom">
+    <span>© 2026 VoltageChecker.website — Free for personal use. Data verified for 2026.</span>
+    <span>
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="about.html">About</a> ·
       <a href="contact.html">Contact</a>
-    </div>
+    </span>
   </div>
 </footer>
 
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// =====================================================================
+// MOBILE NAV
+// =====================================================================
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('mobileMenuBtn');
+  const isOpen = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+  btn.textContent = isOpen ? '✕' : '☰';
+}
+document.addEventListener('click', function(e) {
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = '☰';
+  }
+});
+
+// =====================================================================
+// COPY EMAIL
+// =====================================================================
+function copyEmail() {
+  const email = 'contact@voltagechecker.website';
+  const btn = document.getElementById('copy-btn');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).then(function() {
+      showCopied(btn);
+    }).catch(function() {
+      fallbackCopy(email, btn);
+    });
+  } else {
+    fallbackCopy(email, btn);
+  }
+}
+
+function fallbackCopy(text, btn) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  el.select();
+  try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
+  document.body.removeChild(el);
+}
+
+function showCopied(btn) {
+  const orig = btn.textContent;
+  btn.textContent = 'COPIED ✓';
+  btn.classList.add('copied');
+  btn.setAttribute('aria-label', 'Email address copied to clipboard');
+  setTimeout(function() {
+    btn.textContent = orig;
+    btn.classList.remove('copied');
+    btn.setAttribute('aria-label', 'Copy email address to clipboard');
+  }, 2500);
+}
+
+// =====================================================================
+// SUBJECT CHIP — OPEN MAILTO WITH PRE-FILLED SUBJECT
+// =====================================================================
+function openMailto(subject) {
+  const encoded = encodeURIComponent(subject);
+  window.location.href = 'mailto:contact@voltagechecker.website?subject=' + encoded;
+}
+
+// =====================================================================
+// ADSENSE INIT
+// =====================================================================
+document.addEventListener('DOMContentLoaded', func

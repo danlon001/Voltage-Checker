@@ -3,257 +3,691 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Voltage Checker</title>
-<meta name="description" content="About Voltage Checker — a free tool built by an independent traveler to help you know if your electronics will work abroad.">
+<title>About VoltageChecker — Free International Travel Power Compatibility Tool</title>
+<meta name="description" content="About VoltageChecker.website — learn how our free tool helps travelers check voltage, frequency, and plug compatibility for 195+ countries worldwide. No sign-up required.">
+<meta name="author" content="VoltageChecker.website">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://voltagechecker.website/about.html">
+<link rel="canonical" href="https://voltagechecker.website/about">
+
+<!-- Open Graph -->
+<meta property="og:title" content="About VoltageChecker — Free Travel Power Tool">
+<meta property="og:description" content="Free tool to check voltage, plug types, and power compatibility for 195+ countries. Built for travelers who need fast, accurate answers — no sign-up required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://voltagechecker.website/about">
+<meta property="og:image" content="https://voltagechecker.website/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About VoltageChecker — Free Travel Power Tool">
+<meta name="twitter:description" content="Free tool to check voltage, plug types, and power compatibility for 195+ countries. No sign-up required.">
+
+<!-- Schema: AboutPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About VoltageChecker",
+  "url": "https://voltagechecker.website/about",
+  "description": "About VoltageChecker — a free tool to check international voltage, frequency, and plug compatibility for travelers.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "VoltageChecker",
+    "url": "https://voltagechecker.website"
+  }
+}
+</script>
+
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8498912552902957" crossorigin="anonymous"></script>
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#0B0D11;--bg-panel:#111318;--bg-card:#161A22;--bg-lift:#1C2130;
-  --border:rgba(255,255,255,.07);--border-lit:rgba(255,255,255,.13);
-  --amber:#F5A623;--amber-d:rgba(245,166,35,.16);--amber-g:rgba(245,166,35,.32);
-  --green:#00D68F;--green-d:rgba(0,214,143,.12);
-  --red:#FF4757;--blue:#4DABF7;--blue-d:rgba(77,171,247,.12);
-  --text:#E8ECF4;--text-mid:#8892A4;--text-dim:#3E4758;
-  --mono:'JetBrains Mono',monospace;
-  --display:'Syne',system-ui,sans-serif;
-  --body:'DM Sans',system-ui,sans-serif;
-  --r:8px;--rl:16px;
+:root {
+  --bg: #070a0d;
+  --surface: #0e1218;
+  --surface2: #151a22;
+  --surface3: #1c2330;
+  --border: #1e2633;
+  --border2: #273040;
+  --accent: #f5c842;
+  --accent2: #ff7b35;
+  --accent3: #3de8a0;
+  --text: #c8d4e0;
+  --text2: #7a8fa3;
+  --text3: #445566;
+  --green: #3de8a0;
+  --red: #f05567;
+  --blue: #4a9eff;
+  --purple: #a78bfa;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --radius: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --content-width: 780px;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(ellipse 70% 40% at 50% -10%,rgba(77,171,247,.05),transparent),
-  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-  background-size:100% 100%,44px 44px,44px 44px}
-a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-.wrap-md{max-width:760px;margin:0 auto;padding:0 20px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;min-height:100vh;overflow-x:hidden;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;height:auto;display:block;}
+::selection{background:rgba(245,200,66,0.25);color:#fff;}
 
-/* NAV */
-.nav{border-bottom:1px solid var(--border);background:rgba(11,13,17,.93);backdrop-filter:blur(12px);position:sticky;top:0;z-index:200}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 20px;max-width:1100px;margin:0 auto;gap:12px}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);display:flex;align-items:center;gap:8px;flex-shrink:0;text-decoration:none}
-.logo-box{width:28px;height:28px;border-radius:6px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:14px}
-.logo span{color:var(--amber)}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.nav-links a:hover{color:var(--text);text-decoration:none}
-.nav-cta{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--amber-d);border:1px solid var(--amber);color:var(--amber)!important;
-  padding:7px 16px;border-radius:var(--r);transition:background .2s,box-shadow .2s}
-.nav-cta:hover{background:var(--amber-g);box-shadow:0 0 16px var(--amber-g);text-decoration:none}
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
-/* PAGE HERO */
-.page-hero{padding:64px 20px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.page-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:700px;height:400px;background:radial-gradient(ellipse,rgba(245,166,35,.06),transparent 65%);pointer-events:none}
-.ph-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
-.ph-tag::before{content:'';display:block;width:20px;height:1px;background:var(--amber)}
-.ph-h1{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.06;
-  letter-spacing:-.02em;margin-bottom:14px}
-.ph-sub{font-size:16px;font-weight:300;color:var(--text-mid);line-height:1.8;max-width:520px}
+/* ===== NAV ===== */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(7,10,13,0.92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;padding:0 24px;gap:16px;
+}
+.logo{
+  font-family:var(--font-display);font-size:20px;font-weight:800;
+  color:var(--accent);letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+}
+.nav-links{
+  display:flex;gap:20px;list-style:none;
+  font-size:13px;font-weight:500;
+}
+.nav-links a{color:var(--text2);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);text-decoration:none;}
+@media(max-width:900px){.nav-links{display:none;}}
+.nav-cta{
+  background:var(--accent);color:#000;
+  padding:8px 20px;border-radius:5px;
+  font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:0.3px;
+  transition:all 0.2s;flex-shrink:0;white-space:nowrap;
+}
+.nav-cta:hover{background:#ffd84a;text-decoration:none;transform:translateY(-1px);}
 
-/* CONTENT */
-.content{padding:60px 0 80px}
-.stag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
-.stag::before{content:'//';color:var(--text-dim);font-weight:400}
-.sh2{font-family:var(--display);font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
-.prose{font-size:15px;color:var(--text-mid);line-height:1.85}
-.prose p{margin-bottom:18px}
-.prose p:last-child{margin-bottom:0}
+/* ===== AD UNITS ===== */
+.ad-unit{max-width:1200px;margin:0 auto;padding:0 24px;}
+.ad-inner{
+  background:var(--surface);border:1px dashed var(--border2);
+  border-radius:var(--radius);padding:12px 16px;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+}
+.ad-label{
+  font-size:9px;color:var(--text3);letter-spacing:2px;
+  font-family:var(--font-mono);text-transform:uppercase;margin-bottom:4px;
+}
+.ad-unit.leaderboard .ad-inner{min-height:90px;}
+.ad-unit.rectangle .ad-inner{min-height:250px;}
+.ad-unit.inline .ad-inner{min-height:120px;}
 
-/* CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:32px 0}
-.acard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:24px}
-.acard-icon{font-size:28px;margin-bottom:12px}
-.acard-title{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);margin-bottom:7px;letter-spacing:.03em}
-.acard-body{font-size:13px;color:var(--text-mid);line-height:1.65}
+/* ===== PAGE HERO ===== */
+.page-hero{
+  padding:80px 24px 56px;
+  border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% -5%, rgba(245,200,66,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 30% at 85% 70%, rgba(61,232,160,0.04) 0%, transparent 60%);
+  position:relative;overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.page-hero-inner{max-width:var(--content-width);margin:0 auto;position:relative;}
+.page-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:10px;
+  letter-spacing:2.5px;color:var(--accent);text-transform:uppercase;
+  margin-bottom:20px;
+}
+.page-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--accent);}
+.page-hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(34px,6vw,60px);
+  font-weight:800;line-height:1.04;
+  color:#fff;margin-bottom:18px;letter-spacing:-1.2px;
+}
+.page-hero h1 em{color:var(--accent);font-style:normal;}
+.page-hero-sub{
+  font-size:17px;color:var(--text2);
+  font-weight:300;line-height:1.75;
+  max-width:600px;
+}
 
-/* STAT ROW */
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:36px 0}
-.stat-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rl);padding:24px;text-align:center}
-.stat-n{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--amber);line-height:1}
-.stat-l{font-size:12px;color:var(--text-dim);margin-top:6px;letter-spacing:.04em}
+/* ===== STAT ROW ===== */
+.stat-row{
+  display:flex;gap:0;flex-wrap:wrap;
+  border:1px solid var(--border);border-radius:10px;
+  background:var(--surface);overflow:hidden;
+  margin:48px 0 0;
+}
+.stat-item{
+  flex:1;min-width:110px;padding:20px 16px;
+  border-right:1px solid var(--border);
+  text-align:center;
+}
+.stat-item:last-child{border-right:none;}
+.stat-val{
+  font-family:var(--font-display);font-size:30px;font-weight:800;
+  color:var(--accent);display:block;line-height:1;margin-bottom:4px;
+}
+.stat-label{font-size:10px;color:var(--text3);font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;}
 
-/* DIVIDER */
-.sec-div{border-top:1px solid var(--border);margin:52px 0}
+/* ===== CONTENT LAYOUT ===== */
+.content-wrap{
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding:64px 24px 80px;
+}
 
-/* DISCLAIMER */
-.disc{background:var(--bg-panel);border-top:2px solid var(--amber);padding:18px 20px}
-.disc-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:flex-start}
-.disc-txt{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.7}
+/* ===== SECTION HEADINGS ===== */
+.section-block{margin-bottom:56px;}
+.section-block:last-child{margin-bottom:0;}
+.section-eyebrow{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:3px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{content:'';display:block;width:16px;height:1px;background:var(--accent);}
+.section-block h2{
+  font-family:var(--font-display);
+  font-size:clamp(22px,3.5vw,30px);
+  font-weight:800;color:#fff;
+  letter-spacing:-0.4px;margin-bottom:18px;
+  line-height:1.15;
+}
+.section-block p{
+  color:var(--text2);margin-bottom:16px;
+  font-size:15.5px;line-height:1.8;
+}
+.section-block p:last-child{margin-bottom:0;}
 
-/* FOOTER */
-.footer{border-top:1px solid var(--border);padding:44px 20px 28px;background:var(--bg-panel)}
-.footer-in{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:32px}
-.f-logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.07em;color:var(--text);margin-bottom:9px}
-.f-logo span{color:var(--amber)}
-.f-tag{font-size:13px;color:var(--text-dim);line-height:1.7}
-.f-ctitle{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:13px}
-.f-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.f-links a{font-size:13px;color:var(--text-mid);transition:color .2s}
-.f-links a:hover{color:var(--amber);text-decoration:none}
-.f-bot{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:18px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.f-copy{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg{display:flex;gap:14px}
-.f-leg a{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
-.f-leg a:hover{color:var(--amber)}
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--radius) var(--radius) 0;
+  padding:20px 24px;margin:24px 0 28px;
+}
+.highlight-box p{
+  margin:0;color:var(--text);font-size:15px;
+  line-height:1.7;
+}
+.highlight-box strong{color:#fff;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.fade{animation:fadeUp .5s ease both}
+.info-box{
+  background:rgba(61,232,160,0.05);
+  border:1px solid rgba(61,232,160,0.2);
+  border-radius:var(--radius);
+  padding:20px 24px;margin:24px 0 28px;
+}
+.info-box p{margin:0;color:var(--text2);font-size:15px;line-height:1.7;}
+.info-box strong{color:var(--green);}
 
-@media(max-width:920px){.footer-in{grid-template-columns:1fr 1fr}.nav-links{display:none}.stat-row{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.page-hero{padding:44px 16px 40px}.content{padding:40px 0 60px}.stat-row{grid-template-columns:1fr}}
+.warn-box{
+  background:rgba(240,85,103,0.05);
+  border:1px solid rgba(240,85,103,0.2);
+  border-radius:var(--radius);
+  padding:20px 24px;margin:24px 0 28px;
+}
+.warn-box p{margin:0;color:var(--text2);font-size:15px;line-height:1.7;}
+.warn-box strong{color:var(--red);}
+
+/* ===== COVERAGE GRID ===== */
+.coverage-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:16px;margin:24px 0;
+}
+.coverage-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:18px 20px;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.coverage-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.coverage-icon{font-size:22px;margin-bottom:10px;display:block;}
+.coverage-title{
+  font-family:var(--font-display);font-size:14px;font-weight:700;
+  color:#fff;margin-bottom:6px;
+}
+.coverage-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+
+/* ===== HOW TO USE STEPS ===== */
+.steps-list{display:flex;flex-direction:column;gap:16px;margin:24px 0;}
+.step-item{
+  display:flex;align-items:flex-start;gap:16px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:18px 20px;
+}
+.step-num{
+  background:var(--accent);color:#000;
+  width:28px;height:28px;border-radius:50%;
+  font-family:var(--font-display);font-size:13px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  margin-top:1px;
+}
+.step-body{}
+.step-title{
+  font-family:var(--font-display);font-size:15px;font-weight:700;
+  color:#fff;margin-bottom:4px;
+}
+.step-desc{font-size:14px;color:var(--text2);line-height:1.65;}
+
+/* ===== DATA SOURCES TABLE ===== */
+.sources-list{
+  display:flex;flex-direction:column;gap:10px;margin:20px 0;
+}
+.source-row{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px 18px;
+}
+.source-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
+.source-name{
+  font-family:var(--font-mono);font-size:12px;font-weight:500;
+  color:var(--text);flex:1;letter-spacing:0.3px;
+}
+.source-note{font-size:12px;color:var(--text3);}
+
+/* ===== DIVIDER ===== */
+.content-divider{
+  border:none;border-top:1px solid var(--border);
+  margin:48px 0;
+}
+
+/* ===== INLINE LINK ===== */
+.text-link{color:var(--accent);border-bottom:1px solid rgba(245,200,66,0.3);}
+.text-link:hover{text-decoration:none;border-bottom-color:var(--accent);}
+
+/* ===== TRUST BAR ===== */
+.trust-bar{
+  background:var(--surface2);border-bottom:1px solid var(--border);
+  padding:12px 24px;
+}
+.trust-inner{
+  max-width:var(--content-width);margin:0 auto;
+  display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center;
+}
+.trust-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:12px;color:var(--text2);font-family:var(--font-mono);white-space:nowrap;
+}
+.tick{color:var(--green);font-size:13px;}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:48px 24px 32px;
+}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:48px;margin-bottom:40px;
+}
+@media(max-width:700px){.footer-top{grid-template-columns:1fr;gap:28px;}}
+.footer-logo{
+  font-family:var(--font-display);font-size:22px;font-weight:800;
+  color:var(--accent);margin-bottom:10px;
+}
+.footer-tagline{font-size:13px;color:var(--text3);line-height:1.7;max-width:280px;}
+.footer-col-title{
+  font-family:var(--font-mono);font-size:10px;
+  letter-spacing:2px;color:var(--text3);text-transform:uppercase;
+  margin-bottom:14px;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:var(--text2);transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);text-decoration:none;}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;border-top:1px solid var(--border);
+  font-size:12px;color:var(--text3);flex-wrap:wrap;gap:10px;
+  font-family:var(--font-mono);
+}
+.footer-bottom a{color:var(--text3);transition:color 0.2s;}
+.footer-bottom a:hover{color:var(--text2);text-decoration:none;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .page-hero{padding:56px 20px 40px;}
+  .content-wrap{padding:48px 20px 60px;}
+  .stat-row{border-radius:8px;}
+  .stat-item{min-width:80px;padding:16px 10px;}
+  .stat-val{font-size:24px;}
+  .coverage-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:420px){
+  .coverage-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-in">
-    <a class="logo" href="/"><div class="logo-box">⚡</div>Voltage<span>Checker</span></a>
-    <ul class="nav-links">
-      <li><a href="/#tool">Checker</a></li>
-      <li><a href="/#plugs">Plug Types</a></li>
-      <li><a href="/#countries">Countries</a></li>
-      <li><a href="/#devices">Devices</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#tool" class="nav-cta">Check Now</a></li>
+<!-- ===== NAVIGATION ===== -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="logo" aria-label="VoltageChecker home">⚡ VoltageChecker</a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#tool">Checker</a></li>
+      <li><a href="index.html#countries">Countries</a></li>
+      <li><a href="index.html#plugs">Plug Types</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
+    <a href="index.html#tool" class="nav-cta">CHECK NOW ⚡</a>
   </div>
 </nav>
 
-<div class="page-hero">
-  <div class="wrap-md">
-    <div class="ph-tag fade">About</div>
-    <h1 class="ph-h1 fade">Built by a traveler,<br>for travelers.</h1>
-    <p class="ph-sub fade">Voltage Checker started as a personal frustration — arriving abroad with the wrong adapter. Now it's a free resource used by travelers worldwide.</p>
+<!-- ===== AD: HEADER LEADERBOARD ===== -->
+<div class="ad-unit leaderboard" style="padding:16px 24px;" role="complementary" aria-label="Advertisement">
+  <div class="ad-inner" style="max-width:728px;margin:0 auto;">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block;width:728px;max-width:100%;height:90px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="HEADER_AD_SLOT"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
   </div>
 </div>
 
-<section class="content">
-  <div class="wrap-md">
-
-    <div class="stag">The Story</div>
-    <h2 class="sh2">Why this exists</h2>
-    <div class="prose">
-      <p>I've always traveled with too many gadgets and not enough knowledge about power. After frying a hair dryer in a hotel in Europe and scrambling to find the right adapter at the airport at midnight, I realized there was no fast, simple tool that just answered the question: <em>will my device work here?</em></p>
-      <p>Most resources were buried in travel forums or overly complicated. So I built Voltage Checker — a no-nonsense, free reference that tells you exactly what you need before you pack your bag.</p>
-      <p>There's no account, no subscription, no paywall. Just answers.</p>
+<!-- ===== HERO ===== -->
+<div class="page-hero" role="banner">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">About this site</div>
+    <h1>Built for travelers.<br><em>Powered by data.</em></h1>
+    <p class="page-hero-sub">VoltageChecker is a free, independent tool that gives you fast, accurate answers about international power compatibility — so you can pack the right gear and travel without the guesswork.</p>
+    <div class="stat-row" role="region" aria-label="Site statistics">
+      <div class="stat-item"><span class="stat-val">195+</span><span class="stat-label">Countries</span></div>
+      <div class="stat-item"><span class="stat-val">16</span><span class="stat-label">Plug Types</span></div>
+      <div class="stat-item"><span class="stat-val">100%</span><span class="stat-label">Free</span></div>
+      <div class="stat-item"><span class="stat-val">0</span><span class="stat-label">Sign-ups</span></div>
+      <div class="stat-item"><span class="stat-val">2026</span><span class="stat-label">Data updated</span></div>
     </div>
-
-    <div class="stat-row">
-      <div class="stat-box">
-        <div class="stat-n">195+</div>
-        <div class="stat-l">Countries covered</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-n">15</div>
-        <div class="stat-l">Plug types documented</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-n">100%</div>
-        <div class="stat-l">Free, always</div>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <div class="stag">What's Inside</div>
-    <h2 class="sh2">Everything you need to travel safely</h2>
-
-    <div class="card-grid">
-      <div class="acard">
-        <div class="acard-icon">⚡</div>
-        <div class="acard-title">Compatibility Checker</div>
-        <div class="acard-body">Enter your destination and device voltage — get an instant verdict: safe, adapter needed, or converter required.</div>
-      </div>
-      <div class="acard">
-        <div class="acard-icon">🔌</div>
-        <div class="acard-title">Plug Type Guide</div>
-        <div class="acard-body">Visual reference for all 15 international plug types (A through O), with countries and voltage specs for each.</div>
-      </div>
-      <div class="acard">
-        <div class="acard-icon">🌍</div>
-        <div class="acard-title">Country Database</div>
-        <div class="acard-body">Sortable, searchable table of voltage, frequency, and plug types for 195+ countries worldwide.</div>
-      </div>
-      <div class="acard">
-        <div class="acard-icon">💻</div>
-        <div class="acard-title">Device Reference</div>
-        <div class="acard-body">Quick guide to which common devices are dual-voltage (safe anywhere) and which need a converter.</div>
-      </div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <div class="stag">Principles</div>
-    <h2 class="sh2">How I try to keep this useful</h2>
-    <div class="prose">
-      <p><strong style="color:var(--text)">Accuracy over speed.</strong> Every country entry is verified against official and technical sources. If something looks off, I'd rather update it than leave travelers with bad info.</p>
-      <p><strong style="color:var(--text)">No dark patterns.</strong> No pop-ups, no newsletter signups, no tracking walls. The site is kept alive by unobtrusive ads, which I appreciate you understanding.</p>
-      <p><strong style="color:var(--text)">Always free.</strong> Travel information should be accessible to everyone, regardless of budget. That's not changing.</p>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <div style="background:var(--bg-card);border:1px solid rgba(77,171,247,.15);border-radius:var(--rl);padding:28px">
-      <div class="stag" style="margin-bottom:8px">Get in Touch</div>
-      <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px">Found an error? Have a suggestion? I read every message. Reach out via the <a href="contact.html">contact page</a> and I'll get back to you.</p>
-      <a href="contact.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--amber-d);border:1px solid var(--amber);color:var(--amber);padding:9px 18px;border-radius:var(--r);transition:background .2s" onmouseover="this.style.background='rgba(245,166,35,.32)'" onmouseout="this.style.background='rgba(245,166,35,.16)'">Contact →</a>
-    </div>
-
-  </div>
-</section>
-
-<div class="disc">
-  <div class="disc-in">
-    <span style="font-size:16px;flex-shrink:0">⚡</span>
-    <p class="disc-txt">Disclaimer: Voltage data is provided for general reference. Always verify with official local sources before traveling. Voltage Checker is not liable for any damage caused by incorrect adapter or converter use.</p>
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-in">
-    <div>
-      <div class="f-logo">Voltage<span>Checker</span></div>
-      <p class="f-tag">Free voltage &amp; plug compatibility tool for international travelers. No sign-up. Just answers.</p>
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar" role="complementary">
+  <div class="trust-inner">
+    <span class="trust-item"><span class="tick">✓</span> Updated for 2026</span>
+    <span class="trust-item"><span class="tick">✓</span> IEC-sourced data</span>
+    <span class="trust-item"><span class="tick">✓</span> No affiliate links</span>
+    <span class="trust-item"><span class="tick">✓</span> No sign-up required</span>
+    <span class="trust-item"><span class="tick">✓</span> Dual-voltage detection</span>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content-wrap" role="main">
+
+  <!-- WHAT WE DO -->
+  <section class="section-block" aria-labelledby="what-we-do">
+    <div class="section-eyebrow">What VoltageChecker does</div>
+    <h2 id="what-we-do">Clear answers about international power — instantly.</h2>
+    <p>Every year, travelers fry laptops, ruin hair dryers, and blow fuses because of confusing or contradictory information about international electrical standards. VoltageChecker was built to fix that problem cleanly.</p>
+    <p>You tell us where you're going and what device you're bringing — we tell you exactly what you need: an adapter, a voltage converter, or nothing at all. No jargon. No guesswork. No buying the wrong thing at the airport.</p>
+    <div class="highlight-box">
+      <p>⚡ <strong>Our philosophy:</strong> Electrical travel advice should be free, fast, accurate, and easy to understand for everyone — not locked behind a premium subscription or buried in technical manuals.</p>
     </div>
-    <div>
-      <div class="f-ctitle">Tools</div>
-      <ul class="f-links">
-        <li><a href="/#tool">Compatibility Checker</a></li>
-        <li><a href="/#plugs">Plug Type Guide</a></li>
-        <li><a href="/#countries">Country Database</a></li>
-        <li><a href="/#devices">Device Reference</a></li>
-      </ul>
+    <p>The tool is especially useful when traveling between regions with different voltage standards — such as North America (110–127V) and Europe, Asia, or Africa (220–240V) — where plugging in the wrong device without preparation can cause permanent damage or a safety hazard.</p>
+  </section>
+
+  <hr class="content-divider">
+
+  <!-- GLOBAL COVERAGE -->
+  <section class="section-block" aria-labelledby="global-coverage">
+    <div class="section-eyebrow">Global coverage</div>
+    <h2 id="global-coverage">195+ countries. 16 plug types. Every major standard.</h2>
+    <p>VoltageChecker covers every UN-recognized country plus key territories, providing detailed power compatibility information across six core data points:</p>
+    <div class="coverage-grid">
+      <div class="coverage-card">
+        <span class="coverage-icon">⚡</span>
+        <div class="coverage-title">Voltage</div>
+        <div class="coverage-desc">Grid voltage for each country — typically 100V, 120V, 220V, 230V, or 240V — including split-voltage countries.</div>
+      </div>
+      <div class="coverage-card">
+        <span class="coverage-icon">〜</span>
+        <div class="coverage-title">Frequency</div>
+        <div class="coverage-desc">Whether a country runs on 50Hz or 60Hz, and what that means for motor-driven devices and sensitive electronics.</div>
+      </div>
+      <div class="coverage-card">
+        <span class="coverage-icon">🔌</span>
+        <div class="coverage-title">Plug Types</div>
+        <div class="coverage-desc">All 16 standardized international plug and socket types (Type A through Type O) with visual diagrams and country lists.</div>
+      </div>
+      <div class="coverage-card">
+        <span class="coverage-icon">💻</span>
+        <div class="coverage-title">Device Compatibility</div>
+        <div class="coverage-desc">Whether laptops, smartphones, hair dryers, shavers, and other common devices will work — and how to check your own device's label.</div>
+      </div>
+      <div class="coverage-card">
+        <span class="coverage-icon">🔄</span>
+        <div class="coverage-title">Adapter vs. Converter</div>
+        <div class="coverage-desc">A clear verdict: do you need a plug adapter only, a full voltage converter, or nothing? No ambiguity, no technical guesswork.</div>
+      </div>
+      <div class="coverage-card">
+        <span class="coverage-icon">🌍</span>
+        <div class="coverage-title">Regional Context</div>
+        <div class="coverage-desc">Grouped by region for easy browsing — compare neighboring countries, plan multi-stop trips, and identify shared standards.</div>
+      </div>
     </div>
-    <div>
-      <div class="f-ctitle">Info</div>
-      <ul class="f-links">
-        <li><a href="/#faq">FAQ</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-      </ul>
+  </section>
+
+  <!-- AD: MID-CONTENT RECTANGLE -->
+  <div class="ad-unit rectangle" style="padding:0;margin:8px 0 48px;" role="complementary" aria-label="Advertisement">
+    <div class="ad-inner">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle"
+           style="display:block;width:100%;max-width:728px;height:250px;"
+           data-ad-client="ca-pub-8498912552902957"
+           data-ad-slot="MID_CONTENT_AD_SLOT"
+           data-ad-format="rectangle"
+           data-full-width-responsive="true"></ins>
     </div>
   </div>
-  <div class="f-bot">
-    <span class="f-copy">© Voltage Checker — Free for personal use</span>
-    <div class="f-leg">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+
+  <!-- HOW TO USE THE TOOL -->
+  <section class="section-block" aria-labelledby="how-to-use">
+    <div class="section-eyebrow">How to use the tool</div>
+    <h2 id="how-to-use">Three steps to a clear compatibility verdict.</h2>
+    <p>VoltageChecker is designed to get you a useful answer in under 30 seconds — no account, no technical knowledge required.</p>
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Select your destination country</div>
+          <div class="step-desc">Choose from the full list of 195+ countries. The tool immediately displays the local voltage, frequency, and plug types used at that destination.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Optionally select your home country or enter your device's voltage</div>
+          <div class="step-desc">Selecting your home country or entering the voltage rating from your device label (e.g., "100–240V" or "120V only") enables a personalized compatibility verdict rather than a general overview.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Read your verdict — adapter, converter, or nothing</div>
+          <div class="step-desc">The tool returns a color-coded result: green means you're compatible as-is, yellow means a plug adapter is needed, and red means a voltage converter is required. Each verdict includes a plain-English explanation.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Browse the plug type guide and country table</div>
+          <div class="step-desc">Use the visual plug type guide to identify socket shapes, or browse the full country table — filterable by region — to compare standards across multiple destinations for multi-stop itineraries.</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <p><strong>Pro tip:</strong> The most important thing to check is the voltage label on your actual device — not just the device type. Look for the input rating on the power brick or on the device itself. A label reading "Input: 100–240V ~ 50/60Hz" means your device is dual-voltage and only needs a plug adapter anywhere in the world.</p>
+    </div>
+  </section>
+
+  <hr class="content-divider">
+
+  <!-- HOW DATA IS MAINTAINED -->
+  <section class="section-block" aria-labelledby="data-accuracy">
+    <div class="section-eyebrow">Data accuracy</div>
+    <h2 id="data-accuracy">How we maintain and verify our data.</h2>
+    <p>International power standards change rarely — but they do change. Brazil's full transition to the NBR 14136 Type N standard, India's ongoing infrastructure modernization, and incremental IEC harmonization across European countries are all examples of real-world updates that affect our database.</p>
+    <p>We review and update our country data regularly, cross-referencing multiple authoritative sources to ensure accuracy. Our primary data sources include:</p>
+    <div class="sources-list">
+      <div class="source-row">
+        <div class="source-dot"></div>
+        <span class="source-name">IEC (International Electrotechnical Commission)</span>
+        <span class="source-note">Primary authority on global electrical standards</span>
+      </div>
+      <div class="source-row">
+        <div class="source-dot"></div>
+        <span class="source-name">National electrical codes and grid operator publications</span>
+        <span class="source-note">Country-level regulatory documents</span>
+      </div>
+      <div class="source-row">
+        <div class="source-dot"></div>
+        <span class="source-name">CENELEC European standards</span>
+        <span class="source-note">EU and EEA electrical harmonization</span>
+      </div>
+      <div class="source-row">
+        <div class="source-dot"></div>
+        <span class="source-name">IEEE and ANSI standards documentation</span>
+        <span class="source-note">North American and international engineering standards</span>
+      </div>
+      <div class="source-row">
+        <div class="source-dot"></div>
+        <span class="source-name">Government energy and infrastructure agencies</span>
+        <span class="source-note">Official country-level energy ministries and utilities</span>
+      </div>
+    </div>
+    <p>If you notice outdated or incorrect information, please <a href="contact.html" class="text-link">contact us</a>. We review all reports promptly and credit verified corrections to our database.</p>
+  </section>
+
+  <hr class="content-divider">
+
+  <!-- WHO IS BEHIND THIS -->
+  <section class="section-block" aria-labelledby="who-we-are">
+    <div class="section-eyebrow">Who we are</div>
+    <h2 id="who-we-are">Independent. Unaffiliated. Built by travelers, for travelers.</h2>
+    <p>VoltageChecker is an independent web project created and maintained by a small team of frequent travelers and web developers who got tired of the same problem: unreliable, outdated, or overly technical information about international power standards scattered across dozens of websites with conflicting advice.</p>
+    <p>We built the tool we wished existed — one that gives a clear, correct answer in seconds without requiring you to understand electrical engineering or navigate a forum thread from 2014.</p>
+    <div class="highlight-box">
+      <p>⚡ <strong>No conflicts of interest:</strong> We are not affiliated with any electrical equipment manufacturer, travel gear retailer, or adapter brand. Our compatibility verdicts are based purely on objective electrical specifications, not commercial relationships.</p>
+    </div>
+    <p>All content on this site — including country data, plug type descriptions, and device guidance — is written and maintained in-house. We do not publish sponsored recommendations, paid placements, or affiliate-driven product reviews.</p>
+  </section>
+
+  <hr class="content-divider">
+
+  <!-- ELECTRICAL SAFETY DISCLAIMER -->
+  <section class="section-block" aria-labelledby="safety-disclaimer">
+    <div class="section-eyebrow">Safety & disclaimer</div>
+    <h2 id="safety-disclaimer">Please read before relying on this tool.</h2>
+    <p>VoltageChecker provides electrical compatibility information for general travel guidance purposes. We work hard to keep all data current and accurate, but there are important limitations every user should understand.</p>
+    <div class="warn-box">
+      <p><strong>Important:</strong> Electrical infrastructure can vary within countries — particularly in remote areas, older buildings, and rapidly developing regions. Some countries have ongoing transitions between voltage standards that may result in inconsistent outlets within the same city. Always verify the specific outlet voltage at your actual destination before plugging in valuable or irreplaceable equipment.</p>
+    </div>
+    <p>The following situations require extra caution beyond what this tool can address:</p>
+    <p>Older buildings in countries undergoing infrastructure modernization may still have legacy wiring or outlets that differ from the current national standard. In some regions — particularly parts of Africa, Southeast Asia, and South America — voltage can fluctuate significantly from the published specification, which may affect sensitive electronics even when nominal compatibility exists.</p>
+    <p>For high-value equipment, medical devices, or specialized professional electronics, always consult the device manufacturer's official international travel guidance and, where appropriate, a certified electrician in the destination country.</p>
+    <p><strong>VoltageChecker is not liable for any damage to devices, property, or personal safety resulting from the use of information provided on this site.</strong> This tool is provided as-is for general informational purposes.</p>
+  </section>
+
+  <hr class="content-divider">
+
+  <!-- CTA -->
+  <section class="section-block" aria-labelledby="cta-heading" style="text-align:center;">
+    <div class="section-eyebrow" style="justify-content:center;">Ready to check?</div>
+    <h2 id="cta-heading" style="text-align:center;">Find out if your device will work abroad.</h2>
+    <p style="text-align:center;max-width:480px;margin:0 auto 28px;">It takes less than 30 seconds. No sign-up, no guesswork — just a clear, accurate answer for your destination.</p>
+    <a href="index.html#tool" style="
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--accent);color:#000;
+      padding:14px 36px;border-radius:6px;
+      font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:0.3px;
+      transition:all 0.2s;
+    " onmouseover="this.style.background='#ffd84a';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f5c842';this.style.transform='translateY(0)'">
+      ⚡ Check Compatibility Now
+    </a>
+  </section>
+
+</main>
+
+<!-- ===== AD: FOOTER INLINE ===== -->
+<div class="ad-unit inline" style="padding:0 24px 40px;" role="complementary" aria-label="Advertisement">
+  <div class="ad-inner" style="max-width:970px;margin:0 auto;">
+    <span class="ad-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block;width:100%;max-width:970px;height:120px;"
+         data-ad-client="ca-pub-8498912552902957"
+         data-ad-slot="FOOTER_AD_SLOT"
+         data-ad-format="horizontal"
+         data-full-width-responsive="true"></ins>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">⚡ VoltageChecker</div>
+        <p class="footer-tagline">Free international voltage and plug compatibility tool for travelers. Updated for 2026. No sign-up required.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Tool</div>
+        <ul class="footer-links">
+          <li><a href="index.html#tool">Compatibility Checker</a></li>
+          <li><a href="index.html#countries">Country Table</a></li>
+          <li><a href="index.html#plugs">Plug Type Guide</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Site</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VoltageChecker.website — Free for personal use</span>
+      <span>
+        <a href="privacy-policy.html">Privacy Policy</a> ·
+        <a href="about.html">About</a> ·
+        <a href="contact.html">Contact</a>
+      </span>
     </div>
   </div>
 </footer>
 
+<script>
+// Initialize AdSense ad units
+document.addEventListener('DOMContentLoaded', function() {
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+});
+</script>
 </body>
 </html>
