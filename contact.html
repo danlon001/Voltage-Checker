@@ -411,6 +411,15 @@ footer{
   .mailto-body{padding:20px 16px;}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X7RCFP861S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X7RCFP861S');
+</script>
 </head>
 <body>
 
@@ -545,7 +554,7 @@ footer{
             </div>
             <div class="mailto-address-wrap" role="group" aria-label="Contact email address">
               <span class="mailto-address" id="email-address" aria-label="voltagechecker.contact@gmail.com">voltagechecker.contact@gmail.com</span>
-              <!-- <button class="copy-btn" onclick="copyEmail()" id="copy-btn" aria-label="Copy email address to clipboard">COPY</button> -->
+         <!--     <button class="copy-btn" onclick="copyEmail()" id="copy-btn" aria-label="Copy email address to clipboard">COPY</button>-->
             </div>
 
             <div class="mailto-instructions">
@@ -803,7 +812,14 @@ function showCopied(btn) {
 // =====================================================================
 function openMailto(subject) {
   const encoded = encodeURIComponent(subject);
-  window.location.href = 'mailto:voltagechecker.contact@gmail.com?subject=' + encoded;
+  const a = document.createElement('a');
+  a.href = 'mailto:voltagechecker.contact@gmail.com?subject=' + encoded;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(subject).catch(function() {});
+  }
 }
 
 // =====================================================================
