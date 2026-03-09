@@ -34,7 +34,7 @@
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "contact@voltagechecker.website",
+    "email": "voltagechecker.contact@gmail.com",
     "contactType": "customer support",
     "availableLanguage": "English",
     "hoursAvailable": {
@@ -544,8 +544,8 @@ footer{
               <p><strong>Our email address:</strong></p>
             </div>
             <div class="mailto-address-wrap" role="group" aria-label="Contact email address">
-              <span class="mailto-address" id="email-address" aria-label="contact@voltagechecker.website">contact@voltagechecker.website</span>
-              <button class="copy-btn" onclick="copyEmail()" id="copy-btn" aria-label="Copy email address to clipboard">COPY</button>
+              <span class="mailto-address" id="email-address" aria-label="voltagechecker.contact@gmail.com">voltagechecker.contact@gmail.com</span>
+              <!-- <button class="copy-btn" onclick="copyEmail()" id="copy-btn" aria-label="Copy email address to clipboard">COPY</button> -->
             </div>
 
             <div class="mailto-instructions">
@@ -569,7 +569,7 @@ footer{
               </div>
             </div>
 
-            <a class="mailto-cta-btn" href="mailto:contact@voltagechecker.website" id="mailto-btn" aria-label="Open email client to contact VoltageChecker">
+            <a class="mailto-cta-btn" href="mailto:voltagechecker.contact@gmail.com" id="mailto-btn" aria-label="Open email client to contact VoltageChecker">
               ✉️ Open Email Client →
             </a>
 
@@ -761,7 +761,7 @@ document.addEventListener('click', function(e) {
 // COPY EMAIL
 // =====================================================================
 function copyEmail() {
-  const email = 'contact@voltagechecker.website';
+  const email = 'voltagechecker.contact@gmail.com';
   const btn = document.getElementById('copy-btn');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(email).then(function() {
@@ -803,7 +803,7 @@ function showCopied(btn) {
 // =====================================================================
 function openMailto(subject) {
   const encoded = encodeURIComponent(subject);
-  window.location.href = 'mailto:contact@voltagechecker.website?subject=' + encoded;
+  window.location.href = 'mailto:voltagechecker.contact@gmail.com?subject=' + encoded;
 }
 
 // =====================================================================
